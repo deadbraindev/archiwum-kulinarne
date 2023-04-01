@@ -98,14 +98,14 @@ export default async function handler(req, res) {
       //   } catch (error) {
       //     res.status(400).json({ success: false });
       //   }
-      try {
-        const deletedRecipe = await Recipe.findOneAndDelete({
-          slug,
-        });
-        res.status(200).json({ success: true, deletedRecipe });
-      } catch (err) {
-        res.status(400).json(`deleteRecipe.controller | ${err}`);
-      }
+      // try {
+      //   const deletedRecipe = await Recipe.findOneAndDelete({
+      //     slug,
+      //   });
+      //   res.status(200).json({ success: true, deletedRecipe });
+      // } catch (err) {
+      //   res.status(400).json(`deleteRecipe.controller | ${err}`);
+      // }
       break;
 
     default:

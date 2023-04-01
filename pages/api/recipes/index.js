@@ -225,61 +225,61 @@ export default async function handler(req, res) {
       }
       break;
     case 'POST':
-      if (
-        req.body.name === null ||
-        req.body.name === undefined ||
-        req.body.name === ''
-      )
-        return res.status(400).json({
-          success: false,
-          error: {
-            errors: {
-              name: {
-                name: 'ValidatorError',
-                message: 'Recipe must have a name',
-                properties: {
-                  message: 'Recipe must have a name',
-                  type: 'required',
-                  path: 'name',
-                },
-                kind: 'required',
-                path: 'name',
-              },
-            },
-            _message: 'Recipe validation failed',
-            name: 'ValidationError',
-            message: 'Recipe validation failed: name: Recipe must have a name',
-          },
-        });
+      // if (
+      //   req.body.name === null ||
+      //   req.body.name === undefined ||
+      //   req.body.name === ''
+      // )
+      //   return res.status(400).json({
+      //     success: false,
+      //     error: {
+      //       errors: {
+      //         name: {
+      //           name: 'ValidatorError',
+      //           message: 'Recipe must have a name',
+      //           properties: {
+      //             message: 'Recipe must have a name',
+      //             type: 'required',
+      //             path: 'name',
+      //           },
+      //           kind: 'required',
+      //           path: 'name',
+      //         },
+      //       },
+      //       _message: 'Recipe validation failed',
+      //       name: 'ValidationError',
+      //       message: 'Recipe validation failed: name: Recipe must have a name',
+      //     },
+      //   });
 
-      try {
-        // name
-        // stages
-        /// title
-        /// ingredients
-        /// preparing
-        //
-        // TODO zrobic przekazywanie zalogowanego uzytkownika i zapisywanie go do danego przepisu pod createdBy
-        // TODO normalizeUrl() https://www.npmjs.com/package/normalize-url
-        // TODO hasImage???
+      // try {
+      //   // name
+      //   // stages
+      //   /// title
+      //   /// ingredients
+      //   /// preparing
+      //   //
+      //   // TODO zrobic przekazywanie zalogowanego uzytkownika i zapisywanie go do danego przepisu pod createdBy
+      //   // TODO normalizeUrl() https://www.npmjs.com/package/normalize-url
+      //   // TODO hasImage???
 
-        const recipe = new Recipe({
-          name: req.body.name,
-          stages: req.body.stages?.map((stage) => ({
-            title: stage.title,
-            ingredients: stage.ingredients,
-            preparing: stage.preparing,
-          })),
-          images: req.body.images,
-          category: req.body.category,
-        });
+      //   const recipe = new Recipe({
+      //     name: req.body.name,
+      //     stages: req.body.stages?.map((stage) => ({
+      //       title: stage.title,
+      //       ingredients: stage.ingredients,
+      //       preparing: stage.preparing,
+      //     })),
+      //     images: req.body.images,
+      //     category: req.body.category,
+      //   });
 
-        await recipe.save().then(() => {
-          res.status(200).json({ success: true, recipe });
-        });
-      } catch (error) {
-        res.status(400).json({ success: false, error });
-      }
+      //   await recipe.save().then(() => {
+      //     res.status(200).json({ success: true, recipe });
+      //   });
+      // } catch (error) {
+      //   res.status(400).json({ success: false, error });
+      // }
       break;
     default:
       res.status(400).json({
