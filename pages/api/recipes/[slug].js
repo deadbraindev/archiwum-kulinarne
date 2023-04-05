@@ -16,7 +16,6 @@ export default async function handler(req, res) {
     case 'GET':
       try {
         await NextCors(req, res, {
-          // Options
           methods: ['GET'],
           origin: [
             'https://archiwumkulinarne.deadbrain.dev',
