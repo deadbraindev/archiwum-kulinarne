@@ -16,8 +16,11 @@ export default async function handler(req, res) {
       try {
         await NextCors(req, res, {
           // Options
-          methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-          origin: 'https://archiwumkulinarne.deadbrain.dev',
+          methods: ['GET'],
+          origin: [
+            'https://archiwumkulinarne.deadbrain.dev',
+            'http://localhost:3000',
+          ],
           optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
         });
         // sprawdzanie czy parametr jest poprawny
