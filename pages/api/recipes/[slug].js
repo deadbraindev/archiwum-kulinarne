@@ -1,3 +1,4 @@
+import NextCors from 'nextjs-cors';
 import dbConnect from '../../../lib/dbConnect';
 import Recipe from '../../../models/Recipe';
 
@@ -14,6 +15,15 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
+        await NextCors(req, res, {
+          // Options
+          methods: ['GET'],
+          origin: [
+            'https://archiwumkulinarne.deadbrain.dev',
+            'http://localhost:3000',
+          ],
+          optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+        });
         const recipe = await Recipe.findOne({ slug }).select('-__v'); // znalezienie przepisu po slug
         if (recipe) {
           const prettyImagesArray =
