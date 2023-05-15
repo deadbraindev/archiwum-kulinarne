@@ -1,4 +1,5 @@
 import React from 'react';
+import { headers } from 'next/headers';
 import Link from 'next/link';
 // import Skeleton from 'react-loading-skeleton';
 // import useLocalStorage from 'use-local-storage';
@@ -31,8 +32,20 @@ function Footer() {
 
   //* THEME CHANGER END
 
+  const headersList = headers();
+  const userAgent = headersList.get('user-agent');
+  const isMobileView = userAgent.match(
+    /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+  );
+
   return (
     <footer className="footer">
+      <h2>
+        {isMobileView
+          ? 'You are using a mobile device.'
+          : 'You are using a PC.'}
+      </h2>
+
       <div className="footerSocial" />
 
       <div className="footerLinks">

@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { isMobile } from 'react-device-detect';
+
 // import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -8,6 +10,7 @@ import classNames from 'classnames';
 // import styles from '../app/styles/Navbar.module.css';
 // import { useMediaQuery } from 'react-responsive';
 import { ToastContainer, Slide } from 'react-toastify';
+import useMobileDetect from './useMobileDetect.ts';
 // import 'react-toastify/dist/ReactToastify.css';
 
 // import Skeleton from 'react-loading-skeleton';
@@ -38,7 +41,9 @@ function useWindowWidth() {
 }
 function Navbar() {
   // const navigate = useNavigate();
-
+  const currentDevice = useMobileDetect();
+  // console.log(currentDevice.isDesktop());
+  // request.nextUrl.searchParams.set('viewport', viewport);
   const searchParams = useSearchParams();
 
   const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
@@ -111,10 +116,13 @@ function Navbar() {
   const navListDynamicClasses = classNames(
     'navList',
     windowWidth === undefined ? 'navLoading' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
-    windowWidth < 900 && !isHamburgerClicked ? 'hidden' : 'visible'
+    currentDevice.isMobile() || (windowWidth < 900 && !isHamburgerClicked)
+      ? 'hidden'
+      : 'visible'
   );
   const navMiniDynamicClasses = classNames(
     'navMini'
+    // isMobile || windowWidth < 900 ? 'visible' : 'hidden'
     // windowWidth < 900 ? 'visible' : 'hidden',
     // windowWidth === undefined ? 'visible' : 'visible' // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
   );
