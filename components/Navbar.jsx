@@ -10,7 +10,7 @@ import classNames from 'classnames';
 // import styles from '../app/styles/Navbar.module.css';
 // import { useMediaQuery } from 'react-responsive';
 import { ToastContainer, Slide } from 'react-toastify';
-import useMobileDetect from './useMobileDetect.ts';
+import useMobileDetect from './useMobileDetect';
 // import 'react-toastify/dist/ReactToastify.css';
 
 // import Skeleton from 'react-loading-skeleton';
