@@ -134,17 +134,11 @@ function Navbar() {
       ? 'hidden'
       : 'visible'
   );
-  const navMiniDynamicClasses = classNames(
-    'navMini'
-    // isMobile || windowWidth < 900 ? 'visible' : 'hidden'
-    // windowWidth < 900 ? 'visible' : 'hidden',
-    // windowWidth === undefined ? 'visible' : 'visible' // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
-  );
 
-  // useEffect(() => {
-  //   setIsHamburgerClicked(false);
-  // }, [windowWidth, orientation]);
-  // console.log(isHamburgerClicked);
+  useEffect(() => {
+    setIsHamburgerClicked(false);
+  }, windowWidth);
+
   const handleHamburger = () => {
     if (isHamburgerClicked) {
       setIsHamburgerClicked(false);
@@ -157,6 +151,7 @@ function Navbar() {
 
   const handleNavLink = () => {
     setIsHamburgerClicked(false);
+    document.body.classList.remove('noScroll');
   };
   const clearSearch = () => {
     setInputSearch('');
@@ -192,8 +187,8 @@ function Navbar() {
 
       <header className="navBar">
         <nav>
-          {/* <div className="navMini"> */}
-          <div className={navMiniDynamicClasses}>
+          <div className="navMini">
+            {/* <div className={navMiniDynamicClasses}> */}
             <Link className="navLogo" href="/">
               archiwum kulinarne
             </Link>

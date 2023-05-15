@@ -1,6 +1,6 @@
 html,
 body {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   background-color: var(--color-background-primary);
   min-width: 200px;
   position: static;
@@ -481,15 +481,12 @@ span {
 .hidden {
   position: absolute;
   visibility: hidden;
-  width: 0;
+  /* width: 0; */
   display: none;
   
 }
 .visible {
   display: inherit;
-  visibility: inherit;
-  position: inherit;
-
 }
 .noScroll {
   position: fixed !important;
@@ -869,12 +866,12 @@ margin: -14px 0 0 -14px;
 /*! ======================================================================================= */
 /*! NAVBAR END */
 .navLoading {
-    position: absolute;
+    /* position: absolute; */
     visibility: hidden;
     display: none;
 }
 .hamLoading {
-  position: relative;
+  /* position: relative; */
   visibility:visible;
 }
 .navBar {
