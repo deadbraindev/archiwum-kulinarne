@@ -113,6 +113,11 @@ function Navbar() {
     windowWidth === undefined ? 'navLoading' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
     windowWidth < 900 && !isHamburgerClicked ? 'hidden' : 'visible'
   );
+  const navMiniDynamicClasses = classNames(
+    'navMini'
+    // windowWidth < 900 ? 'visible' : 'hidden',
+    // windowWidth === undefined ? 'visible' : 'visible' // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
+  );
 
   // useEffect(() => {
   //   setIsHamburgerClicked(false);
@@ -165,7 +170,8 @@ function Navbar() {
 
       <header className="navBar">
         <nav>
-          <div className="navMini">
+          {/* <div className="navMini"> */}
+          <div className={navMiniDynamicClasses}>
             <Link className="navLogo" href="/">
               archiwum kulinarne
             </Link>

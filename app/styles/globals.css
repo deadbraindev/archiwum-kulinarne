@@ -487,6 +487,9 @@ span {
 }
 .visible {
   display: inherit;
+  visibility: inherit;
+  position: inherit;
+
 }
 .noScroll {
   position: fixed !important;
