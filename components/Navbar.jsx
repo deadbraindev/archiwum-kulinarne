@@ -7,7 +7,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 // import styles from '../app/styles/Navbar.module.css';
 // import { useMediaQuery } from 'react-responsive';
-import { ToastContainer, Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import { ToastContainer, Slide } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
 // import Skeleton from 'react-loading-skeleton';

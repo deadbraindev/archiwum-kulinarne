@@ -110,9 +110,8 @@ export default function Recipes() {
   );
 
   const showOrHideCategoryList = () => {
-    isCategoryListVisible
-      ? setIsCategoryListVisible(false)
-      : setIsCategoryListVisible(true);
+    if (isCategoryListVisible) setIsCategoryListVisible(false);
+    else setIsCategoryListVisible(true);
   };
 
   const changeCategory = (category) => {
@@ -180,7 +179,7 @@ export default function Recipes() {
             <button
               type="button"
               className="categoryClear"
-              onClick={(e) => {
+              onClick={() => {
                 validateAndNavigate2('');
               }}
             >
@@ -200,7 +199,7 @@ export default function Recipes() {
                   ? `categoryButton active`
                   : categoryButtonDynamicClasses
               }`}
-              onClick={(e) => {
+              onClick={() => {
                 changeCategory(category);
                 validateAndNavigate2(category);
               }}
@@ -299,9 +298,9 @@ export default function Recipes() {
                 onChange={(event) => setInputPage(event.target.value)}
                 ref={inputRefFocus}
               />
-              <label className="visuallyHidden" htmlFor="paginationSearchInput">
+              {/* <label className="visuallyHidden" htmlFor="paginationSearchInput">
                 Przejdź na stronę:
-              </label>
+              </label> */}
               {/* )} */}
             </form>
             <span className="visuallyHidden hint" aria-hidden="true">

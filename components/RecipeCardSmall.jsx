@@ -18,6 +18,7 @@ import {
 // };
 
 export default function RecipeCardSmall(props) {
+  // const { slug, name, category } = props;
   const [isFavorite, setIsFavorite] = useState(checkFavorite(props.slug));
   const RCSfavoriteClasses = classNames('RCSfavorite', { active: isFavorite });
   const handleFavoriteButton = (name, slug, category) => {
