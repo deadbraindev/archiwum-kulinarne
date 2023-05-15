@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { isMobile } from 'react-device-detect';
+// import { isMobile } from 'react-device-detect';
 
 // import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRouter, useSearchParams } from 'next/navigation';
