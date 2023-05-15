@@ -116,7 +116,7 @@ function Navbar() {
   const navListDynamicClasses = classNames(
     'navList',
     windowWidth === undefined ? 'navLoading' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
-    currentDevice.isMobile() || (windowWidth < 900 && !isHamburgerClicked)
+    (currentDevice.isMobile() || windowWidth < 900) && !isHamburgerClicked
       ? 'hidden'
       : 'visible'
   );
