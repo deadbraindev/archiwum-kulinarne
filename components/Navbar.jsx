@@ -91,6 +91,21 @@ function Navbar() {
     else setInputSearch(paramSearch);
   }, [paramSearch]); // use effect do dynamicznego odsiwezania tego co jest w inputach po zmianie path
 
+  const [color, setColor] = useState('');
+  const windowWidth = useWindowWidth();
+
+  const techinfo = () => {
+    if (currentDevice.isMobile()) setColor(`mobile, width:${windowWidth}px`);
+    else if (currentDevice.isDesktop())
+      setColor(`desktop, width:${windowWidth}px`);
+  };
+
+  // const [color, setColor] = useState('blue');
+
+  useEffect(() => {
+    techinfo();
+  }, [windowWidth]);
+
   // const { logout } = useLogout();
   // const { login } = useLogin();
   // const { isLoggedIn, isFetching, user } = useAuthContext();
@@ -106,7 +121,6 @@ function Navbar() {
   //   ? 0
   //   : Math.max(window.innerWidth - document.documentElement.clientWidth, 0);
 
-  const windowWidth = useWindowWidth();
   const navHamburgerDynamicClasses = classNames(
     'navHamburger',
     windowWidth === undefined ? 'hamLoading visible' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
@@ -275,6 +289,7 @@ function Navbar() {
               opacity: '0.2',
             }}
           >
+            {color}
             {/* width: {windowWidth}, orientation: {String(orientation)}, mobile:{' '}
             {String(isTabletOrMobile)}, scrollbar: {scrollBarWidth}px */}
           </p>
