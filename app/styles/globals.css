@@ -481,7 +481,7 @@ span {
 .hidden {
   position: absolute;
   visibility: hidden;
-  /* width: 0; */
+  width: 0;
   display: none;
   
 }
