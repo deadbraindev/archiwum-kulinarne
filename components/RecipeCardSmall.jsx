@@ -18,16 +18,16 @@ import {
 // };
 
 export default function RecipeCardSmall(props) {
-  // const { slug, name, category } = props;
-  const [isFavorite, setIsFavorite] = useState(checkFavorite(props.slug));
+  const { slug, name, model, category } = props;
+  const [isFavorite, setIsFavorite] = useState(checkFavorite(slug));
   const RCSfavoriteClasses = classNames('RCSfavorite', { active: isFavorite });
-  const handleFavoriteButton = (name, slug, category) => {
+  const handleFavoriteButton = (favName, favSlug, favCategory) => {
     let existingFavorites = JSON.parse(localStorage.getItem('favorites'));
     if (existingFavorites == null) existingFavorites = [];
     const favTemp = {
-      name,
-      slug,
-      category,
+      favName,
+      favSlug,
+      favCategory,
     };
     if (isFavorite) {
       toast('Usunięto z ulubionych!');
@@ -49,49 +49,52 @@ export default function RecipeCardSmall(props) {
 
   return (
     <div className={`RCS `}>
-      {props.model ? (
+      {model ? (
         <>
-          <div
-            className={`RCSimg ${categoryHeaderColorPicker(props.category)}`}
-          >
-            {categorySvgPicker(props.category)}
+          <div className={`RCSimg ${categoryHeaderColorPicker(category)}`}>
+            {categorySvgPicker(category)}
           </div>
-          <h1 className="RCSname">{props.name}</h1>
+          <h1 className="RCSname">{name}</h1>
         </>
       ) : (
         <Link
-          href={`/przepisy/${props.slug}`}
+          href={`/przepisy/${slug}`}
           className="RCSlink"
           // onClick={scrollToTop}
         >
-          <div
-            className={`RCSimg ${categoryHeaderColorPicker(props.category)}`}
-          >
-            <div className="svgBackground">
-              {categorySvgPicker(props.category)}
-            </div>
+          <div className={`RCSimg ${categoryHeaderColorPicker(category)}`}>
+            <div className="svgBackground">{categorySvgPicker(category)}</div>
           </div>
-          <h1 className="RCSname">{props.name}</h1>
+          <h1 className="RCSname">{name}</h1>
         </Link>
       )}
 
       <div className="RCSinfo">
         <div
           role="button"
+          tabIndex={0}
           className={RCSfavoriteClasses}
-          onClick={(e) => {
-            handleFavoriteButton(props.name, props.slug, props.category);
+          onClick={() => {
+            handleFavoriteButton(name, slug, category);
+          }}
+          // aria-hidden="true"
+          onKeyPress={() => {
+            handleFavoriteButton(name, slug, category);
           }}
         >
           <svg className="heart" viewBox="-1 -1 18 18">
             <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
           </svg>
         </div>
+
         <div
+          role="button"
+          tabIndex={-1}
           className="RCSfavorite anim"
-          onClick={(e) => {
-            handleFavoriteButton(props.name, props.slug, props.category);
+          onClick={() => {
+            handleFavoriteButton(name, slug, category);
           }}
+          aria-hidden="true"
         >
           <svg viewBox="-1 -1 18 18">
             <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
