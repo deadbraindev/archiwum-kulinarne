@@ -1,31 +1,31 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
-import {
-  getRecipes,
-  paramPageValidator,
-  paramCategoryValidator,
-  isFavorite,
-} from './utilities';
+// import {
+//   getRecipes,
+//   paramPageValidator,
+//   paramCategoryValidator,
+//   isFavorite,
+// } from './utilities';
 
 export default function SearchBar() {
-  const router = useRouter();
+  // const router = useRouter();
   const searchParams = useSearchParams();
   const page = searchParams.get('strona') || 1;
 
-  const search = searchParams.get('szukaj');
+  // const search = searchParams.get('szukaj');
 
   // This will not be logged on the server when using static rendering
-  console.log(search);
+  // console.log(search);
 
-  const pathPre = 'recipes?strona=1';
-  const pathNext = 'recipes?strona=2';
+  // const pathPre = 'recipes?strona=1';
+  // const pathNext = 'recipes?strona=2';
 
   useEffect(() => {
     // Do something here...
-    console.log('zmieniono path');
+    // console.log('zmieniono path');
   }, [searchParams]);
 
   return (
