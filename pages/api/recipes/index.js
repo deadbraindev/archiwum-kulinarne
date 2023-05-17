@@ -16,13 +16,11 @@ export default async function handler(req, res) {
       try {
         await NextCors(req, res, {
           methods: ['GET'],
-          // origin: [
-          //   'https://archiwumkulinarne.deadbrain.dev',
-          //   'http://localhost:3000',
-          //   'https://archiwum-kulinarne.vercel.app',
-          //   'https://*.vercel.app',
-          // ],
-          origin: '*',
+          origin: [
+            'https://archiwumkulinarne.deadbrain.dev',
+            'http://localhost:3000',
+            'https://archiwum-kulinarne.vercel.app',
+          ],
           optionsSuccessStatus: 200,
         });
         // sprawdzanie czy parametr jest poprawny
