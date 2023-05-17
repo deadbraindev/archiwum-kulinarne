@@ -11,7 +11,7 @@ import classNames from 'classnames';
 // import { useMediaQuery } from 'react-responsive';
 import { ToastContainer, Slide } from 'react-toastify';
 import useMobileDetect from './useMobileDetect';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import Skeleton from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
@@ -110,7 +110,9 @@ function Navbar() {
   const navHamburgerDynamicClasses = classNames(
     'navHamburger',
     windowWidth === undefined ? 'hamLoading visible' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
-    windowWidth !== undefined && windowWidth < 900 ? 'visible' : 'hidden',
+    currentDevice.isMobile() && windowWidth !== undefined && windowWidth < 900
+      ? 'visible'
+      : 'hidden',
     { active: isHamburgerClicked }
   );
   const navListDynamicClasses = classNames(

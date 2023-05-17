@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
 import { useState, useRef, useEffect } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
@@ -136,6 +136,8 @@ export default function Recipes() {
     barThickness: 8,
     shadowBlur: 0,
   });
+  const pathname = usePathname();
+  console.log(pathname);
 
   return (
     <main>
