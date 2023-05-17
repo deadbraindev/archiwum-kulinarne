@@ -5,6 +5,9 @@ import { useQuery } from '@tanstack/react-query';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useState, useRef, useEffect } from 'react';
+import TopBarProgress from 'react-topbar-progress-indicator';
+// import NextNProgress from 'nextjs-progressbar';
+
 import classNames from 'classnames';
 import RecipeCardSmallSkeleton from '../../components/RecipeCardSmallSkeleton';
 import RecipeCardSmall from '../../components/RecipeCardSmall';
@@ -54,7 +57,6 @@ export default function Recipes() {
   const inputRefFocus = useRef(null); // referencja zeby odwolac sie do inputu i zabrac mu focus
   const router = useRouter();
 
-  // isFetching ? console.log('aaa') : console.log(data);
   const validateAndNavigate = (input) => {
     if (
       // data?.hasFilters &&
@@ -127,9 +129,20 @@ export default function Recipes() {
     scrollToTop();
   }, [paramPage]);
 
+  TopBarProgress.config({
+    barColors: {
+      0: '#ffce06',
+    },
+    barThickness: 8,
+    shadowBlur: 0,
+  });
+
   return (
     <main>
-      {' '}
+      {/* {isFetching && <TopBarProgress />} */}
+      {isFetching && <TopBarProgress />}
+      {/* <NextNProgress /> */}
+
       <div className="recipesContainer">
         {/* <div>recipes page {}</div> */}
         <p className="RCcategory">

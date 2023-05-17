@@ -16,9 +16,6 @@ import useMobileDetect from './useMobileDetect';
 // import Skeleton from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
 // import TopBarProgress from 'react-topbar-progress-indicator';
-
-// import { useWindowWidth } from '@react-hook/window-size';
-// import LoadingBar from './LoadingBar.js';
 import {
   paramSearchValidator,
   paramCategoryValidator,
@@ -40,10 +37,7 @@ function useWindowWidth() {
   return windowWidth;
 }
 function Navbar() {
-  // const navigate = useNavigate();
   const currentDevice = useMobileDetect();
-  // console.log(currentDevice.isDesktop());
-  // request.nextUrl.searchParams.set('viewport', viewport);
   const searchParams = useSearchParams();
 
   const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
@@ -58,9 +52,6 @@ function Navbar() {
 
   const searchButton = (input) => {
     if (!paramSearchValidator(input)) {
-      // navigate({
-      //   search: '',
-      // });
       router.push('');
       setInputSearch('');
     } else if (
@@ -68,11 +59,8 @@ function Navbar() {
       paramCategoryValidator(paramCategory)
     ) {
       router.push(`przepisy?kategoria=${paramCategory}&szukaj=${input}`);
-      // navigate(`przepisy?kategoria=${paramCategory}&szukaj=${input}`);
     } else {
       router.push(`przepisy?szukaj=${input}`);
-
-      // navigate(`przepisy?szukaj=${input}`);
     }
   };
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
@@ -81,18 +69,17 @@ function Navbar() {
     setIsHamburgerClicked(false);
     searchButton(inputSearch);
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
-    // inputRefFocus.current.focus();   //zmiana focus inputowi searchbara
   };
-
-  // const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
 
   useEffect(() => {
     if (paramSearch === null) setInputSearch('');
     else setInputSearch(paramSearch);
   }, [paramSearch]); // use effect do dynamicznego odsiwezania tego co jest w inputach po zmianie path
 
-  const [color, setColor] = useState('');
   const windowWidth = useWindowWidth();
+
+  // !!debug
+  const [color, setColor] = useState('');
 
   const techinfo = () => {
     if (currentDevice.isMobile()) setColor(`mobile, width:${windowWidth}px`);
@@ -100,11 +87,10 @@ function Navbar() {
       setColor(`desktop, width:${windowWidth}px`);
   };
 
-  // const [color, setColor] = useState('blue');
-
   useEffect(() => {
     techinfo();
   }, [windowWidth]);
+  // !!debug
 
   // const { logout } = useLogout();
   // const { login } = useLogin();

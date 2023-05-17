@@ -871,7 +871,7 @@ margin: -14px 0 0 -14px;
     display: none;
 }
 .hamLoading {
-  /* position: relative; */
+  position: relative;
   visibility:visible;
 }
 .navBar {
@@ -1279,7 +1279,7 @@ background-position: 8px 8px; */
 }
 .container {
     overflow: hidden;
-
+  top: 0px;
   position: relative;
   min-height: 85vh;
   /* padding: 0.5em 0; */
