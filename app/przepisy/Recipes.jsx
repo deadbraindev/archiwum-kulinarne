@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { useState, useRef, useEffect } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
 // import NextNProgress from 'nextjs-progressbar';
@@ -86,12 +87,43 @@ export default function Recipes() {
       input <= data?.numOfPages
     ) {
       router.push(`przepisy?strona=${input}`);
-      // navigate({
-      //   search: `?strona=${input}`,
-      // });
       inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
     }
   };
+
+  const goNext = () => {
+    // TODO dodac param "kategoria"
+    if (data?.showNextUrlLink) {
+      setInputPage(data.pageNumber + 1);
+      if (data?.hasFilters) {
+        // navigate({
+        //   search: `?szukaj=${paramSearch}&strona=${data?.pageNumber + 1}`,
+        // });
+        router.push(
+          `przepisy?szukaj=${paramSearch}&strona=${data.pageNumber + 1}`
+        );
+      } else if (!data?.hasFilters) {
+        // navigate({
+        //   search: `?strona=${data?.pageNumber + 1}`,
+        // });
+        router.push(`przepisy?strona=${data.pageNumber + 1}`);
+      }
+    }
+  };
+  const goPrevious = () => {
+    // TODO dodac param "kategoria"
+    if (data?.showPreviousUrlLink) {
+      // setInputPage(data.pageNumber - 1);
+      if (data?.hasFilters) {
+        router.push(
+          `przepisy?szukaj=${paramSearch}&strona=${data.pageNumber - 1}`
+        );
+      } else if (!data?.hasFilters) {
+        router.push(`przepisy?strona=${data.pageNumber - 1}`);
+      }
+    }
+  };
+
   const validateAndNavigate2 = (category) => {
     if (paramCategoryValidator(category)) {
       setInputCategory(category);
@@ -136,8 +168,25 @@ export default function Recipes() {
     barThickness: 8,
     shadowBlur: 0,
   });
-  const pathname = usePathname();
-  console.log(pathname);
+  // const pathname = usePathname();
+  // console.log(pathname);
+
+  let paginationInputTotalPages = 0;
+  if (isFetching || status === 'loading') {
+    paginationInputTotalPages = (
+      <Skeleton
+        count={1}
+        width="1.8em"
+        height="1.8em"
+        // baseColor="#bababa"
+        enableAnimation={false}
+      />
+    );
+  } else if (data?.numOfPages) {
+    paginationInputTotalPages = data?.numOfPages;
+  } else {
+    paginationInputTotalPages = 0;
+  }
 
   return (
     <main>
@@ -232,7 +281,12 @@ export default function Recipes() {
         </div>
         <div className="cardContainer">
           {/* //!zrobic ladnie blad */}
-          {status === 'error' && <h1>Error fetching data!</h1>}
+          {status === 'error' && (
+            <span>
+              przykro mi, jest problem z ładowaniem przepisów, spróbuj ponownie
+              później...
+            </span>
+          )}
           {/* {isFetching && <TopBarProgress />} */}
           {isLoading ? (
             <>
@@ -266,17 +320,12 @@ export default function Recipes() {
         </div>
 
         <div className="pagination">
-          <Link
-            className="paginationPrev"
-            href={`/przepisy?strona=${paramPage - 1}`}
-          >
+          <div className="paginationPrev">
             <button
               className="paginationButton"
               type="button"
-              // href="/recipes?page=1"
-              // onClick={goNext}
+              onClick={goPrevious}
               disabled={isFetching || !data?.showPreviousUrlLink}
-              // onClick={() => router.push('/dashboard')}
             >
               <span className="visuallyHidden">Poprzednia strona</span>
               <svg
@@ -289,7 +338,7 @@ export default function Recipes() {
                 <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
               </svg>
             </button>
-          </Link>
+          </div>
 
           <div className="paginationInput">
             <form onSubmit={onSubmitPaginationInput}>
@@ -326,34 +375,16 @@ export default function Recipes() {
             </span>
             <span className="paginationInputSeparator">z</span>
             <span className="paginationInputTotalPages">
-              {/* {isFetching || status === 'loading' ? (
-                <Skeleton
-                  count={1}
-                  width="1.8em"
-                  height="1.8em"
-                  // baseColor="#bababa"
-                  enableAnimation={false}
-                />
-              ) : data?.numOfPages ? (
-                data.numOfPages
-              ) : (
-                '0'
-              )} */}
-              {data?.numOfPages ? data.numOfPages : '0'}
+              {paginationInputTotalPages}
             </span>
           </div>
 
-          <Link
-            className="paginationNext"
-            href={`/przepisy?strona=${paramPage + 1}`}
-          >
+          <div className="paginationNext">
             <button
               className="paginationButton"
               type="button"
-              // href="/recipes?page=1"
-              // onClick={goNext}
+              onClick={goNext}
               disabled={isFetching || !data?.showNextUrlLink}
-              // onClick={() => router.push('/dashboard')}
             >
               <span className="visuallyHidden">Następna strona</span>
               <svg
@@ -366,7 +397,7 @@ export default function Recipes() {
                 <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
               </svg>
             </button>
-          </Link>
+          </div>
         </div>
       </div>
     </main>

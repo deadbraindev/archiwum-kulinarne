@@ -125,7 +125,8 @@ function Navbar() {
 
   useEffect(() => {
     setIsHamburgerClicked(false);
-  }, windowWidth);
+    document.body.classList.remove('noScroll');
+  }, [windowWidth]);
 
   const handleHamburger = () => {
     if (isHamburgerClicked) {
