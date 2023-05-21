@@ -51,7 +51,7 @@ export default function Recipes() {
       refetchOnWindowFocus: false,
       refetchOnmount: false,
       refetchOnReconnect: false,
-      retry: false,
+      retry: 2,
       staleTime: 1000 * 60 * 60 * 24,
     }
   );
@@ -312,12 +312,7 @@ export default function Recipes() {
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
 
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-
-              <RecipeCardSmallSkeleton />
+              {/* <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
@@ -326,6 +321,11 @@ export default function Recipes() {
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
+
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton /> */}
             </>
           ) : (
             status === 'success' &&
