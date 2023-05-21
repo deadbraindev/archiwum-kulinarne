@@ -2,7 +2,7 @@
 import { Suspense } from 'react';
 // import RecipeCardSkeleton from '../../../components/RecipeCardSkeleton';
 // import getRecipe from '../../../lib/getRecipe';
-import Loading from './loading';
+// import Loading from './loading';
 import RecipeCard from '../../../components/RecipeCard';
 
 async function getMetadata(slug) {
@@ -56,9 +56,9 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <RecipeCard slug={slug} />
-      </Suspense>
+      {/* <Suspense fallback={<Loading />}> */}
+      <RecipeCard slug={slug} />
+      {/* </Suspense> */}
       {/* <div>{data}</div> */}
     </>
   );
