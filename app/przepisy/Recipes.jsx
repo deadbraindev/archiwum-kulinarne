@@ -45,9 +45,14 @@ export default function Recipes() {
     ['recipes', paramPage, paramSearch, paramCategory],
     () => getRecipes(paramPage, paramSearch, paramCategory),
     {
-      keepPreviousData: true,
-      retry: 2,
+      // keepPreviousData: true,
+      // retry: 2,
+      // refetchOnWindowFocus: false,
       refetchOnWindowFocus: false,
+      refetchOnmount: false,
+      refetchOnReconnect: false,
+      retry: false,
+      staleTime: 1000 * 60 * 60 * 24,
     }
   );
   // REACT QUERY
@@ -158,7 +163,7 @@ export default function Recipes() {
   };
   useEffect(() => {
     setInputPage(paramPage);
-    scrollToTop();
+    // scrollToTop();
   }, [paramPage]);
 
   TopBarProgress.config({
@@ -168,8 +173,6 @@ export default function Recipes() {
     barThickness: 8,
     shadowBlur: 0,
   });
-  // const pathname = usePathname();
-  // console.log(pathname);
 
   let paginationInputTotalPages = 0;
   if (isFetching || status === 'loading') {
@@ -189,12 +192,15 @@ export default function Recipes() {
   }
 
   return (
-    <main>
+    <>
       {/* {isFetching && <TopBarProgress />} */}
       {isFetching && <TopBarProgress />}
       {/* <NextNProgress /> */}
 
-      <div className="recipesContainer">
+      <div
+        className="recipesContainer"
+        // style={isFetching ? { height: 2000 } : null}
+      >
         {/* <div>recipes page {}</div> */}
         <p className="RCcategory">
           <span className="RCcategorySeparator">{'>'}</span>
@@ -305,6 +311,21 @@ export default function Recipes() {
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
+
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
             </>
           ) : (
             status === 'success' &&
@@ -401,6 +422,6 @@ export default function Recipes() {
           </div>
         </div>
       </div>
-    </main>
+    </>
   );
 }

@@ -60,6 +60,7 @@ export default function RecipeCardSmall(props) {
         <Link
           href={`/przepisy/${slug}`}
           className="RCSlink"
+          scroll
           // onClick={scrollToTop}
         >
           <div className={`RCSimg ${categoryHeaderColorPicker(category)}`}>
