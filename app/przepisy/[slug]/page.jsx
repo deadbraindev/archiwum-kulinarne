@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 // import RecipeCardSkeleton from '../../../components/RecipeCardSkeleton';
 import getRecipe from '../../../lib/getRecipe';
 import Loading from './loading';
+import RecipeCard from '../../../components/RecipeCard';
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -27,42 +28,12 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   const { slug } = params;
-  const recipeData = await getRecipe(slug);
+  // const recipeData = await getRecipe(slug);
 
   return (
     <>
       <Suspense fallback={<Loading />}>
-        {recipeData?.success && (
-          <div>
-            {/* <span>{recipeData.name}</span>
-            <span>{recipeData.slug.slugCurrent}</span>
-            <span>{recipeData.category}</span> */}
-            {recipeData.stages?.items.map((stage, i) => (
-              <div className="RCstage" key={stage.index}>
-                {stage.title && (
-                  <h3 className="RCstageTitle">
-                    {i + 1}. {stage.title}
-                  </h3>
-                )}
-                <div className="RCing">
-                  <h4 className="RCstageIngredients">Składniki:</h4>
-                  <ul className="RCingredientsList">
-                    {stage.ingredients.map((ingredient) => (
-                      <li key={ingredient}>{ingredient}</li>
-                      // <li key={`${i}${j}`}><label><input type="checkbox" name="RCingredient" id={`${i}${j}`} /><span>{ingredient}</span></label></li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="RCprep">
-                  {stage.preparing && (
-                    <h4 className="RCstagePreparing">Przygotowanie:</h4>
-                  )}
-                  <p className="RCpreparing">{stage.preparing}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+        <RecipeCard slug={slug} />
       </Suspense>
       {/* <div>{data}</div> */}
     </>

@@ -29,6 +29,7 @@
     "react-topbar-progress-indicator": "^4.1.1"
   },
   "devDependencies": {
+    "@types/react": "18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -37,6 +38,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.8.1"
+    "prettier": "^2.8.1",
+    "typescript": "5.0.4"
   }
 }
