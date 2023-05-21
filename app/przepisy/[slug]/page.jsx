@@ -1,5 +1,5 @@
 // import TopBarProgress from 'react-topbar-progress-indicator';
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 // import RecipeCardSkeleton from '../../../components/RecipeCardSkeleton';
 // import getRecipe from '../../../lib/getRecipe';
 // import Loading from './loading';
