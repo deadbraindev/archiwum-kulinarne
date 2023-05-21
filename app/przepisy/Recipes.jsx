@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useState, useRef, useEffect } from 'react';
@@ -281,6 +281,7 @@ export default function Recipes() {
         </div>
         <div className="cardContainer">
           {/* //!zrobic ladnie blad */}
+          {/* //!! czy to w ogole jest potrzebne?????? */}
           {status === 'error' && (
             <span>
               przykro mi, jest problem z ładowaniem przepisów, spróbuj ponownie

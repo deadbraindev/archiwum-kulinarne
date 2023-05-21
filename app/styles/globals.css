@@ -896,6 +896,11 @@ margin: -14px 0 0 -14px;
   border-bottom: 1px solid var(--color-border);
   z-index: 100;
   /* background-color: red; */
+  transition: background-color 120ms ease-in-out;
+}
+.navBar:hover {
+  background-color: var(--color-background-primary);
+  
 }
 .navList {
   background-color: var(--color-background-primary);

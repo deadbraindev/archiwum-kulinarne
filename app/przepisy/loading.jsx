@@ -19,7 +19,6 @@ export default function Loading() {
       <p className="RCcategory">
         <span className="RCcategorySeparator">{'>'}</span>
         <span className="RCcategoryLink">przepisy</span>
-        <span className="RCcategoryLink">przepisy</span>
       </p>
 
       <div className="categoryContainer">

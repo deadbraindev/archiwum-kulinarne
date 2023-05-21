@@ -12,7 +12,7 @@ export const metadata = {
   },
   description: 'Zdigitalizowane rodzinne przepisy kuchenne',
   openGraph: {
-    title: 'archiwum kulinarne',
+    title: 'strona główna | archiwum kulinarne',
     url: 'https://archiwumkulinarne.deadbrain.dev/',
     images: [
       {
