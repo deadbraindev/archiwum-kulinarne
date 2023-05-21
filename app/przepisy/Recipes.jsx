@@ -24,11 +24,11 @@ import {
 
 export default function Recipes() {
   const searchParams = useSearchParams();
-  const isBrowser = () => typeof window !== 'undefined'; // The approach recommended by Next.js
-  function scrollToTop() {
-    if (!isBrowser()) return;
-    window.scrollTo({ top: 0 });
-  }
+  // const isBrowser = () => typeof window !== 'undefined'; // The approach recommended by Next.js
+  // function scrollToTop() {
+  //   if (!isBrowser()) return;
+  //   window.scrollTo({ top: 0 });
+  // }
 
   const paramPage = paramPageValidator(searchParams.get('strona'))
     ? parseInt(searchParams.get('strona'), 10)
