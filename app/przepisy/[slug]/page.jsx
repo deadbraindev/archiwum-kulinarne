@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
   const recipe = await recipeData;
 
   // console.log(recipe);
-  if (recipe.seccess)
+  if (recipe.success) {
     return {
       title: recipe.name?.toLowerCase(),
       openGraph: {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
         ],
       },
     };
-
+  }
   return {
     title: 'błędna nazwa przepisu',
     openGraph: {
