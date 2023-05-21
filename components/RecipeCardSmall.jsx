@@ -10,13 +10,6 @@ import {
   isFavorite as checkFavorite,
 } from './RecipeUtilities';
 
-// const scrollToTop = () => {
-//   window.scrollTo({
-//     top: 0,
-//     behavior: 'smooth',
-//   });
-// };
-
 export default function RecipeCardSmall(props) {
   const { slug, name, model, category } = props;
   const [isFavorite, setIsFavorite] = useState(checkFavorite(slug));
@@ -25,9 +18,9 @@ export default function RecipeCardSmall(props) {
     let existingFavorites = JSON.parse(localStorage.getItem('favorites'));
     if (existingFavorites == null) existingFavorites = [];
     const favTemp = {
-      favName,
-      favSlug,
-      favCategory,
+      name: favName,
+      slug: favSlug,
+      category: favCategory,
     };
     if (isFavorite) {
       toast('Usunięto z ulubionych!');
@@ -57,12 +50,7 @@ export default function RecipeCardSmall(props) {
           <h1 className="RCSname">{name}</h1>
         </>
       ) : (
-        <Link
-          href={`/przepisy/${slug}`}
-          className="RCSlink"
-          scroll
-          // onClick={scrollToTop}
-        >
+        <Link href={`/przepisy/${slug}`} className="RCSlink">
           <div className={`RCSimg ${categoryHeaderColorPicker(category)}`}>
             <div className="svgBackground">{categorySvgPicker(category)}</div>
           </div>
@@ -83,7 +71,7 @@ export default function RecipeCardSmall(props) {
             handleFavoriteButton(name, slug, category);
           }}
         >
-          <svg className="heart" viewBox="-1 -1 18 18">
+          <svg className="RCSfavoriteHeart" viewBox="-1 -1 18 18">
             <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
           </svg>
         </div>
@@ -91,7 +79,7 @@ export default function RecipeCardSmall(props) {
         <div
           role="button"
           tabIndex={-1}
-          className="RCSfavorite anim"
+          className="RCSfavorite RCSfavoriteAnimate"
           onClick={() => {
             handleFavoriteButton(name, slug, category);
           }}

@@ -1,23 +1,11 @@
-// import React from 'react';
 import Link from 'next/link';
-
-// import img from "../icon.png";
-// import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
-// import { categoryHeaderColorPicker } from "./utilities"
-
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function RecipeCard() {
-  // const navigate = useNavigate();
-
   return (
     <div className="RC">
-      <p className="RCcategory">
-        {/* <Link className="RCcategoryLink" href="/">
-          🏠
-        </Link> */}
+      <p className="RCcategory RCcategoryPadding">
         <span className="RCcategorySeparator">{'>'}</span>
         <Link className="RCcategoryLink" href="przepisy">
           przepisy
@@ -29,92 +17,73 @@ export default function RecipeCard() {
       </p>
 
       <div className="RCheader skeletonLight">
-        {/* <button
-          className="RCbuttonPrev"
-          type="button"
-          href="przepisy"
-          // onClick={() => navigate(-1)}
-        >
+        <Link href="/przepisy" className="RCbuttonPrev" type="button">
           <span className="visuallyHidden">Wróć do poprzedniej strony</span>
           <svg
             className="paginationIcon"
-            viewBox="0 0 256 430"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 9.9 16.81"
             aria-hidden="true"
             focusable="false"
           >
-            <path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z" />
+            <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
           </svg>
-        </button> */}
+        </Link>
         <div className="RCname">
-          <Skeleton
-            count={1}
-            width="13em"
-            // baseColor="#bababa"
-            // highlightColor="#dadada"
-            enableAnimation={false}
-          />
+          <Skeleton count={1} width="13em" enableAnimation={false} />
         </div>
       </div>
 
       <div className="RCstage">
-        {/* {stage.title && <h3 className="RCstageTitle">{i+1}. {stage.title}</h3>} */}
         <div className="RCing">
           <h4 className="RCstageIngredients">Składniki:</h4>
           <div className="RCingredientsList">
             <Skeleton
               count={1}
-              width="70%"
+              width={`${Math.random() * (100 - 40) + 40}%`}
               height="1.5em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width="90%"
+              width={`${Math.random() * (100 - 40) + 40}%`}
               height="1.5em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width="60%"
+              width={`${Math.random() * (100 - 40) + 40}%`}
               height="1.5em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width="65%"
+              width={`${Math.random() * (100 - 40) + 40}%`}
               height="1.5em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width="95%"
+              width={`${Math.random() * (100 - 40) + 40}%`}
               height="1.5em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width="87%"
+              width={`${Math.random() * (100 - 40) + 40}%`}
               height="1.5em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width="67%"
+              width={`${Math.random() * (100 - 40) + 40}%`}
               height="1.5em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width="54%"
+              width={`${Math.random() * (100 - 40) + 40}%`}
               height="1.5em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
           </div>
@@ -123,10 +92,21 @@ export default function RecipeCard() {
           <h4 className="RCstagePreparing">Przygotowanie:</h4>
           <p className="RCpreparing">
             <Skeleton
-              count={3}
-              width="90%"
+              count={1}
+              width={`${Math.random() * (100 - 50) + 50}%`}
               height="1.5em"
-              // baseColor="#bababa"
+              enableAnimation={false}
+            />
+            <Skeleton
+              count={2}
+              width={`${Math.random() * (100 - 50) + 50}%`}
+              height="1.5em"
+              enableAnimation={false}
+            />
+            <Skeleton
+              count={1}
+              width={`${Math.random() * (100 - 50) + 50}%`}
+              height="1.5em"
               enableAnimation={false}
             />
           </p>

@@ -12,7 +12,7 @@ export default async function RecipeCard({ slug }) {
       {recipeData.success ? (
         <>
           <div className="RC">
-            <p className="RCcategory">
+            <p className="RCcategory RCcategoryPadding">
               {/* <Link className="RCcategoryLink" href="/">
                 🏠
               </Link> */}
@@ -37,22 +37,25 @@ export default async function RecipeCard({ slug }) {
                 recipeData.category
               )}`}
             >
-              {/* <button
-            className="RCbuttonPrev"
-            type="button"
-            onClick={() => navigate(-1)}
-          >
-            <span className="visuallyHidden">Wróć do poprzedniej strony</span>
-            <svg
-              className="paginationIcon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 9.9 16.81"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
-            </svg>
-          </button> */}
+              <Link
+                href="/przepisy"
+                className="RCbuttonPrev"
+                type="button"
+                // onClick={() => navigate(-1)}
+              >
+                <span className="visuallyHidden">
+                  Wróć do poprzedniej strony
+                </span>
+                <svg
+                  className="paginationIcon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 9.9 16.81"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
+                </svg>
+              </Link>
               <h1 className="RCname">{recipeData.name}</h1>
             </div>
 
@@ -104,7 +107,7 @@ export default async function RecipeCard({ slug }) {
         </>
       ) : (
         <div className="RC">
-          <p className="RCcategory">
+          <p className="RCcategory RCcategoryPadding">
             {/* <Link className="RCcategoryLink" href="/">
               🏠
             </Link> */}
@@ -117,7 +120,8 @@ export default async function RecipeCard({ slug }) {
           </p>
 
           <div className="RCheader skeletonLight">
-            <button
+            <Link
+              href="/przepisy"
               className="RCbuttonPrev"
               type="button"
               // onClick={() => navigate(-1)}
@@ -125,14 +129,15 @@ export default async function RecipeCard({ slug }) {
               <span className="visuallyHidden">Wróć do poprzedniej strony</span>
               <svg
                 className="paginationIcon"
-                viewBox="0 0 256 430"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 9.9 16.81"
                 aria-hidden="true"
                 focusable="false"
               >
-                <path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z" />
+                <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
               </svg>
-            </button>
-            <h1 className="RCname">Nie znaleziono</h1>
+            </Link>
+            <h1 className="RCname">nie znaleziono</h1>
           </div>
 
           <div className="RCstage">

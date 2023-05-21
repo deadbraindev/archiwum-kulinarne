@@ -80,7 +80,7 @@ body {
   --color-font-secondary: hsl(210, 2%, 21%); */
   --color-font-primary: hsl(var(--brand-hue) 5% 11%);
   --color-font-secondary: hsl(var(--brand-hue) 2% 21%);
-  --color-font-RCS: hsl(var(--brand-hue) 5% 10%);
+  --color-font-RCS: hsl(var(--brand-hue) 2% 21%);
   
 
   --color-main-selection-gray: hsl(var(--brand-hue) 10% 79%);
@@ -1351,13 +1351,9 @@ background-position: 8px 8px; */
   background-size: 5px 1px;
   background-repeat: repeat-x; */
 }
-.recipesContainer {
+.recipesContainer, .RCcategoryPadding {
   padding: 0 5px;
-  /* height: 2140px; */
 }
-/* .content {
-  height: 2503px;
-} */
 /* CONTENT */
 /* ======================================================================================= */
 
@@ -1598,9 +1594,22 @@ background-position: 8px 8px; */
 
   /* transition: stroke 200ms ease-in; */
 }
-.heart {
+.RCSfavoriteHeart {
     stroke: var(--color-font-secondary);
-
+}
+.RCSfavorite:focus svg{
+  stroke: var(--color-focus);
+  fill: var(--color-focus);
+  outline: none;
+}
+.RCSfavorite:focus {
+  outline: none;
+  color: var(--color-focus);
+}
+.RCSfavorite:focus ~.RCSfavorite.RCSfavoriteAnimate svg{
+  stroke: var(--color-focus);
+  stroke-width: 2px;
+  /* fill: var(--color-focus); */
 }
 /* .RCSfavorite::after {
   font-size: 3em;
@@ -1612,20 +1621,20 @@ background-position: 8px 8px; */
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.2s;
 } */
-.RCSfavorite ~.RCSfavorite.anim {
+.RCSfavorite ~.RCSfavorite.RCSfavoriteAnimate {
   /* background-color: green; */
   transition: transform 450ms cubic-bezier(0.680, -0.550, 0.265, 1.550) ;
   fill: var(--color-main-red);
   /* fill: var(--color-font-primary); */
   transform: scale(0);
 }
-.RCSfavorite.anim {
+.RCSfavorite.RCSfavoriteAnimate {
   stroke: var(--color-main-red);
   /* stroke: var(--color-font-primary); */
   z-index: 15;
   /* background-color: green; */
 }
-.RCSfavorite.anim:hover {
+.RCSfavorite.RCSfavoriteAnimate:hover {
   /* background-color: green; */
   /* stroke: yellow; */
 }
@@ -1646,7 +1655,7 @@ background-position: 8px 8px; */
   z-index: 20;
 
 }
-.RCSfavorite.active ~ .RCSfavorite.anim {
+.RCSfavorite.active ~ .RCSfavorite.RCSfavoriteAnimate {
   /* background-color: green; */
   transform: scale(1.1);
   stroke: var(--color-main-red);
@@ -1725,7 +1734,7 @@ background-position: 8px 8px; */
 }
 .paginationIcon {
   width: 1em !important;
-  height: 3em !important;
+  height: 100% !important;
   fill: var(--color-font-primary);
 }
 .paginationInput {
@@ -1826,14 +1835,14 @@ background-position: 8px 8px; */
 }
 .RCbuttonPrev {
   padding: 1px 15px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
+  /* cursor: pointer; */
+  /* border: none;
+  background-color: transparent; */
   border: 2px solid transparent;
   z-index: 2;
 }
 .RCbuttonPrev:focus {
-  outline: 2px solid var(--color-focus);
+  outline: 4px solid var(--color-focus);
   /* fill: var(--color-focus); */
 }
 .RCbuttonPrev:focus svg {
@@ -1932,7 +1941,7 @@ background-position: 8px 8px; */
   color: var(--color-font-secondary);
 }
 .RCstagePreparing, .RCstageIngredients, .RCstageTitle {
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   text-transform: lowercase;
 
 }
@@ -2475,7 +2484,7 @@ background-image: repeating-linear-gradient(45deg, #000000 0, #000000 2.40000000
   .searchButton:hover svg, .searchInputClear:hover svg, .searchButton:focus svg, .searchInputClear:focus svg {
     fill: var(--color-background-primary);
   }
-  .recipesContainer {
+  .recipesContainer, .RCcategoryPadding {
     padding: 0 25px;
   }
   .navList {
@@ -2676,7 +2685,7 @@ background-image: repeating-linear-gradient(45deg, #000000 0, #000000 2.40000000
   .navLogo {
     /* font-size: 2.5em; */
   }
-  .recipesContainer {
+  .recipesContainer, .RCcategoryPadding {
     padding: 0 35px;
   }
   .RCimageContainer {
@@ -2773,7 +2782,7 @@ background-image: repeating-linear-gradient(45deg, #000000 0, #000000 2.40000000
     min-width: 400px;
     height: 450px;
   }
-  .recipesContainer {
+  .recipesContainer, .RCcategoryPadding {
     padding: 0 40px;
   }
   .navLogo {
