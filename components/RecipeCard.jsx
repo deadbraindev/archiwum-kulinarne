@@ -50,7 +50,7 @@ export default async function RecipeCard({ slug }) {
         </div>
 
         {recipeData.stages?.items.map((stage, i) => (
-          <div className="RCstage" key={i}>
+          <div className="RCstage" key={stage.index}>
             {stage.title && (
               <h3 className="RCstageTitle">
                 {i + 1}. {stage.title}
@@ -59,8 +59,8 @@ export default async function RecipeCard({ slug }) {
             <div className="RCing">
               <h4 className="RCstageIngredients">Składniki:</h4>
               <ul className="RCingredientsList">
-                {stage.ingredients.map((ingredient, j) => (
-                  <li key={`${i}${j}`}>{ingredient}</li>
+                {stage.ingredients.map((ingredient) => (
+                  <li key={ingredient}>{ingredient}</li>
                   // <li key={`${i}${j}`}><label><input type="checkbox" name="RCingredient" id={`${i}${j}`} /><span>{ingredient}</span></label></li>
                 ))}
               </ul>
