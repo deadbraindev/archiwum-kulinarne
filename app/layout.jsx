@@ -40,6 +40,10 @@ export default function RootLayout({ children }) {
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
         {/* <link
           rel="icon"
           type="image/png"
