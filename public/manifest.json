@@ -1,7 +1,7 @@
 {
   "theme_color": "#ffce06",
   "background_color": "#ffffff",
-  "start_url": "https://archiwumkulinarne.deadbrain.dev",
+  "start_url": "/",
   "display": "standalone",
   "categories": ["food", "books"],
   "icons": [
