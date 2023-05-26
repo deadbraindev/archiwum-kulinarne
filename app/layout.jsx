@@ -26,7 +26,7 @@ export const metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    // shortcut: '/shortcut-icon.png',
+    shortcut: '/apple-touch-icon.png',
     apple: '/apple-touch-icon.png',
     // other: {
     //   rel: 'apple-touch-icon-precomposed',
@@ -48,6 +48,7 @@ export const metadata = {
     ],
   },
   category: 'culinary',
+  manifest: 'https://archiwumkulinarne.deadbrain.dev/manifest.json',
 };
 
 export default function RootLayout({ children }) {

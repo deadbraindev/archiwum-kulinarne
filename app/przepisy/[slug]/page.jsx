@@ -39,10 +39,6 @@ export async function generateMetadata({ params }) {
           },
         ],
       },
-      themeColor: [
-        { media: '(prefers-color-scheme: light)', color: '#ffce06' },
-        { media: '(prefers-color-scheme: dark)', color: '#ffce06' },
-      ],
     };
   }
   return {
