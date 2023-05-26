@@ -19,10 +19,17 @@ export async function generateMetadata({ params }) {
 
   // console.log(recipe);
   if (recipe.success) {
+    const ogDesc = recipeData.stages?.items.map((stage) => stage.preparing);
+    console.log(ogDesc.join(' ').substring(0, 170));
+
     return {
       title: recipe.name?.toLowerCase(),
+      description: `kategoria: ${recipeData.category} | ${ogDesc
+        .join(' ')
+        .substring(0, 150)}`,
       openGraph: {
-        title: `${recipe.name?.toLowerCase()} | archiwum kulinarne`,
+        title: `${recipe.name?.toLowerCase()} - przepis z archiwum kulinarnego`,
+        // description:
         url: `https://archiwumkulinarne.deadbrain.dev/przepisy/${recipe.slug?.slugCurrent}`,
         images: [
           {

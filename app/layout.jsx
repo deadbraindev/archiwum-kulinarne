@@ -1,4 +1,6 @@
 // import Link from 'next/link';
+import Head from 'next/head';
+
 import ReactQueryWrapper from './ReactQueryWrapper';
 import Navbar from '../components/Navbar';
 // import styles from './styles/Homepage.module.css';
@@ -27,6 +29,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
+      <Head>
+        <meta name="theme-color" content="#ffce06" />
+        <meta name="apple-mobile-web-app-title" content="archiwum kulinarne" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* <link rel="manifest" href="/manifest.json" /> */}
+      </Head>
       <body>
         <div className="content">
           <Navbar />

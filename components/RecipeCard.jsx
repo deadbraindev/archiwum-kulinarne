@@ -17,7 +17,7 @@ export default async function RecipeCard({ slug }) {
                 🏠
               </Link> */}
               <span className="RCcategorySeparator">{'>'}</span>
-              <Link className="RCcategoryLink" href="przepisy">
+              <Link className="RCcategoryLink" href="przepisy" scroll>
                 przepisy
               </Link>
               <span className="RCcategorySeparator">{'>'}</span>
