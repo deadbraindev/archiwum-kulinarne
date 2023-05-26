@@ -3,6 +3,13 @@ export const metadata = {
   openGraph: {
     title: 'strona główna | archiwum kulinarne',
     url: '/',
+    images: [
+      {
+        url: '/images/opengraph-img-1200-630.jpg',
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 
