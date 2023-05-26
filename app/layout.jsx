@@ -25,7 +25,7 @@ export const metadata = {
     ],
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/icons/favicon.ico',
     shortcut: '/apple-touch-icon.png',
     apple: '/apple-touch-icon.png',
     // other: {
@@ -40,15 +40,15 @@ export const metadata = {
   appleWebApp: {
     title: 'archiwum kulinarne',
     startupImage: [
-      '/apple-splash-828-1792.jpg',
+      '/icons/apple-splash-828-1792.jpg',
       {
-        url: '/apple-splash-1536-2048.jpg',
+        url: '/icons/apple-splash-1536-2048.jpg',
         media: '(device-width: 768px) and (device-height: 1024px)',
       },
     ],
   },
-  category: 'culinary',
-  manifest: 'https://archiwumkulinarne.deadbrain.dev/manifest.json',
+  category: 'food',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({ children }) {
