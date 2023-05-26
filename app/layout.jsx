@@ -23,6 +23,30 @@ export const metadata = {
         height: 630,
       },
     ],
+    icons: {
+      icon: '/favicon.ico',
+      // shortcut: '/shortcut-icon.png',
+      apple: '/apple-touch-icon.png',
+      // other: {
+      //   rel: 'apple-touch-icon-precomposed',
+      //   url: '/apple-touch-icon-precomposed.png',
+      // },
+    },
+    themeColor: [
+      { media: '(prefers-color-scheme: light)', color: '#ffce06' },
+      { media: '(prefers-color-scheme: dark)', color: '#ffce06' },
+    ],
+    appleWebApp: {
+      title: 'archiwum kulinarne',
+      startupImage: [
+        '/apple-splash-828-1792.jpg',
+        {
+          url: '/apple-splash-1536-2048.jpg',
+          media: '(device-width: 768px) and (device-height: 1024px)',
+        },
+      ],
+    },
+    category: 'culinary',
   },
 };
 
@@ -35,14 +59,14 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="icon" href="/favicon.ico" sizes="any" /> */}
         {/* <link rel="manifest" href="/manifest.json" /> */}
-        <link
+        {/* <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" /> */}
 
         {/* <link
           rel="icon"
@@ -56,11 +80,11 @@ export default function RootLayout({ children }) {
           sizes="16x16"
           href="/favicon-16x16.png"
         /> */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffce06" />
         <meta name="msapplication-TileColor" content="#ffce06" />
-        <meta name="theme-color" content="#ffce06" />
+        <meta name="theme-color" content="#ffce06" /> */}
       </Head>
       <body>
         <div className="content">
