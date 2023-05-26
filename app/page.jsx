@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'strona główna | archiwum kulinarne',
   openGraph: {
-    title: 'strona główna | archiwum kulinarne',
+    title: 'strona główna',
     url: '/',
     images: [
       {

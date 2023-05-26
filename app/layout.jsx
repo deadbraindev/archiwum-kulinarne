@@ -19,7 +19,7 @@ export const metadata = {
   // OG
   openGraph: {
     title: 'archiwum kulinarne',
-    siteName: 'archiwum kulinarne SITE NAME',
+    siteName: 'archiwum kulinarne SITE NAME?',
     url: '/',
     images: [
       {
@@ -184,7 +184,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pl">
+    <html lang="pl-PL">
       <body>
         <div className="content">
           <Navbar />

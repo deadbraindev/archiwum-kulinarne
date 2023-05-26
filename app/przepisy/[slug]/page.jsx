@@ -33,7 +33,8 @@ export async function generateMetadata({ params }, parent) {
 
       // OG
       openGraph: {
-        title: `${recipe.name?.toLowerCase()} - przepis z archiwum kulinarnego`,
+        title: recipe.name?.toLowerCase(),
+        // title: `${recipe.name?.toLowerCase()} - przepis z archiwum kulinarnego`,
         description: 'og tags description lorem ipsum',
         url: `/przepisy/${recipe.slug?.slugCurrent}`,
         images: previousOGImages,
@@ -41,10 +42,10 @@ export async function generateMetadata({ params }, parent) {
       // end OG
 
       // APPLE
-      appleWebApp: {
-        title: `${recipe.name?.toLowerCase()} | archiwum kulinarne`,
-        startupImage: previousStartupImages,
-      },
+      // appleWebApp: {
+      //   title: `${recipe.name?.toLowerCase()} | archiwum kulinarne`,
+      //   startupImage: previousStartupImages,
+      // },
       // end APPLE
     };
   }
