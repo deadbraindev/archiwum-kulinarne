@@ -2,7 +2,7 @@ export const metadata = {
   title: 'strona główna | archiwum kulinarne',
   openGraph: {
     title: 'strona główna | archiwum kulinarne',
-    url: 'https://archiwumkulinarne.deadbrain.dev/',
+    url: '/',
   },
 };
 

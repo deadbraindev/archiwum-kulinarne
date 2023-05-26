@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
       openGraph: {
         title: `${recipe.name?.toLowerCase()} - przepis z archiwum kulinarnego`,
         description: 'og tags description lorem ipsum',
-        url: `https://archiwumkulinarne.deadbrain.dev/przepisy/${recipe.slug?.slugCurrent}`,
+        url: `/przepisy/${recipe.slug?.slugCurrent}`,
       },
       // end OG
 
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }) {
     // OG
     openGraph: {
       title: 'błędna nazwa przepisu | archiwum kulinarne',
-      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy',
+      url: '/przepisy',
     },
     // end OG
 
