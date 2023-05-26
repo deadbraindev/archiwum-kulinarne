@@ -12,9 +12,9 @@ export const metadata = {
     default: 'archiwum kulinarne',
     template: '%s | archiwum kulinarne',
   },
-  description: 'Zdigitalizowane rodzinne przepisy kuchenne',
+  description: 'zdigitalizowane rodzinne przepisy kulinarne',
   openGraph: {
-    title: 'strona główna | archiwum kulinarne',
+    title: 'archiwum kulinarne',
     url: 'https://archiwumkulinarne.deadbrain.dev/',
     images: [
       {
@@ -26,26 +26,15 @@ export const metadata = {
   },
   icons: {
     icon: '/icons/favicon.ico',
-    shortcut: '/apple-touch-icon.png',
-    apple: '/apple-touch-icon.png',
-    // other: {
-    //   rel: 'apple-touch-icon-precomposed',
-    //   url: '/apple-touch-icon-precomposed.png',
-    // },
+    shortcut: 'icons/apple-icon-180.png',
+    apple: 'icons/apple-icon-180.png',
   },
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffce06' },
-    { media: '(prefers-color-scheme: dark)', color: '#ffce06' },
+    { media: '(prefers-color-scheme: light)', color: '#fff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000' },
   ],
   appleWebApp: {
     title: 'archiwum kulinarne',
-    // startupImage: [
-    //   '/icons/apple-splash-828-1792.jpg',
-    //   {
-    //     url: '/icons/apple-splash-1536-2048.jpg',
-    //     media: '(device-width: 768px) and (device-height: 1024px)',
-    //   },
-    // ],
     startupImage: [
       {
         url: '/icons/apple-splash-2048-2732.jpg',
