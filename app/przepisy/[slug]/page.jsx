@@ -12,12 +12,14 @@ async function getMetadata(slug) {
   return res.json();
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }, parent) {
   const { slug } = params;
   const recipeData = await getMetadata(slug);
   const recipe = await recipeData;
+  const previousStartupImages = (await parent).appleWebApp?.startupImage || [];
+  const previousOGImages = (await parent).openGraph?.images || [];
 
-  // console.log(recipe);
+  // console.log(previousStartupImages);
   if (recipe.success) {
     const ogDesc = recipeData.stages?.items.map((stage) => stage.preparing);
 
@@ -34,12 +36,14 @@ export async function generateMetadata({ params }) {
         title: `${recipe.name?.toLowerCase()} - przepis z archiwum kulinarnego`,
         description: 'og tags description lorem ipsum',
         url: `/przepisy/${recipe.slug?.slugCurrent}`,
+        images: previousOGImages,
       },
       // end OG
 
       // APPLE
       appleWebApp: {
         title: `${recipe.name?.toLowerCase()} | archiwum kulinarne`,
+        startupImage: previousStartupImages,
       },
       // end APPLE
     };
@@ -53,12 +57,14 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: 'błędna nazwa przepisu | archiwum kulinarne',
       url: '/przepisy',
+      images: previousOGImages,
     },
     // end OG
 
     // APPLE
     appleWebApp: {
       title: 'błędna nazwa przepisu | archiwum kulinarne',
+      startupImage: previousStartupImages,
     },
     // end APPLE
   };
