@@ -1,34 +1,35 @@
-import React from 'react';
+'use client';
+
 import Link from 'next/link';
 // import Skeleton from 'react-loading-skeleton';
 // import useLocalStorage from 'use-local-storage';
 // import { useAuthContext } from '../Hooks/useAuthContext.js';
+// import { useState, useEffect } from 'react';
 
 function Footer() {
   // const { isLoggedIn, isFetching } = useAuthContext();
 
   //* THEME CHANGER
+  // const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // const [theme, setTheme] = useState(`theme ${defaultDark} ? 'dark' : 'light'`);
 
   // useEffect(() => {
   //   const prefersDark = window.matchMedia(
-  //     "(prefers-color-scheme: dark)"
+  //     '(prefers-color-scheme: dark)'
   //   ).matches;
 
   //   if (prefersDark) {
-  //     setTheme("dark");
+  //     setTheme('dark');
   //   }
-  // }, []);
-  // const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  // const [theme, setTheme] = useLocalStorage(
-  //   'theme',
-  //   defaultDark ? 'dark' : 'light'
-  // );
+  // }, [defaultDark]);
   // const switchTheme = () => {
   //   const newTheme = theme === 'light' ? 'dark' : 'light';
   //   setTheme(newTheme);
   // };
   // document.querySelector('body').setAttribute('data-theme', `${theme}`);
-
+  // const preferColorSchema = window.matchMedia('(prefers-color-scheme: dark)');
+  // console.log(preferColorSchema);
   //* THEME CHANGER END
 
   return (

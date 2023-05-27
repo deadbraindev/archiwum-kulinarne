@@ -1,6 +1,8 @@
 {
   "theme_color": "#ffce06",
   "background_color": "#ffffff",
+  "short_name": "archiwum kulinarne",
+  "name": "archiwum kulinarne",
   "start_url": "/",
   "display": "standalone",
   "categories": ["food", "books"],
