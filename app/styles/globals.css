@@ -612,16 +612,18 @@ span {
 }
 .navLink {
   display: block;
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   text-decoration: none;
   letter-spacing: -1px;
   border: 1px solid transparent;
   width: 100%;
-  transition: background-color 100ms ease-in-out;
+  /* transition: background-color 100ms ease-in-out; */
+  transition: all 150ms ease-in-out;
 }
 .navLink:hover {
   font-weight: bold;
   background-color: var(--color-background-primary);
+  color: var(--color-font-primary);
 }
 .navLink:focus {
   outline: 3px solid var(--color-focus);
@@ -641,6 +643,7 @@ span {
   text-decoration-line: underline;
   text-decoration-style: wavy;
   text-decoration-color: var(--color-main-yellow);
+  transition: all 150ms ease-in-out;
 }
 .navLogo:hover {
   font-weight: bold;
@@ -674,6 +677,7 @@ span {
 .searchInput:focus {
   outline: 3px solid var(--color-focus);
   font-weight: bold;
+  color: var(--color-font-primary);
 }
 input[type="text"] {
   color: var(--color-font-secondary);
@@ -829,7 +833,7 @@ input[type="text"] {
   font-size: 1.2em;
   text-decoration: none;
   color: var(--color-font-primary);
-  transition: background-color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out, color 150ms ease-in-out, font-weight 150ms ease-in-out;
   user-select: none;
 }
 .categoryButton.active {
@@ -897,14 +901,14 @@ input[type="text"] {
   height: 60px;
   border: 1px solid var(--color-border);
   background-color: var(--color-background-primary);
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   font-size: 1.2em;
   order: -10;
   cursor: pointer;
   font-family: 'Noto Sans Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 100ms ease;
+  transition: all 150ms ease-in-out;
 }
 .categoryVisibilityButton:hover {
   font-weight: bold;
@@ -933,7 +937,7 @@ input[type="text"] {
 .categoryClear svg {
   width: 25px;
   height: 25px;
-  fill: var(--color-font-primary);
+  fill: var(--color-font-secondary);
   transition: fill 100ms ease-in-out;
   padding: 16px 0;
 }
@@ -1215,6 +1219,7 @@ background-position: 8px 8px; */
   width: 100%;
   position: relative;
   border: 1px solid var(--color-border);
+  transition: all 150ms ease-in-out;
 }
 .RCS:hover .RCSname {
   font-weight: bold;
@@ -1251,6 +1256,8 @@ background-position: 8px 8px; */
   text-decoration: solid;
 }
 .RCSname {
+  transition: all 150ms ease-in-out;
+
   margin: 0 10px;
   text-transform: lowercase;
   font-weight: normal;
@@ -1435,22 +1442,21 @@ background-position: 8px 8px; */
   margin-right: 0.5em;
 }
 .RCcategoryLink {
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   text-decoration: none;
   letter-spacing: -1px;
   padding: 0;
   margin: 0;
   font-weight: normal;
   cursor: pointer;
+  transition: all 150ms ease-in-out;
 }
 .RCcategoryLink:first-child {
   padding-left: 0;
 }
-.RCcategoryLink.active {
-  font-weight: bold;
-}
 .RCcategoryLink:hover {
   font-weight: bold;
+  color: var(--color-font-primary);
 }
 .RCcategoryLink:focus {
   outline: 2px solid var(--color-focus);
@@ -2207,10 +2213,11 @@ background-position: 8px 8px; */
   border-top: 1px solid var(--dark-color-border);
 }
 .navLink {
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .navLink:hover {
   background-color: var(--dark-color-background-primary);
+  color: var(--dark-color-font-primary);
 }
 .navLink:focus {
   outline: 3px solid var(--dark-color-focus);
@@ -2227,6 +2234,8 @@ background-position: 8px 8px; */
 }
 .searchInput:focus {
   outline: 3px solid var(--dark-color-focus);
+  color: var(--dark-color-font-primary);
+
 }
 input[type="text"] {
   color: var(--dark-color-font-secondary);
@@ -2251,10 +2260,10 @@ input[type="text"] {
   outline: 3px solid var(--dark-color-focus);
 }
 .searchButton svg {
-  fill: var(--dark-color-font-primary);
+  fill: var(--dark-color-font-secondary);
 }
 .searchInputClear {
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .searchInputClear:hover {
   background-color: var(--dark-color-main-red);
@@ -2264,7 +2273,7 @@ input[type="text"] {
   outline: 3px solid var(--dark-color-focus);
 }
 .searchInputClear svg {
-  fill: var(--dark-color-font-primary);
+  fill: var(--dark-color-font-secondary);
 }
 .searchInputClear:hover svg, .searchInputClear:focus svg, .searchButton:hover svg, .searchButton:focus svg {
   fill: var(--dark-color-background-primary);
@@ -2321,7 +2330,7 @@ input[type="text"] {
 .categoryVisibilityButton {
   border: 1px solid var(--dark-color-border);
   background-color: var(--dark-color-background-primary);
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .categoryVisibilityButton:hover {
   background-color: var(--dark-color-background-secodary);
@@ -2334,7 +2343,7 @@ input[type="text"] {
   background-color: var(--dark-color-background-secodary);
 }
 .categoryClear svg {
-  fill: var(--dark-color-font-primary);
+  fill: var(--dark-color-font-secondary);
 }
 .categoryClear:hover, .categoryClear:active {
   background-color: var(--dark-color-main-red);
@@ -2449,6 +2458,7 @@ input[type="text"] {
 .RCS:hover .RCSname {
   text-decoration: underline solid var(--dark-color-border);
   color: var(--dark-color-font-primary);
+  border-color: var(--dark-color-font-primary);
 }
 .RCS:hover {
   border-color: var(--dark-color-font-primary);
@@ -2526,6 +2536,9 @@ input[type="text"] {
 .paginationInputSeparator {
 }
 .RCcategoryLink {
+  color: var(--dark-color-font-secondary);
+}
+.RCcategoryLink:hover {
   color: var(--dark-color-font-primary);
 }
 .RCcategoryLink:focus {
