@@ -87,30 +87,24 @@ span {
 }
 :root {
   /* colors */
-  --color-background-primary: #fff;
-  /* --color-background-secodary: #1b1c1d; */
-  --color-background-secodary: hsl(var(--brand-hue) 10% 95%);
+  --color-background-primary: hsl(48, 0%, 100%);
+  --color-background-secodary: hsl(48 2% 95%);
 
   --color-background-RCS: #f9f9f9;
-  /* --color-background-RCS: hsl(var(--brand-hue) 1% 85%); */
 
-  /* --color-background-RCS-hover: #fff; */
   --color-main-yellow: #ffce06;
   --color-main-red: #EC5B55;
 
-  --color-disabled: #bababa;
+  --color-disabled: hsl(0, 0%, 85%);
 
-  /* fonts */
-  /* --color-font-primary: hsl(220, 5%, 11%);
-  --color-font-secondary: hsl(210, 2%, 21%); */
-  --color-font-primary: hsl(var(--brand-hue) 5% 11%);
-  --color-font-secondary: hsl(var(--brand-hue) 2% 21%);
-  --color-font-RCS: hsl(var(--brand-hue) 2% 21%);
+  --color-font-primary: hsl(48 5% 2%);
+  --color-font-secondary: hsl(48, 10%, 12%);
+  --color-font-RCS: hsla(0, 0%, 0%, 0.7);
   
 
   --color-main-selection-gray: hsl(var(--brand-hue) 10% 79%);
 
-  --color-border: #1b1c1e;
+  --color-border: hsl(48, 10%, 15%);
 
   --color-skeleton-primary: #bababa;
   --color-skeleton-secondary: #e5e5e5;
@@ -664,6 +658,7 @@ span {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 .searchInput {
   width: 100%;
@@ -673,7 +668,6 @@ span {
   font-size: 1.7rem;
   background: transparent;
   padding: calc(0.2em + 10px) 8px 0.4em;
-  margin-right: -55px;
   letter-spacing: -1.5px;
   transition: background-color 100ms ease-in-out;
 }
@@ -682,33 +676,41 @@ span {
   font-weight: bold;
 }
 input[type="text"] {
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   font-style: italic;
 }
 .searchInput::placeholder {
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   font-size: 1em !important;
   font-style: normal;
 }
 .searchInput::-webkit-input-placeholder {
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   font-size: 1em !important;
   font-style: normal;
 }
 .searchInput::-moz-placeholder {
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   font-size: 1em !important;
   font-style: normal;
 }
 .searchInput::-ms-input-placeholder {
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   font-size: 1em !important;
   font-style: normal;
 }
 .searchButton {
   border: none;
+  text-align: center;
+ position: absolute;
+ right: 10px;
+  /* border-color: black; */
+  /* margin: 10px; */
+  padding: 0;
   padding-top: 5px;
-  margin-right: 7px;
+  /* padding-left: 5px; */
+  /* padding-right: auto; */
+  /* padding-right: 7px; */
   background-color: transparent;
   cursor: pointer;
   width: 50px;
@@ -726,16 +728,19 @@ input[type="text"] {
 }
 .searchButton svg {
   width: 27px;
+  height: 27px;
   fill: var(--color-font-primary);
   transition: fill 100ms ease-in-out;
 }
 .searchInputClear {
+  position: absolute;
+  right: 60px;
   width: 50px;
   height: 50px;
   border: none;
   cursor: pointer;
   background-color: transparent;
-  margin-left: -50px;
+  /* margin-left: -50px; */
   padding: 0;
   color: var(--color-font-primary);
   transition: background-color 100ms ease-in-out;
@@ -830,7 +835,8 @@ input[type="text"] {
 .categoryButton.active {
   font-weight: bold;
   order: -1;
-  /* border-color: var(--color-font-primary); */
+  border-color: var(--color-font-primary);
+  color: var(--color-font-secondary);
 }
 .categoryButton.active .categoryIcon {
   padding-right: 30px;
@@ -858,6 +864,7 @@ input[type="text"] {
   font-weight: bold;
   background-color: var(--color-background-secodary);
   color: var(--color-font-primary);
+  border-color: var(--color-font-primary);
 }
 .categoryButton:focus {
   outline: 4px solid var(--color-focus);
@@ -903,6 +910,7 @@ input[type="text"] {
   font-weight: bold;
   background-color: var(--color-background-secodary);
   color: var(--color-font-primary);
+  border-color: var(--color-font-primary);
 }
 .categoryVisibilityButton:focus {
   outline: 4px solid var(--color-focus);
@@ -1210,7 +1218,11 @@ background-position: 8px 8px; */
 }
 .RCS:hover .RCSname {
   font-weight: bold;
-  text-decoration: underline solid var(--color-border);
+  text-decoration: underline solid var(--color-font-primary);
+  border-color: var(--color-font-primary);
+}
+.RCS:hover {
+  border-color: var(--color-font-primary);
 }
 .RCSimg {
   width: 100%;
@@ -1995,9 +2007,8 @@ background-position: 8px 8px; */
   .searchInput:hover {
     font-weight: bold;
     background-color: var(--color-background-primary);
-  }
-  .searchInput:hover::placeholder {
     color: var(--color-font-primary);
+
   }
   .searchInput:focus {
     background-color: var(--color-background-primary);
@@ -2121,7 +2132,7 @@ background-position: 8px 8px; */
   }
   .RCS:hover {
     transform: translate(0, -6px);
-    box-shadow: var(--color-skeleton-primary) 0 6px;
+    box-shadow: var(--color-disabled) 0 6px;
   }
   .swiper-wrapper {
     padding-top: 6px;
@@ -2218,19 +2229,19 @@ background-position: 8px 8px; */
   outline: 3px solid var(--dark-color-focus);
 }
 input[type="text"] {
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .searchInput::placeholder {
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .searchInput::-webkit-input-placeholder {
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .searchInput::-moz-placeholder {
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .searchInput::-ms-input-placeholder {
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .searchButton:hover {
   background-color: var(--dark-color-main-yellow);
@@ -2275,6 +2286,10 @@ input[type="text"] {
   border: 1px solid var(--dark-color-border);
   color: var(--dark-color-font-primary);
 }
+.categoryButton.active {
+  border-color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
+}
 .categoryButton.active .categoryIcon {
   --mask: conic-gradient(from -115deg at right,#0000,#000 1deg 49deg,#0000 50deg) 50%/100% 9.33px;
   -webkit-mask: var(--mask);
@@ -2288,6 +2303,7 @@ input[type="text"] {
 .categoryButton:active, .categoryButton:hover {
   background-color: var(--dark-color-background-secodary);
   color: var(--dark-color-font-primary);
+  border-color: var(--dark-color-font-primary);
 }
 .categoryButton:focus {
   outline: 4px solid var(--dark-color-focus);
@@ -2310,6 +2326,7 @@ input[type="text"] {
 .categoryVisibilityButton:hover {
   background-color: var(--dark-color-background-secodary);
   color: var(--dark-color-font-primary);
+  border-color: var(--dark-color-font-primary);
 }
 .categoryVisibilityButton:focus {
   outline: 4px solid var(--dark-color-focus);
@@ -2624,6 +2641,37 @@ input[type="text"] {
   border: 1px solid var(--dark-color-border);
 }
 }
+/* @media screen and (min-width: 360px) and (prefers-color-scheme: dark) {
+  .cardContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5em;
+  }
+  .navLogo {
+    width: auto;
+  }
+  .RCname {
+    font-size: 1.7em;
+  }
+  .RCstageTitle {
+    font-size: 1.7em;
+  }
+  .RCstageIngredients, .RCstagePreparing {
+    font-size: 1.5em;
+  }
+  .RCingredientsList, .RCpreparing {
+    font-size: 1em;
+  }
+  .navBar {
+    padding: 0.5em 0;
+  }
+  .navLogo {
+    font-size: 1.8em;
+  }
+  .heroTextContainer {
+    padding-left: 1.5em;
+    padding-top: 2.5em;
+  }
+} */
 @media screen and (min-width: 900px) and (prefers-color-scheme: dark) {
   .RCimageContainer {
     background-color: var(--dark-color-background-primary);
@@ -2678,6 +2726,8 @@ input[type="text"] {
   }
   .searchInput:hover {
     background-color: var(--dark-color-background-primary);
+    color: var(--dark-color-font-primary);
+
   }
   .searchInput:hover::placeholder {
     color: var(--dark-color-font-primary);
