@@ -190,23 +190,23 @@ span {
   --color-category-cake: #F9DD6C;
   --color-category-cake-second: #D8AB3A;
 
-  --color-category-drink: #3983DD;
-  --color-category-drink-second: #A4D3FB;
+  --color-category-drink-second: #3983DD;
+  --color-category-drink: #A4D3FB;
 
   --color-category-fastood: #A9D1D5;
   --color-category-fastood-second: #5A8085;
 
-  --color-category-icecream: #495DE6;
-  --color-category-icecream-second: #B0BAFA;
+  --color-category-icecream-second: #495DE6;
+  --color-category-icecream: #B0BAFA;
 
   --color-category-lunch: #EC5B55;
   --color-category-lunch-second: #af1f0e;
 
-  --color-category-preserves: #2a8776;
-  --color-category-preserves-second: #74FBE2;
+  --color-category-preserves-second: #2a8776;
+  --color-category-preserves: #74FBE2;
 
-  --color-category-fish: #7A55E7;
-  --color-category-fish-second: #BDAAE8;
+  --color-category-fish-second: #7A55E7;
+  --color-category-fish: #BDAAE8;
 
   --color-category-salad: #49c5b6;
   --color-category-salad-second: #265A55;
@@ -328,57 +328,88 @@ span {
 
 
   /* ! dark mode */
-  --dark-dark-color-disabled: #606060;
-  --dark-color-skeleton-primary: #777777;
-  --dark-color-skeleton-secondary: #9a9a9a;
+  --dark-color-disabled: hsl(0, 0%, 15%);
+  --dark-color-skeleton-primary: hsl(48, 7%, 25%);
+  --dark-color-skeleton-secondary: hsl(48, 7%, 25%);
   --dark-color-focus: hsl(216, 100%, 55%);
   --dark-color-main-selection-gray: #4f4f4f;
-  --dark-color-font-outline: hsl(var(--brand-hue) 1% 25%);
+  /* --dark-color-font-outline: hsl(var(--brand-hue) 1% 25%); */
 
-  --dark-color-font-RCS: hsl(var(--brand-hue) 5% 10%);
+  --dark-color-font-RCS: hsl(48 0% 0%);
 
-  --dark-color-main-yellow: hsl(var(--brand-hue) calc(var(--brand-saturation) / 1.2) calc(var(--brand-lightness) / 1.2));
-  --dark-color-font-primary: hsl(var(--brand-hue) 15% 78%);
-  --dark-color-font-secondary: hsl(var(--brand-hue) 0% 45%);
-  /* --dark-color-background-primary: hsl(var(--brand-hue) 5% 10%); */
-  --dark-color-background-primary: #000;
-  --dark-color-background-RCS: hsl(var(--brand-hue) 15% 8%);
-  --dark-color-border: hsl(var(--brand-hue) 2%  30%);
-  --dark-color-background-secodary: hsl(var(--brand-hue) 1% 25%);
+  --dark-color-main-yellow: hsl(48 calc(var(--brand-saturation) / 1.2) calc(var(--brand-lightness) / 1.2));
+  --dark-color-main-red: #EC5B55;
+
+  --dark-color-font-primary: hsl(48 20% 95%);
+  --dark-color-font-secondary: hsl(48 15% 75%);
+
+  --dark-color-background-primary: hsl(48, 0%, 0%);
+  --dark-color-background-secodary: hsl(48, 5%, 10%);
+
+  --dark-color-background-RCS: hsl(48 2% 5%);
+
+  --dark-color-border: hsl(48 15% 75%);
 
 
-  --dark-color-category-cake: hsl(48, 100%, 40%);
-  --dark-color-category-cake-second: hsl(43, 70%, 38%);
 
-  --dark-color-category-drink: hsl(213, 59%, 46%);
-  --dark-color-category-drink-second: hsl(208, 77%, 67%);
 
-  --dark-color-category-fastood: hsl(185, 28%, 55%);
-  --dark-color-category-fastood-second: hsl(187, 16%, 36%);
+
+  /* --dark-color-category-cake: hsl(48, 100%, 40%); */
+  --dark-color-category-cake: hsl(45, 70%, 40%);
+  /* --dark-color-category-cake-second: hsl(43, 70%, 38%); */
+  --dark-color-category-cake-second: hsl(48, 60%, 55%);
+
+  --dark-color-category-drink: hsl(200, 40%, 40%);
+  --dark-color-category-drink-second: hsl(208, 77%, 64%);
+
+  --dark-color-category-fastood-second: hsl(185, 28%, 55%);
+  --dark-color-category-fastood: hsl(187, 16%, 36%);
 
   --dark-color-category-icecream: hsl(232, 63%, 49%);
   --dark-color-category-icecream-second: hsl(232, 73%, 70%);
 
-  --dark-color-category-lunch: hsl(2, 67%, 53%);
-  --dark-color-category-lunch-second: hsl(6, 71%, 31%);
+  --dark-color-category-lunch-second: hsl(2, 67%, 50%);
+  --dark-color-category-lunch: hsl(6, 71%, 31%);
 
   --dark-color-category-preserves: hsl(169, 44%, 29%);
   --dark-color-category-preserves-second: hsl(169, 38%, 52%);
 
-  --dark-color-category-fish: hsl(255, 62%, 52%);
+  --dark-color-category-fish: hsl(255, 70%, 45%);
   --dark-color-category-fish-second: hsl(258, 47%, 66%);
 
-  --dark-color-category-salad: hsl(173, 43%, 44%);
-  --dark-color-category-salad-second: hsl(174, 34%, 21%);
+  --dark-color-category-salad-second: hsl(173, 43%, 44%);
+  --dark-color-category-salad: hsl(174, 34%, 21%);
 
-  --dark-color-category-snack: hsl(28, 72%, 48%);
-  --dark-color-category-snack-second: hsl(17, 58%, 38%);
+  --dark-color-category-snack-second: hsl(28, 75%, 47%);
+  --dark-color-category-snack: hsl(17, 58%, 38%);
 
-  --dark-color-category-juice: hsl(328, 48%, 57%) ;
-  --dark-color-category-juice-second: hsl(327, 39%, 41%);
+  --dark-color-category-juice-second: hsl(328, 50%, 60%) ;
+  --dark-color-category-juice: hsl(328, 40%, 40%);
 
+  --dark-color-category-default-second: #EEE5E9;
+  --dark-color-category-default: #9e9b9c; 
+  /* --dark-color-category-cake-second: #F9DD6C;
+  --dark-color-category-cake: #D8AB3A;
+  --dark-color-category-drink-second: #3983DD;
+  --dark-color-category-drink: #A4D3FB;
+  --dark-color-category-fastood: #A9D1D5;
+  --dark-color-category-fastood-second: #5A8085;
+  --dark-color-category-icecream-second: #495DE6;
+  --dark-color-category-icecream: #B0BAFA;
+  --dark-color-category-lunch-second: #EC5B55;
+  --dark-color-category-lunch: #af1f0e;
+  --dark-color-category-preserves-second: #2a8776;
+  --dark-color-category-preserves: #74FBE2;
+  --dark-color-category-fish-second: #7A55E7;
+  --dark-color-category-fish: #BDAAE8;
+  --dark-color-category-salad: #49c5b6;
+  --dark-color-category-salad-second: #265A55;
+  --dark-color-category-snack: #F08C34;
+  --dark-color-category-snack-second: #C55223;
+  --dark-color-category-juice: #de82b3 ;
+  --dark-color-category-juice-second: #996180;
   --dark-color-category-default: #EEE5E9;
-  --dark-color-category-default-second: #9e9b9c;
+  --dark-color-category-default-second: #9e9b9c; */
 }
 [data-theme='dark'] {
   /* --color-background-primary: #1b1c1e; */
@@ -552,6 +583,7 @@ span {
   border-bottom: 1px solid var(--color-border);
   z-index: 100;
   transition: background-color 120ms ease-in-out;
+  /* backdrop-filter: blur(6px); */
 }
 .navBar:hover {
   background-color: var(--color-background-primary);
@@ -798,6 +830,7 @@ input[type="text"] {
 .categoryButton.active {
   font-weight: bold;
   order: -1;
+  /* border-color: var(--color-font-primary); */
 }
 .categoryButton.active .categoryIcon {
   padding-right: 30px;
@@ -1182,13 +1215,15 @@ background-position: 8px 8px; */
 .RCSimg {
   width: 100%;
   height: 10em;
-  display:flex;justify-content:center;align-items:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .RCSinfo {
   min-height: 6em;
 }
 .RCSlink {
-  color: var(--color-font-primary);
+  color: var(--color-font-secondary);
   text-decoration: none;
   letter-spacing: -0.5px;
   display: block;
@@ -2117,6 +2152,9 @@ background-position: 8px 8px; */
   }
 }
 
+/*! ============================================================================================================================== */
+/*? ============================================================================================================================== */
+/*? darkmode */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: var(--dark-color-background-primary);
@@ -2393,9 +2431,13 @@ input[type="text"] {
 }
 .RCS:hover .RCSname {
   text-decoration: underline solid var(--dark-color-border);
+  color: var(--dark-color-font-primary);
+}
+.RCS:hover {
+  border-color: var(--dark-color-font-primary);
 }
 .RCSlink {
-  color: var(--dark-color-font-primary);
+  color: var(--dark-color-font-secondary);
 }
 .RCSlink:focus {
   outline: 4px solid var(--dark-color-focus);
@@ -2581,4 +2623,142 @@ input[type="text"] {
 .notfoundLink:hover {
   border: 1px solid var(--dark-color-border);
 }
+}
+@media screen and (min-width: 900px) and (prefers-color-scheme: dark) {
+  .RCimageContainer {
+    background-color: var(--dark-color-background-primary);
+    background-size: 11px 11px;
+    background-image: repeating-linear-gradient(45deg, var(--dark-color-disabled) 0, var(--dark-color-disabled) 1.1px, var(--dark-color-background-primary) 0, var(--dark-color-background-primary) 50%);
+
+  }
+  .RCimage {
+    background-color: var(--dark-color-background-primary);
+  }
+  .RCimage:hover {
+    transform: translate(0, -6px);
+    box-shadow: var(--dark-color-skeleton-primary) 0 6px;
+  }
+  .RCimage:focus {
+    outline: 3px solid var(--dark-color-focus);
+  }
+  .heroPattern {
+    background-color: var(--dark-color-background-primary);
+    background-image: radial-gradient(var(--dark-color-background-secodary) 1.4px, var(--dark-color-background-primary) 1.4px);
+  }
+  .searchInputClear:hover {
+    background-color: var(--dark-color-main-red);
+  }
+  .searchButton svg, .searchInputClear svg {
+    fill: var(--dark-color-font-secondary);
+  }
+  .searchButton:hover svg, .searchInputClear:hover svg, .searchButton:focus svg, .searchInputClear:focus svg {
+    fill: var(--dark-color-background-primary);
+  }
+  .recipesContainer, .RCcategoryPadding {
+    padding: 0 25px;
+  }
+  .navList {
+    background-color: transparent;
+  }
+  .navList li, .navList li:first-child {
+    border: none;
+    background-color: transparent;
+  }
+  .navLink:hover {
+    color: var(--dark-color-font-primary);
+  }
+  .navLink.active {
+    color: var(--dark-color-font-primary);
+  }
+  .navLink {
+    color: var(--dark-color-font-secondary);
+  }
+  .searchInput {
+    border: 1px solid var(--dark-color-border);
+  }
+  .searchInput:hover {
+    background-color: var(--dark-color-background-primary);
+  }
+  .searchInput:hover::placeholder {
+    color: var(--dark-color-font-primary);
+  }
+  .searchInput:focus {
+    background-color: var(--dark-color-background-primary);
+  }
+  .categoryButton {
+    border: 1px solid var(--dark-color-border);
+  }
+}
+
+/*! ============================================================================================================================== */
+/*? ============================================================================================================================== */
+/*? desktop */
+@media screen and (min-width: 1200px) and (prefers-color-scheme: dark) {
+  .recipesContainer, .RCcategoryPadding {
+    padding: 0 35px;
+  }
+  .RCimageContainer {
+    gap: 20px;
+  }
+  .hero {
+    position: relative;
+    min-height: 550px;
+    max-height: 660px;
+    max-width: 650px;
+  }
+  .heroPattern {
+    margin-left: 5em;
+    margin-top: 3.6em;
+  }
+  nav {
+    position: relative;
+    margin: 0 auto;
+    max-width: 80em;
+  }
+  .swiperContainer {
+    padding: 0 20px;
+  }
+  .container {
+    overflow: visible;
+    margin-top: 1em;
+    padding: 1em 0;
+    max-width: 80em;
+  }
+  .RCS {
+    transition: all 100ms ease;
+  }
+  .cardContainer {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+  }
+  .RCS:hover {
+    transform: translate(0, -6px);
+    box-shadow: var(--dark-color-disabled) 0 6px;
+  }
+  .swiper-wrapper {
+    padding-top: 6px;
+  }
+}
+/*! ============================================================================================================================== */
+/*? ============================================================================================================================== */
+/*? big desktop */
+@media screen and (min-width: 1800px) and (prefers-color-scheme: dark) {
+  .navList {
+    font-size: 2.3em;
+  }
+  nav {
+    max-width: 90em;
+  }
+  .container {
+    max-width: 90em;
+  }
+  .recipesContainer, .RCcategoryPadding {
+    padding: 0 40px;
+  }
+  .cardContainer {    
+    gap: 1.8em;
+  }
+  .RCS {
+    max-width: 22em;
+  }
 }

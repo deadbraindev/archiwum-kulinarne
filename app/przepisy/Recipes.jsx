@@ -312,11 +312,6 @@ export default function Recipes() {
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
 
-              {/* <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
@@ -325,7 +320,12 @@ export default function Recipes() {
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton /> */}
+              <RecipeCardSmallSkeleton />
+
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
+              <RecipeCardSmallSkeleton />
             </>
           ) : (
             status === 'success' &&
