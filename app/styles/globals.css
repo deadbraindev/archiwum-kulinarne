@@ -746,6 +746,7 @@ input[type="text"] {
   background-color: transparent;
   /* margin-left: -50px; */
   padding: 0;
+  padding-top: 5px;
   color: var(--color-font-primary);
   transition: background-color 100ms ease-in-out;
 }
@@ -758,7 +759,8 @@ input[type="text"] {
 }
 .searchInputClear svg {
   padding-top: 5px;
-  width: 25px;
+  width: 27px;
+  height: 27px;
   fill: var(--color-font-primary);
   transition: fill 100ms ease-in-out;
 }
@@ -1939,14 +1941,12 @@ background-position: 8px 8px; */
     border-top-left-radius: 75px;
     border-bottom-right-radius: 75px;
   }
-  .searchButton {
+  .searchButton, .searchInputClear {
     height: 55px;
     width: 55px;
+    padding-top: 0px;
   }
-  .searchInputClear {
-    height: 55px;
-    width: 55px;
-  }
+
   .searchInputClear:hover {
     background-color: var(--color-main-red);
   }
@@ -2014,7 +2014,7 @@ background-position: 8px 8px; */
     width: 300px;
     right: 0;
     font-size: 2rem;
-    margin-right: -56px;
+    margin-right: 9px;
     border: 1px solid var(--color-border);
   }
   .searchInput:hover {
@@ -2028,7 +2028,7 @@ background-position: 8px 8px; */
   }
   .searchInputClear {
     position: absolute;
-    right: 55px;
+    right: 65px;
   }
   .searchButton {
     margin: 0;

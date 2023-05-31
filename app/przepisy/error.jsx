@@ -8,6 +8,7 @@ export default function Error({ error, reset }) {
     // console.error(error);
   }, [error]);
 
+  // ! [TODO] ladny erroa=r page z przyciskiem do try again
   return (
     <div className="footer">
       <h2>Something went wrong!</h2>

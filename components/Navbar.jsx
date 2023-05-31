@@ -144,7 +144,7 @@ function Navbar() {
   };
   const clearSearch = () => {
     setInputSearch('');
-    inputRefFocus.current.fucus();
+    // inputRefFocus.current.fucus();
   };
 
   // TopBarProgress.config({
