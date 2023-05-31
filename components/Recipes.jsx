@@ -167,6 +167,10 @@ export default function Recipes() {
     paginationInputTotalPages = 0;
   }
 
+  if (!isLoading && !isFetching && status === 'error') {
+    throw new Error(`Failed to fetch recipes, try again...`);
+  }
+
   return (
     <>
       {isFetching && <TopBarProgress />}
@@ -252,6 +256,7 @@ export default function Recipes() {
         <div className="cardContainer">
           {/* //!zrobic ladnie blad */}
           {/* //!! czy to w ogole jest potrzebne?????? */}
+
           {status === 'error' && (
             <span>
               przykro mi, jest problem z ładowaniem przepisów, spróbuj ponownie
