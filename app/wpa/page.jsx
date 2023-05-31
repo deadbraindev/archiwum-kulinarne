@@ -1,8 +1,8 @@
 export const metadata = {
-  title: 'ulubione | archiwum kulinarne',
+  title: 'wpa | archiwum kulinarne',
   openGraph: {
-    title: 'ulubione',
-    url: '/ulubione',
+    title: 'wpa',
+    url: '/wpa',
     images: [
       {
         url: 'https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
@@ -14,5 +14,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <div className="footer">ulubione🖋</div>;
+  return <div className="footer">WPA</div>;
 }
