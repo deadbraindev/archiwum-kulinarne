@@ -1,5 +1,9 @@
 export const metadata = {
   title: 'strona główna | archiwum kulinarne',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000' },
+  ],
   openGraph: {
     title: 'strona główna',
     url: '/',
