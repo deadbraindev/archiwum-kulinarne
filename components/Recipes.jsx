@@ -257,12 +257,6 @@ export default function Recipes() {
           {/* //!zrobic ladnie blad */}
           {/* //!! czy to w ogole jest potrzebne?????? */}
 
-          {status === 'error' && (
-            <span>
-              przykro mi, jest problem z ładowaniem przepisów, spróbuj ponownie
-              później...
-            </span>
-          )}
           {isLoading ? (
             <>
               <RecipeCardSmallSkeleton />
