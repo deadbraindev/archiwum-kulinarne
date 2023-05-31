@@ -39,30 +39,6 @@ export const isFavorite = (slug) => {
   return false;
 };
 
-const URL = 'https://archiwum-kulinarne.vercel.app/api/recipes';
-// const URL = 'http://localhost:3000/api/recipes';
-export const getRecipes = async (page, search, category) => {
-  if (!paramSearchValidator(search)) {
-    if (paramCategoryValidator(category)) {
-      const res = await fetch(`${URL}?category=${category}&page=${page}`);
-      return res.json();
-    }
-    const res = await fetch(`${URL}?page=${page}`);
-    return res.json();
-  }
-  if (paramSearchValidator(search)) {
-    if (paramCategoryValidator(category)) {
-      const res = await fetch(
-        `${URL}?category=${category}&page=${page}&search=${search}`
-      );
-      return res.json();
-    }
-    const res = await fetch(`${URL}?page=${page}&search=${search}`);
-    return res.json();
-  }
-  return null;
-};
-
 export const categoryHeaderColorPicker = (category) => {
   switch (category) {
     case 'ciasta':

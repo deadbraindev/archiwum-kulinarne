@@ -7,45 +7,37 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useState, useRef, useEffect } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
-// import NextNProgress from 'nextjs-progressbar';
-
 import classNames from 'classnames';
-import RecipeCardSmallSkeleton from '../../components/RecipeCardSmallSkeleton';
-import RecipeCardSmall from '../../components/RecipeCardSmall';
+import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
+import RecipeCardSmall from './RecipeCardSmall';
+import getRecipes from '../lib/getRecipes';
 import {
-  getRecipes,
-  paramPageValidator,
-  paramCategoryValidator,
-  isFavorite,
+  categoryValidator,
   categoryArray,
+} from '../lib/validators/categoryValidator';
+import { pageValidator } from '../lib/validators/pageValidator';
+
+import {
+  isFavorite,
   categoryHeaderColorPicker,
   categorySvgPicker,
-} from '../../components/RecipeUtilities';
+} from './RecipeUtilities';
 
 export default function Recipes() {
   const searchParams = useSearchParams();
-  // const isBrowser = () => typeof window !== 'undefined'; // The approach recommended by Next.js
-  // function scrollToTop() {
-  //   if (!isBrowser()) return;
-  //   window.scrollTo({ top: 0 });
-  // }
-
-  const paramPage = paramPageValidator(searchParams.get('strona'))
+  const paramPage = pageValidator(searchParams.get('strona'))
     ? parseInt(searchParams.get('strona'), 10)
     : 1;
   const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
-  // console.log(paramSearch);
-  const paramCategory = paramCategoryValidator(searchParams.get('kategoria'))
+  const paramCategory = categoryValidator(searchParams.get('kategoria'))
     ? searchParams.get('kategoria')
     : null;
 
-  // # # # # # //
-  // REACT QUERY
   const { data, status, isFetching, isLoading } = useQuery(
     ['recipes', paramPage, paramSearch, paramCategory],
     () => getRecipes(paramPage, paramSearch, paramCategory),
     {
-      // keepPreviousData: true,
+      keepPreviousData: true,
       // retry: 2,
       // refetchOnWindowFocus: false,
       refetchOnWindowFocus: false,
@@ -55,8 +47,6 @@ export default function Recipes() {
       staleTime: 1000 * 60 * 60 * 24,
     }
   );
-  // REACT QUERY
-  // # # # # # //
 
   const [inputPage, setInputPage] = useState(paramPage);
   const [inputCategory, setInputCategory] = useState(paramCategory);
@@ -67,20 +57,14 @@ export default function Recipes() {
     if (
       // data?.hasFilters &&
       paramSearch !== null &&
-      paramPageValidator(input) &&
+      pageValidator(input) &&
       input <= data?.numOfPages
     ) {
-      if (paramCategoryValidator(inputCategory)) {
-        // navigate({
-        //   search: `?kategoria=${inputCategory}&szukaj=${paramSearch}&strona=${input}`,
-        // });
+      if (categoryValidator(inputCategory)) {
         router.push(
           `przepisy?kategoria=${inputCategory}&szukaj=${paramSearch}&strona=${input}`
         );
       } else {
-        // navigate({
-        //   search: `?szukaj=${paramSearch}&strona=${input}`,
-        // });
         router.push(`przepisy?szukaj=${paramSearch}&strona=${input}`);
       }
 
@@ -88,7 +72,7 @@ export default function Recipes() {
     } else if (
       // !data?.hasFilters &&
       paramSearch === null &&
-      paramPageValidator(input) &&
+      pageValidator(input) &&
       input <= data?.numOfPages
     ) {
       router.push(`przepisy?strona=${input}`);
@@ -101,16 +85,10 @@ export default function Recipes() {
     if (data?.showNextUrlLink) {
       setInputPage(data.pageNumber + 1);
       if (data?.hasFilters) {
-        // navigate({
-        //   search: `?szukaj=${paramSearch}&strona=${data?.pageNumber + 1}`,
-        // });
         router.push(
           `przepisy?szukaj=${paramSearch}&strona=${data.pageNumber + 1}`
         );
       } else if (!data?.hasFilters) {
-        // navigate({
-        //   search: `?strona=${data?.pageNumber + 1}`,
-        // });
         router.push(`przepisy?strona=${data.pageNumber + 1}`);
       }
     }
@@ -118,7 +96,6 @@ export default function Recipes() {
   const goPrevious = () => {
     // TODO dodac param "kategoria"
     if (data?.showPreviousUrlLink) {
-      // setInputPage(data.pageNumber - 1);
       if (data?.hasFilters) {
         router.push(
           `przepisy?szukaj=${paramSearch}&strona=${data.pageNumber - 1}`
@@ -130,7 +107,7 @@ export default function Recipes() {
   };
 
   const validateAndNavigate2 = (category) => {
-    if (paramCategoryValidator(category)) {
+    if (categoryValidator(category)) {
       setInputCategory(category);
       router.push(`przepisy?kategoria=${category}`);
     } else {
@@ -163,7 +140,6 @@ export default function Recipes() {
   };
   useEffect(() => {
     setInputPage(paramPage);
-    // scrollToTop();
   }, [paramPage]);
 
   TopBarProgress.config({
@@ -193,15 +169,8 @@ export default function Recipes() {
 
   return (
     <>
-      {/* {isFetching && <TopBarProgress />} */}
       {isFetching && <TopBarProgress />}
-      {/* <NextNProgress /> */}
-
-      <div
-        className="recipesContainer"
-        // style={isFetching ? { height: 2000 } : null}
-      >
-        {/* <div>recipes page {}</div> */}
+      <div className="recipesContainer">
         <p className="RCcategory">
           <span className="RCcategorySeparator">{'>'}</span>
           {inputCategory ? (
@@ -238,11 +207,7 @@ export default function Recipes() {
             className="categoryVisibilityButton"
             onClick={showOrHideCategoryList}
           >
-            {/* <span className={isCategoryListVisible ? "arrow up" : }>&#9660;</span> */}
             {isCategoryListVisible ? 'ukryj kategorie' : 'pokaż kategorie'}
-            {/* {"kategorie"} */}
-
-            {/* <svg className="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.81 9.9"><path d="M15.32,0,8.4,6.92,1.49,0,0,1.49,8.4,9.9l8.41-8.41Z"/></svg> */}
           </button>
 
           {inputCategory !== '' && inputCategory !== null ? (
@@ -263,7 +228,6 @@ export default function Recipes() {
             <button
               type="button"
               key={category}
-              // path={{ pathname: `?kategoria=${category}` }}
               className={`${
                 inputCategory === category
                   ? `categoryButton active`
@@ -294,7 +258,6 @@ export default function Recipes() {
               później...
             </span>
           )}
-          {/* {isFetching && <TopBarProgress />} */}
           {isLoading ? (
             <>
               <RecipeCardSmallSkeleton />
@@ -364,15 +327,6 @@ export default function Recipes() {
 
           <div className="paginationInput">
             <form onSubmit={onSubmitPaginationInput}>
-              {/* {isFetching || status === 'loading' ? (
-                <Skeleton
-                  count={1}
-                  width="1.8em"
-                  height="1.8em"
-                  // baseColor="#bababa"
-                  enableAnimation={false}
-                />
-              ) : ( */}
               <input
                 className="paginationSearchInput"
                 type="number"
@@ -384,9 +338,9 @@ export default function Recipes() {
                 onChange={(event) => setInputPage(event.target.value)}
                 ref={inputRefFocus}
               />
-              {/* <label className="visuallyHidden" htmlFor="paginationSearchInput">
+              <span className="visuallyHidden" htmlFor="paginationSearchInput">
                 Przejdź na stronę:
-              </label> */}
+              </span>
               {/* )} */}
             </form>
             <span className="visuallyHidden hint" aria-hidden="true">

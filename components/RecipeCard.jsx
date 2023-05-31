@@ -6,7 +6,7 @@ import getRecipe from '../lib/getRecipe';
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
   console.log(recipeData);
-  if (!recipeData.success) notFound(); // 4040 not found handling
+  if (!recipeData.success) notFound(); // 404 not found handling
   else if (recipeData.success) {
     return (
       <>

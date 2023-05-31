@@ -1,7 +1,7 @@
 // import Link from 'next/link';
 // import Head from 'next/head';
 
-import ReactQueryWrapper from './ReactQueryWrapper';
+import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import Navbar from '../components/Navbar';
 // import styles from './styles/Homepage.module.css';
 import './styles/globals.css';

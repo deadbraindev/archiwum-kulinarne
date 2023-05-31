@@ -74,11 +74,5 @@ export async function generateMetadata({ params }, parent) {
 export default async function Page({ params }) {
   const { slug } = params;
 
-  return (
-    <>
-      {/* <Suspense fallback={<Loading />}> */}
-      <RecipeCard slug={slug} />
-      {/* </Suspense> */}
-    </>
-  );
+  return <RecipeCard slug={slug} />;
 }

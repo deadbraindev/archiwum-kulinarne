@@ -1,4 +1,4 @@
-import Recipes from './Recipes';
+import Recipes from '../../components/Recipes';
 
 export const metadata = {
   // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
