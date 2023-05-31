@@ -6,8 +6,6 @@ import getRecipe from '../lib/getRecipe';
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
 
-  // console.log(recipeData);
-
   if (recipeData.success) {
     return (
       <>
@@ -97,7 +95,11 @@ export default async function RecipeCard({ slug }) {
       </>
     );
   }
-  if (!recipeData.success && recipeData.error.name === 'QueryError') {
+  if (
+    !recipeData.success &&
+    recipeData.error.message ===
+      'Recipe query error: slug: Recipe does not exist'
+  ) {
     notFound(); // 404 not found handling
   } else {
     throw new Error(`Failed to fetch recipes, try again...`);
