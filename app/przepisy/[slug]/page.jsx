@@ -79,7 +79,6 @@ export default async function Page({ params }) {
       {/* <Suspense fallback={<Loading />}> */}
       <RecipeCard slug={slug} />
       {/* </Suspense> */}
-      {/* <div>{data}</div> */}
     </>
   );
 }
