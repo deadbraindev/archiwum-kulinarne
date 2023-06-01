@@ -8,10 +8,8 @@ export default function RecipeCardSmallSkeleton() {
       <h1 className="RCSname">
         <Skeleton
           count={1}
-          width="90%"
+          width={`${Math.random() * (90 - 40) + 40}%`}
           height="1.2rem"
-          // baseColor="#bababa"
-          // highlightColor="#dadada"
           enableAnimation={false}
         />
       </h1>
@@ -22,7 +20,6 @@ export default function RecipeCardSmallSkeleton() {
             count={1}
             width="1.4em"
             height="1.4em"
-            // baseColor="#bababa"
             borderRadius="1rem"
             enableAnimation={false}
           />
@@ -33,7 +30,6 @@ export default function RecipeCardSmallSkeleton() {
               count={1}
               width="4em"
               height="0.7em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
           </div>
@@ -42,7 +38,6 @@ export default function RecipeCardSmallSkeleton() {
               count={1}
               width="4em"
               height="0.7em"
-              // baseColor="#bababa"
               enableAnimation={false}
             />
           </div>

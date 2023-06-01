@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+// import { isMobile } from 'react-device-detect';
+
 // import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -8,14 +10,12 @@ import classNames from 'classnames';
 // import styles from '../app/styles/Navbar.module.css';
 // import { useMediaQuery } from 'react-responsive';
 import { ToastContainer, Slide } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import useMobileDetect from '../lib/useMobileDetect';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import Skeleton from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
 // import TopBarProgress from 'react-topbar-progress-indicator';
-
-// import { useWindowWidth } from '@react-hook/window-size';
-// import LoadingBar from './LoadingBar.js';
 import {
   paramSearchValidator,
   paramCategoryValidator,
@@ -37,8 +37,7 @@ function useWindowWidth() {
   return windowWidth;
 }
 function Navbar() {
-  // const navigate = useNavigate();
-
+  const currentDevice = useMobileDetect();
   const searchParams = useSearchParams();
 
   const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
@@ -53,9 +52,6 @@ function Navbar() {
 
   const searchButton = (input) => {
     if (!paramSearchValidator(input)) {
-      // navigate({
-      //   search: '',
-      // });
       router.push('');
       setInputSearch('');
     } else if (
@@ -63,11 +59,8 @@ function Navbar() {
       paramCategoryValidator(paramCategory)
     ) {
       router.push(`przepisy?kategoria=${paramCategory}&szukaj=${input}`);
-      // navigate(`przepisy?kategoria=${paramCategory}&szukaj=${input}`);
     } else {
       router.push(`przepisy?szukaj=${input}`);
-
-      // navigate(`przepisy?szukaj=${input}`);
     }
   };
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
@@ -76,15 +69,28 @@ function Navbar() {
     setIsHamburgerClicked(false);
     searchButton(inputSearch);
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
-    // inputRefFocus.current.focus();   //zmiana focus inputowi searchbara
   };
-
-  // const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
 
   useEffect(() => {
     if (paramSearch === null) setInputSearch('');
     else setInputSearch(paramSearch);
   }, [paramSearch]); // use effect do dynamicznego odsiwezania tego co jest w inputach po zmianie path
+
+  const windowWidth = useWindowWidth();
+
+  // !!debug
+  const [color, setColor] = useState('');
+
+  const techinfo = () => {
+    if (currentDevice.isMobile()) setColor(`mobile, width:${windowWidth}px`);
+    else if (currentDevice.isDesktop())
+      setColor(`desktop, width:${windowWidth}px`);
+  };
+
+  useEffect(() => {
+    techinfo();
+  }, [windowWidth]);
+  // !!debug
 
   // const { logout } = useLogout();
   // const { login } = useLogin();
@@ -101,23 +107,27 @@ function Navbar() {
   //   ? 0
   //   : Math.max(window.innerWidth - document.documentElement.clientWidth, 0);
 
-  const windowWidth = useWindowWidth();
   const navHamburgerDynamicClasses = classNames(
     'navHamburger',
     windowWidth === undefined ? 'hamLoading visible' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
-    windowWidth !== undefined && windowWidth < 900 ? 'visible' : 'hidden',
+    (windowWidth !== undefined && windowWidth < 900) || currentDevice.isMobile()
+      ? 'visible'
+      : 'hidden',
     { active: isHamburgerClicked }
   );
   const navListDynamicClasses = classNames(
     'navList',
     windowWidth === undefined ? 'navLoading' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
-    windowWidth < 900 && !isHamburgerClicked ? 'hidden' : 'visible'
+    (currentDevice.isMobile() || windowWidth < 900) && !isHamburgerClicked
+      ? 'hidden'
+      : 'visible'
   );
 
-  // useEffect(() => {
-  //   setIsHamburgerClicked(false);
-  // }, [windowWidth, orientation]);
-  // console.log(isHamburgerClicked);
+  useEffect(() => {
+    setIsHamburgerClicked(false);
+    document.body.classList.remove('noScroll');
+  }, [windowWidth]);
+
   const handleHamburger = () => {
     if (isHamburgerClicked) {
       setIsHamburgerClicked(false);
@@ -130,10 +140,11 @@ function Navbar() {
 
   const handleNavLink = () => {
     setIsHamburgerClicked(false);
+    document.body.classList.remove('noScroll');
   };
   const clearSearch = () => {
     setInputSearch('');
-    inputRefFocus.current.fucus();
+    // inputRefFocus.current.fucus();
   };
 
   // TopBarProgress.config({
@@ -166,6 +177,7 @@ function Navbar() {
       <header className="navBar">
         <nav>
           <div className="navMini">
+            {/* <div className={navMiniDynamicClasses}> */}
             <Link className="navLogo" href="/">
               archiwum kulinarne
             </Link>
@@ -261,6 +273,7 @@ function Navbar() {
               opacity: '0.2',
             }}
           >
+            {color}
             {/* width: {windowWidth}, orientation: {String(orientation)}, mobile:{' '}
             {String(isTabletOrMobile)}, scrollbar: {scrollBarWidth}px */}
           </p>

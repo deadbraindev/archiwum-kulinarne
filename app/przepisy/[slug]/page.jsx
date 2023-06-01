@@ -1,18 +1,78 @@
-// export const metadata = {
-//   title: 'przepis',
-// };
+// import TopBarProgress from 'react-topbar-progress-indicator';
+// import { Suspense } from 'react';
+// import RecipeCardSkeleton from '../../../components/RecipeCardSkeleton';
+// import getRecipe from '../../../lib/getRecipe';
+// import Loading from './loading';
+import RecipeCard from '../../../components/RecipeCard';
 
-export async function generateMetadata({ params }) {
+async function getMetadata(slug) {
+  const res = await fetch(
+    `https://archiwum-kulinarne.vercel.app/api/recipes/${slug}`
+  );
+  return res.json();
+}
+
+export async function generateMetadata({ params }, parent) {
+  const { slug } = params;
+  const recipeData = await getMetadata(slug);
+  const recipe = await recipeData;
+  const previousStartupImages = (await parent).appleWebApp?.startupImage || [];
+  const previousOGImages = (await parent).openGraph?.images || [];
+
+  // console.log(previousStartupImages);
+  if (recipe.success) {
+    const ogDesc = recipeData.stages?.items.map((stage) => stage.preparing);
+
+    return {
+      // HTML
+      title: recipe.name?.toLowerCase(),
+      description: `kategoria: ${recipeData.category} | ${ogDesc
+        .join(' ')
+        .substring(0, 150)}`,
+      // end HTML
+
+      // OG
+      openGraph: {
+        title: recipe.name?.toLowerCase(),
+        // title: `${recipe.name?.toLowerCase()} - przepis z archiwum kulinarnego`,
+        description: 'og tags description lorem ipsum',
+        url: `/przepisy/${recipe.slug?.slugCurrent}`,
+        images: previousOGImages,
+      },
+      // end OG
+
+      // APPLE
+      // appleWebApp: {
+      //   title: `${recipe.name?.toLowerCase()} | archiwum kulinarne`,
+      //   startupImage: previousStartupImages,
+      // },
+      // end APPLE
+    };
+  }
   return {
-    title: params.slug,
+    // HTML
+    title: 'błędna nazwa przepisu',
+    // end HTML
+
+    // OG
     openGraph: {
-      title: params.slug,
-      url: `https://archiwumkulinarne.deadbrain.dev/przepisy/${params.slug}`,
+      title: 'błędna nazwa przepisu | archiwum kulinarne',
+      url: '/przepisy',
+      images: previousOGImages,
     },
+    // end OG
+
+    // APPLE
+    appleWebApp: {
+      title: 'błędna nazwa przepisu | archiwum kulinarne',
+      startupImage: previousStartupImages,
+    },
+    // end APPLE
   };
 }
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
   const { slug } = params;
-  return <div>{slug}</div>;
+
+  return <RecipeCard slug={slug} />;
 }
