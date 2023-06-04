@@ -10,3 +10,5 @@ archiwum kulinarne to projekt digitalizacji rodzinnych przepisów kulinarnych, b
 ## demo
 
 https://archiwumkulinarne.deadbrain.dev/
+
+dev - https://archiwum-kulinarne.vercel.app/
