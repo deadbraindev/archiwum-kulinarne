@@ -1,6 +1,6 @@
 
-![Logo](https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg)
-
+<!-- ![Logo](https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg) -->
+![Logo](https://archiwum-kulinarne.vercel.app/icons/apple-splash-2688-1242.jpg)
 
 # archiwum kulinarne - nextJS
 
@@ -12,3 +12,6 @@ archiwum kulinarne to projekt digitalizacji rodzinnych przepisów kulinarnych, b
 https://archiwumkulinarne.deadbrain.dev/
 
 dev - https://archiwum-kulinarne.vercel.app/
+
+
+
