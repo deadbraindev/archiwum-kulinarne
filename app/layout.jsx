@@ -1,7 +1,6 @@
 // import Link from 'next/link';
 // import Head from 'next/head';
-
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/dist/react';
 
 import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import Navbar from '../components/Navbar';
