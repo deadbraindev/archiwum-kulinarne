@@ -1,6 +1,8 @@
 // import Link from 'next/link';
 // import Head from 'next/head';
 
+import { Analytics } from '@vercel/analytics/react';
+
 import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import Navbar from '../components/Navbar';
 // import styles from './styles/Homepage.module.css';
@@ -193,6 +195,7 @@ export default function RootLayout({ children }) {
           </div>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
