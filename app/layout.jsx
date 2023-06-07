@@ -1,5 +1,6 @@
 // import Link from 'next/link';
 // import Head from 'next/head';
+// import { Analytics } from '@vercel/analytics/react';
 
 import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import Navbar from '../components/Navbar';
@@ -185,6 +186,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pl-PL">
+      <head>
+        <script
+          defer
+          src="https://unpkg.com/@tinybirdco/flock.js"
+          data-host="https://api.tinybird.co"
+          data-token="p.eyJ1IjogIjRjY2ExZjljLTUzNDMtNDdjNi1hZmJjLTMzNDM4MDBhMDQ3YiIsICJpZCI6ICJhMGI0M2FiYy1mZmFlLTQ5OWMtODIxMi1iZTQzOTdkZGY0ZTUifQ.PhICNSFU8HzrBi5c_WUguXnt723ocTlz6_i0e1V5MmM"
+        />
+      </head>
       <body>
         <div className="content">
           <Navbar />
@@ -193,6 +202,7 @@ export default function RootLayout({ children }) {
           </div>
           <Footer />
         </div>
+        {/* <Analytics /> */}
       </body>
     </html>
   );
