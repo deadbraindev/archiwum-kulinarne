@@ -32,11 +32,16 @@ export const paramCategoryValidator = (param) => {
 };
 
 export const isFavorite = (slug) => {
-  const localFavorite = JSON.parse(localStorage.getItem('favorites'));
-  if (localFavorite && localFavorite.some((e) => e.slug === slug)) {
-    return true;
+  try {
+    const localFavorite = JSON.parse(localStorage.getItem('favorites'));
+    if (localFavorite && localFavorite.some((e) => e.slug === slug)) {
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.log('error');
   }
-  return false;
+  return null;
 };
 
 export const categoryHeaderColorPicker = (category) => {

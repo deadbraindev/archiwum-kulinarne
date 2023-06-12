@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

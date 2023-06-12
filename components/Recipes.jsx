@@ -174,6 +174,7 @@ export default function Recipes() {
   return (
     <>
       {isFetching && <TopBarProgress />}
+
       <div className="recipesContainer">
         <p className="RCcategory">
           <span className="RCcategorySeparator">{'>'}</span>
@@ -257,7 +258,7 @@ export default function Recipes() {
           {/* //!zrobic ladnie blad */}
           {/* //!! czy to w ogole jest potrzebne?????? */}
 
-          {isLoading ? (
+          {isLoading || isFetching ? (
             <>
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
