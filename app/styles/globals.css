@@ -329,7 +329,8 @@ span {
   --dark-color-main-selection-gray: #4f4f4f;
   /* --dark-color-font-outline: hsl(var(--brand-hue) 1% 25%); */
 
-  --dark-color-font-RCS: hsl(48 0% 0%);
+  /* --dark-color-font-RCS: hsl(48 0% 0%); */
+  --dark-color-font-RCS: hsla(0, 0%, 0%, 0.7);
 
   --dark-color-main-yellow: hsl(48 calc(var(--brand-saturation) / 1.2) calc(var(--brand-lightness) / 1.2));
   --dark-color-main-red: #EC5B55;
@@ -1526,6 +1527,7 @@ background-position: 8px 8px; */
   color: var(--color-font-RCS);
   font-size: 1.5em;
   padding: 10px;
+  padding-left: 18px;
   margin: auto 0;
   z-index: 2;
   text-transform: lowercase;
@@ -1534,6 +1536,7 @@ background-position: 8px 8px; */
   margin: 5px 0;
 }
 .RCimageContainer {
+  min-height: 400px;
   background-color: var(--color-background-primary);
   background-size: 11px 11px;
   background-image: repeating-linear-gradient(45deg, var(--color-disabled) 0, var(--color-disabled) 1.1px, var(--color-background-primary) 0, var(--color-background-primary) 50%);
@@ -2714,9 +2717,6 @@ input[type="text"] {
 /* .RCbuttonPrev:focus svg {
   fill: var(--dark-color-focus);
 } */
-.RCbuttonPrev svg {
-  fill: var(--dark-color-font-RCS);
-}
 .RCname {
   color: var(--dark-color-font-RCS);
 }

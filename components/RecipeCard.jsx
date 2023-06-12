@@ -32,7 +32,7 @@ export default async function RecipeCard({ slug }) {
               recipeData.category
             )}`}
           >
-            <Link href="/przepisy" className="RCbuttonPrev" type="button">
+            {/* <Link href="/przepisy" className="RCbuttonPrev" type="button">
               <span className="visuallyHidden">Wróć do poprzedniej strony</span>
               <svg
                 className="paginationIcon"
@@ -43,7 +43,7 @@ export default async function RecipeCard({ slug }) {
               >
                 <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
               </svg>
-            </Link>
+            </Link> */}
             <h1 className="RCname">{recipeData.name}</h1>
           </div>
 
