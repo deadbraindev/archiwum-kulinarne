@@ -39,7 +39,7 @@ export const isFavorite = (slug) => {
     }
     return false;
   } catch (error) {
-    console.log('error');
+    // console.log('error in isFavorite check, RecipeUtilities');
   }
   return null;
 };

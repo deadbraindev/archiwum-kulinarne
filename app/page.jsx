@@ -8,6 +8,14 @@
 // import 'swiper/css/navigation';
 // import RecipeCardSmall from '../components/RecipeCardSmall';
 // import { isFavorite } from '../components/RecipeUtilities';
+// import Flickity from 'react-flickity-component';
+// import Slider from '../components/Carousel';
+// import SliderFlex from '../components/SliderFlex';
+import SwiperContainer from '../components/SwiperContainer';
+// import { isFavorite } from '../components/RecipeUtilities';
+// import { Swiper } from 'swiper/react';
+
+// import RecipeCardSmallSkeleton from '../components/RecipeCardSmallSkeleton';
 
 export const metadata = {
   title: 'strona główna | archiwum kulinarne',
@@ -29,6 +37,26 @@ export const metadata = {
 };
 
 export default function Page() {
+  const obj = [
+    {
+      name: 'Karpatka',
+      slug: 'karpatka',
+      category: 'ciasta',
+      model: false,
+    },
+    {
+      name: 'Lody',
+      slug: 'lody',
+      category: 'lody',
+      model: false,
+    },
+    {
+      name: 'Wafle',
+      slug: 'wafle',
+      category: 'slodkie',
+      model: false,
+    },
+  ];
   return (
     <>
       <div className="hero">
@@ -174,7 +202,11 @@ export default function Page() {
 
       <section className="recentlyAdded">
         <h1 className="swiperName">ostatnio dodane przepisy:</h1>
-        <div className="swiperContainer" />
+        <div className="swiperContainer">
+          {/* <Slider />
+        <SliderFlex /> */}
+          <SwiperContainer cards={obj} />
+        </div>
       </section>
     </>
   );

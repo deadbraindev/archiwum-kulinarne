@@ -187,14 +187,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pl-PL">
-      {/* <head>
-        <script
+      <head>
+        {/* <script
           defer
           src="https://unpkg.com/@tinybirdco/flock.js"
           data-host="https://api.tinybird.co"
           data-token="p.eyJ1IjogIjRjY2ExZjljLTUzNDMtNDdjNi1hZmJjLTMzNDM4MDBhMDQ3YiIsICJpZCI6ICJhMGI0M2FiYy1mZmFlLTQ5OWMtODIxMi1iZTQzOTdkZGY0ZTUifQ.PhICNSFU8HzrBi5c_WUguXnt723ocTlz6_i0e1V5MmM"
-        />
-      </head> */}
+        /> */}
+        {/* <link
+          rel="stylesheet"
+          href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+        /> */}
+      </head>
       <body>
         <div className="content">
           <Navbar />

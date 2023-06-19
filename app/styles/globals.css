@@ -1657,6 +1657,18 @@ background-position: 8px 8px; */
 }
 /*! ???? */
 
+
+.carousel .RCS {
+  width: 66%;
+  margin: 0 20px;
+}
+
+
+
+
+
+
+
 /*! FOOTER */
 .footer {
   border-top: 1px solid var(--color-border);

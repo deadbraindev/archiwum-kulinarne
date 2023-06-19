@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import {
   categoryHeaderColorPicker,
@@ -13,9 +12,22 @@ import {
 } from './RecipeUtilities';
 
 export default function RecipeCardSmall(props) {
-  const { slug, name, model, category } = props;
+  const { slug, name, model, category, favorite } = props;
+
   const [isFavorite, setIsFavorite] = useState(checkFavorite(slug));
-  const RCSfavoriteClasses = classNames('RCSfavorite', { active: isFavorite });
+  const [favv, setFavv] = useState(favorite);
+
+  const RCSfavoriteClasses = classNames('RCSfavorite', {
+    active: favv,
+  });
+
+  useEffect(() => {
+    setFavv(favorite);
+  }, [favorite]);
+  useEffect(() => {
+    setFavv(isFavorite);
+  }, [isFavorite]);
+
   const handleFavoriteButton = (favName, favSlug, favCategory) => {
     let existingFavorites = JSON.parse(localStorage.getItem('favorites'));
     if (existingFavorites == null) existingFavorites = [];
@@ -32,18 +44,19 @@ export default function RecipeCardSmall(props) {
         existingFavorites.splice(index, 1);
       }
       localStorage.setItem('favorites', JSON.stringify(existingFavorites));
-
       setIsFavorite(false);
+      setFavv(false);
     } else if (!isFavorite) {
       toast('Dodano do ulubionych!');
       existingFavorites.push(favTemp);
       localStorage.setItem('favorites', JSON.stringify(existingFavorites));
       setIsFavorite(true);
+      setFavv(false);
     }
   };
 
   return (
-    <div className={`RCS `}>
+    <div className="RCS">
       {model ? (
         <>
           <div className={`RCSimg ${categoryHeaderColorPicker(category)}`}>

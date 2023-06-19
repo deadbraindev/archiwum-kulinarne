@@ -17,17 +17,16 @@
     "mongodb": "^5.5.0",
     "mongoose": "^7.2.2",
     "mongoose-slug-plugin": "^2.1.0",
-    "next": "^13.4.4",
+    "next": "^13.4.5",
     "next-connect": "^1.0.0",
     "nextjs-cors": "^2.1.2",
-    "nextjs-progressbar": "^0.0.16",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-loading-skeleton": "^3.3.1",
     "react-toastify": "^9.1.3",
     "react-topbar-progress-indicator": "^4.1.1",
-    "swipejs": "^2.3.1"
+    "swiper": "^9.4.1"
   },
   "devDependencies": {
     "@types/react": "18.2.7",
@@ -40,6 +39,8 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.8.8",
-    "typescript": "5.0.4"
-  }
+  },
+  "repository": "git@github.com:deadbraindev/archiwum-kulinarne-nextjs.git",
+  "author": "ddbrn <ppq0qqp@gmail.com>",
+  "license": "MIT"
 }
