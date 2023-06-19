@@ -30,7 +30,8 @@ export default function SwiperContainer(props) {
       spaceBetween={8}
       rewind
       // initialSlide={1}
-      autoHeight
+      // autoHeight
+      height={330}
       pagination={{
         clickable: true,
       }}
