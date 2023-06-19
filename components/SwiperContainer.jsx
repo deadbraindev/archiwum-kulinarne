@@ -25,11 +25,11 @@ export default function SwiperContainer(props) {
 
   return (
     <Swiper
-      centeredSlides
+      // centeredSlides
       grabCursor
       spaceBetween={8}
       rewind
-      initialSlide={1}
+      // initialSlide={1}
       autoHeight
       pagination={{
         clickable: true,
@@ -47,8 +47,11 @@ export default function SwiperContainer(props) {
         1200: {
           spaceBetween: 16,
           slidesPerView: 4,
+          // initialSlide: 2,
         },
         1800: {
+          // initialSlide: 2,
+
           slidesPerView: 4,
           spaceBetween: 28,
         },

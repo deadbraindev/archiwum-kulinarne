@@ -2,9 +2,49 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
+import SwiperContainer from './SwiperContainer';
 
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
+
+  const obj = [
+    {
+      name: 'Karpatka',
+      slug: 'karpatka',
+      category: 'ciasta',
+      model: false,
+    },
+    {
+      name: 'Ketchup z cukinii',
+      slug: 'ketchup-z-cukinii',
+      category: 'przetwory',
+      model: false,
+    },
+    {
+      name: 'Wafle',
+      slug: 'wafle',
+      category: 'slodkie',
+      model: false,
+    },
+    {
+      name: 'Martini',
+      slug: 'martini',
+      category: 'drinki',
+      model: false,
+    },
+    {
+      name: 'Lody',
+      slug: 'lody',
+      category: 'lody',
+      model: false,
+    },
+    {
+      name: 'Ryba opiekana w zalewie',
+      slug: 'ryba-opiekana-w-zalewie',
+      category: 'ryby',
+      model: false,
+    },
+  ];
 
   if (recipeData.success) {
     return (
@@ -91,6 +131,12 @@ export default async function RecipeCard({ slug }) {
             <img src={img} alt="handwritten recipe" className="RCimageSrc" />
           </div>
         )} */}
+        </div>
+        <h2 className="swiperName">zobacz też:</h2>
+        <div className="swiperContainer">
+          {/* <Slider />
+        <SliderFlex /> */}
+          <SwiperContainer cards={obj} />
         </div>
       </>
     );

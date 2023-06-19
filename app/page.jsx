@@ -1,3 +1,5 @@
+'use client';
+
 // import Swipe, { SwipeItem } from 'swipejs/react';
 // import RecipeCardSmallSkeleton from '../components/RecipeCardSmallSkeleton';
 // import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,52 +13,60 @@
 // import Flickity from 'react-flickity-component';
 // import Slider from '../components/Carousel';
 // import SliderFlex from '../components/SliderFlex';
+import { useEffect, useState } from 'react';
 import SwiperContainer from '../components/SwiperContainer';
 // import { isFavorite } from '../components/RecipeUtilities';
 // import { Swiper } from 'swiper/react';
 
 // import RecipeCardSmallSkeleton from '../components/RecipeCardSmallSkeleton';
 
-export const metadata = {
-  title: 'strona główna | archiwum kulinarne',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fff' },
-    { media: '(prefers-color-scheme: dark)', color: '#000' },
-  ],
-  openGraph: {
-    title: 'strona główna',
-    url: '/',
-    images: [
-      {
-        url: 'https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-};
+// export const metadata = {
+//   title: 'strona główna | archiwum kulinarne',
+//   themeColor: [
+//     { media: '(prefers-color-scheme: light)', color: '#fff' },
+//     { media: '(prefers-color-scheme: dark)', color: '#000' },
+//   ],
+//   openGraph: {
+//     title: 'strona główna',
+//     url: '/',
+//     images: [
+//       {
+//         url: 'https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
+//         width: 1200,
+//         height: 630,
+//       },
+//     ],
+//   },
+// };
 
 export default function Page() {
-  const obj = [
-    {
-      name: 'Karpatka',
-      slug: 'karpatka',
-      category: 'ciasta',
-      model: false,
-    },
-    {
-      name: 'Lody',
-      slug: 'lody',
-      category: 'lody',
-      model: false,
-    },
-    {
-      name: 'Wafle',
-      slug: 'wafle',
-      category: 'slodkie',
-      model: false,
-    },
-  ];
+  // const obj = [
+  //   {
+  //     name: 'Karpatka',
+  //     slug: 'karpatka',
+  //     category: 'ciasta',
+  //     model: false,
+  //   },
+  //   {
+  //     name: 'Lody',
+  //     slug: 'lody',
+  //     category: 'lody',
+  //     model: false,
+  //   },
+  //   {
+  //     name: 'Wafle',
+  //     slug: 'wafle',
+  //     category: 'slodkie',
+  //     model: false,
+  //   },
+  // ];
+  const [localFavorite, setLocalFavorite] = useState([]);
+  useEffect(() => {
+    setLocalFavorite(JSON.parse(localStorage.getItem('favorites')));
+  }, []);
+
+  // console.log(localFavorite);
+
   return (
     <>
       <div className="hero">
@@ -205,7 +215,7 @@ export default function Page() {
         <div className="swiperContainer">
           {/* <Slider />
         <SliderFlex /> */}
-          <SwiperContainer cards={obj} />
+          <SwiperContainer cards={localFavorite} />
         </div>
       </section>
     </>

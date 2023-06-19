@@ -12,14 +12,15 @@ export const metadata = {
   // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
   metadataBase: new URL('https://archiwum-kulinarne.vercel.app'),
   title: {
-    default: 'archiwum kulinarne',
+    default: 'strona główna | archiwum kulinarne',
     template: '%s | archiwum kulinarne',
   },
   description: 'zdigitalizowane rodzinne przepisy kulinarne',
 
   // OG
   openGraph: {
-    title: 'archiwum kulinarne',
+    // title: 'archiwum kulinarne',
+    title: 'strona główna',
     siteName: 'archiwum kulinarne SITE NAME?',
     url: '/',
     images: [

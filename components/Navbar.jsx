@@ -92,6 +92,15 @@ function Navbar() {
   }, [windowWidth]);
   // !!debug
 
+  // LOCAL STORAGE COUNTER
+
+  // const [localFavorite, setLocalFavorite] = useState([]);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined' && window.localStorage)
+  //     setLocalFavorite(JSON.parse(localStorage.getItem('favorites')));
+  // }, []);
+  // end LOCAL STORAGE COUNTER
+
   // const { logout } = useLogout();
   // const { login } = useLogin();
   // const { isLoggedIn, isFetching, user } = useAuthContext();

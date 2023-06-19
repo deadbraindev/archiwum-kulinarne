@@ -14,18 +14,18 @@ import {
 export default function RecipeCardSmall(props) {
   const { slug, name, model, category, favorite } = props;
 
-  const [isFavorite, setIsFavorite] = useState(checkFavorite(slug));
-  const [favv, setFavv] = useState(favorite);
+  const [isFavorite, setIsFavorite] = useState(checkFavorite(slug)); // sprawdzenie czy przepis jest favorite
+  const [isFavoriteProps, setIsFavoriteProps] = useState(favorite); // stan favorite przekazywane w propsach
 
   const RCSfavoriteClasses = classNames('RCSfavorite', {
-    active: favv,
+    active: isFavoriteProps,
   });
 
   useEffect(() => {
-    setFavv(favorite);
+    setIsFavoriteProps(favorite);
   }, [favorite]);
   useEffect(() => {
-    setFavv(isFavorite);
+    setIsFavoriteProps(isFavorite);
   }, [isFavorite]);
 
   const handleFavoriteButton = (favName, favSlug, favCategory) => {
@@ -45,13 +45,13 @@ export default function RecipeCardSmall(props) {
       }
       localStorage.setItem('favorites', JSON.stringify(existingFavorites));
       setIsFavorite(false);
-      setFavv(false);
+      // setIsFavoriteProps(false);
     } else if (!isFavorite) {
       toast('Dodano do ulubionych!');
       existingFavorites.push(favTemp);
       localStorage.setItem('favorites', JSON.stringify(existingFavorites));
       setIsFavorite(true);
-      setFavv(false);
+      // setIsFavoriteProps(false);
     }
   };
 
