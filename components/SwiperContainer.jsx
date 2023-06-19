@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
+// import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmall from './RecipeCardSmall';
+
 import { isFavorite } from './RecipeUtilities';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
