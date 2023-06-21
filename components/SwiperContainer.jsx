@@ -5,8 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
 // import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmall from './RecipeCardSmall';
+import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 
-import { isFavorite } from './RecipeUtilities';
+import { isFavorite, paramCategoryValidator } from './RecipeUtilities';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
 
@@ -14,11 +15,16 @@ export default function SwiperContainer(props) {
   SwiperCore.use([Pagination]);
 
   const { cards } = props;
+  // console.log(cards);
   const [isFavoriteArray, setIsFavoriteArray] = useState([]);
   useEffect(() => {
     const initialArray = [];
-    if (typeof window !== 'undefined' && window.localStorage) {
-      cards.map((card) => initialArray.push(isFavorite(card.slug)));
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage &&
+      typeof cards !== 'string'
+    ) {
+      cards?.map((card) => initialArray.push(isFavorite(card.slug)));
     }
     setIsFavoriteArray(initialArray);
   }, []);
@@ -58,18 +64,45 @@ export default function SwiperContainer(props) {
         },
       }}
     >
-      {cards.map((card, i) => (
-        <SwiperSlide key={card.slug}>
-          <RecipeCardSmall
-            name={card.name}
-            slug={card.slug}
-            key={card.slug}
-            category={card.category}
-            model={false}
-            favorite={isFavoriteArray[i]}
-          />
-        </SwiperSlide>
-      ))}
+      {/* {true ? ( */}
+
+      {cards === 'skeleton' ? (
+        <>
+          <SwiperSlide>
+            <RecipeCardSmallSkeleton />
+          </SwiperSlide>
+          <SwiperSlide>
+            <RecipeCardSmallSkeleton />
+          </SwiperSlide>
+          <SwiperSlide>
+            <RecipeCardSmallSkeleton />
+          </SwiperSlide>
+          <SwiperSlide>
+            <RecipeCardSmallSkeleton />
+          </SwiperSlide>
+          <SwiperSlide>
+            <RecipeCardSmallSkeleton />
+          </SwiperSlide>
+        </>
+      ) : (
+        cards?.map((card, i) => {
+          const slug =
+            typeof card.slug === 'string' ? card.slug : card.slug.slugCurrent;
+
+          return (
+            <SwiperSlide key={slug}>
+              <RecipeCardSmall
+                name={card.name}
+                slug={slug}
+                // key={card.slug}
+                category={card.category}
+                model={false}
+                favorite={isFavoriteArray[i]}
+              />
+            </SwiperSlide>
+          );
+        })
+      )}
     </Swiper>
   );
 }

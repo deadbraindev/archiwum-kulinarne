@@ -38,7 +38,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "typescript": "5.1.3"
   },
   "repository": "git@github.com:deadbraindev/archiwum-kulinarne-nextjs.git",
   "author": "ddbrn <ppq0qqp@gmail.com>",

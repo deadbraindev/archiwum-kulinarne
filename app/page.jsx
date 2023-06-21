@@ -14,7 +14,10 @@
 // import Slider from '../components/Carousel';
 // import SliderFlex from '../components/SliderFlex';
 import { useEffect, useState } from 'react';
+import TopBarProgress from 'react-topbar-progress-indicator';
+
 import SwiperContainer from '../components/SwiperContainer';
+
 // import { isFavorite } from '../components/RecipeUtilities';
 // import { Swiper } from 'swiper/react';
 
@@ -40,35 +43,58 @@ import SwiperContainer from '../components/SwiperContainer';
 // };
 
 export default function Page() {
-  // const obj = [
-  //   {
-  //     name: 'Karpatka',
-  //     slug: 'karpatka',
-  //     category: 'ciasta',
-  //     model: false,
-  //   },
-  //   {
-  //     name: 'Lody',
-  //     slug: 'lody',
-  //     category: 'lody',
-  //     model: false,
-  //   },
-  //   {
-  //     name: 'Wafle',
-  //     slug: 'wafle',
-  //     category: 'slodkie',
-  //     model: false,
-  //   },
-  // ];
-  const [localFavorite, setLocalFavorite] = useState([]);
+  const [localFavorite, setLocalFavorite] = useState('skeleton');
   useEffect(() => {
     setLocalFavorite(JSON.parse(localStorage.getItem('favorites')));
   }, []);
 
-  // console.log(localFavorite);
+  const [data, setData] = useState('skeleton');
+  const [isLoading, setLoading] = useState(true);
 
+  useEffect(() => {
+    setLoading(true);
+
+    fetch('https://archiwum-kulinarne.vercel.app/api/recipes')
+      // .then((res) => {
+      //   if (!res.ok) {
+      //     setLoading(false);
+      //     return false;
+      //   }
+      //   return true
+      // })
+      .then((res) => {
+        if (res.ok) {
+          // setData(res);
+          // setLoading(false);
+          return res.json();
+        }
+        // setData(res.status);
+        setLoading(false);
+        return res.status;
+
+        // res.json();
+      })
+      .then((res) => {
+        setData(res);
+        setLoading(false);
+      });
+  }, []);
+
+  const recentlyAdded = data?.results
+    ? data.results?.tiles.map((tile) => tile.value)
+    : [];
+
+  TopBarProgress.config({
+    barColors: {
+      0: '#ffce06',
+    },
+    barThickness: 8,
+    shadowBlur: 0,
+  });
   return (
     <>
+      {isLoading && <TopBarProgress />}
+
       <div className="hero">
         <div className="heroPattern">
           <h1 className="heroTextContainer">
@@ -211,11 +237,19 @@ export default function Page() {
       </section> */}
 
       <section className="recentlyAdded">
-        <h1 className="swiperName">ostatnio dodane przepisy:</h1>
+        <h2 className="swiperName">twoje ulubione:</h2>
         <div className="swiperContainer">
-          {/* <Slider />
-        <SliderFlex /> */}
           <SwiperContainer cards={localFavorite} />
+        </div>
+
+        <h2 className="swiperName">ostatnio dodane przepisy:</h2>
+        <div className="swiperContainer">
+          {isLoading ? (
+            <SwiperContainer cards="skeleton" />
+          ) : (
+            <SwiperContainer cards={recentlyAdded} />
+          )}
+          {data === 404 ? <span>błąd 404</span> : null}
         </div>
       </section>
     </>

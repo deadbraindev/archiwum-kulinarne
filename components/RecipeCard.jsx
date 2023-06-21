@@ -52,18 +52,18 @@ export default async function RecipeCard({ slug }) {
         <div className="RC">
           <p className="RCcategory RCcategoryPadding">
             <span className="RCcategorySeparator">{'>'}</span>
-            <Link className="RCcategoryLink" href="przepisy" scroll>
+            <Link className="RCcategoryLink" href="/przepisy" scroll>
               przepisy
             </Link>
             <span className="RCcategorySeparator">{'>'}</span>
             <Link
               className="RCcategoryLink"
-              href={`przepisy?kategoria=${recipeData.category}`}
+              href={`/przepisy?kategoria=${recipeData.category}`}
             >
               {recipeData.category}
             </Link>
             <span className="RCcategorySeparator">{'>'}</span>
-            <Link className="RCcategoryLink" href={`przepisy/${slug}`}>
+            <Link className="RCcategoryLink" href={`/przepisy/${slug}`}>
               {slug}
             </Link>
           </p>
