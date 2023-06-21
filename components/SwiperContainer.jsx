@@ -7,7 +7,7 @@ import SwiperCore, { Pagination } from 'swiper';
 import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 
-import { isFavorite, paramCategoryValidator } from './RecipeUtilities';
+import { isFavorite } from './RecipeUtilities';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
 
