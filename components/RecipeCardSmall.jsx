@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
+import { useFavoriteContext } from '../context/useFavoriteContext';
 import {
   categoryHeaderColorPicker,
   categorySvgPicker,
@@ -28,6 +29,9 @@ export default function RecipeCardSmall(props) {
     setIsFavoriteProps(isFavorite);
   }, [isFavorite]);
 
+  const { isFetching, favoriteArray, state, addToFavorite } =
+    useFavoriteContext();
+
   const handleFavoriteButton = (favName, favSlug, favCategory) => {
     let existingFavorites = JSON.parse(localStorage.getItem('favorites'));
     if (existingFavorites == null) existingFavorites = [];
@@ -48,8 +52,9 @@ export default function RecipeCardSmall(props) {
       // setIsFavoriteProps(false);
     } else if (!isFavorite) {
       toast('Dodano do ulubionych!');
-      existingFavorites.push(favTemp);
-      localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+      // existingFavorites.push(favTemp);
+      // localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+      addToFavorite({ name, slug, category });
       setIsFavorite(true);
       // setIsFavoriteProps(false);
     }

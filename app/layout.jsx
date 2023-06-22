@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 // import styles from './styles/Homepage.module.css';
 import './styles/globals.css';
 import Footer from '../components/Footer';
+import { FavoriteContextProvider } from '../context/FavoriteContext';
 
 export const metadata = {
   // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
@@ -201,14 +202,16 @@ export default function RootLayout({ children }) {
         /> */}
       </head>
       <body>
-        <div className="content">
-          <Navbar />
-          <div className="container">
-            <ReactQueryWrapper>{children}</ReactQueryWrapper>
+        <FavoriteContextProvider>
+          <div className="content">
+            <Navbar />
+            <div className="container">
+              <ReactQueryWrapper>{children}</ReactQueryWrapper>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-        {/* <Analytics /> */}
+          {/* <Analytics /> */}
+        </FavoriteContextProvider>
       </body>
     </html>
   );

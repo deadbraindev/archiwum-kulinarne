@@ -6,28 +6,26 @@ import SwiperCore, { Pagination } from 'swiper';
 // import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
+import { useFavoriteContext } from '../context/useFavoriteContext';
 
-import { isFavorite } from './RecipeUtilities';
+// import { isFavorite } from './RecipeUtilities';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
 
-export default function SwiperContainer(props) {
+export default function SwiperFavorite() {
   SwiperCore.use([Pagination]);
+  const { isFetching, favoriteArray, state, addToFavorite } =
+    useFavoriteContext();
+  // console.log(
+  //   '🚀 ~ file: SwiperFavorite.jsx:18 ~ favoriteArray:',
+  //   favoriteArray
+  // );
 
-  const { cards } = props;
-  // console.log(cards);
-  const [isFavoriteArray, setIsFavoriteArray] = useState([]);
-  useEffect(() => {
-    const initialArray = [];
-    if (
-      typeof window !== 'undefined' &&
-      window.localStorage &&
-      typeof cards !== 'string'
-    ) {
-      cards?.map((card) => initialArray.push(isFavorite(card.slug)));
-    }
-    setIsFavoriteArray(initialArray);
-  }, []);
+  // console.log('🚀 ~ file: SwiperFavorite.jsx:18 ~ state:', state);
+
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
 
   return (
     <Swiper
@@ -66,7 +64,7 @@ export default function SwiperContainer(props) {
     >
       {/* {true ? ( */}
 
-      {cards === 'skeleton' ? (
+      {state === 'undefined' ? (
         <>
           <SwiperSlide>
             <RecipeCardSmallSkeleton />
@@ -85,7 +83,7 @@ export default function SwiperContainer(props) {
           </SwiperSlide>
         </>
       ) : (
-        cards?.map((card, i) => {
+        state?.map((card, i) => {
           const slug =
             typeof card.slug === 'string' ? card.slug : card.slug?.slugCurrent;
 
@@ -97,7 +95,7 @@ export default function SwiperContainer(props) {
                 // key={card.slug}
                 category={card.category}
                 model={false}
-                favorite={isFavoriteArray[i]}
+                // favorite={isFavoriteArray[i]}
               />
             </SwiperSlide>
           );
