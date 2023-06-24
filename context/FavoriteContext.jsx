@@ -166,17 +166,39 @@ export function FavoriteContextProvider({ children }) {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setState(updatedFavorites);
   };
+  const removeFromFavorite = (recipe) => {
+    // const updatedFavorites = [...state, recipe];
+    const updatedFavorites = state.filter(
+      (currentRecipe) => currentRecipe.slug !== recipe.slug
+    );
+    console.log(
+      '🚀 ~ file: FavoriteContext.jsx:174 ~ removeFromFavorite ~ updatedFavorites:',
+      updatedFavorites
+    );
+
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    setState(updatedFavorites);
+  };
 
   const memoizedValue = useMemo(
     () => ({
       state,
       addToFavorite,
+      removeFromFavorite,
       isFetching,
       setIsFetching,
       error,
       setError,
     }),
-    [state, addToFavorite, isFetching, setIsFetching, error, setError]
+    [
+      state,
+      addToFavorite,
+      removeFromFavorite,
+      isFetching,
+      setIsFetching,
+      error,
+      setError,
+    ]
   );
 
   useEffect(() => {

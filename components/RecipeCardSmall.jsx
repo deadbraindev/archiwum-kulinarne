@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useFavoriteContext } from '../context/useFavoriteContext';
 import {
@@ -13,50 +13,28 @@ import {
 } from './RecipeUtilities';
 
 export default function RecipeCardSmall(props) {
-  const { slug, name, model, category, favorite } = props;
+  const { slug, name, model, category } = props;
+  const { addToFavorite, removeFromFavorite, state } = useFavoriteContext();
 
   const [isFavorite, setIsFavorite] = useState(checkFavorite(slug)); // sprawdzenie czy przepis jest favorite
-  const [isFavoriteProps, setIsFavoriteProps] = useState(favorite); // stan favorite przekazywane w propsach
 
   const RCSfavoriteClasses = classNames('RCSfavorite', {
-    active: isFavoriteProps,
+    active: isFavorite,
   });
 
   useEffect(() => {
-    setIsFavoriteProps(favorite);
-  }, [favorite]);
-  useEffect(() => {
-    setIsFavoriteProps(isFavorite);
-  }, [isFavorite]);
+    setIsFavorite(checkFavorite(slug));
+  }, [state]);
 
-  const { addToFavorite } = useFavoriteContext();
-
-  const handleFavoriteButton = (favName, favSlug, favCategory) => {
-    let existingFavorites = JSON.parse(localStorage.getItem('favorites'));
-    if (existingFavorites == null) existingFavorites = [];
-    const favTemp = {
-      name: favName,
-      slug: favSlug,
-      category: favCategory,
-    };
-    console.log(favTemp);
+  const handleFavoriteButton = () => {
     if (isFavorite) {
       toast('Usunięto z ulubionych!');
-      const index = existingFavorites.findIndex((fav) => fav.slug === slug);
-
-      if (index > -1) {
-        existingFavorites.splice(index, 1);
-      }
-      localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+      removeFromFavorite({ name, slug, category });
       setIsFavorite(false);
-      // setIsFavoriteProps(false);
     } else if (!isFavorite) {
       toast('Dodano do ulubionych!');
-      // existingFavorites.push(favTemp);
-      // localStorage.setItem('favorites', JSON.stringify(existingFavorites));
       addToFavorite({ name, slug, category });
       setIsFavorite(true);
-      // setIsFavoriteProps(false);
     }
   };
 
@@ -84,11 +62,11 @@ export default function RecipeCardSmall(props) {
           tabIndex={0}
           className={RCSfavoriteClasses}
           onClick={() => {
-            handleFavoriteButton(name, slug, category);
+            handleFavoriteButton();
           }}
           // aria-hidden="true"
           onKeyPress={() => {
-            handleFavoriteButton(name, slug, category);
+            handleFavoriteButton();
           }}
         >
           <svg className="RCSfavoriteHeart" viewBox="-1 -1 18 18">
@@ -101,7 +79,7 @@ export default function RecipeCardSmall(props) {
           tabIndex={-1}
           className="RCSfavorite RCSfavoriteAnimate"
           onClick={() => {
-            handleFavoriteButton(name, slug, category);
+            handleFavoriteButton();
           }}
           aria-hidden="true"
         >
