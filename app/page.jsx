@@ -46,7 +46,7 @@ import SwiperFavorite from '../components/SwiperFavorite';
 // };
 
 export default function Page() {
-  const { isFetching, state, addToFavorite } = useFavoriteContext();
+  const { isFetching } = useFavoriteContext();
   // console.log('🚀 ~ file: page.jsx:50 ~ Page ~ favoriteArray:', favoriteArray);
   // addToFavorite({
   //   name: 'Babka na parze',
@@ -58,16 +58,13 @@ export default function Page() {
   // console.log('🚀 ~ file: page.jsx:49 ~ Page ~ isFetching:', isFetching);
   // console.log('🚀 ~ file: page.jsx:49 ~ Page ~ isLoggedIn:', isLoggedIn);
 
-  const [localFavorite, setLocalFavorite] = useState('skeleton');
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const ls = JSON.parse(localStorage.getItem('favorites'));
-      setLocalFavorite(Array.isArray(ls) && ls.length > 0 ? ls : 'skeleton');
-    }
-  }, []);
-
-  console.log('🚀 ~ file: page.jsx:47 ~ Page ~ localFavorite:', localFavorite);
-  // console.log('🚀 ~ file: page.jsx:47 ~ Page ~ state:', state);
+  // const [localFavorite, setLocalFavorite] = useState('skeleton');
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined' && window.localStorage) {
+  //     const ls = JSON.parse(localStorage.getItem('favorites'));
+  //     setLocalFavorite(Array.isArray(ls) && ls.length > 0 ? ls : 'skeleton');
+  //   }
+  // }, []);
 
   const [data, setData] = useState('skeleton');
   const [isLoading, setLoading] = useState(true);

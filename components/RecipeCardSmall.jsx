@@ -29,8 +29,7 @@ export default function RecipeCardSmall(props) {
     setIsFavoriteProps(isFavorite);
   }, [isFavorite]);
 
-  const { isFetching, favoriteArray, state, addToFavorite } =
-    useFavoriteContext();
+  const { addToFavorite } = useFavoriteContext();
 
   const handleFavoriteButton = (favName, favSlug, favCategory) => {
     let existingFavorites = JSON.parse(localStorage.getItem('favorites'));
@@ -40,6 +39,7 @@ export default function RecipeCardSmall(props) {
       slug: favSlug,
       category: favCategory,
     };
+    console.log(favTemp);
     if (isFavorite) {
       toast('Usunięto z ulubionych!');
       const index = existingFavorites.findIndex((fav) => fav.slug === slug);

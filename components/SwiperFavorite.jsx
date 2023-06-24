@@ -3,35 +3,21 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
-// import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 import { useFavoriteContext } from '../context/useFavoriteContext';
-
-// import { isFavorite } from './RecipeUtilities';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
 
 export default function SwiperFavorite() {
   SwiperCore.use([Pagination]);
-  const { isFetching, favoriteArray, state, addToFavorite } =
-    useFavoriteContext();
+  const { state } = useFavoriteContext();
 
   const [favoriteCount, setFavoriteCount] = useState([]);
 
   useEffect(() => {
     setFavoriteCount(state);
   }, [state]);
-  // console.log(
-  //   '🚀 ~ file: SwiperFavorite.jsx:18 ~ favoriteArray:',
-  //   favoriteArray
-  // );
-
-  // console.log('🚀 ~ file: SwiperFavorite.jsx:18 ~ state:', state);
-
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
 
   return (
     <Swiper
@@ -68,9 +54,7 @@ export default function SwiperFavorite() {
         },
       }}
     >
-      {/* {true ? ( */}
-
-      {state === 'undefined' ? (
+      {favoriteCount === [] ? (
         <>
           <SwiperSlide>
             <RecipeCardSmallSkeleton />
@@ -89,14 +73,13 @@ export default function SwiperFavorite() {
           </SwiperSlide>
         </>
       ) : (
-        favoriteCount?.map((card) => (
+        favoriteCount.map((card) => (
           <SwiperSlide key={card.slug}>
             <RecipeCardSmall
               name={card.name}
               slug={card.slug}
               category={card.category}
               model={false}
-              // favorite={isFavoriteArray[i]}
             />
           </SwiperSlide>
         ))

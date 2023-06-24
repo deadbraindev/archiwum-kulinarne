@@ -164,9 +164,7 @@ function Navbar() {
   //   barThickness: 8,
   //   shadowBlur: 0,
   // });
-  const { isFetching, favoriteArray, state, addToFavorite } =
-    useFavoriteContext();
-  // console.log('🚀 ~ file: Navbar.jsx:168 ~ Navbar ~ state:', state);
+  const { state } = useFavoriteContext();
 
   const [favoriteCount, setFavoriteCount] = useState(0);
 
