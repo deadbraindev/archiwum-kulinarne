@@ -46,7 +46,7 @@ import SwiperFavorite from '../components/SwiperFavorite';
 // };
 
 export default function Page() {
-  const { isFetching, favoriteArray, addToFavorite } = useFavoriteContext();
+  const { isFetching, state, addToFavorite } = useFavoriteContext();
   // console.log('🚀 ~ file: page.jsx:50 ~ Page ~ favoriteArray:', favoriteArray);
   // addToFavorite({
   //   name: 'Babka na parze',
@@ -258,15 +258,18 @@ export default function Page() {
       {/* <JobCard /> */}
       <section className="recentlyAdded">
         <h2 className="swiperName">twoje ulubione:</h2>
-        <div className="swiperContainer">
+        {/* <div className="swiperContainer">
           <SwiperContainer cards={localFavorite} />
         </div>
-        <h2 className="swiperName">twoje ulubione 2:</h2>
+        <h2 className="swiperName">twoje ulubione 2:</h2> */}
 
         <div className="swiperContainer">
-          <SwiperFavorite />
+          {isFetching ? (
+            <SwiperContainer cards="skeleton" />
+          ) : (
+            <SwiperFavorite />
+          )}
         </div>
-
         <h2 className="swiperName">ostatnio dodane przepisy:</h2>
         <div className="swiperContainer">
           {isLoading ? (

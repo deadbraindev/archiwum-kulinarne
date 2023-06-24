@@ -148,13 +148,13 @@
 import { createContext, useEffect, useState, useMemo } from 'react';
 
 export const FavoriteContext = createContext();
-export const favoriteArray = [];
+// export const favoriteArray = [];
 export const initializer = () =>
   typeof window !== 'undefined' &&
   window.localStorage &&
   JSON.parse(localStorage.getItem('favorites'))
     ? JSON.parse(localStorage.getItem('favorites'))
-    : favoriteArray;
+    : [];
 
 export function FavoriteContextProvider({ children }) {
   const [state, setState] = useState(() => initializer());
@@ -184,6 +184,7 @@ export function FavoriteContextProvider({ children }) {
     if (typeof window !== 'undefined' && window.localStorage) {
       const favorites = JSON.parse(localStorage.getItem('favorites'));
       if (favorites) {
+        setIsFetching(false);
         setState(favorites);
       }
       setError(null);

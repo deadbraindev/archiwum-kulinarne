@@ -166,6 +166,13 @@ function Navbar() {
   // });
   const { isFetching, favoriteArray, state, addToFavorite } =
     useFavoriteContext();
+  // console.log('🚀 ~ file: Navbar.jsx:168 ~ Navbar ~ state:', state);
+
+  const [favoriteCount, setFavoriteCount] = useState(0);
+
+  useEffect(() => {
+    setFavoriteCount(state.length);
+  }, [state]);
 
   return (
     <>
@@ -222,7 +229,7 @@ function Navbar() {
             </li>
             <li>
               <Link href="ulubione" className="navLink" onClick={handleNavLink}>
-                ulubione {typeof window !== 'undefined' ? state.length : null}
+                ulubione {favoriteCount}
               </Link>
             </li>
             <li className="navSearch">

@@ -16,6 +16,12 @@ export default function SwiperFavorite() {
   SwiperCore.use([Pagination]);
   const { isFetching, favoriteArray, state, addToFavorite } =
     useFavoriteContext();
+
+  const [favoriteCount, setFavoriteCount] = useState([]);
+
+  useEffect(() => {
+    setFavoriteCount(state);
+  }, [state]);
   // console.log(
   //   '🚀 ~ file: SwiperFavorite.jsx:18 ~ favoriteArray:',
   //   favoriteArray
@@ -83,23 +89,17 @@ export default function SwiperFavorite() {
           </SwiperSlide>
         </>
       ) : (
-        state?.map((card, i) => {
-          const slug =
-            typeof card.slug === 'string' ? card.slug : card.slug?.slugCurrent;
-
-          return (
-            <SwiperSlide key={slug}>
-              <RecipeCardSmall
-                name={card.name}
-                slug={slug}
-                // key={card.slug}
-                category={card.category}
-                model={false}
-                // favorite={isFavoriteArray[i]}
-              />
-            </SwiperSlide>
-          );
-        })
+        favoriteCount?.map((card) => (
+          <SwiperSlide key={card.slug}>
+            <RecipeCardSmall
+              name={card.name}
+              slug={card.slug}
+              category={card.category}
+              model={false}
+              // favorite={isFavoriteArray[i]}
+            />
+          </SwiperSlide>
+        ))
       )}
     </Swiper>
   );
