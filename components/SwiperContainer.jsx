@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, {
+import {
   Pagination,
   Scrollbar,
   Autoplay,
@@ -14,9 +14,9 @@ import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/effect-cards';
-import 'swiper/css/navigation';
+// import 'swiper/css/effect-fade';
+// import 'swiper/css/effect-cards';
+// import 'swiper/css/navigation';
 
 // import 'swiper/effect-fade.min.css';
 // import 'swiper/css/scrollbar';

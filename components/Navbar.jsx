@@ -80,17 +80,17 @@ function Navbar() {
   const windowWidth = useWindowWidth();
 
   // !!debug
-  const [color, setColor] = useState('');
+  // const [color, setColor] = useState('');
 
-  const techinfo = () => {
-    if (currentDevice.isMobile()) setColor(`mobile, width:${windowWidth}px`);
-    else if (currentDevice.isDesktop())
-      setColor(`desktop, width:${windowWidth}px`);
-  };
+  // const techinfo = () => {
+  //   if (currentDevice.isMobile()) setColor(`mobile, width:${windowWidth}px`);
+  //   else if (currentDevice.isDesktop())
+  //     setColor(`desktop, width:${windowWidth}px`);
+  // };
 
-  useEffect(() => {
-    techinfo();
-  }, [windowWidth]);
+  // useEffect(() => {
+  //   techinfo();
+  // }, [windowWidth]);
   // !!debug
 
   // LOCAL STORAGE COUNTER
