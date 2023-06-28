@@ -115,7 +115,7 @@ export default async function handler(req, res) {
             const page = req.query.page
               ? Math.max(parseInt(req.query.page, 10) - 1, 0)
               : 0;
-            const perPage = 24;
+            const perPage = 12;
             const allPages = Math.ceil(countAllRecipes / perPage - 1);
             const skip = perPage * page;
             query.push({ $skip: skip }, { $limit: perPage }); // paginacja
