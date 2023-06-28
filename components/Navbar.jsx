@@ -217,7 +217,11 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="ulubione" className="navLink" onClick={handleNavLink}>
+              <Link
+                href="/ulubione"
+                className="navLink"
+                onClick={handleNavLink}
+              >
                 ulubione({favoriteCount})
               </Link>
             </li>
