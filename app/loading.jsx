@@ -14,7 +14,7 @@ export default function Loading() {
   return (
     <>
       <TopBarProgress />
-      {/* <p>loading</p> */}
+      <p>loading</p>
     </>
   );
 }
