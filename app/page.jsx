@@ -24,9 +24,7 @@ export default function Page() {
   useEffect(() => {
     setLoading(true);
 
-    fetch(
-      'https://archiwum-kulinarne.vercel.app/api/recipes/lastadded?category=lody'
-    )
+    fetch('https://archiwum-kulinarne.vercel.app/api/recipes/lastadded')
       .then((res) => {
         if (res.ok) {
           return res.json();

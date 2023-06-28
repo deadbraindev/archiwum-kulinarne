@@ -112,7 +112,7 @@ export default async function RecipeCard({ slug }) {
         </div>
         <SwiperContainer
           cards={lastAdded}
-          title="ostatnio dodane w tej kategorii:"
+          title="ostatnio dodane w tej kategorii"
         />
       </>
     );

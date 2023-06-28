@@ -1,28 +1,55 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination } from 'swiper';
+import SwiperCore, {
+  Pagination,
+  Scrollbar,
+  Autoplay,
+  A11y,
+  EffectCards,
+  Controller,
+  Navigation,
+} from 'swiper';
 import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/effect-cards';
+import 'swiper/css/navigation';
+
+// import 'swiper/effect-fade.min.css';
+// import 'swiper/css/scrollbar';
 
 export default function SwiperContainer(props) {
-  SwiperCore.use([Pagination]);
+  // SwiperCore.use([Pagination]);
 
   const { cards, title } = props;
-  console.log(cards.length, cards.length < 1);
   return (
     <>
       <h2 className="swiperName">{title}:</h2>
       <div className="swiperContainer">
         <Swiper
+          modules={[
+            Pagination,
+            Scrollbar,
+            Autoplay,
+            A11y,
+            Controller,
+            EffectCards,
+            Navigation,
+          ]}
+          // navigation
+          loop
+          // effect="cards"
           // centeredSlides
           grabCursor
           spaceBetween={8}
-          rewind
+          // rewind
           // initialSlide={1}
           // autoHeight
+          // Autoplay
+          // scrollbar={{ draggable: true }}
           height={330}
           pagination={{
             clickable: true,

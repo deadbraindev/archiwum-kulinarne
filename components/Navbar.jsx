@@ -157,17 +157,8 @@ function Navbar() {
     // inputRefFocus.current.fucus();
   };
 
-  // TopBarProgress.config({
-  //   barColors: {
-  //     0: '#ffce06',
-  //   },
-  //   barThickness: 8,
-  //   shadowBlur: 0,
-  // });
   const { state } = useFavoriteContext();
-
   const [favoriteCount, setFavoriteCount] = useState(0);
-
   useEffect(() => {
     setFavoriteCount(state.length);
   }, [state]);
@@ -227,7 +218,7 @@ function Navbar() {
             </li>
             <li>
               <Link href="ulubione" className="navLink" onClick={handleNavLink}>
-                ulubione {favoriteCount}
+                ulubione({favoriteCount})
               </Link>
             </li>
             <li className="navSearch">
@@ -278,22 +269,6 @@ function Navbar() {
             </>
           )} */}
           </ul>
-
-          {/* //*DEV INFO */}
-          <p
-            style={{
-              position: 'absolute',
-              margin: '0',
-              fontSize: '14px',
-              top: 0,
-              right: 0,
-              opacity: '0.2',
-            }}
-          >
-            {color}
-            {/* width: {windowWidth}, orientation: {String(orientation)}, mobile:{' '}
-            {String(isTabletOrMobile)}, scrollbar: {scrollBarWidth}px */}
-          </p>
         </nav>
       </header>
     </>
