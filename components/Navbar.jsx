@@ -59,9 +59,9 @@ function Navbar() {
       paramSearchValidator(input) &&
       paramCategoryValidator(paramCategory)
     ) {
-      router.push(`przepisy?kategoria=${paramCategory}&szukaj=${input}`);
+      router.push(`/przepisy?kategoria=${paramCategory}&szukaj=${input}`);
     } else {
-      router.push(`przepisy?szukaj=${input}`);
+      router.push(`/przepisy?szukaj=${input}`);
     }
   };
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
