@@ -1,9 +1,11 @@
+'use client';
+
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import React, { useState } from 'react';
-
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
+import { useFavoriteContext } from '../context/useFavoriteContext';
 import {
   categoryHeaderColorPicker,
   categorySvgPicker,
@@ -12,36 +14,32 @@ import {
 
 export default function RecipeCardSmall(props) {
   const { slug, name, model, category } = props;
-  const [isFavorite, setIsFavorite] = useState(checkFavorite(slug));
-  const RCSfavoriteClasses = classNames('RCSfavorite', { active: isFavorite });
-  const handleFavoriteButton = (favName, favSlug, favCategory) => {
-    let existingFavorites = JSON.parse(localStorage.getItem('favorites'));
-    if (existingFavorites == null) existingFavorites = [];
-    const favTemp = {
-      name: favName,
-      slug: favSlug,
-      category: favCategory,
-    };
+  const { addToFavorite, removeFromFavorite, state } = useFavoriteContext();
+
+  const [isFavorite, setIsFavorite] = useState(checkFavorite(slug)); // sprawdzenie czy przepis jest favorite
+
+  const RCSfavoriteClasses = classNames('RCSfavorite', {
+    active: isFavorite,
+  });
+
+  useEffect(() => {
+    setIsFavorite(checkFavorite(slug));
+  }, [state]);
+
+  const handleFavoriteButton = () => {
     if (isFavorite) {
       toast('Usunięto z ulubionych!');
-      const index = existingFavorites.findIndex((fav) => fav.slug === slug);
-
-      if (index > -1) {
-        existingFavorites.splice(index, 1);
-      }
-      localStorage.setItem('favorites', JSON.stringify(existingFavorites));
-
+      removeFromFavorite({ name, slug, category });
       setIsFavorite(false);
     } else if (!isFavorite) {
       toast('Dodano do ulubionych!');
-      existingFavorites.push(favTemp);
-      localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+      addToFavorite({ name, slug, category });
       setIsFavorite(true);
     }
   };
 
   return (
-    <div className={`RCS `}>
+    <div className="RCS">
       {model ? (
         <>
           <div className={`RCSimg ${categoryHeaderColorPicker(category)}`}>
@@ -64,11 +62,11 @@ export default function RecipeCardSmall(props) {
           tabIndex={0}
           className={RCSfavoriteClasses}
           onClick={() => {
-            handleFavoriteButton(name, slug, category);
+            handleFavoriteButton();
           }}
           // aria-hidden="true"
           onKeyPress={() => {
-            handleFavoriteButton(name, slug, category);
+            handleFavoriteButton();
           }}
         >
           <svg className="RCSfavoriteHeart" viewBox="-1 -1 18 18">
@@ -81,7 +79,7 @@ export default function RecipeCardSmall(props) {
           tabIndex={-1}
           className="RCSfavorite RCSfavoriteAnimate"
           onClick={() => {
-            handleFavoriteButton(name, slug, category);
+            handleFavoriteButton();
           }}
           aria-hidden="true"
         >

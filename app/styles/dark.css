@@ -1,0 +1,635 @@
+
+/*! ============================================================================================================================== */
+/*? ============================================================================================================================== */
+/*? darkmode */
+@media (prefers-color-scheme: dark) {
+    /* tab focus styling */
+    .navLink:focus-visible, 
+    .navLogo:focus-visible, 
+    .searchInput:focus-visible,
+    .navHamburger:focus-visible,
+    .RCSlink:focus-visible,
+    .paginationButton:focus-visible,
+    .RCcategoryLink:focus-visible,
+    .footerLink:focus-visible,
+    .footerSocialLink:focus-visible,
+    .footerHomeLink:focus-visible {
+      outline: 3px solid var(--dark-color-focus);
+      font-weight: bold;
+      background-color: var(--dark-color-background-primary);
+      color: var(--dark-color-focus);
+    }
+    .searchButton:focus-visible,
+    .searchInputClear:focus-visible,
+    .categoryButton:focus-visible,
+    .categoryClear:focus-visible,
+    .categoryVisibilityButton:focus-visible {
+      background-color: var(--dark-color-focus);
+      outline: none;
+      color: var(--dark-color-background-primary);
+      font-weight: bold;
+    }
+    .RCSlink:focus-visible .RCSname {
+      color: var(--dark-color-focus);
+      font-weight: bold;
+      text-decoration:underline;
+    }
+    .RCSfavorite:focus-visible svg {
+      stroke: var(--dark-color-focus);
+      fill: var(--dark-color-focus);
+      outline: none;
+    }
+    .RCSfavorite:focus-visible {
+      outline: none;
+    }
+    .RCSfavorite:focus-visible ~ .RCSfavorite.RCSfavoriteAnimate svg{
+      stroke: var(--dark-color-focus);
+      stroke-width: 2px;
+    }
+    .paginationButton:focus-visible svg,
+    .RCbuttonPrev:focus-visible svg {
+      fill: var(--dark-color-focus);
+    }
+    .paginationSearchInput:focus-visible {
+      border: none;
+      outline: 3px solid var(--dark-color-focus);
+      color: var(--dark-color-focus);
+      font-weight: bold;
+      background-color: var(--dark-color-background-secodary);
+    }
+    .RCbuttonPrev:focus-visible {
+      outline: 3px solid var(--dark-color-focus);
+    }
+  
+    /* --------------- */
+  
+  
+    .navLink:focus:not(:focus-visible), 
+    .navLogo:focus:not(:focus-visible), 
+    .searchInput:focus:not(:focus-visible),
+    .navHamburger:focus:not(:focus-visible),
+    .categoryButton:focus:not(:focus-visible),
+    .RCSlink:focus:not(:focus-visible),
+    .RCcategoryLink:focus:not(:focus-visible) {
+      outline: none;
+      font-weight: bold;
+      background-color: transparent;
+      color: var(--dark-color-font-primary);
+    }
+    .searchButton:focus:not(:focus-visible) {
+      background-color: var(--dark-color-main-yellow);
+    }
+    .searchInputClear:focus:not(:focus-visible),
+    .categoryClear:focus:not(:focus-visible) {
+      background-color: var(--dark-color-main-red);
+    }
+    .searchInputClear:focus svg,
+    .searchButton:focus svg,
+    .categoryClear:focus svg {
+      fill: var(--dark-color-background-primary);
+    }
+    .RCSlink:focus:not(:focus-visible) .RCSname {
+      outline: none;
+      color: var(--dark-color-font-primary);
+      font-weight: bold;
+      text-decoration:underline;
+    }
+    .RCSfavorite:focus:not(:focus-visible) svg{
+      stroke: var(--dark-color-main-red);
+      fill: transparent;
+      outline: none;
+    }
+    .RCSfavorite:focus:not(:focus-visible) ~ .RCSfavorite.RCSfavoriteAnimate svg{
+      fill: var(--dark-color-main-red);
+    }
+    /* end tab focus styling */
+  
+  
+  
+    body {
+      background-color: var(--dark-color-background-primary);
+    }
+    ::selection {
+      background: var(--dark-color-main-selection-gray);
+    }
+    .react-loading-skeleton {
+      background-color: var(--dark-color-skeleton-primary) !important;
+    }
+    .Toastify__toast-body {
+      color: var(--dark-color-font-primary);
+    }
+    .Toastify__toast-theme--light {
+      background: var(--dark-color-background-RCS) !important;
+    }
+    .Toastify__toast {
+      border: 1px solid var(--dark-color-border);
+      border-radius: 0 !important;
+    }
+    .Toastify__progress-bar-theme--light {
+      background: var(--dark-color-category-preserves) !important;
+    }
+    .navBar {
+      border-bottom: 1px solid var(--dark-color-border);
+    }
+    .navBar:hover {
+      background-color: var(--dark-color-background-primary);
+    }
+    .navList {
+      background-color: var(--dark-color-background-primary);
+    }
+    .navList li {
+      background-color: var(--dark-color-background-primary);
+      border-bottom: 1px solid var(--dark-color-border);
+    }
+    .navList li:first-child {
+      border-top: 1px solid var(--dark-color-border);
+    }
+    .navLink {
+      color: var(--dark-color-font-secondary);
+    }
+    .navLink:hover {
+      background-color: var(--dark-color-background-primary);
+      color: var(--dark-color-font-primary);
+    }
+    .navLogo {
+      color: var(--dark-color-font-primary);
+      text-decoration-color: var(--dark-color-main-yellow);
+    }
+    input[type="text"] {
+      color: var(--dark-color-font-secondary);
+    }
+    .searchInput::placeholder {
+      color: var(--dark-color-font-secondary);
+    }
+    .searchInput::-webkit-input-placeholder {
+      color: var(--dark-color-font-secondary);
+    }
+    .searchInput::-moz-placeholder {
+      color: var(--dark-color-font-secondary);
+    }
+    .searchInput::-ms-input-placeholder {
+      color: var(--dark-color-font-secondary);
+    }
+    .searchButton:hover {
+      background-color: var(--dark-color-main-yellow);
+    }
+    .searchButton svg {
+      fill: var(--dark-color-font-secondary);
+    }
+    .searchInputClear {
+      color: var(--dark-color-font-secondary);
+    }
+    .searchInputClear:hover {
+      background-color: var(--dark-color-main-red);
+    }
+    .searchInputClear svg {
+      fill: var(--dark-color-font-secondary);
+    }
+    .searchInputClear:hover svg,
+    .searchInputClear:focus svg,
+    .searchButton:hover svg,
+    .searchButton:focus svg {
+      fill: var(--dark-color-background-primary);
+    }
+    .navHamburger {
+      border: 1px solid var(--dark-color-font-primary);
+    }
+    .navHamburger:hover {
+      background-color: var(--dark-color-background-secodary);
+    }
+    .navHamburger .hamburgerLine {
+      background-color: var(--dark-color-font-primary);
+    }
+    .categoryButton {
+      background-color: var(--dark-color-background-primary);
+      border: 1px solid var(--dark-color-border);
+      color: var(--dark-color-font-primary);
+    }
+    .categoryButton.active {
+      border-color: var(--dark-color-font-primary);
+      color: var(--dark-color-font-secondary);
+    }
+    .categoryButton.active .categoryIcon {
+      --mask: conic-gradient(from -115deg at right,#0000,#000 1deg 49deg,#0000 50deg) 50%/100% 9.33px;
+      -webkit-mask: var(--mask);
+      mask: var(--mask);
+    }
+    .categoryButton:hover .categoryIcon {
+      --mask: conic-gradient(from -115deg at right,#0000,#000 1deg 49deg,#0000 50deg) 50%/100% 9.33px;
+      -webkit-mask: var(--mask);
+      mask: var(--mask);
+    }
+    .categoryButton:active, .categoryButton:hover {
+      background-color: var(--dark-color-background-secodary);
+      color: var(--dark-color-font-primary);
+      border-color: var(--dark-color-font-primary);
+    }
+    .categoryVisibilityButton {
+      border: 1px solid var(--dark-color-border);
+      background-color: var(--dark-color-background-primary);
+      color: var(--dark-color-font-secondary);
+    }
+    .categoryVisibilityButton:hover {
+      background-color: var(--dark-color-background-secodary);
+      color: var(--dark-color-font-primary);
+      border-color: var(--dark-color-font-primary);
+    }
+    .categoryVisibilityButton:focus {
+      color: var(--dark-color-font-primary);
+    }
+    .categoryClear svg {
+      fill: var(--dark-color-font-secondary);
+    }
+    .categoryClear:hover, .categoryClear:active {
+      background-color: var(--dark-color-main-red);
+    }
+    .categoryClear:hover svg, .categoryClear:active svg {
+      fill: var(--dark-color-background-primary);
+    }
+    .heroPattern svg {
+      background-color: var(--dark-color-background-primary);
+    }
+    .heroPattern {
+      background-color: var(--dark-color-background-primary);
+      background-image: radial-gradient(var(--dark-color-background-secodary) 1.3px, var(--dark-color-background-primary) 1.3px);
+      background-size: 12px 12px;
+    }
+    .heroText {
+      color: var(--dark-color-font-primary);
+    }
+    .heroText {
+      background-color: var(--dark-color-background-primary);
+    }
+    .heroLink {
+      background-color: var(--dark-color-main-lightwhite);
+      color: var(--dark-color-font-primary);
+      border: 1px solid var(--dark-color-border);
+    }
+    .heroLink:hover {
+      border: 2px solid var(--dark-color-border);
+    }
+    .content {
+      background-color: var(--dark-color-background-primary);
+    }
+    .container {
+      background-color: var(--dark-color-background-primary);
+    }
+    .cake {
+      background-color: var(--dark-color-category-cake);
+    }
+    .cakesvg {
+      fill: var(--dark-color-category-cake-second);
+    }
+    .drink {
+      background-color: var(--dark-color-category-drink);
+    }
+    .drinksvg {
+      fill: var(--dark-color-category-drink-second);
+    }
+    .fastfood {
+      background-color: var(--dark-color-category-fastood);
+    }
+    .fastfoodsvg {
+      fill: var(--dark-color-category-fastood-second);
+    }
+    .icecream {
+      background-color: var(--dark-color-category-icecream);
+    }
+    .icecreamsvg {
+      fill: var(--dark-color-category-icecream-second);
+    }
+    .lunch {
+      background-color: var(--dark-color-category-lunch);
+    }
+    .lunchsvg {
+      fill: var(--dark-color-category-lunch-second);
+    }
+    .preserves {
+      background-color: var(--dark-color-category-preserves);
+    }
+    .preservessvg {
+      fill: var(--dark-color-category-preserves-second);
+    }
+    .fish {
+      background-color: var(--dark-color-category-fish);
+    }
+    .fishsvg {
+      fill: var(--dark-color-category-fish-second);
+    }
+    .salad {
+      background-color: var(--dark-color-category-salad);
+    }
+    .saladsvg {
+      fill: var(--dark-color-category-salad-second);
+    }
+    .snack {
+      background-color: var(--dark-color-category-snack);
+    }
+    .snacksvg {
+      fill: var(--dark-color-category-snack-second);
+    }
+    .juice {
+      background-color: var(--dark-color-category-juice);
+    }
+    .juicesvg {
+      fill: var(--dark-color-category-juice-second);
+    }
+    .default {
+      background-color: var(--dark-color-category-default);
+    }
+    .defaultsvg {
+      fill: var(--dark-color-category-default-second);
+    }
+    .skeletonLight {
+      background-color: var(--dark-color-skeleton-secondary);
+    }
+    .skeleton {
+      background-color: var(--dark-color-skeleton-primary);
+    }
+    .RCS {
+      background-color: var(--dark-color-background-RCS);
+      border: 1px solid var(--dark-color-border);
+    }
+    .RCS:hover .RCSname {
+      text-decoration: underline solid var(--dark-color-font-primary);
+      color: var(--dark-color-font-primary);
+      border-color: var(--dark-color-font-primary);
+    }
+    .RCS:hover {
+      border-color: var(--dark-color-font-primary);
+    }
+    .RCSlink {
+      color: var(--dark-color-font-secondary);
+    }
+    .RCSname {
+      border-bottom: 1px solid var(--dark-color-border);
+    }
+    .RCSfavoriteHeart {
+      stroke: var(--dark-color-font-secondary);
+    }
+    .RCSfavorite ~.RCSfavorite.RCSfavoriteAnimate {
+      fill: var(--dark-color-main-red);
+    }
+    .RCSfavorite.RCSfavoriteAnimate {
+      stroke: var(--dark-color-main-red);
+    }
+    .RCSfavorite:hover svg {
+      stroke: var(--dark-color-main-red);
+    }
+    .RCSfavorite.active > svg {
+      stroke: var(--dark-color-main-red);
+    }
+    .RCSfavorite.active ~ .RCSfavorite.RCSfavoriteAnimate {
+      stroke: var(--dark-color-main-red);
+    }
+    .RCSdesc {
+      color: var(--dark-color-font-secondary);
+      fill: var(--dark-color-font-secondary);
+    }
+    .pagination {
+      color: var(--dark-color-font-secondary);
+    }
+    .paginationButton:disabled .paginationIcon, .paginationButton:disabled{
+      fill: var(--dark-color-disabled);
+    }
+    .paginationNext svg, .paginationPrev svg {
+      fill: var(--dark-color-font-secondary);
+    }
+    .paginationPrev > .paginationButton:not(:disabled):hover svg {
+      fill: var(--dark-color-font-primary);
+    }
+    .paginationNext > .paginationButton:not(:disabled):hover svg {
+      fill: var(--dark-color-font-primary);
+    }
+    .paginationIcon {
+      fill: var(--dark-color-font-primary);
+    }
+    .paginationSearchInput {
+      border: 1px solid var(--dark-color-border);
+      color: var(--dark-color-font-secondary);
+    }
+    .paginationSearchInput:hover {
+      background-color: var(--dark-color-background-secodary);
+      color: var(--dark-color-font-primary);
+    }
+    .RCcategoryLink {
+      color: var(--dark-color-font-secondary);
+    }
+    .RCcategoryLink:hover {
+      color: var(--dark-color-font-primary);
+    }
+    .RCcategorySeparator {
+      color: var(--dark-color-font-secondary);
+    }
+    .RCname {
+      color: var(--dark-color-font-RCS);
+    }
+    .RCimageContainer {
+      background-color: var(--dark-color-background-primary);
+      background-image: repeating-linear-gradient(45deg, var(--dark-color-disabled) 0, var(--dark-color-disabled) 1.1px, var(--dark-color-background-primary) 0, var(--dark-color-background-primary) 50%);
+    }
+    .RCimage { 
+      border: 1px solid var(--dark-color-border);
+    }
+    .RCstage {
+      color: var(--dark-color-font-secondary);
+    }
+    .RCstagePreparing, .RCstageIngredients, .RCstageTitle {
+      color: var(--dark-color-font-secondary);
+    }
+    .RCstageTitle {
+      border-bottom: 2px solid var(--dark-color-border);
+    }
+    .RCstageIngredients, .RCstagePreparing {
+      border-bottom: 1px solid var(--dark-color-border);
+    }
+    .RCingredientsList li {
+      border-bottom: 1px dashed var(--dark-color-border);
+    }
+    .swiperName {
+      color: var(--dark-color-font-primary);
+    }
+    .swiper-pagination > .swiper-pagination-bullet {
+      border: 1px solid var(--dark-color-border);
+    }
+    .swiper-pagination > .swiper-pagination-bullet-active {
+      background-color: var(--dark-color-border);
+    }
+    .footer {
+      border-top: 1px solid var(--dark-color-border);
+      background-color: var(--dark-color-background-primary);
+      color: var(--dark-color-font-primary);
+    }
+    .footerLink {
+      background-color: var(--dark-color-background-primary);
+      color: var(--dark-color-font-primary);
+    }
+    .footerLink:hover, .footerHomeLink:hover {
+      border: 1px solid var(--dark-color-border);
+    }
+    .footerCopyright span {
+      background-color: var(--dark-color-background-primary);
+    }
+    .footerInfo p {
+      background-color: var(--dark-color-background-primary);
+    }
+    .footerHomeLink {
+      color: var(--dark-color-font-primary);
+    }
+    .footerSocialLink {
+      color: var(--dark-color-font-primary);
+    }
+    .footerSocialLink:hover {
+      border: 1px solid var(--dark-color-border);
+      border-bottom: 2px solid var(--dark-color-border);
+    }
+    .themeButton {
+      background-color: var(--dark-color-background-primary);
+      border: 1px solid var(--dark-color-border);
+      background-color: var(--dark-color-background-primary);
+      color: var(--dark-color-font-primary);
+    }
+    .themeButton:hover {
+      background-color: var(--dark-color-background-secodary);
+    }
+  }
+  @media screen and (min-width: 900px) and (prefers-color-scheme: dark) {
+    .RCimageContainer {
+      background-color: var(--dark-color-background-primary);
+      background-size: 11px 11px;
+      background-image: repeating-linear-gradient(45deg, var(--dark-color-disabled) 0, var(--dark-color-disabled) 1.1px, var(--dark-color-background-primary) 0, var(--dark-color-background-primary) 50%);
+  
+    }
+    .RCimage {
+      background-color: var(--dark-color-background-primary);
+    }
+    .RCimage:hover {
+      transform: translate(0, -6px);
+      box-shadow: var(--dark-color-skeleton-primary) 0 6px;
+    }
+    .RCimage:focus {
+      outline: 3px solid var(--dark-color-focus);
+    }
+    .heroPattern {
+      background-color: var(--dark-color-background-primary);
+      background-image: radial-gradient(var(--dark-color-background-secodary) 1.4px, var(--dark-color-background-primary) 1.4px);
+    }
+    .searchInputClear:hover {
+      background-color: var(--dark-color-main-red);
+    }
+    .searchButton svg, .searchInputClear svg {
+      fill: var(--dark-color-font-secondary);
+    }
+    .searchButton:hover svg,
+    .searchInputClear:hover svg,
+    .searchButton:focus svg,
+    .searchInputClear:focus svg {
+      fill: var(--dark-color-background-primary);
+    }
+    .recipesContainer, .RCcategoryPadding {
+      padding: 0 25px;
+    }
+    .navList {
+      background-color: transparent;
+    }
+    .navList li, .navList li:first-child {
+      border: none;
+      background-color: transparent;
+    }
+    .navLink:hover {
+      color: var(--dark-color-font-primary);
+    }
+    .navLink.active {
+      color: var(--dark-color-font-primary);
+    }
+    .navLink {
+      color: var(--dark-color-font-secondary);
+    }
+    .searchInput {
+      border: 1px solid var(--dark-color-border);
+    }
+    .searchInput:hover {
+      background-color: var(--dark-color-background-primary);
+      color: var(--dark-color-font-primary);
+  
+    }
+    .searchInput:hover::placeholder {
+      color: var(--dark-color-font-primary);
+    }
+    .categoryButton {
+      border: 1px solid var(--dark-color-border);
+    }
+  }
+  
+  /*! ============================================================================================================================== */
+  /*? ============================================================================================================================== */
+  /*? desktop */
+  @media screen and (min-width: 1200px) and (prefers-color-scheme: dark) {
+    .recipesContainer, .RCcategoryPadding {
+      padding: 0 35px;
+    }
+    .RCimageContainer {
+      gap: 20px;
+    }
+    .hero {
+      position: relative;
+      min-height: 550px;
+      max-height: 660px;
+      max-width: 650px;
+    }
+    .heroPattern {
+      margin-left: 5em;
+      margin-top: 3.6em;
+    }
+    nav {
+      position: relative;
+      margin: 0 auto;
+      max-width: 80em;
+    }
+    .swiperContainer {
+      padding: 0 20px;
+    }
+    .container {
+      overflow: visible;
+      margin-top: 1em;
+      padding: 1em 0;
+      max-width: 80em;
+    }
+    .RCS {
+      transition: all 100ms ease;
+    }
+    .cardContainer {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1em;
+    }
+    .RCS:hover {
+      transform: translate(0, -6px);
+      box-shadow: var(--dark-color-disabled) 0 6px;
+    }
+    .swiper-wrapper {
+      padding-top: 6px;
+    }
+  }
+  /*! ============================================================================================================================== */
+  /*? ============================================================================================================================== */
+  /*? big desktop */
+  @media screen and (min-width: 1800px) and (prefers-color-scheme: dark) {
+    .navList {
+      font-size: 2.3em;
+    }
+    nav {
+      max-width: 90em;
+    }
+    .container {
+      max-width: 90em;
+    }
+    .recipesContainer, .RCcategoryPadding {
+      padding: 0 40px;
+    }
+    .cardContainer {    
+      gap: 1.8em;
+    }
+    .RCS {
+      max-width: 22em;
+    }
+  }

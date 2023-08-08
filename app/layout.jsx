@@ -7,19 +7,21 @@ import Navbar from '../components/Navbar';
 // import styles from './styles/Homepage.module.css';
 import './styles/globals.css';
 import Footer from '../components/Footer';
+import { FavoriteContextProvider } from '../context/FavoriteContext';
 
 export const metadata = {
   // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
   metadataBase: new URL('https://archiwum-kulinarne.vercel.app'),
   title: {
-    default: 'archiwum kulinarne',
+    default: 'strona główna | archiwum kulinarne',
     template: '%s | archiwum kulinarne',
   },
   description: 'zdigitalizowane rodzinne przepisy kulinarne',
 
   // OG
   openGraph: {
-    title: 'archiwum kulinarne',
+    // title: 'archiwum kulinarne',
+    title: 'strona główna',
     siteName: 'archiwum kulinarne SITE NAME?',
     url: '/',
     images: [
@@ -42,7 +44,8 @@ export const metadata = {
   },
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#fff' },
-    { media: '(prefers-color-scheme: dark)', color: '#000' },
+    { media: '(prefers-color-scheme: dark)', color: '#fff' },
+    // { media: '(prefers-color-scheme: dark)', color: '#000' },
   ],
   appleWebApp: {
     title: 'archiwum kulinarne',
@@ -187,22 +190,28 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl-PL">
       <head>
-        <script
+        {/* <script
           defer
           src="https://unpkg.com/@tinybirdco/flock.js"
           data-host="https://api.tinybird.co"
           data-token="p.eyJ1IjogIjRjY2ExZjljLTUzNDMtNDdjNi1hZmJjLTMzNDM4MDBhMDQ3YiIsICJpZCI6ICJhMGI0M2FiYy1mZmFlLTQ5OWMtODIxMi1iZTQzOTdkZGY0ZTUifQ.PhICNSFU8HzrBi5c_WUguXnt723ocTlz6_i0e1V5MmM"
-        />
+        /> */}
+        {/* <link
+          rel="stylesheet"
+          href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+        /> */}
       </head>
       <body>
-        <div className="content">
-          <Navbar />
-          <div className="container">
-            <ReactQueryWrapper>{children}</ReactQueryWrapper>
+        <FavoriteContextProvider>
+          <div className="content">
+            <Navbar />
+            <div className="container">
+              <ReactQueryWrapper>{children}</ReactQueryWrapper>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-        {/* <Analytics /> */}
+          {/* <Analytics /> */}
+        </FavoriteContextProvider>
       </body>
     </html>
   );

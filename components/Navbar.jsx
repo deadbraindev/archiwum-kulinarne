@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import { ToastContainer, Slide } from 'react-toastify';
 import useMobileDetect from '../lib/useMobileDetect';
 import 'react-toastify/dist/ReactToastify.css';
+import { useFavoriteContext } from '../context/useFavoriteContext';
 
 // import Skeleton from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
@@ -58,9 +59,9 @@ function Navbar() {
       paramSearchValidator(input) &&
       paramCategoryValidator(paramCategory)
     ) {
-      router.push(`przepisy?kategoria=${paramCategory}&szukaj=${input}`);
+      router.push(`/przepisy?kategoria=${paramCategory}&szukaj=${input}`);
     } else {
-      router.push(`przepisy?szukaj=${input}`);
+      router.push(`/przepisy?szukaj=${input}`);
     }
   };
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
@@ -79,18 +80,27 @@ function Navbar() {
   const windowWidth = useWindowWidth();
 
   // !!debug
-  const [color, setColor] = useState('');
+  // const [color, setColor] = useState('');
 
-  const techinfo = () => {
-    if (currentDevice.isMobile()) setColor(`mobile, width:${windowWidth}px`);
-    else if (currentDevice.isDesktop())
-      setColor(`desktop, width:${windowWidth}px`);
-  };
+  // const techinfo = () => {
+  //   if (currentDevice.isMobile()) setColor(`mobile, width:${windowWidth}px`);
+  //   else if (currentDevice.isDesktop())
+  //     setColor(`desktop, width:${windowWidth}px`);
+  // };
 
-  useEffect(() => {
-    techinfo();
-  }, [windowWidth]);
+  // useEffect(() => {
+  //   techinfo();
+  // }, [windowWidth]);
   // !!debug
+
+  // LOCAL STORAGE COUNTER
+
+  // const [localFavorite, setLocalFavorite] = useState([]);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined' && window.localStorage)
+  //     setLocalFavorite(JSON.parse(localStorage.getItem('favorites')));
+  // }, []);
+  // end LOCAL STORAGE COUNTER
 
   // const { logout } = useLogout();
   // const { login } = useLogin();
@@ -147,13 +157,11 @@ function Navbar() {
     // inputRefFocus.current.fucus();
   };
 
-  // TopBarProgress.config({
-  //   barColors: {
-  //     0: '#ffce06',
-  //   },
-  //   barThickness: 8,
-  //   shadowBlur: 0,
-  // });
+  const { state } = useFavoriteContext();
+  const [favoriteCount, setFavoriteCount] = useState(0);
+  useEffect(() => {
+    setFavoriteCount(state.length);
+  }, [state]);
 
   return (
     <>
@@ -209,8 +217,12 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="ulubione" className="navLink" onClick={handleNavLink}>
-                ulubione
+              <Link
+                href="/ulubione"
+                className="navLink"
+                onClick={handleNavLink}
+              >
+                ulubione({favoriteCount})
               </Link>
             </li>
             <li className="navSearch">
@@ -261,22 +273,6 @@ function Navbar() {
             </>
           )} */}
           </ul>
-
-          {/* //*DEV INFO */}
-          <p
-            style={{
-              position: 'absolute',
-              margin: '0',
-              fontSize: '14px',
-              top: 0,
-              right: 0,
-              opacity: '0.2',
-            }}
-          >
-            {color}
-            {/* width: {windowWidth}, orientation: {String(orientation)}, mobile:{' '}
-            {String(isTabletOrMobile)}, scrollbar: {scrollBarWidth}px */}
-          </p>
         </nav>
       </header>
     </>

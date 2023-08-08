@@ -2,9 +2,27 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
+// import getRecipes from '../lib/getRecipes';
+import SwiperContainer from './SwiperContainer';
+
+async function getLastAdded(category) {
+  const res = await fetch(
+    `https://archiwum-kulinarne.vercel.app/api/recipes/lastadded?category=${category}`
+  );
+  if (!res.ok) {
+    console.log(
+      `błąd wczytywania danych api/recipes/lastadded?category=${category}`
+    );
+  }
+  return res.json();
+}
 
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
+  const data = await getLastAdded(recipeData.category);
+  const lastAdded = data?.results
+    ? data.results?.tiles.map((tile) => tile.value)
+    : 'skeleton';
 
   if (recipeData.success) {
     return (
@@ -12,18 +30,18 @@ export default async function RecipeCard({ slug }) {
         <div className="RC">
           <p className="RCcategory RCcategoryPadding">
             <span className="RCcategorySeparator">{'>'}</span>
-            <Link className="RCcategoryLink" href="przepisy" scroll>
+            <Link className="RCcategoryLink" href="/przepisy" scroll>
               przepisy
             </Link>
             <span className="RCcategorySeparator">{'>'}</span>
             <Link
               className="RCcategoryLink"
-              href={`przepisy?kategoria=${recipeData.category}`}
+              href={`/przepisy?kategoria=${recipeData.category}`}
             >
               {recipeData.category}
             </Link>
             <span className="RCcategorySeparator">{'>'}</span>
-            <Link className="RCcategoryLink" href={`przepisy/${slug}`}>
+            <Link className="RCcategoryLink" href={`/przepisy/${slug}`}>
               {slug}
             </Link>
           </p>
@@ -32,7 +50,7 @@ export default async function RecipeCard({ slug }) {
               recipeData.category
             )}`}
           >
-            <Link href="/przepisy" className="RCbuttonPrev" type="button">
+            {/* <Link href="/przepisy" className="RCbuttonPrev" type="button">
               <span className="visuallyHidden">Wróć do poprzedniej strony</span>
               <svg
                 className="paginationIcon"
@@ -43,7 +61,7 @@ export default async function RecipeCard({ slug }) {
               >
                 <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
               </svg>
-            </Link>
+            </Link> */}
             <h1 className="RCname">{recipeData.name}</h1>
           </div>
 
@@ -92,6 +110,10 @@ export default async function RecipeCard({ slug }) {
           </div>
         )} */}
         </div>
+        <SwiperContainer
+          cards={lastAdded}
+          title="ostatnio dodane w tej kategorii"
+        />
       </>
     );
   }
