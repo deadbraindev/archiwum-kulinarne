@@ -8,7 +8,7 @@ export default function RecipeCardSmallSkeleton() {
       <h1 className="RCSname">
         <Skeleton
           count={1}
-          width={`${Math.random() * (90 - 40) + 40}%`}
+          width="40%"
           height="1.2rem"
           enableAnimation={false}
         />

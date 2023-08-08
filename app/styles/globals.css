@@ -181,7 +181,7 @@ span {
   
 
   /* oryginalne */
-  --color-category-cake: #F9DD6C;
+  /* --color-category-cake: #F9DD6C;
   --color-category-cake-second: #D8AB3A;
 
   --color-category-drink-second: #3983DD;
@@ -212,8 +212,45 @@ span {
   --color-category-juice-second: #996180;
 
   --color-category-default: #EEE5E9;
-  --color-category-default-second: #9e9b9c;
+  --color-category-default-second: #9e9b9c; */
   /* oryginalne */
+
+  --color-category-cake: #fece02;
+  --color-category-cake-second: #77661b;
+
+  --color-category-drink: rgb(21, 162, 244);
+  --color-category-drink-second: rgb(20, 83, 119);
+
+
+  --color-category-fastood: #f6c493;
+  --color-category-fastood-second: #7c5e3f;
+
+  --color-category-icecream: #495DE6;
+  --color-category-icecream-second: #283687;
+
+
+  --color-category-lunch: #f14b4c;
+  --color-category-lunch-second: #802b2b;
+
+  --color-category-preserves: #00beae;
+  --color-category-preserves-second: #25605b;
+
+
+  --color-category-fish: #8561f3;
+  --color-category-fish-second: #453966;
+
+
+  --color-category-salad: #00825b;
+  --color-category-salad-second: rgb(23, 58, 55);
+
+  --color-category-snack: #ff7900;
+  --color-category-snack-second: #7c512c;
+
+  --color-category-juice: #de82b3 ;
+  --color-category-juice-second: #7a4b65;
+
+  --color-category-default: #EEE5E9;
+  --color-category-default-second: #9e9b9c;
 
 
 
