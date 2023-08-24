@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import SwiperContainer from './SwiperContainer';
 
 export default function RecipeCard() {
   return (
@@ -17,7 +18,7 @@ export default function RecipeCard() {
       </p>
 
       <div className="RCheader skeletonLight">
-        <Link href="/przepisy" className="RCbuttonPrev" type="button">
+        {/* <Link href="/przepisy" className="RCbuttonPrev" type="button">
           <span className="visuallyHidden">Wróć do poprzedniej strony</span>
           <svg
             className="paginationIcon"
@@ -28,7 +29,7 @@ export default function RecipeCard() {
           >
             <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
           </svg>
-        </Link>
+        </Link> */}
         <div className="RCname">
           <Skeleton count={1} width="13em" enableAnimation={false} />
         </div>
@@ -112,6 +113,11 @@ export default function RecipeCard() {
           </p>
         </div>
       </div>
+      <div className="RCimageContainer" />
+      <SwiperContainer
+        cards="skeleton"
+        title="ostatnio dodane w tej kategorii"
+      />
     </div>
   );
 }

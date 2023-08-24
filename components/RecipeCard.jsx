@@ -7,7 +7,12 @@ import SwiperContainer from './SwiperContainer';
 
 async function getLastAdded(category) {
   const res = await fetch(
-    `https://archiwum-kulinarne.vercel.app/api/recipes/lastadded?category=${category}`
+    `https://archiwum-kulinarne.vercel.app/api/recipes/lastadded?category=${category}`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
   if (!res.ok) {
     console.log(
