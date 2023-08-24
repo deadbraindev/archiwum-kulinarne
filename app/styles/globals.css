@@ -788,7 +788,7 @@ span {
   color: var(--color-font-primary);
   text-decoration: none;
   letter-spacing: -1px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   width: 6em;
   z-index: 100;
   text-decoration-line: underline;
@@ -1752,6 +1752,7 @@ background-position: 8px 8px; */
   /* border-bottom: 1px solid var(--color-border); */
   text-decoration: none;
   letter-spacing: -1px;
+  font-size: 1em;
 }
 .footerLink:hover, .footerHomeLink:hover {
   border: 1px solid var(--color-border);
@@ -1772,7 +1773,7 @@ background-position: 8px 8px; */
 .footerInfo {
   padding: 10px 0;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .footerInfo p {
   background-color: var(--color-background-primary);
@@ -2178,6 +2179,7 @@ background-position: 8px 8px; */
   }
   .footerLinks ul {
     width: 40%;
+    max-width: 340px;
   }
   .footerInfo {
     width: 60%;

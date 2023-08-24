@@ -12,7 +12,7 @@ import classNames from 'classnames';
 import { ToastContainer, Slide } from 'react-toastify';
 import useMobileDetect from '../lib/useMobileDetect';
 import 'react-toastify/dist/ReactToastify.css';
-import { useFavoriteContext } from '../context/useFavoriteContext';
+// import { useFavoriteContext } from '../context/useFavoriteContext';
 
 // import Skeleton from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
@@ -160,11 +160,11 @@ function Navbar() {
     // inputRefFocus.current.fucus();
   };
 
-  const { state } = useFavoriteContext();
-  const [favoriteCount, setFavoriteCount] = useState(0);
-  useEffect(() => {
-    setFavoriteCount(state.length);
-  }, [state]);
+  // const { state } = useFavoriteContext();
+  // const [favoriteCount, setFavoriteCount] = useState(0);
+  // useEffect(() => {
+  //   setFavoriteCount(state.length);
+  // }, [state]);
 
   return (
     <>
@@ -225,7 +225,8 @@ function Navbar() {
                 className="navLink"
                 onClick={handleNavLink}
               >
-                ulubione({favoriteCount})
+                ulubione
+                {/* ulubione({favoriteCount}) */}
               </Link>
             </li>
             <li className="navSearch">

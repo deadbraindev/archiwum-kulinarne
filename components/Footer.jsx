@@ -39,20 +39,13 @@ function Footer() {
       <div className="footerLinks">
         <ul>
           <li>
-            <button className="themeButton" type="button">
-              zmień motyw
-            </button>
+            <Link href="kontakt" className="footerLink">
+              kontakt
+            </Link>
           </li>
-
           <li>
             <Link href="wpa" className="footerLink">
               aplikacja mobilna
-            </Link>
-          </li>
-
-          <li>
-            <Link href="kontakt" className="footerLink">
-              kontakt
             </Link>
           </li>
 
@@ -64,7 +57,7 @@ function Footer() {
 
           <li>
             <Link href="nieznaleziono" className="footerLink">
-              404
+              404test
             </Link>
           </li>
 
