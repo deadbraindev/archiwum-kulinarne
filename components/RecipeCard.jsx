@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
 import { notFound } from 'next/navigation';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
@@ -99,11 +101,11 @@ export default async function RecipeCard({ slug }) {
 
         <div className="RCimageContainer">
           {recipeData.images?.size > 0 ? (
-            recipeData.images?.items.map((image, i) => (
+            recipeData.images?.items.map((image) => (
               <a href={image.src}>
                 <div className="RCimage">
-                  <img
-                    key={i}
+                  <Image
+                    // key={i}
                     src={image.thumbnail}
                     alt={image.alt}
                     className="RCimageSrc"
@@ -113,7 +115,7 @@ export default async function RecipeCard({ slug }) {
             ))
           ) : (
             <div className="RCimage">
-              <img alt="handwritten recipe" className="RCimageSrc" />
+              <Image alt="handwritten recipe" className="RCimageSrc" />
             </div>
           )}
         </div>
