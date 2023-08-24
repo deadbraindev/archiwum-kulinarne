@@ -10,8 +10,9 @@ async function getLastAdded(category) {
     `https://archiwum-kulinarne.vercel.app/api/recipes/lastadded?category=${category}`,
     {
       next: {
-        revalidate: 60,
+        revalidate: 3600,
       },
+      // cache: 'no-store',
     }
   );
   if (!res.ok) {
@@ -30,6 +31,7 @@ export default async function RecipeCard({ slug }) {
     : 'skeleton';
 
   if (recipeData.success) {
+    // console.log(recipeData.images);
     return (
       <>
         <div className="RC">
@@ -96,24 +98,24 @@ export default async function RecipeCard({ slug }) {
         </div>
 
         <div className="RCimageContainer">
-          {/* {props.images?.size > 0 ? (
-          props.images?.items.map((image, i) => (
-            <a href={image.src}>
-              <div className="RCimage">
-                <img
-                  key={i}
-                  src={image.thumbnail}
-                  alt={image.alt}
-                  className="RCimageSrc"
-                />
-              </div>
-            </a>
-          ))
-        ) : (
-          <div className="RCimage">
-            <img src={img} alt="handwritten recipe" className="RCimageSrc" />
-          </div>
-        )} */}
+          {recipeData.images?.size > 0 ? (
+            recipeData.images?.items.map((image, i) => (
+              <a href={image.src}>
+                <div className="RCimage">
+                  <img
+                    key={i}
+                    src={image.thumbnail}
+                    alt={image.alt}
+                    className="RCimageSrc"
+                  />
+                </div>
+              </a>
+            ))
+          ) : (
+            <div className="RCimage">
+              <img alt="handwritten recipe" className="RCimageSrc" />
+            </div>
+          )}
         </div>
         <SwiperContainer
           cards={lastAdded}
