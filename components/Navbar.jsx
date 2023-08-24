@@ -68,6 +68,7 @@ function Navbar() {
   const onSubmitInputSearch = (event) => {
     event.preventDefault(); // brak odswiezania strony przy submicie
     setIsHamburgerClicked(false);
+    document.body.classList.remove('noScroll');
     searchButton(inputSearch);
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
   };
@@ -153,7 +154,9 @@ function Navbar() {
     document.body.classList.remove('noScroll');
   };
   const clearSearch = () => {
+    setIsHamburgerClicked(false);
     setInputSearch('');
+    searchButton('');
     // inputRefFocus.current.fucus();
   };
 
