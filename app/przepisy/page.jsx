@@ -30,10 +30,6 @@ export const metadata = {
     shortcut: '/icons/apple-icon-180.png',
     apple: '/icons/apple-icon-180.png',
   },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fff' },
-    { media: '(prefers-color-scheme: dark)', color: '#000' },
-  ],
 };
 
 const Page = async () => <Recipes />;

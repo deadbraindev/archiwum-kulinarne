@@ -45,7 +45,6 @@ export const metadata = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#fff' },
     { media: '(prefers-color-scheme: dark)', color: '#fff' },
-    // { media: '(prefers-color-scheme: dark)', color: '#000' },
   ],
   appleWebApp: {
     title: 'archiwum kulinarne',
