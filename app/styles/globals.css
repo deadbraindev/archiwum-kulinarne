@@ -1593,9 +1593,15 @@ background-position: 8px 8px; */
   max-width: 80vw;
   border: 1px solid var(--color-border);
   overflow: hidden;
+  position: relative;
+  width: 400px;
+  height: 400px;
+  /* background-color: red; */
+  background-color: var(--color-skeleton-secondary);
 }
 .RCimage img {
   transform: scale(110%);
+  /* padding-top: 10px; */
 }
 .RCimage:hover {
   filter: none;
@@ -1966,7 +1972,7 @@ background-position: 8px 8px; */
     padding: 0;
     margin: 0;
     transition: all 100ms ease;
-    background-color: var(--color-background-primary);
+    /* background-color: var(--color-background-primary); */
   }
   .RCimage:hover {
     transform: translate(0, -6px);

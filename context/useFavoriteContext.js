@@ -7,5 +7,6 @@ export const useFavoriteContext = () => {
     throw Error(
       'useFavoriteContext must be used inside FavoriteContextProvider'
     );
+  console.log(context);
   return context;
 };

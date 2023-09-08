@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPlaiceholder } from 'plaiceholder';
 
 import { notFound } from 'next/navigation';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
@@ -105,14 +106,19 @@ export default async function RecipeCard({ slug }) {
             recipeData.images?.items.map((image) => (
               <a href={image.src} target="blank">
                 <div className="RCimage">
-                  <span>{image.src}</span>
+                  {/* <span>{image.src}</span> */}
                   <Image
                     // key={i}
                     src={image.src}
                     // src="https://iili.io/HyJVKqG.jpg"
                     alt={image.alt}
-                    width={500}
-                    height={500}
+                    // width={500}
+                    // height={500}
+                    fill
+                    quality={25}
+                    loading="lazy"
+                    // placeholder="blur"
+                    // blurDataURL={image.thumbnail}
                     className="RCimageSrc"
                   />
                 </div>
