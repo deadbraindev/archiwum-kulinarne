@@ -34,6 +34,7 @@ export default async function RecipeCard({ slug }) {
 
   if (recipeData.success) {
     // console.log(recipeData.images);
+    // console.log(recipeData.images.items[0]?.src);
     return (
       <>
         <div className="RC">
@@ -102,12 +103,16 @@ export default async function RecipeCard({ slug }) {
         <div className="RCimageContainer">
           {recipeData.images?.size > 0 ? (
             recipeData.images?.items.map((image) => (
-              <a href={image.src}>
+              <a href={image.src} target="blank">
                 <div className="RCimage">
+                  <span>{image.src}</span>
                   <Image
                     // key={i}
-                    src={image.thumbnail}
+                    src={image.src}
+                    // src="https://iili.io/HyJVKqG.jpg"
                     alt={image.alt}
+                    width={500}
+                    height={500}
                     className="RCimageSrc"
                   />
                 </div>

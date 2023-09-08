@@ -171,10 +171,10 @@ export function FavoriteContextProvider({ children }) {
     const updatedFavorites = state.filter(
       (currentRecipe) => currentRecipe.slug !== recipe.slug
     );
-    console.log(
-      '🚀 ~ file: FavoriteContext.jsx:174 ~ removeFromFavorite ~ updatedFavorites:',
-      updatedFavorites
-    );
+    // console.log(
+    //   '🚀 ~ file: FavoriteContext.jsx:174 ~ removeFromFavorite ~ updatedFavorites:',
+    //   updatedFavorites
+    // );
 
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setState(updatedFavorites);

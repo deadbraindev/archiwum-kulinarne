@@ -2,6 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: { appDir: true, scrollRestoration: true },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'iili.io',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
