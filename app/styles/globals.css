@@ -1596,6 +1596,8 @@ background-position: 8px 8px; */
   position: relative;
   width: 400px;
   height: 400px;
+  max-height: 80vw;
+
   /* background-color: red; */
   background-color: var(--color-skeleton-secondary);
 }
