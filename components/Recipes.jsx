@@ -175,7 +175,7 @@ export default function Recipes() {
     <>
       {isFetching && <TopBarProgress />}
 
-      <div className="recipesContainer">
+      <section className="recipesContainer">
         <p className="RCcategory">
           <span className="RCcategorySeparator">{'>'}</span>
           {inputCategory ? (
@@ -375,7 +375,7 @@ export default function Recipes() {
             </button>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

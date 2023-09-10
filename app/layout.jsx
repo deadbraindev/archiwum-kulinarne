@@ -202,13 +202,13 @@ export default function RootLayout({ children }) {
       </head>
       <FavoriteContextProvider>
         <body>
-          <div className="content">
-            <Navbar />
-            <div className="container">
-              <ReactQueryWrapper>{children}</ReactQueryWrapper>
-            </div>
-            <Footer />
-          </div>
+          {/* <div className="content"> */}
+          <Navbar />
+          <main className="container">
+            <ReactQueryWrapper>{children}</ReactQueryWrapper>
+          </main>
+          <Footer />
+          {/* </div> */}
           {/* <Analytics /> */}
         </body>
       </FavoriteContextProvider>
