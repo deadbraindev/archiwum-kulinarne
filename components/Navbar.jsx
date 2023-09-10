@@ -7,6 +7,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import classNames from 'classnames';
+import removeAccents from 'remove-accents';
+
 // import styles from '../app/styles/Navbar.module.css';
 // import { useMediaQuery } from 'react-responsive';
 import { ToastContainer, Slide } from 'react-toastify';
@@ -72,6 +74,7 @@ function Navbar() {
     searchButton(inputSearch);
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
   };
+  // console.log(removeAccents(paramSearch));
 
   useEffect(() => {
     if (paramSearch === null) setInputSearch('');
