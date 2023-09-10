@@ -7,7 +7,6 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import classNames from 'classnames';
-import removeAccents from 'remove-accents';
 
 // import styles from '../app/styles/Navbar.module.css';
 // import { useMediaQuery } from 'react-responsive';
