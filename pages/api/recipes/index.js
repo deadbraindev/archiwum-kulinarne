@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         // sprawdzanie czy parametr jest poprawny
         const paramSchema = ['category', 'page', 'search'];
 
-        const paramSchema = ['category', 'page', 'search', 'sort'];
+        // const paramSchema = ['category', 'page', 'search', 'sort'];
 
         const validParams = Object.keys(req.query).map((param) => {
           if (paramSchema.includes(param)) return true;
@@ -44,7 +44,10 @@ export default async function handler(req, res) {
           // query do zliczania przepisow po filtracji
           let queryCount = { $and: [{ _id: { $exists: true } }] };
           if (req.query.search && req.query.search !== undefined) {
-            const paramSearch = req.query.search.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const paramSearch = req.query.search
+              .toLowerCase()
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '');
             queryCount = {
               $and: [
                 {
