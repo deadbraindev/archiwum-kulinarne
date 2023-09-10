@@ -52,10 +52,6 @@ export default async function handler(req, res) {
                 .trim()
                 .replace(/\s+/g, ' ')
             );
-            console.log(
-              '🚀 ~ file: index.js:52 ~ handler ~ paramSearch:',
-              paramSearch
-            );
 
             queryCount = {
               $and: [

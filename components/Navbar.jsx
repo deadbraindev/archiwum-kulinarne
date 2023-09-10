@@ -157,6 +157,8 @@ function Navbar() {
   };
   const clearSearch = () => {
     setIsHamburgerClicked(false);
+    document.body.classList.remove('noScroll');
+
     setInputSearch('');
     searchButton('');
     // inputRefFocus.current.fucus();
