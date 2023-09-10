@@ -47,14 +47,21 @@ export default async function handler(req, res) {
           if (req.query.search && req.query.search !== undefined) {
             // const paramSearch = removeAccents(req.query.search).toLowerCase();
             const paramSearch = removeAccents(
-              decodeURI(req.query.search).toLowerCase()
+              decodeURI(req.query.search)
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, ' ')
+            );
+            console.log(
+              '🚀 ~ file: index.js:52 ~ handler ~ paramSearch:',
+              paramSearch
             );
 
             queryCount = {
               $and: [
                 {
                   $or: [
-                    { name: { $regex: paramSearch } },
+                    { name: { $regex: paramSearch, $options: 'i' } },
                     { slug: { $regex: paramSearch } },
                     { slug_history: { $regex: paramSearch } },
                   ],
@@ -64,7 +71,7 @@ export default async function handler(req, res) {
             query.push({
               $match: {
                 $or: [
-                  { name: { $regex: paramSearch, $options: '-i' } }, // matchuje po name i slug
+                  { name: { $regex: paramSearch, $options: 'i' } }, // matchuje po name i slug
                   { slug: { $regex: paramSearch } }, // matchuje po name i slug
                   { slug_history: { $regex: paramSearch } },
                 ],
