@@ -26,9 +26,7 @@ export default async function handler(req, res) {
         });
 
         // sprawdzanie czy parametr jest poprawny
-        const paramSchema = ['category', 'page', 'search'];
-
-        // const paramSchema = ['category', 'page', 'search', 'sort', ];
+        const paramSchema = ['category', 'page', 'search', 'sort', 'pagesize'];
 
         const validParams = Object.keys(req.query).map((param) => {
           if (paramSchema.includes(param)) return true;
@@ -36,16 +34,33 @@ export default async function handler(req, res) {
         });
         if (validParams.every(Boolean)) {
           // query do wyswietlania przepisow
+          const paramSort =
+            req.query.sort === 'za' ||
+            req.query.sort === 'no' ||
+            req.query.sort === 'on'
+              ? req.query.sort
+              : '';
+          const paramPageSize = parseInt(req.query.pagesize, 10);
+
           const query = [
-            { $match: { _id: { $exists: true } } }, // matchuje wszystko jezeli nie ma search w query
-            // { $sort: { createdAt: -1 } }, // TODO sortowanie
-            { $sort: { slug: 1 } }, // TODO sortowanie
+            { $match: { _id: { $exists: true } } }, // Dopasuj wszystko, jeśli nie ma parametru "sort" w zapytaniu
+            (() => {
+              switch (paramSort) {
+                case 'za':
+                  return { $sort: { slug: -1 } }; // Sortuj malejąco wg. pola "slug"
+                case 'no':
+                  return { $sort: { createdAt: 1 } }; // Sortuj rosnąco wg. pola "createdAt"
+                case 'on':
+                  return { $sort: { createdAt: -1 } }; //  Sortuj malejąco wg. pola "createdAt"
+                default:
+                  return { $sort: { slug: 1 } }; // Domyślne sortowanie rosnące wg. pola "slug"
+              }
+            })(),
           ];
           // CATEGORY
           // query do zliczania przepisow po filtracji
           let queryCount = { $and: [{ _id: { $exists: true } }] };
           if (req.query.search && req.query.search !== undefined) {
-            // const paramSearch = removeAccents(req.query.search).toLowerCase();
             const paramSearch = removeAccents(
               decodeURI(req.query.search)
                 .toLowerCase()
@@ -130,7 +145,12 @@ export default async function handler(req, res) {
             const page = req.query.page
               ? Math.max(parseInt(req.query.page, 10) - 1, 0)
               : 0;
-            const perPage = 24;
+            const perPage =
+              !Number.isNaN(paramPageSize) &&
+              paramPageSize >= 1 &&
+              paramPageSize <= 32
+                ? paramPageSize
+                : 24;
             const allPages = Math.ceil(countAllRecipes / perPage - 1);
             const skip = perPage * page;
             query.push({ $skip: skip }, { $limit: perPage }); // paginacja

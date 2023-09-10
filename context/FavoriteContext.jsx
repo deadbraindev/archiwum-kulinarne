@@ -13,10 +13,6 @@ export const initializer = () =>
 
 export function FavoriteContextProvider({ children }) {
   const [state, setState] = useState(() => initializer());
-  console.log(
-    '🚀 ~ file: FavoriteContext.jsx:15 ~ FavoriteContextProvider ~ state:',
-    state
-  );
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
 
