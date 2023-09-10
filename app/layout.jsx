@@ -200,8 +200,8 @@ export default function RootLayout({ children }) {
           href="https://unpkg.com/flickity@2/dist/flickity.min.css"
         /> */}
       </head>
-      <body>
-        <FavoriteContextProvider>
+      <FavoriteContextProvider>
+        <body>
           <div className="content">
             <Navbar />
             <div className="container">
@@ -210,8 +210,8 @@ export default function RootLayout({ children }) {
             <Footer />
           </div>
           {/* <Analytics /> */}
-        </FavoriteContextProvider>
-      </body>
+        </body>
+      </FavoriteContextProvider>
     </html>
   );
 }

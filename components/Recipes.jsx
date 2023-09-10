@@ -44,7 +44,7 @@ export default function Recipes() {
       refetchOnmount: false,
       refetchOnReconnect: false,
       retry: 2,
-      staleTime: 1000 * 60 * 60 * 24,
+      // staleTime: 1000 * 60 * 60 * 24,
     }
   );
 
