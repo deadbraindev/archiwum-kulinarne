@@ -1,5 +1,5 @@
 import NextCors from 'nextjs-cors';
-// import removeAccents from 'remove-accents';
+import removeAccents from 'remove-accents';
 import dbConnect from '../../../lib/dbConnect';
 import Recipe from '../../../models/Recipe';
 
@@ -46,7 +46,9 @@ export default async function handler(req, res) {
           let queryCount = { $and: [{ _id: { $exists: true } }] };
           if (req.query.search && req.query.search !== undefined) {
             // const paramSearch = removeAccents(req.query.search).toLowerCase();
-            const paramSearch = decodeURI(req.query.search).toLowerCase();
+            const paramSearch = removeAccents(
+              decodeURI(req.query.search).toLowerCase()
+            );
 
             queryCount = {
               $and: [
@@ -62,7 +64,7 @@ export default async function handler(req, res) {
             query.push({
               $match: {
                 $or: [
-                  { name: { $regex: paramSearch } }, // matchuje po name i slug
+                  { name: { $regex: paramSearch, $options: '-i' } }, // matchuje po name i slug
                   { slug: { $regex: paramSearch } }, // matchuje po name i slug
                   { slug_history: { $regex: paramSearch } },
                 ],
