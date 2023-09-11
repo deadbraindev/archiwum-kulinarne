@@ -9,17 +9,16 @@ import SwiperContainer from './SwiperContainer';
 
 async function getLastAdded(category) {
   const res = await fetch(
-    `https://archiwum-kulinarne.vercel.app/api/recipes/lastadded?category=${category}`,
+    `https://archiwum-kulinarne.vercel.app/api/recipes/?category=${category}&sort=no&pagesize=8`,
     {
       next: {
         revalidate: 3600,
       },
-      // cache: 'no-store',
     }
   );
   if (!res.ok) {
     console.log(
-      `błąd wczytywania danych api/recipes/lastadded?category=${category}`
+      `błąd wczytywania danych /api/recipes/?category=${category}&sort=no&pagesize=8`
     );
   }
   return res.json();
@@ -114,6 +113,7 @@ export default async function RecipeCard({ slug }) {
                     // width={500}
                     // height={500}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     quality={25}
                     loading="lazy"
                     // placeholder="blur"

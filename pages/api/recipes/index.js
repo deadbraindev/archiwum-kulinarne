@@ -49,9 +49,9 @@ export default async function handler(req, res) {
                 case 'za':
                   return { $sort: { slug: -1 } }; // Sortuj malejąco wg. pola "slug"
                 case 'no':
-                  return { $sort: { createdAt: 1 } }; // Sortuj rosnąco wg. pola "createdAt"
+                  return { $sort: { createdAt: -1 } }; // Sortuj rosnąco wg. pola "createdAt"
                 case 'on':
-                  return { $sort: { createdAt: -1 } }; //  Sortuj malejąco wg. pola "createdAt"
+                  return { $sort: { createdAt: 1 } }; //  Sortuj malejąco wg. pola "createdAt"
                 default:
                   return { $sort: { slug: 1 } }; // Domyślne sortowanie rosnące wg. pola "slug"
               }
