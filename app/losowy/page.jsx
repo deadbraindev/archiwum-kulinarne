@@ -19,7 +19,8 @@ import getRecipe from '../../lib/getRecipe';
 //   },
 // };
 
-function Losowy() {
+export default function Page() {
+  // function Losowy() {
   const router = useRouter();
   const fetchRandomRecipe = async () => {
     const recipe = await getRecipe('random');
@@ -36,5 +37,3 @@ function Losowy() {
     fetchRandomRecipe();
   }, []);
 }
-
-export default Losowy;
