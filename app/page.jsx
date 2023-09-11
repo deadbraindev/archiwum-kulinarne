@@ -24,7 +24,7 @@ export default function Page() {
   useEffect(() => {
     setLoading(true);
 
-    fetch('/api/recipes?sort=no')
+    fetch('/api/recipes?sort=no&pagesize=12')
       .then((res) => {
         if (res.ok) {
           return res.json();

@@ -3,7 +3,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import SwiperContainer from './SwiperContainer';
 
-export default function RecipeCard() {
+export default function RecipeCardSkeleton() {
   return (
     <div className="RC">
       <p className="RCcategory RCcategoryPadding">
@@ -41,49 +41,50 @@ export default function RecipeCard() {
           <div className="RCingredientsList">
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 40) + 40}%`}
+              width="100%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 40) + 40}%`}
+              // width={`${Math.random() * (100 - 40) + 40}%`}
+              width="60%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 40) + 40}%`}
+              width="50%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 40) + 40}%`}
+              width="50%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 40) + 40}%`}
+              width="40%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 40) + 40}%`}
+              width="90%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 40) + 40}%`}
+              width="60%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 40) + 40}%`}
+              width="30%"
               height="1.5em"
               enableAnimation={false}
             />
@@ -94,26 +95,34 @@ export default function RecipeCard() {
           <p className="RCpreparing">
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 50) + 50}%`}
+              width="60%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={2}
-              width={`${Math.random() * (100 - 50) + 50}%`}
+              // width={`${Math.random() * (100 - 50) + 50}%`}
+              width="95%"
               height="1.5em"
               enableAnimation={false}
             />
             <Skeleton
               count={1}
-              width={`${Math.random() * (100 - 50) + 50}%`}
+              width="74%"
               height="1.5em"
               enableAnimation={false}
             />
           </p>
         </div>
       </div>
-      <div className="RCimageContainer" />
+      <div className="RCimageContainer">
+        <div className="RCimage">
+          <div className="RCimageSrc" />
+        </div>
+        <div className="RCimage">
+          <div className="RCimageSrc" />
+        </div>
+      </div>
       <SwiperContainer
         cards="skeleton"
         title="ostatnio dodane w tej kategorii"

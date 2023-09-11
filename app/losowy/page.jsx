@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import getRecipe from '../../lib/getRecipe';
+import RecipeCardSkeleton from '../../components/RecipeCardSkeleton';
 
 // export const metadata = {
 //   title: 'losowy | archiwum kulinarne',
@@ -36,4 +37,5 @@ export default function Page() {
   useEffect(() => {
     fetchRandomRecipe();
   }, []);
+  return <RecipeCardSkeleton />;
 }

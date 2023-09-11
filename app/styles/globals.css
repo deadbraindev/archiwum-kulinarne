@@ -522,7 +522,7 @@ span {
   body {
     overflow-y: scroll;
     background-color: var(--color-background-primary);
-    min-width: 200px;
+    min-width: 300px;
     position: static;
     margin: 0 !important;
     padding: 0;
@@ -1692,6 +1692,9 @@ background-position: 8px 8px; */
 .swiper-slide {
   margin: 0;
   padding-bottom: 40px;
+}
+.swiper-pagination {
+  max-height: 15px;
 }
 .swiper-pagination > .swiper-pagination-bullet {
   opacity: 1;
