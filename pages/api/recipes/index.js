@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import NextCors from 'nextjs-cors';
 import removeAccents from 'remove-accents';
 import dbConnect from '../../../lib/dbConnect';

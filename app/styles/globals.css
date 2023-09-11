@@ -526,7 +526,7 @@ span {
     position: static;
     margin: 0 !important;
     padding: 0;
-    font-family: 'Noto Sans Mono', monospace;
+    /* font-family: 'Noto Sans Mono', monospace; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -571,7 +571,7 @@ span {
 
   /* TOASTIFY */
   .Toastify__toast-body {
-    font-family: 'Noto Sans Mono', monospace;
+    /* font-family: 'Noto Sans Mono', monospace; */
     color: var(--color-font-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1022,7 +1022,7 @@ input[type="text"] {
   font-size: 1.2em;
   order: -10;
   cursor: pointer;
-  font-family: 'Noto Sans Mono', monospace;
+  /* font-family: 'Noto Sans Mono', monospace; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: all 150ms ease-in-out;

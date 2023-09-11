@@ -1,6 +1,9 @@
+/* eslint-disable camelcase */
 // import Link from 'next/link';
 // import Head from 'next/head';
 // import { Analytics } from '@vercel/analytics/react';
+
+import { Noto_Sans_Mono } from 'next/font/google';
 
 import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import Navbar from '../components/Navbar';
@@ -184,10 +187,15 @@ export const metadata = {
   category: 'food',
   manifest: '/manifest.json',
 };
+const notosansmono = Noto_Sans_Mono({
+  subsets: ['latin'],
+  variable: '--font-noto-sans-mono',
+  display: 'swap',
+});
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pl-PL">
+    <html lang="pl-PL" className={notosansmono.className}>
       <head>
         {/* <script
           defer
