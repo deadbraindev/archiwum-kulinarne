@@ -107,13 +107,26 @@ export default function Recipes() {
   };
 
   const validateAndNavigate2 = (category) => {
-    if (categoryValidator(category)) {
+    if (
+      paramSearch !== null &&
+      paramSearch !== undefined &&
+      paramSearch !== ''
+    ) {
+      if (categoryValidator(category)) {
+        setInputCategory(category);
+        router.push(`przepisy?kategoria=${category}&szukaj=${paramSearch}`);
+      } else {
+        setInputCategory('');
+        router.push(`przepisy?szukaj=${paramSearch}`);
+      }
+    } else if (categoryValidator(category)) {
       setInputCategory(category);
       router.push(`przepisy?kategoria=${category}`);
     } else {
       setInputCategory('');
       router.push(`przepisy`);
     }
+
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
   };
   const clearCategory = () => {
