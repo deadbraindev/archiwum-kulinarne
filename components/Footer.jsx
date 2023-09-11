@@ -39,24 +39,24 @@ function Footer() {
       <div className="footerLinks">
         <ul>
           <li>
-            <Link href="kontakt" className="footerLink">
+            <Link href="/kontakt" className="footerLink">
               kontakt
             </Link>
           </li>
           <li>
-            <Link href="wpa" className="footerLink">
+            <Link href="/wpa" className="footerLink">
               aplikacja mobilna
             </Link>
           </li>
 
           <li>
-            <Link href="losowy" className="footerLink">
+            <Link href="/losowy" className="footerLink">
               losowy traf
             </Link>
           </li>
 
           <li>
-            <Link href="nieznaleziono" className="footerLink">
+            <Link href="/nieznaleziono" className="footerLink">
               404test
             </Link>
           </li>
