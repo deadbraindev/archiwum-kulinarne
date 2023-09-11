@@ -20,6 +20,7 @@ export default async function handler(req, res) {
           origin: [
             'https://archiwumkulinarne.deadbrain.dev',
             'http://localhost:3000',
+            'https://archiwum-kulinarne.vercel.app',
           ],
           optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
         });
