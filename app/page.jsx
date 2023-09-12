@@ -65,12 +65,20 @@ export default function Page() {
         {isLoading ? (
           <SwiperContainer cards="skeleton" title="ostatnio dodane" />
         ) : (
-          <SwiperContainer cards={recentlyAdded} title="ostatnio dodane" />
+          <SwiperContainer
+            cards={recentlyAdded}
+            title="ostatnio dodane"
+            loop={false}
+          />
         )}
         {isFetching ? (
           <SwiperContainer cards="skeleton" title="twoje ulubione" />
         ) : (
-          <SwiperContainer cards={favoriteCards} title="twoje ulubione" />
+          <SwiperContainer
+            cards={favoriteCards}
+            title="twoje ulubione"
+            loop={false}
+          />
         )}
         {data === 404 ? <span>błąd 404</span> : null}
       </section>

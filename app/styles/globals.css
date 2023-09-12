@@ -719,6 +719,13 @@ span {
 /*? > PHONE */
 
 /*! NAVBAR  */
+.swiper {
+  /* border-left: 1px dashed var(--color-border);
+  border-right: 1px dashed var(--color-border); */
+  /* padding: 0 10px !important; */
+  /* padding-right: 30px !important;
+  padding-left: 30px !important; */
+}
 .navLoading {
     visibility: hidden;
     display: none;
@@ -2222,8 +2229,16 @@ background-position: 8px 8px; */
     margin: 0 auto;
     max-width: 80em;
   }
+
   .swiperContainer {
     padding: 0 20px;
+  }
+  .swiper {
+    /* border-left: 1px dashed var(--color-border); */
+    /* border-right: 1px dashed var(--color-border); */
+    padding: 0 10px !important;
+    padding-right: 70px !important;
+    padding-left: 70px !important;
   }
   .container {
     overflow: visible;

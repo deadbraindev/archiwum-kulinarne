@@ -64,7 +64,7 @@ export default function RecipeCardSmall(props) {
           onClick={() => {
             handleFavoriteButton();
           }}
-          // aria-hidden="true"
+          aria-hidden="true"
           onKeyPress={() => {
             handleFavoriteButton();
           }}

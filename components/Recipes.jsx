@@ -38,13 +38,11 @@ export default function Recipes() {
     () => getRecipes(paramPage, paramSearch, paramCategory),
     {
       keepPreviousData: true,
-      // retry: 2,
-      // refetchOnWindowFocus: false,
       refetchOnWindowFocus: false,
       refetchOnmount: false,
       refetchOnReconnect: false,
       retry: 2,
-      // staleTime: 1000 * 60 * 60 * 24,
+      staleTime: 1000 * 60 * 60 * 24,
     }
   );
 

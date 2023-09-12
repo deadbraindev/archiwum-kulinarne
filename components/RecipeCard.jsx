@@ -17,8 +17,8 @@ async function getLastAdded(category) {
     }
   );
   if (!res.ok) {
-    console.log(
-      `błąd wczytywania danych /api/recipes/?category=${category}&sort=no&pagesize=8`
+    throw new Error(
+      `Failed to fetch recipes (/api/recipes/?category=${category}&sort=no&pagesize=8), try again...`
     );
   }
   return res.json();
@@ -32,8 +32,6 @@ export default async function RecipeCard({ slug }) {
     : 'skeleton';
 
   if (recipeData.success) {
-    // console.log(recipeData.images);
-    // console.log(recipeData.images.items[0]?.src);
     return (
       <>
         <div className="RC">
@@ -59,18 +57,6 @@ export default async function RecipeCard({ slug }) {
               recipeData.category
             )}`}
           >
-            {/* <Link href="/przepisy" className="RCbuttonPrev" type="button">
-              <span className="visuallyHidden">Wróć do poprzedniej strony</span>
-              <svg
-                className="paginationIcon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 9.9 16.81"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
-              </svg>
-            </Link> */}
             <h1 className="RCname">{recipeData.name}</h1>
           </div>
 
@@ -104,20 +90,13 @@ export default async function RecipeCard({ slug }) {
             recipeData.images?.items.map((image) => (
               <a href={image.src} target="blank">
                 <div className="RCimage">
-                  {/* <span>{image.src}</span> */}
                   <Image
-                    // key={i}
                     src={image.src}
-                    // src="https://iili.io/HyJVKqG.jpg"
                     alt={image.alt}
-                    // width={500}
-                    // height={500}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     quality={25}
                     loading="lazy"
-                    // placeholder="blur"
-                    // blurDataURL={image.thumbnail}
                     className="RCimageSrc"
                   />
                 </div>
