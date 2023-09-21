@@ -88,7 +88,7 @@ export default async function RecipeCard({ slug }) {
         <div className="RCimageContainer">
           {recipeData.images?.size > 0 ? (
             recipeData.images?.items.map((image) => (
-              <a href={image.src} target="blank">
+              <Link href={image.src} target="blank">
                 <div className="RCimage">
                   <Image
                     src={image.src}
@@ -96,11 +96,12 @@ export default async function RecipeCard({ slug }) {
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     quality={25}
+                    // crop={{ ratio: '1/1', position: 'center' }}
                     loading="lazy"
                     className="RCimageSrc"
                   />
                 </div>
-              </a>
+              </Link>
             ))
           ) : (
             <div className="RCimage">
