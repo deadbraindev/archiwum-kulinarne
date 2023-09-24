@@ -14,5 +14,46 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <div className="footer">kontakt</div>;
+  return (
+    <section className="contactContainer">
+      {/* <p className="contactInfo">
+        podziel się swoją opinią, zgłoś błąd albo wykaż chęć dodania swoich
+        przepisów na stronę
+      </p> */}
+      <div className="dot" />
+      <h2 className="contactTitle">odbiorca</h2>
+      <form className="contactForm">
+        <label className="contactLabel" htmlFor="">
+          imię
+        </label>
+        <input
+          className="contactInput"
+          type="text"
+          defaultValue="@deadbraindev"
+        />
+      </form>
+
+      <h2 className="contactTitle">nadawca</h2>
+      <form className="contactForm">
+        <label className="contactLabel" htmlFor="">
+          imię
+        </label>
+        <input className="contactInput" type="text" />
+
+        <label className="contactLabel" htmlFor="">
+          email
+        </label>
+        <input className="contactInput" type="text" />
+
+        <label className="contactLabel" htmlFor="">
+          wiadomość
+        </label>
+        <textarea className="contactInputBig" type="text" />
+
+        <button className="contactSubmit" type="submit">
+          wyślij
+        </button>
+      </form>
+    </section>
+  );
 }

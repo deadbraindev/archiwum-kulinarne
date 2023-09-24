@@ -6,7 +6,16 @@
 } */
 
 /* RESET CSS */
-body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
 }
 html:focus-within {
@@ -20,11 +29,15 @@ body {
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
-img, picture {
+img,
+picture {
   max-width: 100%;
   display: block;
 }
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 span {
@@ -33,9 +46,11 @@ span {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -87,20 +102,19 @@ span {
 }
 :root {
   /* colors */
-  --color-background-primary: hsl(48, 0%, 100%);
-  --color-background-secodary: hsl(48 2% 95%);
+  --color-background-primary: hsl(0, 0%, 100%);
+  --color-background-secodary: #f3f2f2;
 
   --color-background-RCS: #f9f9f9;
 
   --color-main-yellow: #ffce06;
-  --color-main-red: #EC5B55;
+  --color-main-red: #ec5b55;
 
   --color-disabled: hsl(0, 0%, 85%);
 
   --color-font-primary: hsl(48 5% 2%);
   --color-font-secondary: hsl(48, 10%, 12%);
   --color-font-RCS: hsla(0, 0%, 0%, 0.7);
-  
 
   --color-main-selection-gray: hsl(var(--brand-hue) 10% 79%);
 
@@ -109,9 +123,8 @@ span {
   --color-skeleton-primary: #bababa;
   --color-skeleton-secondary: #e5e5e5;
 
-  --color-focus: #3385FF;
+  --color-focus: #3385ff;
   --color-font-outline: transparent;
-
 
   /* --cake-hue: 48;
   --cake-saturation: 92%;
@@ -178,7 +191,6 @@ span {
   --default-lightness: 92%;
   --color-category-default: hsl(333, 21%, 92%);
   --color-category-default-second: hsl(333, 2%, 61%);   */
-  
 
   /* oryginalne */
   /* --color-category-cake: #F9DD6C;
@@ -221,13 +233,11 @@ span {
   --color-category-drink: rgb(21, 162, 244);
   --color-category-drink-second: rgb(20, 83, 119);
 
-
   --color-category-fastood: #f6c493;
   --color-category-fastood-second: #7c5e3f;
 
-  --color-category-icecream: #495DE6;
+  --color-category-icecream: #495de6;
   --color-category-icecream-second: #283687;
-
 
   --color-category-lunch: #f14b4c;
   --color-category-lunch-second: #802b2b;
@@ -235,24 +245,20 @@ span {
   --color-category-preserves: #00beae;
   --color-category-preserves-second: #25605b;
 
-
   --color-category-fish: #8561f3;
   --color-category-fish-second: #453966;
 
-
   --color-category-salad: #00825b;
-  --color-category-salad-second: rgb(23, 58, 55);
+  --color-category-salad-second: #173a37;
 
   --color-category-snack: #ff7900;
   --color-category-snack-second: #7c512c;
 
-  --color-category-juice: #de82b3 ;
+  --color-category-juice: #de82b3;
   --color-category-juice-second: #7a4b65;
 
-  --color-category-default: #EEE5E9;
+  --color-category-default: #eee5e9;
   --color-category-default-second: #9e9b9c;
-
-
 
   /* --color-category-cake: #f2c22d;
   --color-category-cake-second: #fff;
@@ -287,7 +293,6 @@ span {
   --color-category-default: #74cfa1;
   --color-category-default-second: #fff; */
 
-
   /* --color-category-cake: #F9DD6C;
   --color-category-cake-second: #D8AB3A;
 
@@ -320,8 +325,6 @@ span {
 
   --color-category-default: #EEE5E9;
   --color-category-default-second: #9e9b9c; */
-
-
 
   /* --color-category-cake: #F9DD6C;
   --color-category-cake-second: #1b1c1e;
@@ -356,8 +359,6 @@ span {
   --color-category-default: #EEE5E9;
   --color-category-default-second: #1b1c1e; */
 
-
-
   /* ! dark mode */
   --dark-color-disabled: hsl(0, 0%, 15%);
   --dark-color-skeleton-primary: hsl(48, 7%, 25%);
@@ -369,8 +370,10 @@ span {
   /* --dark-color-font-RCS: hsl(48 0% 0%); */
   --dark-color-font-RCS: hsla(0, 0%, 0%, 0.7);
 
-  --dark-color-main-yellow: hsl(48 calc(var(--brand-saturation) / 1.2) calc(var(--brand-lightness) / 1.2));
-  --dark-color-main-red: #EC5B55;
+  --dark-color-main-yellow: hsl(
+    48 calc(var(--brand-saturation) / 1.2) calc(var(--brand-lightness) / 1.2)
+  );
+  --dark-color-main-red: #ec5b55;
 
   --dark-color-font-primary: hsl(48 20% 95%);
   --dark-color-font-secondary: hsl(48 15% 75%);
@@ -381,10 +384,6 @@ span {
   --dark-color-background-RCS: hsl(48 2% 5%);
 
   --dark-color-border: hsl(48 15% 75%);
-
-
-
-
 
   /* --dark-color-category-cake: hsl(48, 100%, 40%); */
   --dark-color-category-cake: hsl(45, 70%, 40%);
@@ -415,11 +414,11 @@ span {
   --dark-color-category-snack-second: hsl(28, 75%, 47%);
   --dark-color-category-snack: hsl(17, 58%, 38%);
 
-  --dark-color-category-juice-second: hsl(328, 50%, 60%) ;
+  --dark-color-category-juice-second: hsl(328, 50%, 60%);
   --dark-color-category-juice: hsl(328, 40%, 40%);
 
-  --dark-color-category-default-second: #EEE5E9;
-  --dark-color-category-default: #9e9b9c; 
+  --dark-color-category-default-second: #eee5e9;
+  --dark-color-category-default: #9e9b9c;
   /* --dark-color-category-cake-second: #F9DD6C;
   --dark-color-category-cake: #D8AB3A;
   --dark-color-category-drink-second: #3983DD;
@@ -462,22 +461,20 @@ span {
   --color-font-RCS: hsl(var(--brand-hue) 5% 10%);
   /* --color-border: #bbbbbb; */
 
-
-  --color-main-yellow: hsl(var(--brand-hue) calc(var(--brand-saturation) / 1.2) calc(var(--brand-lightness) / 1.2));
+  --color-main-yellow: hsl(
+    var(--brand-hue) calc(var(--brand-saturation) / 1.2)
+      calc(var(--brand-lightness) / 1.2)
+  );
   --color-font-primary: hsl(var(--brand-hue) 15% 78%);
   --color-font-secondary: hsl(var(--brand-hue) 0% 45%);
   --color-background-primary: hsl(var(--brand-hue) 5% 10%);
   /* --color-background-RCS: hsl(var(--brand-hue) 15% 6.5%); */
   --color-background-RCS: hsl(var(--brand-hue) 15% 8%);
   /* --color-background-RCS: rgb(20, 20, 20); */
-  --color-border: hsl(var(--brand-hue) 2%  30%);
+  --color-border: hsl(var(--brand-hue) 2% 30%);
   --color-background-secodary: hsl(var(--brand-hue) 1% 25%);
   /* --surface-shadow-dark: var(--brand-hue) 50% 3%; */
   /* --shadow-strength-dark: .8; */
-
-
-
-
 
   --color-category-cake: hsl(48, 100%, 40%);
   --color-category-cake-second: hsl(43, 70%, 38%);
@@ -506,98 +503,107 @@ span {
   --color-category-snack: hsl(28, 72%, 48%);
   --color-category-snack-second: hsl(17, 58%, 38%);
 
-  --color-category-juice: hsl(328, 48%, 57%) ;
+  --color-category-juice: hsl(328, 48%, 57%);
   --color-category-juice-second: hsl(327, 39%, 41%);
 
-  --color-category-default: #EEE5E9;
+  --color-category-default: #eee5e9;
   --color-category-default-second: #9e9b9c;
-
 }
 
 /* VARIABLES */
 /* ======================================================================================= */
 
 /* GLOBAL */
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@500;800&display=swap');
-  body {
-    overflow-y: scroll;
-    background-color: var(--color-background-primary);
-    min-width: 300px;
-    position: static;
-    margin: 0 !important;
-    padding: 0;
-    font-family: 'Noto Sans Mono', monospace;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  ::selection {
-    background: var(--color-main-selection-gray);
-  }
-  /* span button desription */
-  .visuallyHidden:not(:focus):not(:active) {
-    clip: rect(0 0 0 0); 
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap; 
-    width: 1px;
-  }
-  .hidden {
-    position: absolute;
-    visibility: hidden;
-    display: none;
-  }
-  .visible {
-    display: inherit;
-  }
-  .noScroll {
-    position: fixed !important;
-    min-height: 100vh !important;
-    width: 100%;
-  }
-  /* strzalki w number input */
-  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; 
-  }
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@500;800&display=swap'); */
+body {
+  overflow-y: scroll;
+  background-color: var(--color-background-primary);
+  min-width: 300px;
+  position: static;
+  margin: 0 !important;
+  padding: 0;
+  /* font-family: 'Noto Sans Mono', monospace; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+  background: var(--color-main-selection-gray);
+}
+/* span button desription */
+.visuallyHidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+.hidden {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+.visible {
+  display: inherit;
+}
+.noScroll {
+  position: fixed !important;
+  min-height: 100vh !important;
+  width: 100%;
+}
+/* strzalki w number input */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 
-  /* SKELETON */
-  .react-loading-skeleton {
-    background-color: var(--color-skeleton-primary) !important;
-  }
-  /* end SKELETON */
+/* SKELETON */
+.react-loading-skeleton {
+  background-color: var(--color-skeleton-primary) !important;
+}
+/* end SKELETON */
 
-  /* TOASTIFY */
-  .Toastify__toast-body {
-    font-family: 'Noto Sans Mono', monospace;
-    color: var(--color-font-primary);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: var(--color-font-primary);
-    user-select: none;
-  }
-  .Toastify__toast-theme--light {
-    background: var(--color-background-primary) !important;
-  }
+/* TOASTIFY */
+.Toastify__toast-body {
+  font-family: 'Noto Sans Mono', monospace;
+  color: var(--color-font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-font-primary);
+  user-select: none;
+}
+.Toastify__toast-theme--light {
+  background: var(--color-background-primary) !important;
+}
+.Toastify__toast {
+  border-top: 1px solid var(--color-border);
+  /* border-right: 1px solid var(--color-border); */
+  border-radius: 0 !important;
+}
+@media screen and (min-width: 481px) {
   .Toastify__toast {
     border: 1px solid var(--color-border);
+    /* border-right: 1px solid var(--color-border); */
     border-radius: 0 !important;
   }
-  .Toastify__progress-bar-theme--light {
-    background: var(--color-category-preserves) !important;
-  }
-  .Toastify__close-button--light {
-    display: none;
-  }
-  /* end TOASTIFY */
-  
+}
+
+.Toastify__progress-bar-theme--light {
+  background: var(--color-category-preserves) !important;
+}
+.Toastify__close-button--light {
+  display: none;
+}
+/* end TOASTIFY */
+
 /* end GLOBAL */
 
 /* tab focus styling */
-.navLink:focus-visible, 
-.navLogo:focus-visible, 
+.navLink:focus-visible,
+.navLogo:focus-visible,
 .searchInput:focus-visible,
 .navHamburger:focus-visible,
 .RCSlink:focus-visible,
@@ -605,7 +611,7 @@ span {
 .RCcategoryLink:focus-visible,
 .footerLink:focus-visible,
 .footerSocialLink:focus-visible,
- .footerHomeLink:focus-visible {
+.footerHomeLink:focus-visible {
   outline: 3px solid var(--color-focus);
   font-weight: bold;
   background-color: var(--color-background-primary);
@@ -624,7 +630,7 @@ span {
 .RCSlink:focus-visible .RCSname {
   color: var(--color-focus);
   font-weight: bold;
-  text-decoration:underline;
+  text-decoration: underline;
 }
 .RCSfavorite:focus-visible svg {
   stroke: var(--color-focus);
@@ -634,7 +640,7 @@ span {
 .RCSfavorite:focus-visible {
   outline: none;
 }
-.RCSfavorite:focus-visible ~ .RCSfavorite.RCSfavoriteAnimate svg{
+.RCSfavorite:focus-visible ~ .RCSfavorite.RCSfavoriteAnimate svg {
   stroke: var(--color-focus);
   stroke-width: 2px;
 }
@@ -643,11 +649,11 @@ span {
   fill: var(--color-focus);
 }
 .paginationSearchInput:focus-visible {
-  border: none;
+  /* border: none; */
   outline: 3px solid var(--color-focus);
   color: var(--color-focus);
   font-weight: bold;
-  background-color: var(--color-background-secodary);
+  /* background-color: var(--color-background-secodary); */
 }
 .RCbuttonPrev:focus-visible {
   outline: 3px solid var(--color-focus);
@@ -658,10 +664,7 @@ span {
   font-weight: bold;
 } */
 
-
-
 /* --------------- */
-
 
 .navLink:focus:not(:focus-visible), 
 .navLogo:focus:not(:focus-visible), 
@@ -692,14 +695,14 @@ span {
   outline: none;
   color: var(--color-font-primary);
   font-weight: bold;
-  text-decoration:underline;
+  text-decoration: underline;
 }
-.RCSfavorite:focus:not(:focus-visible) svg{
+.RCSfavorite:focus:not(:focus-visible) svg {
   stroke: var(--color-main-red);
   fill: transparent;
   outline: none;
 }
-.RCSfavorite:focus:not(:focus-visible) ~ .RCSfavorite.RCSfavoriteAnimate svg{
+.RCSfavorite:focus:not(:focus-visible) ~ .RCSfavorite.RCSfavoriteAnimate svg {
   fill: var(--color-main-red);
 }
 /* .footerLink:focus {
@@ -707,10 +710,6 @@ span {
   color: var(--color-focus);
   font-weight: bold;
 } */
-
-
-
-
 
 /* end tab focus styling */
 
@@ -727,12 +726,12 @@ span {
   padding-left: 30px !important; */
 }
 .navLoading {
-    visibility: hidden;
-    display: none;
+  visibility: hidden;
+  display: none;
 }
 .hamLoading {
   position: relative;
-  visibility:visible;
+  visibility: visible;
 }
 .navBar {
   position: sticky;
@@ -827,7 +826,7 @@ span {
   letter-spacing: -1.5px;
   transition: background-color 100ms ease-in-out;
 }
-input[type="text"] {
+.searchInput[type='text'] {
   color: var(--color-font-secondary);
   font-style: italic;
 }
@@ -854,8 +853,8 @@ input[type="text"] {
 .searchButton {
   border: none;
   text-align: center;
- position: absolute;
- right: 10px;
+  position: absolute;
+  right: 10px;
   /* border-color: black; */
   /* margin: 10px; */
   padding: 0;
@@ -873,6 +872,10 @@ input[type="text"] {
   font-weight: bold;
   border-left: none;
   background-color: var(--color-main-yellow);
+}
+.searchInput:focus::placeholder {
+  /* background-color: var(--color-background-primary); */
+  color: var(--color-focus);
 }
 .searchButton svg {
   width: 27px;
@@ -972,7 +975,8 @@ input[type="text"] {
   font-size: 1.2em;
   text-decoration: none;
   color: var(--color-font-primary);
-  transition: background-color 100ms ease-in-out, color 150ms ease-in-out, font-weight 150ms ease-in-out;
+  transition: background-color 100ms ease-in-out, color 150ms ease-in-out,
+    font-weight 150ms ease-in-out;
   user-select: none;
 }
 .categoryButton.active {
@@ -983,13 +987,25 @@ input[type="text"] {
 }
 .categoryButton.active .categoryIcon {
   padding-right: 30px;
-  --mask: conic-gradient(from -115deg at right,#0000,#000 1deg 49deg,#0000 50deg) 50%/100% 9.33px;
+  --mask: conic-gradient(
+      from -115deg at right,
+      #0000,
+      #000 1deg 49deg,
+      #0000 50deg
+    )
+    50%/100% 9.33px;
   -webkit-mask: var(--mask);
   mask: var(--mask);
 }
 .categoryButton:hover .categoryIcon {
   padding-right: 30px;
-  --mask: conic-gradient(from -115deg at right,#0000,#000 1deg 49deg,#0000 50deg) 50%/100% 9.33px;
+  --mask: conic-gradient(
+      from -115deg at right,
+      #0000,
+      #000 1deg 49deg,
+      #0000 50deg
+    )
+    50%/100% 9.33px;
   -webkit-mask: var(--mask);
   mask: var(--mask);
 }
@@ -1029,7 +1045,7 @@ input[type="text"] {
   font-size: 1.2em;
   order: -10;
   cursor: pointer;
-  font-family: 'Noto Sans Mono', monospace;
+  /* font-family: 'Noto Sans Mono', monospace; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: all 150ms ease-in-out;
@@ -1059,14 +1075,15 @@ input[type="text"] {
   transition: fill 100ms ease-in-out;
   padding: 16px 0;
 }
-.categoryClear:hover, .categoryClear:active {
+.categoryClear:hover,
+.categoryClear:active {
   background-color: var(--color-main-red);
 }
-.categoryClear:hover svg, .categoryClear:active svg {
+.categoryClear:hover svg,
+.categoryClear:active svg {
   fill: var(--color-background-primary);
 }
 /*! end CATEGORY CONTAINER */
-
 
 .hero {
   min-height: 400px;
@@ -1098,14 +1115,17 @@ input[type="text"] {
   min-height: 400px;
   background-color: var(--color-background-primary);
   /* background-color: red; */
-  background-image: radial-gradient(var(--color-background-secodary) 1.3px, var(--color-background-primary) 1.3px);
+  background-image: radial-gradient(
+    var(--color-background-secodary) 1.3px,
+    var(--color-background-primary) 1.3px
+  );
   background-size: 12px 12px;
 
   /* background-color: #ffffff;
   opacity: 1;
   background-size: 24px 24px;
   background-image: repeating-linear-gradient(45deg, var(--color-main-selection-gray) 0, var(--color-main-selection-gray) 2.4000000000000004px, #ffffff 0, #ffffff 50%); */
-/* 
+  /* 
   background-color: #ffffff;
 opacity: 1;
 background-image:  linear-gradient(var(--color-main-selection-gray) 2.4000000000000004px, transparent 2.4000000000000004px), linear-gradient(to right, var(--color-main-selection-gray) 2.4000000000000004px, #ffffff 2.4000000000000004px);
@@ -1131,7 +1151,7 @@ background-position: 8px 8px; */
   color: var(--color-font-primary);
   float: left;
   clear: left;
-  display:inline;
+  display: inline;
 }
 .heroText {
   /* margin: 0 10px; */
@@ -1160,10 +1180,10 @@ background-position: 8px 8px; */
   /* top: 10vw;
   right: 2vh; */
   top: 20px;
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   position: absolute;
   /* -webkit-filter: drop-shadow( 1px 1px 10px rgba(0, 0, 0, .3));
   filter: drop-shadow( 1px 1px 10px rgba(0, 0, 0, .3)); */
@@ -1226,7 +1246,7 @@ background-position: 8px 8px; */
   position: relative;
   min-height: 85vh;
   margin: 0 auto;
-  padding:0;
+  padding: 0;
 
   background-color: var(--color-background-primary);
 }
@@ -1353,9 +1373,9 @@ background-position: 8px 8px; */
 .RCSimg {
   width: 100%;
   height: 10em;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .RCSinfo {
   min-height: 6em;
@@ -1392,7 +1412,7 @@ background-position: 8px 8px; */
   stroke: var(--color-font-secondary);
 }
 .RCSfavorite ~ .RCSfavorite.RCSfavoriteAnimate {
-  transition: all 450ms cubic-bezier(0.680, -0.550, 0.265, 1.550) ;
+  transition: all 450ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   fill: var(--color-main-red);
   transform: scale(0);
 }
@@ -1460,10 +1480,11 @@ background-position: 8px 8px; */
   border: none;
   background-color: transparent;
 }
-.paginationButton svg{
+.paginationButton svg {
   margin-top: 5px;
 }
-.paginationButton:disabled .paginationIcon, .paginationButton:disabled{
+.paginationButton:disabled .paginationIcon,
+.paginationButton:disabled {
   fill: var(--color-disabled);
   cursor: default;
 }
@@ -1482,7 +1503,8 @@ background-position: 8px 8px; */
   width: 1em !important;
   height: 100% !important;
 }
-.paginationNext svg, .paginationPrev svg {
+.paginationNext svg,
+.paginationPrev svg {
   fill: var(--color-font-secondary);
 }
 .paginationInput {
@@ -1498,7 +1520,7 @@ background-position: 8px 8px; */
   border: 1px solid var(--color-border);
   border-radius: 0;
   text-align: center;
-  letter-spacing: -.03em;
+  letter-spacing: -0.03em;
   width: 1.8em;
   height: 1.8em;
   color: var(--color-font-secondary);
@@ -1506,18 +1528,18 @@ background-position: 8px 8px; */
   transition: all 150ms ease-in-out;
 
   /* usuniecie cienia z input w ios (startszych?) */
-  background-image: linear-gradient(transparent, transparent); 
+  background-image: linear-gradient(transparent, transparent);
 }
 .paginationSearchInput:hover {
-  font-weight: bold;
-  color: var(--color-font-primary);
-  background-color: var(--color-background-secodary);
+  /* font-weight: bold; */
+  /* color: var(--color-font-primary); */
+  /* background-color: var(--color-background-secodary); */
 }
 .paginationInputSeparator {
   padding: 0 10px;
 }
 .paginationInputTotalPages {
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 1.8em;
@@ -1587,14 +1609,21 @@ background-position: 8px 8px; */
   z-index: 2;
   text-transform: lowercase;
 }
-.RCingredientsList .react-loading-skeleton, .RCpreparing .react-loading-skeleton {
+.RCingredientsList .react-loading-skeleton,
+.RCpreparing .react-loading-skeleton {
   margin: 5px 0;
 }
 .RCimageContainer {
   min-height: 400px;
   background-color: var(--color-background-primary);
   background-size: 11px 11px;
-  background-image: repeating-linear-gradient(45deg, var(--color-disabled) 0, var(--color-disabled) 1.1px, var(--color-background-primary) 0, var(--color-background-primary) 50%);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-disabled) 0,
+    var(--color-disabled) 1.1px,
+    var(--color-background-primary) 0,
+    var(--color-background-primary) 50%
+  );
   margin-top: 30px;
   margin-bottom: 30px;
   display: flex;
@@ -1610,7 +1639,7 @@ background-position: 8px 8px; */
   margin-left: auto;
   margin-right: auto;
 }
-.RCimage { 
+.RCimage {
   margin-left: auto;
   margin-right: auto;
   max-width: 80vw;
@@ -1621,13 +1650,11 @@ background-position: 8px 8px; */
   height: 400px;
   max-height: 80vw;
   background-color: var(--color-skeleton-secondary);
-  position:relative; /* this one is new - used to contain absolute elements */
-
+  position: relative; /* this one is new - used to contain absolute elements */
 }
 
 .RCimage img {
   transform: scale(110%);
-  
 }
 .RCimage:hover {
   filter: none;
@@ -1637,12 +1664,13 @@ background-position: 8px 8px; */
   height: 100%;
   /* filter: grayscale(); */
   object-fit: cover;
-  
 }
 .RCstage {
   color: var(--color-font-secondary);
 }
-.RCstagePreparing, .RCstageIngredients, .RCstageTitle {
+.RCstagePreparing,
+.RCstageIngredients,
+.RCstageTitle {
   color: var(--color-font-secondary);
   text-transform: lowercase;
 }
@@ -1655,7 +1683,8 @@ background-position: 8px 8px; */
   margin: 15px 10px 2px;
   word-spacing: -10px;
 }
-.RCstageIngredients, .RCstagePreparing {
+.RCstageIngredients,
+.RCstagePreparing {
   font-size: 1.3em;
   font-weight: normal;
   margin: 15px 1.6rem;
@@ -1683,8 +1712,6 @@ background-position: 8px 8px; */
   white-space: pre-line;
 }
 /*! end recipe card */
-
-
 
 /*! ???? */
 .swiperName {
@@ -1731,28 +1758,19 @@ background-position: 8px 8px; */
 .swiper-pagination > .swiper-pagination-bullet-active {
   background-color: var(--color-border);
 }
-.swiper-button-prev{
-
+.swiper-button-prev {
   /* background-color: red; */
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") !important;
-
 }
 .swiper-button-next {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") !important;
 }
 /*! ???? */
 
-
 .carousel .RCS {
   width: 66%;
   margin: 0 20px;
 }
-
-
-
-
-
-
 
 /*! FOOTER */
 .footer {
@@ -1780,7 +1798,7 @@ background-position: 8px 8px; */
 }
 .footerLinks ul li {
   padding: 5px;
-  display:inline-block;
+  display: inline-block;
 }
 .footerLink {
   background-color: var(--color-background-primary);
@@ -1792,17 +1810,18 @@ background-position: 8px 8px; */
   letter-spacing: -1px;
   font-size: 1em;
 }
-.footerLink:hover, .footerHomeLink:hover {
+.footerLink:hover,
+.footerHomeLink:hover {
   border: 1px solid var(--color-border);
 }
 .footerCopyright {
   font-size: 0.7em;
   text-transform: uppercase;
   padding: 40px 0 22px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width:100%;
+  width: 100%;
 }
 .footerCopyright span {
   background-color: var(--color-background-primary);
@@ -1826,11 +1845,11 @@ background-position: 8px 8px; */
 }
 .footerSocialLink {
   text-decoration: none;
-  font-style:italic;
+  font-style: italic;
   color: var(--color-font-primary);
   font-weight: bold;
   letter-spacing: 1px;
-  text-transform:lowercase;
+  text-transform: lowercase;
   border: 1px solid transparent;
   border-bottom: 2px solid var(--color-border);
   font-size: 0.8rem;
@@ -1905,6 +1924,120 @@ background-position: 8px 8px; */
 } */
 /*! end NOTFOUND */
 
+/*! CONTACT */
+.dot {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+
+  /* needs to be very contrasty color. E.g. light gray on white won't work */
+  background: var(--color-main-yellow);
+  opacity: 0.8;
+  z-index: 1;
+  -webkit-filter: blur(150px);
+  filter: blur(150px);
+}
+.contactTitle,
+.contactForm,
+.contactInput,
+.contactInputBig,
+.contactLabel,
+.contactSubmit {
+  z-index: 2;
+}
+.contactContainer {
+  position: relative; /* Konieczne, aby umożliwić pozycjonowanie potomka */
+  min-height: 700px;
+  padding: 0 0.8rem;
+  color: var(--color-font-primary);
+}
+
+.contactTitle {
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1.5rem;
+  margin: 2rem 0px 0.2rem;
+  font-weight: bold;
+  /* padding-bottom: 2px; */
+}
+.contactLabel {
+  padding-top: 12px;
+  font-size: 0.8rem;
+}
+.contactInput,
+.contactInputBig {
+  /* width: 100%; */
+  /* padding: 0 0.8rem; */
+  height: 1.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background-primary);
+  border-radius: 0;
+  /* padding-bottom: 0.8rem; */
+  font-size: 1.1rem;
+  padding: 6px 12px;
+}
+.contactInputBig {
+  min-height: 200px;
+  height: 200px;
+  resize: none;
+}
+.contactForm {
+  /* background-color: red; */
+  padding: 0 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+.contactSubmit {
+  border: 1px solid var(--color-font-primary);
+  background-color: var(--color-font-primary);
+  color: var(--color-background-primary);
+  font-size: 1.1rem;
+  height: 58px;
+  margin: calc(12px + 0.8rem) 0;
+  /* margin-top: calc(12px + 0.8rem); */
+
+  transition: all 150ms ease-in-out;
+}
+.contactSubmit:hover {
+  cursor: pointer;
+  background-color: var(--color-background-primary);
+  color: var(--color-font-primary);
+  font-weight: bold;
+}
+.contactSubmit:active {
+  background-color: red;
+}
+.contactInfo {
+  padding: 20px 10px 5px;
+  /* text-align: center; */
+  font-size: 1em;
+  /* background-color: var(--color-category-salad); */
+  /* text-decoration: underline; */
+  /* --dot-bg: var(--color-background-primary);
+  --dot-color: var(--color-font-primary);
+  --dot-size: 1px;
+  --dot-space: 12px;
+  background: linear-gradient(
+        90deg,
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+  border-radius: 30px; */
+}
+/*! end CONTACT */
+
 /*! ============================================================================================================================== */
 /*? ============================================================================================================================== */
 /*? PHONE */
@@ -1922,10 +2055,12 @@ background-position: 8px 8px; */
   .RCstageTitle {
     font-size: 1.7em;
   }
-  .RCstageIngredients, .RCstagePreparing {
+  .RCstageIngredients,
+  .RCstagePreparing {
     font-size: 1.5em;
   }
-  .RCingredientsList, .RCpreparing {
+  .RCingredientsList,
+  .RCpreparing {
     font-size: 1em;
   }
   .navBar {
@@ -1966,9 +2101,19 @@ background-position: 8px 8px; */
 /*? ============================================================================================================================== */
 /*? tablet landscape */
 @media screen and (min-width: 900px) {
+  .dot {
+    width: 400px;
+    height: 400px;
+  }
+  .contactContainer {
+    /* margin-top: 50px; */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .navLoading {
     position: relative;
-    visibility:visible;
+    visibility: visible;
     display: block;
   }
   .hamLoading {
@@ -1983,8 +2128,13 @@ background-position: 8px 8px; */
     flex-direction: row;
     background-color: var(--color-background-primary);
     background-size: 11px 11px;
-    background-image: repeating-linear-gradient(45deg, var(--color-disabled) 0, var(--color-disabled) 1.1px, var(--color-background-primary) 0, var(--color-background-primary) 50%);
-
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-disabled) 0,
+      var(--color-disabled) 1.1px,
+      var(--color-background-primary) 0,
+      var(--color-background-primary) 50%
+    );
   }
   .RCimageContainer a {
     width: 400px;
@@ -2038,19 +2188,22 @@ background-position: 8px 8px; */
     padding-top: 1.9em;
   }
   .heroText:nth-child(3) {
-    float:inherit;
+    float: inherit;
   }
   .heroText:last-child {
     padding-left: 16px;
     margin-left: -1px;
-    float:inherit;
+    float: inherit;
   }
   .heroText {
     font-size: 2.2em;
   }
   .heroPattern {
     background-color: var(--color-background-primary);
-    background-image: radial-gradient(var(--color-background-secodary) 1.4px, var(--color-background-primary) 1.4px);
+    background-image: radial-gradient(
+      var(--color-background-secodary) 1.4px,
+      var(--color-background-primary) 1.4px
+    );
     background-size: 14px 14px;
     position: absolute;
     width: 711px;
@@ -2061,7 +2214,8 @@ background-position: 8px 8px; */
     border-top-left-radius: 75px;
     border-bottom-right-radius: 75px;
   }
-  .searchButton, .searchInputClear {
+  .searchButton,
+  .searchInputClear {
     height: 55px;
     width: 55px;
     padding-top: 0px;
@@ -2070,7 +2224,8 @@ background-position: 8px 8px; */
   .searchInputClear:hover {
     background-color: var(--color-main-red);
   }
-  .searchButton svg, .searchInputClear svg {
+  .searchButton svg,
+  .searchInputClear svg {
     fill: var(--color-font-secondary);
   }
   .searchButton:hover svg,
@@ -2099,19 +2254,37 @@ background-position: 8px 8px; */
     margin-right: 0;
     margin-left: auto;
   }
-  .navBar {
+  .navLink::before {
+    content: '';
+    display: inline-block;
+    border-radius: 50%;
+    width: 15px; /* Szerokość kropki */
+    height: 15px; /* Wysokość kropki */
+    background-color: var(--color-font-primary); /* Kolor kropki */
+    /* margin-left: 10px; */
+    margin: 0 4px 0 8px;
+  }
+  li:first-child .navLink::before {
+    display: none;
+  }
+  .navList:nth-child(2) .navBar {
     margin: 0;
     padding: 9px 0;
   }
   .footer {
     margin: 0;
   }
-  .navList li, .navList li:first-child {
-    padding: 0 0.3em;
+  .navList li,
+  .navList li:first-child {
+    padding: 0;
     background-color: transparent;
     border: none;
     margin: 0;
   }
+  .navList li:first-child {
+    padding-left: 0.3rem;
+  }
+
   .navLink:hover {
     color: var(--color-font-primary);
   }
@@ -2140,12 +2313,12 @@ background-position: 8px 8px; */
     font-size: 2rem;
     margin-right: 9px;
     border: 1px solid var(--color-border);
+    transition: all 150ms ease-in-out;
   }
   .searchInput:hover {
-    font-weight: bold;
+    /* font-weight: bold; */
     background-color: var(--color-background-primary);
-    color: var(--color-font-primary);
-
+    /* color: var(--color-font-primary); */
   }
   .searchInput:focus {
     background-color: var(--color-background-primary);
@@ -2192,13 +2365,15 @@ background-position: 8px 8px; */
     font-size: 2rem;
     grid-area: 2 / 1 / 3 / 4;
   }
-  .RCstageIngredients, .RCstagePreparing {
+  .RCstageIngredients,
+  .RCstagePreparing {
     font-size: 1.7rem;
   }
   .RCingredientsList {
     margin-right: 10px;
   }
-  .RCingredientsList, .RCpreparing {
+  .RCingredientsList,
+  .RCpreparing {
     font-size: 1.2em;
   }
   .RCing {
@@ -2231,6 +2406,12 @@ background-position: 8px 8px; */
   /* .recipesContainer, .RCcategoryPadding {
     padding: 0 35px;
   } */
+  .contactContainer {
+    margin-top: 50px;
+    /* background: radial-gradient(circle at center, black 5rem, transparent 0);
+    -webkit-filter: blur(15px);
+    filter: blur(15px); */
+  }
   .RCimageContainer {
     gap: 20px;
   }
@@ -2298,7 +2479,7 @@ background-position: 8px 8px; */
   /* .recipesContainer, .RCcategoryPadding {
     padding: 0 40px;
   } */
-  .cardContainer {    
+  .cardContainer {
     gap: 1.8em;
   }
   .RCS {
