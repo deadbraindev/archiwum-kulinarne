@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 export const metadata = {
   title: 'kontakt | archiwum kulinarne',
   openGraph: {
@@ -35,15 +36,15 @@ export default function Page() {
 
       <h2 className="contactTitle">nadawca</h2>
       <form className="contactForm">
-        <label className="contactLabel" htmlFor="">
+        <label className="contactLabel" htmlFor="name">
           imię
         </label>
-        <input className="contactInput" type="text" />
+        <input className="contactInput" type="text" id="name" />
 
-        <label className="contactLabel" htmlFor="">
+        <label className="contactLabel" htmlFor="email">
           email
         </label>
-        <input className="contactInput" type="text" />
+        <input className="contactInput" type="text" id="email" />
 
         <label className="contactLabel" htmlFor="">
           wiadomość
