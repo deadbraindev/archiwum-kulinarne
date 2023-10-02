@@ -1243,7 +1243,7 @@ background-position: 8px 8px; */
 .container {
   overflow: hidden;
   top: 0px;
-  position: relative;
+  /* position: relative; */
   min-height: 85vh;
   margin: 0 auto;
   padding: 0;
@@ -1251,11 +1251,12 @@ background-position: 8px 8px; */
   background-color: var(--color-background-primary);
 }
 .cardContainer {
-  margin-top: 20px;
-  padding-top: 20px;
+  /* margin-top: 20px;
+  padding-top: 20px; */
+  padding-top: 0.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10.7em, 1fr));
-  gap: 0.5em;
+  gap: 0.5rem;
   width: 100%;
 }
 .recipesContainer {
@@ -1933,15 +1934,15 @@ background-position: 8px 8px; */
   margin: auto;
   position: absolute;
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 
   /* needs to be very contrasty color. E.g. light gray on white won't work */
   background: var(--color-main-yellow);
-  opacity: 0.8;
+  /* opacity: 0.8; */
   z-index: 1;
-  -webkit-filter: blur(150px);
-  filter: blur(150px);
+  /* -webkit-filter: blur(150px); */
+  filter: blur(40px);
 }
 .contactTitle,
 .contactForm,
@@ -1949,7 +1950,7 @@ background-position: 8px 8px; */
 .contactInputBig,
 .contactLabel,
 .contactSubmit {
-  z-index: 2;
+  z-index: 3;
 }
 .contactContainer {
   position: relative; /* Konieczne, aby umożliwić pozycjonowanie potomka */
@@ -2145,7 +2146,7 @@ background-position: 8px 8px; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     height: auto;
-    gap: 0.5em;
+    gap: 0.5rem;
   }
   .categoryVisibilityButton {
     grid-area: 1 / 1 / 2 / 3;
@@ -2186,6 +2187,8 @@ background-position: 8px 8px; */
   .heroTextContainer {
     padding-left: 2.39em;
     padding-top: 1.9em;
+    z-index: 10;
+    position: relative;
   }
   .heroText:nth-child(3) {
     float: inherit;
@@ -2197,6 +2200,8 @@ background-position: 8px 8px; */
   }
   .heroText {
     font-size: 2.2em;
+    z-index: 10;
+    background-color: transparent;
   }
   .heroPattern {
     background-color: var(--color-background-primary);
@@ -2262,7 +2267,7 @@ background-position: 8px 8px; */
     height: 15px; /* Wysokość kropki */
     background-color: var(--color-font-primary); /* Kolor kropki */
     /* margin-left: 10px; */
-    margin: 0 4px 0 8px;
+    margin: 0 8px 4px 8px;
   }
   li:first-child .navLink::before {
     display: none;
@@ -2451,8 +2456,12 @@ background-position: 8px 8px; */
     transition: all 100ms ease;
   }
   .cardContainer {
+    padding-top: 1rem;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1em;
+    gap: 1rem;
+  }
+  .categoryContainer {
+    /* gap: 1rem; */
   }
   .RCS:hover {
     transform: translate(0, -6px);

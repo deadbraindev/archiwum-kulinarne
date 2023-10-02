@@ -45,6 +45,8 @@ export default function Page() {
   const recentlyAdded = data?.results
     ? data.results?.tiles.map((tile) => tile.value)
     : [];
+  console.log(isLoading);
+  console.log('aaa');
 
   return (
     <>
@@ -52,6 +54,7 @@ export default function Page() {
 
       <div className="hero">
         <div className="heroPattern">
+          <div className="dot" />
           <h1 className="heroTextContainer">
             <span className="heroText">zdigitalizowane</span>
             <span className="heroText">rodzinne</span>

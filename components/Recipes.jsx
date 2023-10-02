@@ -168,7 +168,6 @@ export default function Recipes() {
         count={1}
         width="1.8em"
         height="1.8em"
-        // baseColor="#bababa"
         enableAnimation={false}
       />
     );

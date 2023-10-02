@@ -22,7 +22,6 @@ export function FavoriteContextProvider({ children }) {
     setState(updatedFavorites);
   };
   const removeFromFavorite = (recipe) => {
-    // const updatedFavorites = [...state, recipe];
     const updatedFavorites = state.filter(
       (currentRecipe) => currentRecipe.slug !== recipe.slug
     );

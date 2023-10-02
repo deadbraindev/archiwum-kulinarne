@@ -30,7 +30,17 @@ export default function Page() {
         <input
           className="contactInput"
           type="text"
-          defaultValue="@deadbraindev"
+          defaultValue="ddbnr"
+          disabled
+        />
+        <label className="contactLabel" htmlFor="">
+          email
+        </label>
+        <input
+          className="contactInput"
+          type="text"
+          defaultValue="deadbrain@deadbrain.dev"
+          disabled
         />
       </form>
 
