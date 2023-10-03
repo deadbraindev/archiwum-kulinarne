@@ -788,6 +788,17 @@ input[type='number']::-webkit-outer-spin-button {
   background-color: var(--color-background-primary);
   color: var(--color-font-primary);
 }
+.navLink.active {
+  font-weight: 700;
+  -webkit-text-decoration-color: #ffce06;
+  text-decoration-color: #ffce06;
+  -webkit-text-decoration-color: var(--color-main-yellow);
+  text-decoration-color: var(--color-main-yellow);
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: wavy;
+  text-decoration-style: wavy;
+}
 .navLogo {
   font-size: 1.7em;
   line-height: 1;
@@ -1086,7 +1097,7 @@ input[type='number']::-webkit-outer-spin-button {
 /*! end CATEGORY CONTAINER */
 
 .hero {
-  min-height: 400px;
+  min-height: 70vh;
   /* height: 62vh; */
   /* max-height: 450px; */
   width: 100%;
@@ -1229,9 +1240,75 @@ background-position: 8px 8px; */
   /* min-height: 10; */
 }
 .swiperContainer {
-  padding: 0 4px;
+  padding: 0 4px 20px;
   overflow: visible;
-  /* border-bottom: 1px solid var(--color-border); */
+}
+.swiperName {
+  color: var(--color-font-primary);
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: inline-flex;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: wavy;
+  text-decoration-style: wavy;
+}
+.swiperName.cake {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-cake);
+  text-decoration-color: var(--color-category-cake);
+}
+.swiperName.drink {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-drink);
+  text-decoration-color: var(--color-category-drink);
+}
+.swiperName.fastfood {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-fastfood);
+  text-decoration-color: var(--color-category-fastfood);
+}
+.swiperName.icecream {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-icecream);
+  text-decoration-color: var(--color-category-icecream);
+}
+.swiperName.lunch {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-lunch);
+  text-decoration-color: var(--color-category-lunch);
+}
+.swiperName.preserves {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-preserves);
+  text-decoration-color: var(--color-category-preserves);
+}
+.swiperName.fish {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-fish);
+  text-decoration-color: var(--color-category-fish);
+}
+.swiperName.salad {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-salad);
+  text-decoration-color: var(--color-category-salad);
+}
+.swiperName.snack {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-snack);
+  text-decoration-color: var(--color-category-snack);
+}
+.swiperName.juice {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-juice);
+  text-decoration-color: var(--color-category-juice);
+}
+.swiperName.default {
+  background-color: transparent;
+  -webkit-text-decoration-color: var(--color-category-default);
+  text-decoration-color: var(--color-category-default);
 }
 
 /*! CONTENT */
@@ -1715,35 +1792,10 @@ background-position: 8px 8px; */
 /*! end recipe card */
 
 /*! ???? */
-.swiperName {
-  /* border-bottom: 1px solid var(--color-border); */
-  color: var(--color-font-primary);
-  padding: 5px 4px;
-  margin: 10px 8px;
-  font-size: 1.4em;
-  font-weight: bold;
-  /* text-decoration: underline dotted purple; */
-  /* text-decoration-line: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: var(--color-main-red);
-  text-decoration-thickness: 2px; */
-}
-/* .swiperName::before {
-  content: "";
-  position: absolute;
-  left: 7%;
-  bottom: 16px;
-  width: 150px;
-  height: 14px;
-  transform: skew(-12deg) translateX(-50%);
-  background: rgba(238,111,87,0.5);
-  z-index: 10;
-} */
 .swiper {
   margin: 0;
   padding: 0;
 }
-
 .swiper-slide {
   margin: 0;
   padding-bottom: 40px;
@@ -1776,17 +1828,20 @@ background-position: 8px 8px; */
 /*! FOOTER */
 .footer {
   border-top: 1px solid var(--color-border);
-  min-height: 10em;
+  min-height: 10rem;
   position: relative;
   margin: 0;
-  padding: 0 8px;
+  padding: 0;
   background-color: var(--color-background-primary);
   z-index: 15;
   color: var(--color-font-primary);
 }
 .footerLinks {
+  padding: 20px 0;
+  margin: 0;
   width: 100%;
   display: flex;
+  gap: 40px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -1794,6 +1849,7 @@ background-position: 8px 8px; */
 .footerLinks ul {
   text-align: center;
   align-items: center;
+  margin: 0;
   padding: 0;
   list-style-type: none;
 }
@@ -1806,7 +1862,7 @@ background-position: 8px 8px; */
   padding: 2px;
   color: var(--color-font-primary);
   border: 1px solid transparent;
-  /* border-bottom: 1px solid var(--color-border); */
+  border-bottom: 1px solid var(--color-border);
   text-decoration: none;
   letter-spacing: -1px;
   font-size: 1em;
@@ -1829,7 +1885,7 @@ background-position: 8px 8px; */
   margin-top: 1px;
 }
 .footerInfo {
-  padding: 10px 0;
+  padding: 0 0.8rem;
   text-align: center;
   font-size: 1em;
 }
@@ -2178,7 +2234,7 @@ background-position: 8px 8px; */
     width: 300px;
   }
   .swiperContainer {
-    padding: 0 10px;
+    padding: 0 10px 20px;
   }
   .hero {
     min-height: 500px;
@@ -2276,9 +2332,7 @@ background-position: 8px 8px; */
     margin: 0;
     padding: 9px 0;
   }
-  .footer {
-    margin: 0;
-  }
+
   .navList li,
   .navList li:first-child {
     padding: 0;
@@ -2348,7 +2402,7 @@ background-position: 8px 8px; */
     right: calc(50% + 5px);
   }
   .swiperContainer {
-    padding: 0 35px;
+    padding: 0 35px 20px;
   }
   .RCname {
     font-size: 2.2em;
@@ -2394,12 +2448,15 @@ background-position: 8px 8px; */
     max-width: 58em;
     margin: 0 auto;
     flex-direction: row;
+    justify-content: start;
+    align-items: start;
   }
   .footerLinks ul {
     width: 40%;
     max-width: 340px;
   }
   .footerInfo {
+    padding-top: 6px;
     width: 60%;
   }
 }
@@ -2437,7 +2494,7 @@ background-position: 8px 8px; */
   }
 
   .swiperContainer {
-    padding: 0 20px;
+    padding: 0 0 20px;
   }
   .swiper {
     /* border-left: 1px dashed var(--color-border); */
@@ -2485,11 +2542,9 @@ background-position: 8px 8px; */
   .container {
     max-width: 90em;
   }
-  /* .recipesContainer, .RCcategoryPadding {
-    padding: 0 40px;
-  } */
   .cardContainer {
-    gap: 1.8em;
+    gap: 1.8rem;
+    padding-top: 1.8rem;
   }
   .RCS {
     max-width: 22em;

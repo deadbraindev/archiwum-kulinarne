@@ -4,14 +4,24 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
+import { categoryValidator } from '../lib/validators/categoryValidator';
+import { categoryHeaderColorPicker } from './RecipeUtilities';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
 
 export default function SwiperContainer(props) {
-  const { cards, title, loop } = props;
+  const { cards, title, loop, category } = props;
   return (
     <>
-      <h2 className="swiperName">{title}:</h2>
+      <h2
+        className={
+          categoryValidator(category)
+            ? `swiperName ${categoryHeaderColorPicker(category)}`
+            : 'swiperName'
+        }
+      >
+        {title}:
+      </h2>
       <div className="swiperContainer">
         <Swiper
           modules={[Pagination]}

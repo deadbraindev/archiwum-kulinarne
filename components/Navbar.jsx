@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { ToastContainer, Slide } from 'react-toastify';
@@ -124,6 +124,8 @@ function Navbar() {
     searchButton('');
   };
 
+  const pathname = usePathname();
+
   return (
     <>
       <ToastContainer
@@ -145,7 +147,11 @@ function Navbar() {
       <header className="navBar">
         <nav>
           <div className="navMini">
-            <Link className="navLogo" href="/">
+            <Link
+              // className="navLogo"
+              href="/"
+              className={pathname === '/' ? 'navLogo active' : 'navLogo'}
+            >
               archiwum kulinarne
             </Link>
 
@@ -161,15 +167,21 @@ function Navbar() {
 
           <ul className={navListDynamicClasses}>
             <li>
-              <Link href="/" className="navLink" onClick={handleNavLink}>
+              <Link
+                href="/"
+                onClick={handleNavLink}
+                className={pathname === '/' ? 'navLink active' : 'navLink'}
+              >
                 strona główna
               </Link>
             </li>
             <li>
               <Link
                 href="/przepisy"
-                className="navLink"
                 onClick={handleNavLink}
+                className={
+                  pathname === '/przepisy' ? 'navLink active' : 'navLink'
+                }
               >
                 spis
               </Link>
@@ -177,8 +189,10 @@ function Navbar() {
             <li>
               <Link
                 href="/ulubione"
-                className="navLink"
                 onClick={handleNavLink}
+                className={
+                  pathname === '/ulubione' ? 'navLink active' : 'navLink'
+                }
               >
                 ulubione
               </Link>

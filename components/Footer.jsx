@@ -34,8 +34,6 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <div className="footerSocial" />
-
       <div className="footerLinks">
         <ul>
           <li>
@@ -60,29 +58,6 @@ function Footer() {
               404test
             </Link>
           </li>
-
-          {/* {isFetching ? (
-            <li>
-              <Skeleton
-                count={1}
-                width="100px"
-                height="1em"
-                enableAnimation={false}
-              />
-            </li>
-          ) : isLoggedIn ? (
-            <li>
-              <Link to="admin" className="footerLink">
-                konto
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link to="login" className="footerLink">
-                zaloguj
-              </Link>
-            </li>
-          )} */}
         </ul>
 
         <div className="footerInfo">
