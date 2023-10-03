@@ -1,6 +1,9 @@
+/* eslint-disable camelcase */
 // import Link from 'next/link';
 // import Head from 'next/head';
 // import { Analytics } from '@vercel/analytics/react';
+
+import { Noto_Sans_Mono } from 'next/font/google';
 
 import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import Navbar from '../components/Navbar';
@@ -45,7 +48,6 @@ export const metadata = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#fff' },
     { media: '(prefers-color-scheme: dark)', color: '#fff' },
-    // { media: '(prefers-color-scheme: dark)', color: '#000' },
   ],
   appleWebApp: {
     title: 'archiwum kulinarne',
@@ -185,10 +187,15 @@ export const metadata = {
   category: 'food',
   manifest: '/manifest.json',
 };
+const notosansmono = Noto_Sans_Mono({
+  subsets: ['latin'],
+  variable: '--font-noto-sans-mono',
+  display: 'swap',
+});
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pl-PL">
+    <html lang="pl-PL" className={notosansmono.className}>
       <head>
         {/* <script
           defer
@@ -201,18 +208,18 @@ export default function RootLayout({ children }) {
           href="https://unpkg.com/flickity@2/dist/flickity.min.css"
         /> */}
       </head>
-      <body>
-        <FavoriteContextProvider>
-          <div className="content">
-            <Navbar />
-            <div className="container">
-              <ReactQueryWrapper>{children}</ReactQueryWrapper>
-            </div>
-            <Footer />
-          </div>
+      <FavoriteContextProvider>
+        <body>
+          {/* <div className="content"> */}
+          <Navbar />
+          <main className="container">
+            <ReactQueryWrapper>{children}</ReactQueryWrapper>
+          </main>
+          <Footer />
+          {/* </div> */}
           {/* <Analytics /> */}
-        </FavoriteContextProvider>
-      </body>
+        </body>
+      </FavoriteContextProvider>
     </html>
   );
 }

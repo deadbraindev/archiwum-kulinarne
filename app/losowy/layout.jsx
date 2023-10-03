@@ -1,8 +1,8 @@
 export const metadata = {
-  title: 'ulubione | archiwum kulinarne',
+  title: 'losowy przepis | archiwum kulinarne',
   openGraph: {
-    title: 'ulubione',
-    url: '/ulubione',
+    title: 'losowy przepis',
+    url: '/losowy',
     images: [
       {
         url: 'https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg',

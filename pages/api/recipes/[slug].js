@@ -20,10 +20,18 @@ export default async function handler(req, res) {
           origin: [
             'https://archiwumkulinarne.deadbrain.dev',
             'http://localhost:3000',
+            'https://archiwum-kulinarne.vercel.app',
           ],
           optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
         });
-        const recipe = await Recipe.findOne({ slug }).select('-__v'); // znalezienie przepisu po slug
+        let recipe = false;
+        if (slug === 'random') {
+          const count = await Recipe.countDocuments(); // Pobierz liczbę przepisów w kolekcji
+          const randomIndex = Math.floor(Math.random() * count); // Wylosuj indeks
+          recipe = await Recipe.findOne().skip(randomIndex);
+        } else {
+          recipe = await Recipe.findOne({ slug }).select('-__v'); // znalezienie przepisu po slug
+        }
         if (recipe) {
           const prettyImagesArray =
             recipe.images !== null

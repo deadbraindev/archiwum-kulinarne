@@ -28,11 +28,11 @@ export default function RecipeCardSmall(props) {
 
   const handleFavoriteButton = () => {
     if (isFavorite) {
-      toast('Usunięto z ulubionych!');
+      toast('usunięto z ulubionych!');
       removeFromFavorite({ name, slug, category });
       setIsFavorite(false);
     } else if (!isFavorite) {
-      toast('Dodano do ulubionych!');
+      toast('dodano do ulubionych!');
       addToFavorite({ name, slug, category });
       setIsFavorite(true);
     }
@@ -64,7 +64,7 @@ export default function RecipeCardSmall(props) {
           onClick={() => {
             handleFavoriteButton();
           }}
-          // aria-hidden="true"
+          aria-hidden="true"
           onKeyPress={() => {
             handleFavoriteButton();
           }}

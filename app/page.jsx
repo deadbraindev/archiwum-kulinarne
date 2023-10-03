@@ -24,7 +24,7 @@ export default function Page() {
   useEffect(() => {
     setLoading(true);
 
-    fetch('https://archiwum-kulinarne.vercel.app/api/recipes/lastadded')
+    fetch('/api/recipes?sort=no&pagesize=12')
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -52,28 +52,40 @@ export default function Page() {
 
       <div className="hero">
         <div className="heroPattern">
+          {/* <div className="dot" /> */}
           <h1 className="heroTextContainer">
             <span className="heroText">zdigitalizowane</span>
             <span className="heroText">rodzinne</span>
             <span className="heroText">przepisy</span>
             <span className="heroText">kulinarne</span>
+            <span className="heroText">***</span>
+            <span className="heroText">landing page</span>
+            <span className="heroText">work in progress</span>
           </h1>
         </div>
       </div>
 
-      <section className="recentlyAdded">
-        {isLoading ? (
-          <SwiperContainer cards="skeleton" title="ostatnio dodane" />
-        ) : (
-          <SwiperContainer cards={recentlyAdded} title="ostatnio dodane" />
-        )}
-        {isFetching ? (
-          <SwiperContainer cards="skeleton" title="twoje ulubione" />
-        ) : (
-          <SwiperContainer cards={favoriteCards} title="twoje ulubione" />
-        )}
-        {data === 404 ? <span>błąd 404</span> : null}
-      </section>
+      {isLoading ? (
+        <SwiperContainer cards="skeleton" title="ostatnio dodane" />
+      ) : (
+        <SwiperContainer
+          cards={recentlyAdded}
+          title="ostatnio dodane"
+          loop={false}
+          category="salatki"
+        />
+      )}
+      {isFetching ? (
+        <SwiperContainer cards="skeleton" title="twoje ulubione" />
+      ) : (
+        <SwiperContainer
+          cards={favoriteCards}
+          title="twoje ulubione"
+          loop={false}
+          category="slodkie"
+        />
+      )}
+      {data === 404 ? <span>błąd 404</span> : null}
     </>
   );
 }

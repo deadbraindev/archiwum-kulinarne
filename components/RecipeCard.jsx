@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
 import { notFound } from 'next/navigation';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
@@ -7,11 +9,16 @@ import SwiperContainer from './SwiperContainer';
 
 async function getLastAdded(category) {
   const res = await fetch(
-    `https://archiwum-kulinarne.vercel.app/api/recipes/lastadded?category=${category}`
+    `https://archiwum-kulinarne.vercel.app/api/recipes/?category=${category}&sort=no&pagesize=8`,
+    {
+      next: {
+        revalidate: 3600,
+      },
+    }
   );
   if (!res.ok) {
-    console.log(
-      `błąd wczytywania danych api/recipes/lastadded?category=${category}`
+    throw new Error(
+      `Failed to fetch recipes (/api/recipes/?category=${category}&sort=no&pagesize=8), try again...`
     );
   }
   return res.json();
@@ -50,18 +57,6 @@ export default async function RecipeCard({ slug }) {
               recipeData.category
             )}`}
           >
-            {/* <Link href="/przepisy" className="RCbuttonPrev" type="button">
-              <span className="visuallyHidden">Wróć do poprzedniej strony</span>
-              <svg
-                className="paginationIcon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 9.9 16.81"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
-              </svg>
-            </Link> */}
             <h1 className="RCname">{recipeData.name}</h1>
           </div>
 
@@ -91,28 +86,33 @@ export default async function RecipeCard({ slug }) {
         </div>
 
         <div className="RCimageContainer">
-          {/* {props.images?.size > 0 ? (
-          props.images?.items.map((image, i) => (
-            <a href={image.src}>
-              <div className="RCimage">
-                <img
-                  key={i}
-                  src={image.thumbnail}
-                  alt={image.alt}
-                  className="RCimageSrc"
-                />
-              </div>
-            </a>
-          ))
-        ) : (
-          <div className="RCimage">
-            <img src={img} alt="handwritten recipe" className="RCimageSrc" />
-          </div>
-        )} */}
+          {recipeData.images?.size > 0 ? (
+            recipeData.images?.items.map((image) => (
+              <Link href={image.src} target="blank">
+                <div className="RCimage">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={25}
+                    // crop={{ ratio: '1/1', position: 'center' }}
+                    loading="lazy"
+                    className="RCimageSrc"
+                  />
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="RCimage">
+              <Image alt="handwritten recipe" className="RCimageSrc" />
+            </div>
+          )}
         </div>
         <SwiperContainer
           cards={lastAdded}
           title="ostatnio dodane w tej kategorii"
+          category={recipeData.category}
         />
       </>
     );

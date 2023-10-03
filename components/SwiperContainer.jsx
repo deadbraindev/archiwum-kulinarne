@@ -1,55 +1,33 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  Pagination,
-  Scrollbar,
-  Autoplay,
-  A11y,
-  EffectCards,
-  Controller,
-  Navigation,
-} from 'swiper';
+import { Pagination } from 'swiper';
 import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
+import { categoryValidator } from '../lib/validators/categoryValidator';
+import { categoryHeaderColorPicker } from './RecipeUtilities';
 import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
-// import 'swiper/css/effect-fade';
-// import 'swiper/css/effect-cards';
-// import 'swiper/css/navigation';
-
-// import 'swiper/effect-fade.min.css';
-// import 'swiper/css/scrollbar';
 
 export default function SwiperContainer(props) {
-  // SwiperCore.use([Pagination]);
-
-  const { cards, title } = props;
+  const { cards, title, loop, category } = props;
   return (
     <>
-      <h2 className="swiperName">{title}:</h2>
+      <h2
+        className={
+          categoryValidator(category)
+            ? `swiperName ${categoryHeaderColorPicker(category)}`
+            : 'swiperName'
+        }
+      >
+        {title}:
+      </h2>
       <div className="swiperContainer">
         <Swiper
-          modules={[
-            Pagination,
-            Scrollbar,
-            Autoplay,
-            A11y,
-            Controller,
-            EffectCards,
-            Navigation,
-          ]}
-          // navigation
-          loop
-          // effect="cards"
-          // centeredSlides
+          modules={[Pagination]}
+          loop={loop}
           grabCursor
           spaceBetween={8}
-          // rewind
-          // initialSlide={1}
-          // autoHeight
-          // Autoplay
-          // scrollbar={{ draggable: true }}
           height={330}
           pagination={{
             clickable: true,

@@ -34,62 +34,30 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <div className="footerSocial" />
-
       <div className="footerLinks">
         <ul>
           <li>
-            <button className="themeButton" type="button">
-              zmień motyw
-            </button>
+            <Link href="/kontakt" className="footerLink">
+              kontakt
+            </Link>
           </li>
-
           <li>
-            <Link href="wpa" className="footerLink">
+            <Link href="/wpa" className="footerLink">
               aplikacja mobilna
             </Link>
           </li>
 
           <li>
-            <Link href="kontakt" className="footerLink">
-              kontakt
-            </Link>
-          </li>
-
-          <li>
-            <Link href="losowy" className="footerLink">
+            <Link href="/losowy" className="footerLink">
               losowy traf
             </Link>
           </li>
 
           <li>
-            <Link href="nieznaleziono" className="footerLink">
-              404
+            <Link href="/nieznaleziono" className="footerLink">
+              404test
             </Link>
           </li>
-
-          {/* {isFetching ? (
-            <li>
-              <Skeleton
-                count={1}
-                width="100px"
-                height="1em"
-                enableAnimation={false}
-              />
-            </li>
-          ) : isLoggedIn ? (
-            <li>
-              <Link to="admin" className="footerLink">
-                konto
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link to="login" className="footerLink">
-                zaloguj
-              </Link>
-            </li>
-          )} */}
         </ul>
 
         <div className="footerInfo">

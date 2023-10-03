@@ -1,29 +1,16 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-// import { isMobile } from 'react-device-detect';
-
-// import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect, useRef } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import classNames from 'classnames';
-// import styles from '../app/styles/Navbar.module.css';
-// import { useMediaQuery } from 'react-responsive';
 import { ToastContainer, Slide } from 'react-toastify';
 import useMobileDetect from '../lib/useMobileDetect';
 import 'react-toastify/dist/ReactToastify.css';
-import { useFavoriteContext } from '../context/useFavoriteContext';
-
-// import Skeleton from 'react-loading-skeleton';
-// import 'react-loading-skeleton/dist/skeleton.css';
-// import TopBarProgress from 'react-topbar-progress-indicator';
 import {
   paramSearchValidator,
   paramCategoryValidator,
 } from './RecipeUtilities';
-// import { useAuthContext } from '../Hooks/useAuthContext.js';
-// import { useLogin } from '../Hooks/useLogin.js';
-// import { useLogout } from '../Hooks/useLogout.js';
 
 function useWindowWidth() {
   const [windowWidth, setWindowWidth] = useState(undefined);
@@ -68,6 +55,7 @@ function Navbar() {
   const onSubmitInputSearch = (event) => {
     event.preventDefault(); // brak odswiezania strony przy submicie
     setIsHamburgerClicked(false);
+    document.body.classList.remove('noScroll');
     searchButton(inputSearch);
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
   };
@@ -92,30 +80,6 @@ function Navbar() {
   //   techinfo();
   // }, [windowWidth]);
   // !!debug
-
-  // LOCAL STORAGE COUNTER
-
-  // const [localFavorite, setLocalFavorite] = useState([]);
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined' && window.localStorage)
-  //     setLocalFavorite(JSON.parse(localStorage.getItem('favorites')));
-  // }, []);
-  // end LOCAL STORAGE COUNTER
-
-  // const { logout } = useLogout();
-  // const { login } = useLogin();
-  // const { isLoggedIn, isFetching, user } = useAuthContext();
-
-  // const logoutButton = () => {
-  //   logout();
-  //   navigate('/login');
-  // };
-
-  // const isTabletOrMobile = useMediaQuery({ query: '(max-width: 899px)' });
-  // const { orientation } = window;
-  // const scrollBarWidth = isTabletOrMobile
-  //   ? 0
-  //   : Math.max(window.innerWidth - document.documentElement.clientWidth, 0);
 
   const navHamburgerDynamicClasses = classNames(
     'navHamburger',
@@ -153,15 +117,14 @@ function Navbar() {
     document.body.classList.remove('noScroll');
   };
   const clearSearch = () => {
+    setIsHamburgerClicked(false);
+    document.body.classList.remove('noScroll');
+
     setInputSearch('');
-    // inputRefFocus.current.fucus();
+    searchButton('');
   };
 
-  const { state } = useFavoriteContext();
-  const [favoriteCount, setFavoriteCount] = useState(0);
-  useEffect(() => {
-    setFavoriteCount(state.length);
-  }, [state]);
+  const pathname = usePathname();
 
   return (
     <>
@@ -180,13 +143,15 @@ function Navbar() {
         limit={3}
         transition={Slide}
       />
-      {/* {isFetching && <TopBarProgress />} */}
 
       <header className="navBar">
         <nav>
           <div className="navMini">
-            {/* <div className={navMiniDynamicClasses}> */}
-            <Link className="navLogo" href="/">
+            <Link
+              // className="navLogo"
+              href="/"
+              className={pathname === '/' ? 'navLogo active' : 'navLogo'}
+            >
               archiwum kulinarne
             </Link>
 
@@ -201,17 +166,22 @@ function Navbar() {
           </div>
 
           <ul className={navListDynamicClasses}>
-            {/* <ul className="navList visible"> */}
             <li>
-              <Link href="/" className="navLink" onClick={handleNavLink}>
+              <Link
+                href="/"
+                onClick={handleNavLink}
+                className={pathname === '/' ? 'navLink active' : 'navLink'}
+              >
                 strona główna
               </Link>
             </li>
             <li>
               <Link
                 href="/przepisy"
-                className="navLink"
                 onClick={handleNavLink}
+                className={
+                  pathname === '/przepisy' ? 'navLink active' : 'navLink'
+                }
               >
                 spis
               </Link>
@@ -219,10 +189,12 @@ function Navbar() {
             <li>
               <Link
                 href="/ulubione"
-                className="navLink"
                 onClick={handleNavLink}
+                className={
+                  pathname === '/ulubione' ? 'navLink active' : 'navLink'
+                }
               >
-                ulubione({favoriteCount})
+                ulubione
               </Link>
             </li>
             <li className="navSearch">

@@ -6,6 +6,12 @@ const recipeSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Recipe must have a name'],
+    validate: {
+      validator(value) {
+        return value.toLowerCase() !== 'random'; // Sprawdza, czy tytuł nie jest "random"
+      },
+      // message: 'Tytuł przepisu nie może być "random".',
+    },
   },
   stages: [
     {

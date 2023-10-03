@@ -38,8 +38,6 @@ export default function Recipes() {
     () => getRecipes(paramPage, paramSearch, paramCategory),
     {
       keepPreviousData: true,
-      // retry: 2,
-      // refetchOnWindowFocus: false,
       refetchOnWindowFocus: false,
       refetchOnmount: false,
       refetchOnReconnect: false,
@@ -107,13 +105,26 @@ export default function Recipes() {
   };
 
   const validateAndNavigate2 = (category) => {
-    if (categoryValidator(category)) {
+    if (
+      paramSearch !== null &&
+      paramSearch !== undefined &&
+      paramSearch !== ''
+    ) {
+      if (categoryValidator(category)) {
+        setInputCategory(category);
+        router.push(`przepisy?kategoria=${category}&szukaj=${paramSearch}`);
+      } else {
+        setInputCategory('');
+        router.push(`przepisy?szukaj=${paramSearch}`);
+      }
+    } else if (categoryValidator(category)) {
       setInputCategory(category);
       router.push(`przepisy?kategoria=${category}`);
     } else {
       setInputCategory('');
       router.push(`przepisy`);
     }
+
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
   };
   const clearCategory = () => {
@@ -157,7 +168,6 @@ export default function Recipes() {
         count={1}
         width="1.8em"
         height="1.8em"
-        // baseColor="#bababa"
         enableAnimation={false}
       />
     );
@@ -175,7 +185,7 @@ export default function Recipes() {
     <>
       {isFetching && <TopBarProgress />}
 
-      <div className="recipesContainer">
+      <section className="recipesContainer">
         <p className="RCcategory">
           <span className="RCcategorySeparator">{'>'}</span>
           {inputCategory ? (
@@ -375,7 +385,7 @@ export default function Recipes() {
             </button>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }
