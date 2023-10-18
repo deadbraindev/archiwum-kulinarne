@@ -5,7 +5,7 @@
 
 import { Noto_Sans_Mono } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
-import ReactQueryWrapper from '../components/ReactQueryWrapper';
+// import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import Navbar from '../components/Navbar';
 import './styles/globals.css';
 import Footer from '../components/Footer';
@@ -219,15 +219,13 @@ export default function RootLayout({ children }) {
           {/* <div className="content"> */}
           <Navbar />
           <main className="container">
-            <ReactQueryWrapper>
-              <NextTopLoader
-                color="#ffce06"
-                height={8}
-                speed={800}
-                showSpinner={false}
-              />
-              {children}
-            </ReactQueryWrapper>
+            <NextTopLoader
+              color="#ffce06"
+              height={8}
+              speed={800}
+              showSpinner={false}
+            />
+            {children}
           </main>
           <Footer />
           {/* </div> */}
