@@ -37,7 +37,7 @@ function Footer() {
       <div className="footerLinks">
         <ul>
           <li>
-            <Link href="/kontakt" className="footerLink">
+            <Link href="/kontakt" className="footerLink" scroll>
               kontakt
             </Link>
           </li>

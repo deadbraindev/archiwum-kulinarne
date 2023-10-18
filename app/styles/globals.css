@@ -6,6 +6,9 @@
 } */
 
 /* RESET CSS */
+html {
+  height: 100%;
+}
 body,
 h1,
 h2,
@@ -1711,8 +1714,9 @@ background-position: 8px 8px; */
   margin-right: auto;
 }
 .RCimageContainer a {
-  width: 400px;
-  height: 400px;
+  width: minmax(300px, 400px);
+  height: minmax(300px, 400px);
+  /* height: 400px; */
   margin-left: auto;
   margin-right: auto;
 }

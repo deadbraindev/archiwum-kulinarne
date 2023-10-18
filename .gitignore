@@ -125,6 +125,7 @@ sketch
 /old
 
 /archiwum-kulinarne/*
+bun.lockb
 
 
 # End of https://www.toptal.com/developers/gitignore/api/nextjs,macos,react
