@@ -88,7 +88,8 @@ export default async function handler(req, res) {
       } catch (error) {
         res.status(400).json({ success: false, error });
       }
-      return null;
+      break;
+
     case 'PUT' /* Edit a model by its ID */:
       //   try {
       //     const pet = await Pet.findByIdAndUpdate(id, req.body, {
