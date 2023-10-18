@@ -4,14 +4,12 @@
 // import { Analytics } from '@vercel/analytics/react';
 
 import { Noto_Sans_Mono } from 'next/font/google';
-
+import NextTopLoader from 'nextjs-toploader';
 import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import Navbar from '../components/Navbar';
-// import styles from './styles/Homepage.module.css';
 import './styles/globals.css';
 import Footer from '../components/Footer';
 import { FavoriteContextProvider } from '../context/FavoriteContext';
-import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
   // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
