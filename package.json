@@ -16,7 +16,7 @@
     "mongodb": "^5.5.0",
     "mongoose": "^7.2.2",
     "mongoose-slug-plugin": "^2.1.0",
-    "next": "^13.4.5",
+    "next": "^13.4.4",
     "next-connect": "^1.0.0",
     "nextjs-cors": "^2.1.2",
     "nextjs-toploader": "^1.5.3",
