@@ -49,12 +49,7 @@ export default function Recipes() {
   //   }
   // );
   const { data, isLoading, isFetching } = useSWR(
-    [
-      `https://archiwum-kulinarne.vercel.app/api/recipes`,
-      paramPage,
-      paramSearch,
-      paramCategory,
-    ],
+    [`/api/recipes`, paramPage, paramSearch, paramCategory],
     getRecipes,
     {
       // refreshInterval: windowFocused ? 1000 : false,
