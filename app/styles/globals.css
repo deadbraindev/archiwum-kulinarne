@@ -789,9 +789,7 @@ input[type='number']::-webkit-outer-spin-button {
   color: var(--color-font-primary);
 }
 .navLink.active {
-  font-weight: 700;
-  -webkit-text-decoration-color: #ffce06;
-  text-decoration-color: #ffce06;
+  font-weight: bold;
   -webkit-text-decoration-color: var(--color-main-yellow);
   text-decoration-color: var(--color-main-yellow);
   -webkit-text-decoration-line: underline;
@@ -1655,7 +1653,8 @@ background-position: 8px 8px; */
 .RCcategoryLink:first-child {
   padding-left: 0;
 }
-.RCcategoryLink:hover {
+.RCcategoryLink:hover,
+.RCcategoryLink.active {
   font-weight: bold;
   color: var(--color-font-primary);
 }
@@ -1887,6 +1886,7 @@ background-position: 8px 8px; */
 .footerInfo {
   padding: 0 0.8rem;
   text-align: center;
+  text-wrap: balance;
   font-size: 1em;
 }
 .footerInfo p {
@@ -2237,8 +2237,9 @@ background-position: 8px 8px; */
     padding: 0 10px 20px;
   }
   .hero {
-    min-height: 500px;
-    max-height: 600px;
+    /* min-height: 500px;
+    max-height: 600px; */
+    height: 900px;
   }
   .heroTextContainer {
     padding-left: 2.39em;
@@ -2246,14 +2247,14 @@ background-position: 8px 8px; */
     z-index: 10;
     position: relative;
   }
-  .heroText:nth-child(3) {
+  /* .heroText:nth-child(3) {
     float: inherit;
   }
   .heroText:last-child {
     padding-left: 16px;
     margin-left: -1px;
     float: inherit;
-  }
+  } */
   .heroText {
     font-size: 2.2em;
     z-index: 10;
@@ -2267,9 +2268,9 @@ background-position: 8px 8px; */
     );
     background-size: 14px 14px;
     position: absolute;
-    width: 711px;
-    min-height: 350px;
-    max-height: 420px;
+    /* width: 711px; */
+    /* min-height: 700px; */
+    /* max-height: 420px; */
     margin-left: 2em;
     margin-top: 2.5em;
     border-top-left-radius: 75px;
@@ -2479,9 +2480,9 @@ background-position: 8px 8px; */
   }
   .hero {
     position: relative;
-    min-height: 550px;
-    max-height: 660px;
-    max-width: 650px;
+    min-height: 1000px;
+    /* max-height: 660px; */
+    /* max-width: 650px; */
   }
   .heroPattern {
     margin-left: 5em;

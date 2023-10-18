@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useState, useRef, useEffect } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
 import classNames from 'classnames';
+import useSWR from 'swr';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 import RecipeCardSmall from './RecipeCardSmall';
 import getRecipes from '../lib/getRecipes';
@@ -24,6 +25,8 @@ import {
 } from './RecipeUtilities';
 
 export default function Recipes() {
+  // const fetcher = (url) => fetch(url).then((res) => res.json());
+
   const searchParams = useSearchParams();
   const paramPage = pageValidator(searchParams.get('strona'))
     ? parseInt(searchParams.get('strona'), 10)
@@ -33,16 +36,30 @@ export default function Recipes() {
     ? searchParams.get('kategoria')
     : null;
 
-  const { data, status, isFetching, isLoading } = useQuery(
-    ['recipes', paramPage, paramSearch, paramCategory],
-    () => getRecipes(paramPage, paramSearch, paramCategory),
+  // const { data, status, isFetching, isLoading } = useQuery(
+  //   ['recipes', paramPage, paramSearch, paramCategory],
+  //   () => getRecipes(paramPage, paramSearch, paramCategory),
+  //   {
+  //     keepPreviousData: true,
+  //     refetchOnWindowFocus: false,
+  //     refetchOnmount: false,
+  //     refetchOnReconnect: false,
+  //     retry: 2,
+  //     staleTime: 1000 * 60 * 60 * 24,
+  //   }
+  // );
+  const { data, isLoading, isFetching } = useSWR(
+    [
+      `https://archiwum-kulinarne.vercel.app/api/recipes`,
+      paramPage,
+      paramSearch,
+      paramCategory,
+    ],
+    getRecipes,
     {
-      keepPreviousData: true,
-      refetchOnWindowFocus: false,
-      refetchOnmount: false,
-      refetchOnReconnect: false,
-      retry: 2,
-      staleTime: 1000 * 60 * 60 * 24,
+      // refreshInterval: windowFocused ? 1000 : false,
+      // refreshInterval: 10000, // 10sekund
+      // keepPreviousData: true,
     }
   );
 
@@ -162,7 +179,7 @@ export default function Recipes() {
   });
 
   let paginationInputTotalPages = 0;
-  if (isFetching || status === 'loading') {
+  if (isLoading) {
     paginationInputTotalPages = (
       <Skeleton
         count={1}
@@ -177,13 +194,15 @@ export default function Recipes() {
     paginationInputTotalPages = 0;
   }
 
-  if (!isLoading && !isFetching && status === 'error') {
-    throw new Error(`Failed to fetch recipes, try again...`);
-  }
+  // if (!isLoading && error) {
+  //   throw new Error(`Failed to fetch recipes, try again...`);
+  // }
+
+  const pathname = usePathname();
 
   return (
     <>
-      {isFetching && <TopBarProgress />}
+      {(isFetching || isLoading) && <TopBarProgress />}
 
       <section className="recipesContainer">
         <p className="RCcategory">
@@ -199,7 +218,7 @@ export default function Recipes() {
               </Link>
               <span className="RCcategorySeparator">{'>'}</span>
               <Link
-                className="RCcategoryLink"
+                className="RCcategoryLink active"
                 href={`/przepisy?kategoria=${inputCategory}`}
               >
                 {inputCategory}
@@ -207,7 +226,12 @@ export default function Recipes() {
             </>
           ) : (
             <Link
-              className="RCcategoryLink"
+              // className="RCcategoryLink"
+              className={
+                pathname === '/przepisy'
+                  ? 'RCcategoryLink active'
+                  : 'RCcategoryLink'
+              }
               onClick={clearCategory}
               href="/przepisy"
             >
@@ -268,7 +292,7 @@ export default function Recipes() {
           {/* //!zrobic ladnie blad */}
           {/* //!! czy to w ogole jest potrzebne?????? */}
 
-          {isLoading || isFetching ? (
+          {isLoading ? (
             <>
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />
@@ -301,8 +325,7 @@ export default function Recipes() {
               <RecipeCardSmallSkeleton />
             </>
           ) : (
-            status === 'success' &&
-            data.results?.tiles.map((recipe) => (
+            data?.results?.tiles.map((recipe) => (
               <RecipeCardSmall
                 name={recipe.value.name}
                 slug={recipe.value.slug.slugCurrent}
@@ -341,10 +364,8 @@ export default function Recipes() {
                 className="paginationSearchInput"
                 type="number"
                 autoComplete="off"
-                disabled={!!(status === 'loading' || status === 'error')}
-                value={
-                  status === 'loading' || status === 'error' ? '0' : inputPage
-                }
+                disabled={!!(isLoading || isFetching)}
+                value={inputPage}
                 onChange={(event) => setInputPage(event.target.value)}
                 ref={inputRefFocus}
               />

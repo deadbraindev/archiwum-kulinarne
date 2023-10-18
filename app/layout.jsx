@@ -11,6 +11,7 @@ import Navbar from '../components/Navbar';
 import './styles/globals.css';
 import Footer from '../components/Footer';
 import { FavoriteContextProvider } from '../context/FavoriteContext';
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
   // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
@@ -192,6 +193,13 @@ const notosansmono = Noto_Sans_Mono({
   variable: '--font-noto-sans-mono',
   display: 'swap',
 });
+// TopBarProgress.config({
+//   barColors: {
+//     0: '#ffce06',
+//   },
+//   barThickness: 8,
+//   shadowBlur: 0,
+// });
 
 export default function RootLayout({ children }) {
   return (
@@ -213,7 +221,15 @@ export default function RootLayout({ children }) {
           {/* <div className="content"> */}
           <Navbar />
           <main className="container">
-            <ReactQueryWrapper>{children}</ReactQueryWrapper>
+            <ReactQueryWrapper>
+              <NextTopLoader
+                color="#ffce06"
+                height={8}
+                speed={800}
+                showSpinner={false}
+              />
+              {children}
+            </ReactQueryWrapper>
           </main>
           <Footer />
           {/* </div> */}

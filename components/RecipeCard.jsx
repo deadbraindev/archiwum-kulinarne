@@ -48,7 +48,7 @@ export default async function RecipeCard({ slug }) {
               {recipeData.category}
             </Link>
             <span className="RCcategorySeparator">{'>'}</span>
-            <Link className="RCcategoryLink" href={`/przepisy/${slug}`}>
+            <Link className="RCcategoryLink active" href={`/przepisy/${slug}`}>
               {slug}
             </Link>
           </p>
