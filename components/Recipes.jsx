@@ -25,7 +25,7 @@ import {
 } from './RecipeUtilities';
 
 export default function Recipes() {
-  // const fetcher = (url) => fetch(url).then((res) => res.json());
+  const fetcher = (url) => fetch(url).then((res) => res.json());
 
   const searchParams = useSearchParams();
   const paramPage = pageValidator(searchParams.get('strona'))
@@ -48,15 +48,11 @@ export default function Recipes() {
   //     staleTime: 1000 * 60 * 60 * 24,
   //   }
   // );
-  const { data, isLoading, isFetching } = useSWR(
-    [`/api/recipes`, paramPage, paramSearch, paramCategory],
-    getRecipes,
-    {
-      // refreshInterval: windowFocused ? 1000 : false,
-      // refreshInterval: 10000, // 10sekund
-      // keepPreviousData: true,
-    }
-  );
+  const { data, isLoading, isFetching } = useSWR(`/api/recipes`, fetcher, {
+    // refreshInterval: windowFocused ? 1000 : false,
+    // refreshInterval: 10000, // 10sekund
+    // keepPreviousData: true,
+  });
 
   const [inputPage, setInputPage] = useState(paramPage);
   const [inputCategory, setInputCategory] = useState(paramCategory);
