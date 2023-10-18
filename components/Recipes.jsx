@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import useSWR from 'swr';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 import RecipeCardSmall from './RecipeCardSmall';
-import getRecipes from '../lib/getRecipes';
+// import getRecipes from '../lib/getRecipes';
 import {
   categoryValidator,
   categoryArray,
