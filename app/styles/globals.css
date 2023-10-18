@@ -2507,7 +2507,12 @@ background-position: 8px 8px; */
     padding: 0 10px !important;
     padding-right: 70px !important;
     padding-left: 70px !important;
+    /* padding-left: 70px !important; */
   }
+  /* .swiper-wrapper:has(> .swiper-slide-active:first-child) {
+    background-color: red !;
+    padding-left: 0px;
+  } */
   .container {
     /* overflow: visible; */
     /* margin-top: 1em; */

@@ -10,7 +10,8 @@ import 'swiper/swiper.min.css';
 import 'swiper/swiper-bundle.min.css';
 
 export default function SwiperContainer(props) {
-  const { cards, title, loop, category } = props;
+  const { cards, title, category } = props;
+
   return (
     <>
       <h2
@@ -25,13 +26,15 @@ export default function SwiperContainer(props) {
       <div className="swiperContainer">
         <Swiper
           modules={[Pagination]}
-          loop={loop}
+          loop={!(cards.length < 5)}
           grabCursor
           spaceBetween={8}
           height={330}
           pagination={{
             clickable: true,
           }}
+          centeredSlides
+          initialSlide={1}
           slidesPerView={1}
           breakpoints={{
             360: {
@@ -43,10 +46,12 @@ export default function SwiperContainer(props) {
               slidesPerView: 3,
             },
             1200: {
+              // initialSlide: 2,
               spaceBetween: 16,
               slidesPerView: 4,
             },
             1800: {
+              // initialSlide: 2,
               slidesPerView: 4,
               spaceBetween: 28,
             },
