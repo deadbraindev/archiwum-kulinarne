@@ -1241,7 +1241,7 @@ background-position: 8px 8px; */
   /* min-height: 10; */
 }
 .swiperContainer {
-  padding: 0 4px 20px;
+  padding: 0 0px 20px;
   overflow: visible;
 }
 .swiperName {
@@ -2151,6 +2151,9 @@ background-position: 8px 8px; */
   .cardContainer {
     grid-template-columns: repeat(3, 1fr);
   }
+  .swiperContainer {
+    padding: 0 8px 20px;
+  }
   .heroRCSContainer {
     top: 140px;
     right: 10px;
@@ -2197,6 +2200,7 @@ background-position: 8px 8px; */
       var(--color-background-primary) 50%
     );
   }
+
   .RCimageContainer a {
     width: 400px;
     height: 400px;
@@ -2505,9 +2509,14 @@ background-position: 8px 8px; */
     /* border-left: 1px dashed var(--color-border); */
     /* border-right: 1px dashed var(--color-border); */
     padding: 0 10px !important;
-    padding-right: 70px !important;
-    padding-left: 70px !important;
+    /* padding-right: 70px !important;
+    padding-left: 70px !important; */
     /* padding-left: 70px !important; */
+  }
+  .swiper-slide {
+    position: relative;
+    /* padding: 20px; */
+    /* box-sizing: border-box; */
   }
   /* .swiper-wrapper:has(> .swiper-slide-active:first-child) {
     background-color: red !;

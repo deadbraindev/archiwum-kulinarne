@@ -1,16 +1,22 @@
+/* eslint-disable import/no-unresolved */
+
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper';
+import { Pagination } from 'swiper/modules';
+// import { useState } from 'react';
 import RecipeCardSmall from './RecipeCardSmall';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 import { categoryValidator } from '../lib/validators/categoryValidator';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
-import 'swiper/swiper.min.css';
-import 'swiper/swiper-bundle.min.css';
+// import 'swiper/swiper.min.css';
+// import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper-bundle.css';
+// import 'swiper/css/pagination';
 
 export default function SwiperContainer(props) {
   const { cards, title, category } = props;
+  // const [showWrapperStart, setShowWrapperStart] = useState(false);
 
   return (
     <>
@@ -26,15 +32,20 @@ export default function SwiperContainer(props) {
       <div className="swiperContainer">
         <Swiper
           modules={[Pagination]}
-          loop={!(cards.length < 5)}
+          // loop={cards.length > 4}
           grabCursor
           spaceBetween={8}
           height={330}
+          // onSlideChangeTransitionEnd={handleSlideChange}
           pagination={{
             clickable: true,
           }}
-          centeredSlides
-          initialSlide={1}
+          // freeMode={{
+          //   enabled: true,
+          //   sticky: true,
+          // }}
+          // centeredSlides={<cards className=""></cards>length > 4}
+          initialSlide={0}
           slidesPerView={1}
           breakpoints={{
             360: {
@@ -46,19 +57,25 @@ export default function SwiperContainer(props) {
               slidesPerView: 3,
             },
             1200: {
-              // initialSlide: 2,
+              initialSlide: 2,
               spaceBetween: 16,
               slidesPerView: 4,
             },
             1800: {
-              // initialSlide: 2,
+              initialSlide: 2,
               slidesPerView: 4,
-              spaceBetween: 28,
+              spaceBetween: 16,
             },
           }}
         >
           {cards === 'skeleton' || cards.length < 1 ? (
             <>
+              <SwiperSlide>
+                <RecipeCardSmallSkeleton />
+              </SwiperSlide>
+              <SwiperSlide>
+                <RecipeCardSmallSkeleton />
+              </SwiperSlide>
               <SwiperSlide>
                 <RecipeCardSmallSkeleton />
               </SwiperSlide>
@@ -91,6 +108,8 @@ export default function SwiperContainer(props) {
               );
             })
           )}
+          {/* {showWrapperStart && <span slot="wrapper-start">Wrapper Start</span>} */}
+          {/* <span slot="wrapper-end">Wrapper End</span> */}
         </Swiper>
       </div>
     </>

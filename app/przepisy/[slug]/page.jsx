@@ -71,7 +71,17 @@ export async function generateMetadata({ params }, parent) {
   };
 }
 
-export default async function Page({ params }) {
+export async function generateStaticParams() {
+  const recipes = await fetch(
+    'https://archiwum-kulinarne.vercel.app/api/recipes?pagesize=100'
+  ).then((res) => res.json());
+
+  return recipes.results.tiles.map((recipe) => ({
+    slug: recipe.value.slug.slugCurrent,
+  }));
+}
+
+export default function Page({ params }) {
   const { slug } = params;
 
   return <RecipeCard slug={slug} />;
