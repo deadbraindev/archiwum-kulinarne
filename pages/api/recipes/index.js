@@ -149,7 +149,7 @@ export default async function handler(req, res) {
             const perPage =
               !Number.isNaN(paramPageSize) &&
               paramPageSize >= 1 &&
-              paramPageSize <= 32
+              paramPageSize <= 100
                 ? paramPageSize
                 : 24;
             const allPages = Math.ceil(countAllRecipes / perPage - 1);
