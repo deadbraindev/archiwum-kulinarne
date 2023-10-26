@@ -80,6 +80,7 @@ export async function generateStaticParams() {
     slug: recipe.value.slug.slugCurrent,
   }));
 }
+export const dynamicParams = false;
 
 export default function Page({ params }) {
   const { slug } = params;
