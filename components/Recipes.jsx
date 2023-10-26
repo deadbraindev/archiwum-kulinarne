@@ -50,12 +50,7 @@ export default function Recipes() {
   // );
   const { data, isLoading, isFetching } = useSWR(
     [`/api/recipes`, paramPage, paramSearch, paramCategory],
-    getRecipes,
-    {
-      // refreshInterval: windowFocused ? 1000 : false,
-      // refreshInterval: 10000, // 10sekund
-      // keepPreviousData: true,
-    }
+    getRecipes
   );
 
   const [inputPage, setInputPage] = useState(paramPage);

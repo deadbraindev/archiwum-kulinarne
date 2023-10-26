@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const metadata = {
   title: 'nieznaleziono | archiwum kulinarne',
   openGraph: {
@@ -12,6 +14,13 @@ export const metadata = {
     ],
   },
 };
-export default function Page() {
-  return <div className="footer">nieznaleziono</div>;
+
+export default function NotFound() {
+  return (
+    <div>
+      <h2>Not Found</h2>
+      <p>Could not find requested resource</p>
+      <Link href="/">Return Home</Link>
+    </div>
+  );
 }

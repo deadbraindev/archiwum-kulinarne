@@ -32,9 +32,9 @@ export const metadata = {
   },
 };
 
-const Page = async () => <Recipes />;
+// const Page = async () => <Recipes />;
 
-export default Page;
-// export default function Page() {
-//   return <Recipes />;
-// }
+// export default Page;
+export default function Page() {
+  return <Recipes />;
+}

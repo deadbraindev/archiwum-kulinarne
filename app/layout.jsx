@@ -6,6 +6,8 @@
 import { Noto_Sans_Mono } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 // import ReactQueryWrapper from '../components/ReactQueryWrapper';
+import { Suspense } from 'react';
+
 import Navbar from '../components/Navbar';
 import './styles/globals.css';
 import Footer from '../components/Footer';
@@ -191,14 +193,10 @@ const notosansmono = Noto_Sans_Mono({
   variable: '--font-noto-sans-mono',
   display: 'swap',
 });
-// TopBarProgress.config({
-//   barColors: {
-//     0: '#ffce06',
-//   },
-//   barThickness: 8,
-//   shadowBlur: 0,
-// });
 
+function SearchBarFallback() {
+  return <>placeholder</>;
+}
 export default function RootLayout({ children }) {
   return (
     <html lang="pl-PL" className={notosansmono.className}>
@@ -217,7 +215,9 @@ export default function RootLayout({ children }) {
       <FavoriteContextProvider>
         <body>
           {/* <div className="content"> */}
-          <Navbar />
+          <Suspense fallback={<SearchBarFallback />}>
+            <Navbar />
+          </Suspense>
           <main className="container">
             <NextTopLoader
               color="#ffce06"
