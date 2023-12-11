@@ -95,10 +95,11 @@ export default async function RecipeCard({ slug }) {
                     alt={image.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    quality={25}
+                    quality={100}
                     // crop={{ ratio: '1/1', position: 'center' }}
                     loading="lazy"
                     className="RCimageSrc"
+                    // onClick={handleClick}
                   />
                 </div>
               </Link>
@@ -109,6 +110,7 @@ export default async function RecipeCard({ slug }) {
             </div>
           )}
         </div>
+
         <SwiperContainer
           cards={lastAdded}
           title="ostatnio dodane w tej kategorii"

@@ -1631,13 +1631,20 @@ background-position: 8px 8px; */
   display: flex;
 }
 .RCcategory {
-  font-size: 1em;
+  overflow-x: auto; /* Dodaj automatyczny pasek przewijania poziomego */
+  white-space: nowrap; /* Zapobiegnij łamaniu tekstu do nowej linii */
+  scrollbar-width: none;
+    font-size: 1em;
   font-weight: bold;
   margin-top: 0;
   padding: 8px 0;
+  /* padding-right: ; */
   /* margin-bottom: 0.5em;
   margin-left: 0.5em;
   margin-right: 0.5em; */
+}
+.RCcategory::-webkit-scrollbar {
+  display: none;
 }
 .RCcategory.RCcategoryPadding {
   padding: 8px 0.5em;
@@ -1660,6 +1667,9 @@ background-position: 8px 8px; */
 .RCcategoryLink.active {
   font-weight: bold;
   color: var(--color-font-primary);
+}
+.RCcategoryLink.active {
+  padding-right: 32px;
 }
 .RCcategorySeparator {
   padding: 0 7px;
