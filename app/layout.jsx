@@ -196,7 +196,7 @@ const notosansmono = Noto_Sans_Mono({
 
 function SearchBarFallback() {
   // TODO zrobic placeholder navbaru
-  return <header className="navBar">placeholder</header>;
+  return <header className="navBar" />;
 }
 export default function RootLayout({ children }) {
   return (
