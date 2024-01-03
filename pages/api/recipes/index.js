@@ -235,9 +235,11 @@ export default async function handler(req, res) {
                 showNextUrlLink: page !== allPages,
                 showPreviousUrlLink: !!page,
                 next:
-                  page === allPages ? null : `${URL}/recipes?page=${page + 2}`,
+                  page === allPages
+                    ? null
+                    : `${URL}/api/recipes?page=${page + 2}`,
                 previous: page
-                  ? `${URL}/recipes?page=${Math.max(page, 1)}`
+                  ? `${URL}/api/recipes?page=${Math.max(page, 1)}`
                   : null,
                 results: {
                   size: prettyRecipes.length,
