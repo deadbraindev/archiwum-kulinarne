@@ -1,8 +1,7 @@
 import Recipes from '../../components/Recipes';
 
 export const metadata = {
-  // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
-  metadataBase: new URL('https://archiwum-kulinarne.vercel.app'),
+  metadataBase: new URL('https://archiwumkulinarne.vercel.app'),
   title: 'spis przepisów | archiwum kulinarne',
 
   description: 'zdigitalizowane rodzinne przepisy kulinarne',
@@ -14,7 +13,7 @@ export const metadata = {
     url: '/przepisy',
     images: [
       {
-        url: 'https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
+        url: 'https://archiwumkulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
         width: 1200,
         height: 630,
       },

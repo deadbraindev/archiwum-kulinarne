@@ -7,7 +7,7 @@ import RecipeCard from '../../../components/RecipeCard';
 
 async function getMetadata(slug) {
   const res = await fetch(
-    `https://archiwum-kulinarne.vercel.app/api/recipes/${slug}`
+    `https://archiwumkulinarne.vercel.app/api/recipes/${slug}`
   );
   return res.json();
 }
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }, parent) {
 
 export async function generateStaticParams() {
   const recipes = await fetch(
-    'https://archiwum-kulinarne.vercel.app/api/recipes?pagesize=100'
+    'https://archiwumkulinarne.vercel.app/api/recipes?pagesize=100'
   ).then((res) => res.json());
 
   return recipes.results.tiles.map((recipe) => ({

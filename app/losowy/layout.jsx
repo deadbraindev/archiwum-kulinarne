@@ -5,7 +5,7 @@ export const metadata = {
     url: '/losowy',
     images: [
       {
-        url: 'https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
+        url: 'https://archiwumkulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
         width: 1200,
         height: 630,
       },
