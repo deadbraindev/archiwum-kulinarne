@@ -28,7 +28,7 @@
         "react/prop-types": "off",
         "react/jsx-props-no-spreading": "off",
         "import/prefer-default-export": "off",
-        "no-underscore-dangle":  ["error", { "allow": ["_id"] }] //wylaczenie errora przy mongod _id
+        "no-underscore-dangle":  ["error", { "allow": ["_id"] }] //pomijanie błędu przy polu "_id" w mongodb
 
     }
 }

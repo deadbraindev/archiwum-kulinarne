@@ -3,9 +3,6 @@
 /.pnp
 .pnp.js
 
-# testing
-/coverage
-
 # next.js
 /.next/
 /out/
@@ -26,15 +23,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
-# vercel
-.vercel
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Created by https://www.toptal.com/developers/gitignore/api/nextjs,macos,react
-# Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,macos,react
 
 ### macOS ###
 # General
@@ -44,7 +35,6 @@ next-env.d.ts
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*
@@ -65,7 +55,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### macOS Patch ###
 # iCloud generated files
 *.icloud
 
@@ -104,28 +93,19 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-### react ###
+# other
 .DS_*
 *.log
 logs
 **/*.backup.*
 **/*.back.*
-
 node_modules
 bower_components
-
 *.sublime*
-
 psd
 thumb
 sketch
-
 *.rest
-
 /old
-
 /archiwum-kulinarne/*
 bun.lockb
-
-
-# End of https://www.toptal.com/developers/gitignore/api/nextjs,macos,react
