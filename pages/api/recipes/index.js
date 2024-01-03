@@ -6,11 +6,8 @@ import Recipe from '../../../models/Recipe';
 
 export default async function handler(req, res) {
   const URL = 'https://archiwumkulinarne.deadbrain.dev';
-  // const URL = 'http://localhost:3000';
 
   const { method } = req;
-  // console.log(method);
-
   await dbConnect();
 
   switch (method) {
@@ -22,6 +19,7 @@ export default async function handler(req, res) {
             'https://archiwumkulinarne.deadbrain.dev',
             'http://localhost:3000',
             'https://archiwum-kulinarne.vercel.app',
+            'https://archiwumkulinarne.netlify.app',
           ],
           optionsSuccessStatus: 200,
         });
