@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
+import Link from 'next/link';
 import { useFavoriteContext } from '../context/useFavoriteContext';
 import SwiperContainer from '../components/SwiperContainer';
 
@@ -51,26 +52,28 @@ export default function Page() {
       {isLoading && <TopBarProgress />}
 
       <div className="hero">
-        <div className="heroPattern">
-          {/* <div className="dot" /> */}
-          <h1 className="heroTextContainer">
-            <span className="heroText">zdigitalizowane</span>
-            <span className="heroText">rodzinne</span>
-            <span className="heroText">przepisy</span>
-            <span className="heroText">kulinarne</span>
-            <span className="heroText">***</span>
-            <span className="heroText">landing page</span>
-            <span className="heroText">work in progress</span>
-          </h1>
-        </div>
+        <h1 className="heroTitle">
+          zdigitalizowane rodzinne przepisy kulinarne
+        </h1>
+        <span className="heroText">
+          stwórz swoje własne archiwum kulinarne - miejsce, gdzie smaki,
+          historie i pasja stają się nieśmiertelne
+        </span>
+        <Link className="heroButton" href="/przepisy">
+          przejdź do przepisów
+        </Link>
       </div>
+
+      {/* <section className="features">
+        <h2>co nowego</h2>
+      </section> */}
 
       {isLoading ? (
         <SwiperContainer cards="skeleton" title="ostatnio dodane" />
       ) : (
         <SwiperContainer
           cards={recentlyAdded}
-          title="ostatnio dodane"
+          title="najnowsze przepisy"
           loop={false}
           category="salatki"
         />
