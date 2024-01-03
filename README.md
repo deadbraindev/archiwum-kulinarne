@@ -1,4 +1,4 @@
-![Logo](https://archiwum-kulinarne.vercel.app/icons/apple-splash-2688-1242.jpg)
+![Logo](https://archiwumkulinarne.deadbrain.dev/icons/apple-splash-2688-1242.jpg)
 
 # archiwum kulinarne
 
@@ -7,6 +7,6 @@ archiwum kulinarne to projekt digitalizacji rodzinnych przepisów kulinarnych, b
 
 ## demo
 
-latest (nextJS): https://archiwum-kulinarne.vercel.app/
+latest (nextJS): https://archiwumkulinarne.deadbrain.dev/
 
 old version (react): https://archiwumkulinarne.netlify.app/
