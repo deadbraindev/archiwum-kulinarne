@@ -145,7 +145,8 @@ export default function Recipes() {
   };
   useEffect(() => {
     setInputPage(paramPage);
-  }, [paramPage]);
+    setInputCategory(paramCategory);
+  }, [searchParams]);
 
   TopBarProgress.config({
     barColors: {

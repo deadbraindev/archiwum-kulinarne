@@ -5,6 +5,7 @@ import TopBarProgress from 'react-topbar-progress-indicator';
 import Link from 'next/link';
 import { useFavoriteContext } from '../context/useFavoriteContext';
 import SwiperContainer from '../components/SwiperContainer';
+import RecipesGrid from '../components/RecipesGrid';
 
 export default function Page() {
   TopBarProgress.config({
@@ -67,6 +68,7 @@ export default function Page() {
       {/* <section className="features">
         <h2>co nowego</h2>
       </section> */}
+      <RecipesGrid size="8" sort="no" />
 
       {isLoading ? (
         <SwiperContainer cards="skeleton" title="ostatnio dodane" />
