@@ -4,29 +4,37 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
-// import getRecipes from '../lib/getRecipes';
+import getRecipes from '../lib/getRecipes';
 import SwiperContainer from './SwiperContainer';
 
-async function getLastAdded(category) {
-  const res = await fetch(
-    `https://archiwumkulinarne.vercel.app/api/recipes/?category=${category}&sort=no&pagesize=8`,
-    {
-      next: {
-        revalidate: 3600,
-      },
-    }
-  );
-  if (!res.ok) {
-    throw new Error(
-      `Failed to fetch recipes (/api/recipes/?category=${category}&sort=no&pagesize=8), try again...`
-    );
-  }
-  return res.json();
-}
+// async function getLastAdded(category) {
+//   const res = await fetch(
+//     `https://archiwumkulinarne.vercel.app/api/recipes/?category=${category}&sort=no&pagesize=8`,
+//     {
+//       next: {
+//         revalidate: 3600,
+//       },
+//     }
+//   );
+//   if (!res.ok) {
+//     throw new Error(
+//       `Failed to fetch recipes (/api/recipes/?category=${category}&sort=no&pagesize=8), try again...`
+//     );
+//   }
+//   return res.json();
+// }
 
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
-  const data = await getLastAdded(recipeData.category);
+  const data = await getRecipes([
+    'https://archiwumkulinarne.deadbrain.dev/api/recipes', // ulr
+    '1', // page
+    '', // search
+    recipeData.category, // category
+    'no', // sort
+    '8', // pagesize
+  ]);
+
   const lastAdded = data?.results
     ? data.results?.tiles.map((tile) => tile.value)
     : 'skeleton';
