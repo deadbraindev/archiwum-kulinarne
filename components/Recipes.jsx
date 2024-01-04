@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-// import { useQuery } from '@tanstack/react-query';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -36,18 +35,6 @@ export default function Recipes() {
     ? searchParams.get('kategoria')
     : null;
 
-  // const { data, status, isFetching, isLoading } = useQuery(
-  //   ['recipes', paramPage, paramSearch, paramCategory],
-  //   () => getRecipes(paramPage, paramSearch, paramCategory),
-  //   {
-  //     keepPreviousData: true,
-  //     refetchOnWindowFocus: false,
-  //     refetchOnmount: false,
-  //     refetchOnReconnect: false,
-  //     retry: 2,
-  //     staleTime: 1000 * 60 * 60 * 24,
-  //   }
-  // );
   const { data, isLoading, isFetching } = useSWR(
     [`/api/recipes`, paramPage, paramSearch, paramCategory, '', 24],
     getRecipes
@@ -183,10 +170,6 @@ export default function Recipes() {
   } else {
     paginationInputTotalPages = 0;
   }
-
-  // if (!isLoading && error) {
-  //   throw new Error(`Failed to fetch recipes, try again...`);
-  // }
 
   const pathname = usePathname();
 
