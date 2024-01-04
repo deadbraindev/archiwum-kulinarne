@@ -49,7 +49,7 @@ export default function Recipes() {
   //   }
   // );
   const { data, isLoading, isFetching } = useSWR(
-    [`/api/recipes`, paramPage, paramSearch, paramCategory],
+    [`/api/recipes`, paramPage, paramSearch, paramCategory, '', 24],
     getRecipes
   );
 
