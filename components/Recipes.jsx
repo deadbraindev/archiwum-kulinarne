@@ -47,6 +47,10 @@ export default function Recipes() {
   const [inputPage, setInputPage] = useState(paramPage);
   const [inputCategory, setInputCategory] = useState(paramCategory);
   const [inputSort, setInputSort] = useState(paramSort);
+  console.log(
+    '🚀 ~ file: Recipes.jsx:50 ~ Recipes ~ setInputSort:',
+    setInputSort
+  );
 
   const inputRefFocus = useRef(null); // referencja zeby odwolac sie do inputu i zabrac mu focus
   const router = useRouter();
