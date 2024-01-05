@@ -4,7 +4,7 @@ export const paramPageValidator = (param) => {
   return false;
 };
 export const paramSearchValidator = (param) => {
-  if (param === null || param === undefined) return false;
+  if (param === null || param === undefined || param === '') return false;
   return true;
 };
 export const categoryArray = [

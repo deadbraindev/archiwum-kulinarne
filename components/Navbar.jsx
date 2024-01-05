@@ -11,6 +11,7 @@ import {
   paramSearchValidator,
   paramCategoryValidator,
 } from './RecipeUtilities';
+import { sortValidator } from '../lib/validators/sortValidator';
 
 function useWindowWidth() {
   const [windowWidth, setWindowWidth] = useState(undefined);
@@ -32,23 +33,39 @@ function Navbar() {
   const paramCategory = paramCategoryValidator(searchParams.get('kategoria'))
     ? searchParams.get('kategoria')
     : null;
+  const paramSort = sortValidator(searchParams.get('sortowanie'))
+    ? searchParams.get('sortowanie')
+    : null;
 
   const [inputSearch, setInputSearch] = useState('');
+  // const [inputSort, setInputSort] = useState(paramSort);
 
   const inputRefFocus = useRef(null); // referencja zeby odwolac sie do inputu i zabrac mu focus
   const router = useRouter();
 
   const searchButton = (input) => {
     if (!paramSearchValidator(input)) {
-      router.push('');
+      router.push(
+        `/przepisy?${
+          sortValidator(paramSort) ? `&sortowanie=${paramSort}` : ''
+        }`
+      );
       setInputSearch('');
     } else if (
       paramSearchValidator(input) &&
       paramCategoryValidator(paramCategory)
     ) {
-      router.push(`/przepisy?kategoria=${paramCategory}&szukaj=${input}`);
+      router.push(
+        `/przepisy?kategoria=${paramCategory}&szukaj=${input}${
+          sortValidator(paramSort) ? `&sortowanie=${paramSort}` : ''
+        }`
+      );
     } else {
-      router.push(`/przepisy?szukaj=${input}`);
+      router.push(
+        `/przepisy?szukaj=${input}${
+          sortValidator(paramSort) ? `&sortowanie=${paramSort}` : ''
+        }`
+      );
     }
   };
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);

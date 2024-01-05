@@ -16,6 +16,7 @@ import {
   categoryArray,
 } from '../lib/validators/categoryValidator';
 import { pageValidator } from '../lib/validators/pageValidator';
+import { sortValidator } from '../lib/validators/sortValidator';
 
 import {
   isFavorite,
@@ -34,66 +35,101 @@ export default function Recipes() {
   const paramCategory = categoryValidator(searchParams.get('kategoria'))
     ? searchParams.get('kategoria')
     : null;
+  const paramSort = sortValidator(searchParams.get('sortowanie'))
+    ? searchParams.get('sortowanie')
+    : null;
 
   const { data, isLoading, isFetching } = useSWR(
-    [`/api/recipes`, paramPage, paramSearch, paramCategory, '', 24],
+    [`/api/recipes`, paramPage, paramSearch, paramCategory, paramSort, 24],
     getRecipes
   );
 
   const [inputPage, setInputPage] = useState(paramPage);
   const [inputCategory, setInputCategory] = useState(paramCategory);
+  const [inputSort, setInputSort] = useState(paramSort);
+
   const inputRefFocus = useRef(null); // referencja zeby odwolac sie do inputu i zabrac mu focus
   const router = useRouter();
 
   const validateAndNavigate = (input) => {
     if (
-      // data?.hasFilters &&
       paramSearch !== null &&
       pageValidator(input) &&
       input <= data?.numOfPages
     ) {
       if (categoryValidator(inputCategory)) {
         router.push(
-          `przepisy?kategoria=${inputCategory}&szukaj=${paramSearch}&strona=${input}`
+          `przepisy?kategoria=${inputCategory}&szukaj=${paramSearch}&strona=${input}${
+            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+          }`
         );
       } else {
-        router.push(`przepisy?szukaj=${paramSearch}&strona=${input}`);
+        router.push(
+          `przepisy?szukaj=${paramSearch}&strona=${input}${
+            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+          }`
+        );
       }
 
       inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
     } else if (
-      // !data?.hasFilters &&
       paramSearch === null &&
       pageValidator(input) &&
       input <= data?.numOfPages
     ) {
-      router.push(`przepisy?strona=${input}`);
+      router.push(
+        `przepisy?strona=${input}${
+          sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+        }`
+      );
       inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
     }
   };
 
   const goNext = () => {
-    // TODO dodac param "kategoria"
     if (data?.showNextUrlLink) {
       setInputPage(data.pageNumber + 1);
       if (data?.hasFilters) {
         router.push(
-          `przepisy?szukaj=${paramSearch}&strona=${data.pageNumber + 1}`
+          `przepisy?${
+            paramSearch !== null && paramSearch !== undefined
+              ? `szukaj=${paramSearch}`
+              : ''
+          }${sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''}${
+            categoryValidator(inputCategory)
+              ? `&kategoria=${inputCategory}`
+              : ''
+          }&strona=${data.pageNumber + 1}`
         );
       } else if (!data?.hasFilters) {
-        router.push(`przepisy?strona=${data.pageNumber + 1}`);
+        router.push(
+          `przepisy?${
+            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+          }strona=${data.pageNumber + 1}`
+        );
       }
     }
   };
   const goPrevious = () => {
-    // TODO dodac param "kategoria"
     if (data?.showPreviousUrlLink) {
       if (data?.hasFilters) {
         router.push(
-          `przepisy?szukaj=${paramSearch}&strona=${data.pageNumber - 1}`
+          `przepisy?${
+            paramSearch !== null && paramSearch !== undefined
+              ? `szukaj=${paramSearch}`
+              : ''
+          }${sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''}${
+            categoryValidator(inputCategory)
+              ? `&kategoria=${inputCategory}`
+              : ''
+          }&strona=${data.pageNumber - 1}`
         );
       } else if (!data?.hasFilters) {
-        router.push(`przepisy?strona=${data.pageNumber - 1}`);
+        router.push(
+          `przepisy?${
+            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+          }strona=${data.pageNumber - 1}`
+        );
       }
     }
   };
@@ -106,23 +142,46 @@ export default function Recipes() {
     ) {
       if (categoryValidator(category)) {
         setInputCategory(category);
-        router.push(`przepisy?kategoria=${category}&szukaj=${paramSearch}`);
+        router.push(
+          `przepisy?kategoria=${category}&szukaj=${paramSearch}${
+            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+          }`
+        );
       } else {
         setInputCategory('');
-        router.push(`przepisy?szukaj=${paramSearch}`);
+        router.push(
+          `przepisy?szukaj=${paramSearch}${
+            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+          }`
+        );
       }
     } else if (categoryValidator(category)) {
       setInputCategory(category);
-      router.push(`przepisy?kategoria=${category}`);
+      router.push(
+        `przepisy?kategoria=${category}${
+          sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+        }`
+      );
     } else {
       setInputCategory('');
-      router.push(`przepisy`);
+      router.push(
+        `przepisy?${sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''}`
+      );
     }
+
+    // router.push(
+    //   `przepisy?${categoryValidator(category) ? `&kategoria=${category}` : ''}${
+    //     paramSearch !== null && paramSearch !== undefined && paramSearch !== ''
+    //       ? `&szukaj=${paramSearch}`
+    //       : ''
+    //   }
+    //     ${sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''}`
+    // );
 
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
   };
   const clearCategory = () => {
-    setInputCategory(null);
+    setInputCategory('');
   };
   const [isCategoryListVisible, setIsCategoryListVisible] = useState(false);
   const categoryButtonDynamicClasses = classNames(
