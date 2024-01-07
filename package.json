@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@img/sharp-linux-x64": "^0.33.1",
     "@lifarl/react-scroll-snap-slider": "^2.0.5",
     "classnames": "^2.3.2",
     "eslint": "^8.41.0",
