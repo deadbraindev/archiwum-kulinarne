@@ -13,6 +13,13 @@ import './styles/globals.css';
 import Footer from '../components/Footer';
 import { FavoriteContextProvider } from '../context/FavoriteContext';
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#ffffff' },
+  ],
+};
+
 export const metadata = {
   // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
   metadataBase: new URL('https://archiwumkulinarne.vercel.app'),
@@ -46,10 +53,10 @@ export const metadata = {
     shortcut: '/icons/apple-icon-180.png',
     apple: '/icons/apple-icon-180.png',
   },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fff' },
-    { media: '(prefers-color-scheme: dark)', color: '#fff' },
-  ],
+  // themeColor: [
+  //   { media: '(prefers-color-scheme: light)', color: '#fff' },
+  //   { media: '(prefers-color-scheme: dark)', color: '#fff' },
+  // ],
   appleWebApp: {
     title: 'archiwum kulinarne',
     startupImage: [
