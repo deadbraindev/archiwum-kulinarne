@@ -10,7 +10,6 @@ export default function Page() {
   const router = useRouter();
   const fetchRandomRecipe = async () => {
     const recipe = await getRecipe('random');
-    console.log(recipe.slug.slugCurrent);
     router.replace(`/przepisy/${recipe.slug.slugCurrent}`);
   };
 
