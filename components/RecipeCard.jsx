@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { notFound } from 'next/navigation';
+// import ImageDataURI from 'image-data-uri';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
 import getRecipes from '../lib/getRecipes';
@@ -23,6 +24,8 @@ export default async function RecipeCard({ slug }) {
     : 'skeleton';
 
   if (recipeData.success) {
+    // console.log(recipeData.images.items[0].thumbnail);
+
     return (
       <>
         <div className="RC">

@@ -81,6 +81,7 @@ export async function generateStaticParams() {
   }));
 }
 export const dynamicParams = false;
+export const dynamic = 'error';
 
 export default function Page({ params }) {
   const { slug } = params;
