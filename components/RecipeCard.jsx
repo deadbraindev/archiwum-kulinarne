@@ -7,23 +7,6 @@ import getRecipe from '../lib/getRecipe';
 import getRecipes from '../lib/getRecipes';
 import SwiperContainer from './SwiperContainer';
 
-// async function getLastAdded(category) {
-//   const res = await fetch(
-//     `https://archiwumkulinarne.vercel.app/api/recipes/?category=${category}&sort=no&pagesize=8`,
-//     {
-//       next: {
-//         revalidate: 3600,
-//       },
-//     }
-//   );
-//   if (!res.ok) {
-//     throw new Error(
-//       `Failed to fetch recipes (/api/recipes/?category=${category}&sort=no&pagesize=8), try again...`
-//     );
-//   }
-//   return res.json();
-// }
-
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
   const data = await getRecipes([
@@ -96,21 +79,21 @@ export default async function RecipeCard({ slug }) {
         <div className="RCimageContainer">
           {recipeData.images?.size > 0 ? (
             recipeData.images?.items.map((image) => (
-              <Link href={image.src} target="blank">
-                <div className="RCimage">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    quality={100}
-                    // crop={{ ratio: '1/1', position: 'center' }}
-                    loading="lazy"
-                    className="RCimageSrc"
-                    // onClick={handleClick}
-                  />
-                </div>
-              </Link>
+              // <Link href={image.src} target="blank">
+              <div className="RCimage">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 90vw, 400px"
+                  quality={75}
+                  // loading="eager"
+                  priority
+                  className="RCimageSrc"
+                />
+              </div>
+              // </Link>
             ))
           ) : (
             <div className="RCimage">
