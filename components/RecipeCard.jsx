@@ -85,22 +85,22 @@ export default async function RecipeCard({ slug }) {
             recipeData.images?.items.map((image) => (
               <Link href={image.src} target="blank">
                 <div className="RCimage">
-                  {/* <Image
+                  <Image
                     src={image.src}
                     alt={image.alt}
                     fill
                     // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    sizes="(max-width: 768px) 70vw, (max-width: 900px) 50vw, 35vw"
+                    sizes="(max-width: 768px) 70vw, (max-width: 900px) 50vw, 30vw"
                     // sizes="(max-width: 768px) 90vw, 400px"
-                    quality={80}
+                    quality={75}
                     // loading="eager"
                     // placeholder="blur"
                     // blurDataURL={test}
                     // unoptimized
                     priority
                     className="RCimageSrc"
-                  /> */}
-                  <img className="RCimageSrc" src={image.src} alt={image.alt} />
+                  />
+                  {/* <img className="RCimageSrc" src={image.src} alt={image.alt} /> */}
                 </div>
               </Link>
             ))
