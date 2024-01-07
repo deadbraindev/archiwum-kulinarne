@@ -1100,11 +1100,11 @@ input[type='number']::-webkit-outer-spin-button {
 /*! end CATEGORY CONTAINER */
 
 .hero {
-  padding: 64px 0px;
+  padding: 48px 0px 96px;
   top: 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  /* gap: 24px; */
   align-items: center;
 }
 .heroTitle {
@@ -1123,15 +1123,67 @@ input[type='number']::-webkit-outer-spin-button {
   text-align: center;
   text-wrap: balance;
   font-size: 1em;
+  padding-top: 24px;
+  padding-bottom: 32px;
+}
+.heroButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
 .heroButton {
+  width: 90px;
+  text-align: center;
   background-color: var(--color-background-primary);
   border: 1px solid var(--color-border);
   color: var(--color-font-primary);
   font-size: 1em;
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 8px 16px;
   text-decoration: none;
+  transition: all 100ms ease;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  position: relative;
+
+}
+.heroButton.primary {
+    font-weight: bold;
+  background-color: var(--color-border);
+  color: var(--color-background-primary);
+}
+
+.heroButton.secondary:hover {
+  cursor:not-allowed;
+  /* text-decoration: line-through; */
+}
+.heroButton:hover {
+  /* background-color: var(--color-border);
+  color: var(--color-background-primary); */
+  /* border: 2px solid var(--color-border); */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  border: 1px dashed var(--color-border);
+  z-index: 1;
+  width: 64px;
+  color: var(--color-font-primary);
+  font-size: 12px;
+  background-color: var(--color-background-primary);
+  /* border-radius: 10px; */
+  padding: 8px 16px;
+  top: 48px;
+  left: 0;
+  /* left: -50%; */
+  transition: opacity 300ms ease;
+}
+.heroButton:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 .swiperContainer {
   padding: 0 0px 20px;
@@ -1215,7 +1267,7 @@ input[type='number']::-webkit-outer-spin-button {
   overflow: hidden;
   top: 0px;
   /* position: relative; */
-  min-height: 85vh;
+  min-height: 30vh;
   margin: 0 auto;
   padding: 0;
 
@@ -1874,56 +1926,40 @@ input[type='number']::-webkit-outer-spin-button {
 /*! end FOOTER */
 
 /*! NOTFOUND */
-/* .notfound {
-  height: 25em;
-  margin: 0 auto;
-  padding: 100px 0;
-  margin-top: 0.83em;
-  display:flex;
+
+.notFoundContainer {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 32px;
+  padding-top: 48px;
+  padding-bottom: 64px;
+  flex-direction: column;
   align-items: center;
 }
-.notfoundSvg {
-  width: 200px;
+.notFoundTitle {
+  text-align: center;
+  word-spacing: -4px;
+  letter-spacing: -2px;
+  font-size: 1.5rem;
+  width: auto;
+  max-width: 260px;
 }
-.notfound404 {
-  padding: 0;
-  margin: 0;
-  -webkit-text-stroke: 3px var(--color-border);
-  color: var(--color-main-yellow);
-  font-size: 7em;
-  letter-spacing: 9px;
-  font-weight: bold;
-}
-.notfoundUps {
-  padding: 0;
-  margin: 0;
-  font-size: 1.6em;
-  font-weight: bold;
-}
-.notfoundLink {
-  letter-spacing: 2px;
-  font-size: 1.3em;
-  margin-top: 40px;
-  padding: 6px 24px;
-  text-decoration: none;
+.notFoundButton{
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background-primary);
   color: var(--color-font-primary);
-  border: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  /* height: 40px; */
+  font-size: 1em;
+  padding: 8px 16px;
 }
-.notfoundLink:focus {
-  border: 1px solid transparent;
-  outline: 3px solid var(--color-focus);
-  color: var(--color-focus);
-  font-weight: bold;
+.notFoundButton:hover {
+  /* background-color: var(--color-border);
+  color: var(--color-background-primary); */
+  /* border: 2px solid var(--color-border); */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.notfoundLink:hover {
-  font-weight: bold;
-  border: 1px solid var(--color-border);
-} */
 /*! end NOTFOUND */
-
 /*! CONTACT */
 .dot {
   left: 0;
@@ -2084,12 +2120,27 @@ input[type='number']::-webkit-outer-spin-button {
     max-width: 300px;
     /* min-width: 340px; */
   }
+  /* .heroButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  } */
   .heroButton {
-    font-size: 1.3em;
+    width: 150px;
+    /* font-size: 1.3em; */
     padding: 8px 16px;
   }
   .recipesContainer.home .cardContainer {
     max-height: 676px;
+  }
+  .notFoundTitle {
+    font-size: 2rem;
+    max-width: 384px;
+  }
+  .notFoundContainer {
+    gap: 32px;
+    padding-top: 64px;
+    padding-bottom: 96px;
   }
 }
 
@@ -2387,6 +2438,15 @@ input[type='number']::-webkit-outer-spin-button {
   .footerInfo {
     padding-top: 6px;
     width: 60%;
+  }
+  .notFoundTitle {
+    font-size: 2.5rem;
+    max-width: 460px;
+  }
+  .notFoundContainer {
+    gap: 48px;
+    padding-top: 128px;
+    padding-bottom: 160px;
   }
 }
 

@@ -18,12 +18,14 @@ export default function RecipesGrid(props) {
   return (
     <section className="recipesContainer home">
       <div className="recipesContainerHeader">
-        <Link href="/przepisy" className="recipesContainerTitle">
+        <Link
+          href={`/przepisy?sortowanie=${sort}`}
+          className="recipesContainerTitle"
+        >
           ostatnio dodane
         </Link>
 
-        <Link href="/przepisy" className="paginationArrow">
-          {/*! ! zmienic link jak zrobie mechnike sortowania w /przepisy  */}
+        <Link href={`/przepisy?sortowanie=${sort}`} className="paginationArrow">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 9.9 16.81"

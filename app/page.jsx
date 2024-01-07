@@ -60,9 +60,15 @@ export default function Page() {
           stwórz swoje własne archiwum kulinarne - miejsce, gdzie smaki,
           historie i pasja stają się nieśmiertelne
         </span>
-        <Link className="heroButton" href="/przepisy">
-          przejdź do przepisów
-        </Link>
+        <div className="heroButtons">
+          <div className="heroButton secondary">
+            {/* <span className="tooltip-text">wkrótce dostępne!</span> */}
+            dodaj przepis
+          </div>
+          <Link className="heroButton primary" href="/przepisy">
+            zobacz przepisy
+          </Link>
+        </div>
       </div>
 
       {/* <section className="features">

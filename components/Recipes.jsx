@@ -108,8 +108,8 @@ export default function Recipes() {
       } else if (!data?.hasFilters) {
         router.push(
           `przepisy?${
-            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
-          }strona=${data.pageNumber + 1}`
+            sortValidator(inputSort) ? `sortowanie=${inputSort}` : ''
+          }&strona=${data.pageNumber + 1}`
         );
       }
     }
@@ -118,21 +118,21 @@ export default function Recipes() {
     if (data?.showPreviousUrlLink) {
       if (data?.hasFilters) {
         router.push(
-          `przepisy?${
+          `przepisy?strona=${data.pageNumber - 1}${
             paramSearch !== null && paramSearch !== undefined
-              ? `szukaj=${paramSearch}`
+              ? `&szukaj=${paramSearch}`
               : ''
           }${sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''}${
             categoryValidator(inputCategory)
               ? `&kategoria=${inputCategory}`
               : ''
-          }&strona=${data.pageNumber - 1}`
+          }`
         );
       } else if (!data?.hasFilters) {
         router.push(
           `przepisy?${
-            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
-          }strona=${data.pageNumber - 1}`
+            sortValidator(inputSort) ? `sortowanie=${inputSort}` : ''
+          }&strona=${data.pageNumber - 1}`
         );
       }
     }

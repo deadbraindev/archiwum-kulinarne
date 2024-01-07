@@ -17,10 +17,14 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <div>
-      <h2>Not Found</h2>
-      <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
+    <div className="notFoundContainer">
+      <h1 className="notFoundTitle">
+        nie znaleziono wybranej przez ciebie strony
+      </h1>
+      {/* <p>Could not find requested resource</p> */}
+      <Link className="notFoundButton" href="/">
+        wróć na stronę główną
+      </Link>
     </div>
   );
 }
