@@ -74,7 +74,7 @@ export default function Page() {
       {/* <section className="features">
         <h2>co nowego</h2>
       </section> */}
-      <RecipesGrid size="8" sort="no" />
+      <RecipesGrid size="8" sort="no" title="ostatnio dodane" />
 
       {isLoading ? (
         <SwiperContainer cards="skeleton" title="ostatnio dodane" />

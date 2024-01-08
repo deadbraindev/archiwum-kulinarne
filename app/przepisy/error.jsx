@@ -1,26 +1,53 @@
 'use client';
 
-import { useEffect } from 'react';
+import Link from 'next/link';
+import TopBarProgress from 'react-topbar-progress-indicator';
 
-export default function Error({ error, reset }) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    // console.error(error);
-  }, [error]);
+import { useState } from 'react';
 
-  // ! [TODO] ladny erroa=r page z przyciskiem do try again
+TopBarProgress.config({
+  barColors: {
+    0: '#ffce06',
+  },
+  barThickness: 8,
+  shadowBlur: 0,
+});
+
+export default function Error({ reset }) {
+  const [isFetching, setIsFetching] = useState(true);
+  setTimeout(() => {
+    setIsFetching(false);
+  }, 3000);
+
   return (
-    <div className="footer">
-      <h2>Something went wrong!</h2>
-      <button
-        type="button"
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </button>
-    </div>
+    <>
+      {isFetching && <TopBarProgress />}
+      <div className="RC">
+        <p className="RCcategory RCcategoryPadding">
+          <span className="RCcategorySeparator">{'>'}</span>
+          <span className="RCcategoryLink active">
+            błąd-wczytywania-przepisów
+          </span>
+        </p>
+      </div>
+      <div className="notFoundContainer">
+        <h1 className="notFoundTitle">
+          niestety, wystąpiły problemy z wczytywaniem przepisów
+        </h1>
+        <div className="notFoundButtons">
+          <button
+            className="notFoundButton"
+            type="button"
+            onClick={() => reset()}
+          >
+            spróbuj ponownie
+          </button>
+          {/* <span>lub</span> */}
+          <Link className="notFoundButton primary" href="/">
+            wróć na stronę główną
+          </Link>
+        </div>
+      </div>
+    </>
   );
 }

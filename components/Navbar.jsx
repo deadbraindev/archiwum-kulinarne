@@ -35,6 +35,7 @@ function Navbar() {
   const paramCategory = paramCategoryValidator(searchParams.get('kategoria'))
     ? searchParams.get('kategoria')
     : null;
+
   const paramSort = sortValidator(searchParams.get('sortowanie'))
     ? searchParams.get('sortowanie')
     : null;
@@ -50,6 +51,10 @@ function Navbar() {
       router.push(
         `/przepisy?${
           sortValidator(paramSort) ? `&sortowanie=${paramSort}` : ''
+        }${
+          paramCategoryValidator(paramCategory)
+            ? `&kategoria=${paramCategory}`
+            : ''
         }`
       );
       setInputSearch('');

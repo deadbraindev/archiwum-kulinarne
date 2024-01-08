@@ -6,7 +6,7 @@ export default function GlobalError({ reset }) {
     <html lang="pl-PL">
       <body>
         <button type="button" onClick={() => reset()}>
-          Try again
+          Try again global-error
         </button>
       </body>
     </html>

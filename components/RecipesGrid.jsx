@@ -8,7 +8,7 @@ import getRecipes from '../lib/getRecipes';
 import { isFavorite } from './RecipeUtilities';
 
 export default function RecipesGrid(props) {
-  const { size, category, sort } = props;
+  const { size, category, sort, title } = props;
 
   const { data, isLoading } = useSWR(
     [`/api/recipes`, '1', '', category, sort, size],
@@ -19,13 +19,20 @@ export default function RecipesGrid(props) {
     <section className="recipesContainer home">
       <div className="recipesContainerHeader">
         <Link
-          href={`/przepisy?sortowanie=${sort}`}
+          href={`/przepisy?sortowanie=${sort}${
+            category ? `&kategoria=${category}` : ''
+          }`}
           className="recipesContainerTitle"
         >
-          ostatnio dodane
+          {title}
         </Link>
 
-        <Link href={`/przepisy?sortowanie=${sort}`} className="paginationArrow">
+        <Link
+          href={`/przepisy?sortowanie=${sort}${
+            category ? `&kategoria=${category}` : ''
+          }`}
+          className="paginationArrow"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 9.9 16.81"

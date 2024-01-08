@@ -41,7 +41,7 @@ export default function Recipes() {
     ? searchParams.get('sortowanie')
     : null;
 
-  const { data, isLoading, isFetching } = useSWR(
+  const { data, isLoading, isFetching, error } = useSWR(
     [`/api/recipes`, paramPage, paramSearch, paramCategory, paramSort, 24],
     getRecipes
   );
@@ -49,10 +49,6 @@ export default function Recipes() {
   const [inputPage, setInputPage] = useState(paramPage);
   const [inputCategory, setInputCategory] = useState(paramCategory);
   const [inputSort, setInputSort] = useState(paramSort);
-  console.log(
-    '🚀 ~ file: Recipes.jsx:50 ~ Recipes ~ setInputSort:',
-    setInputSort
-  );
 
   const inputRefFocus = useRef(null); // referencja zeby odwolac sie do inputu i zabrac mu focus
   const router = useRouter();
@@ -140,7 +136,7 @@ export default function Recipes() {
     }
   };
 
-  const validateAndNavigate2 = (category) => {
+  const validateAndNavigate2 = (category, sort) => {
     if (
       paramSearch !== null &&
       paramSearch !== undefined &&
@@ -148,61 +144,76 @@ export default function Recipes() {
     ) {
       if (categoryValidator(category)) {
         setInputCategory(category);
+        setInputSort(sort);
+
         router.push(
           `przepisy?kategoria=${category}&szukaj=${paramSearch}${
-            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+            sortValidator(sort) ? `&sortowanie=${sort}` : ''
           }`
         );
       } else {
         setInputCategory('');
+        setInputSort(sort);
+
         router.push(
           `przepisy?szukaj=${paramSearch}${
-            sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+            sortValidator(sort) ? `&sortowanie=${sort}` : ''
           }`
         );
       }
     } else if (categoryValidator(category)) {
       setInputCategory(category);
+      setInputSort(sort);
+
       router.push(
         `przepisy?kategoria=${category}${
-          sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''
+          sortValidator(sort) ? `&sortowanie=${sort}` : ''
         }`
       );
     } else {
       setInputCategory('');
+      setInputSort(sort);
       router.push(
-        `przepisy?${sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''}`
+        `przepisy?${sortValidator(sort) ? `&sortowanie=${sort}` : ''}`
       );
     }
-
-    // router.push(
-    //   `przepisy?${categoryValidator(category) ? `&kategoria=${category}` : ''}${
-    //     paramSearch !== null && paramSearch !== undefined && paramSearch !== ''
-    //       ? `&szukaj=${paramSearch}`
-    //       : ''
-    //   }
-    //     ${sortValidator(inputSort) ? `&sortowanie=${inputSort}` : ''}`
-    // );
-
     inputRefFocus.current.blur(); // zabranie focus inputowi searchbara
   };
   const clearCategory = () => {
     setInputCategory('');
   };
+  const clearSort = () => {
+    setInputSort(null);
+  };
+
   const [isCategoryListVisible, setIsCategoryListVisible] = useState(false);
+  const [isSortListVisible, setIsSortListVisible] = useState(false);
+
   const categoryButtonDynamicClasses = classNames(
     'categoryButton',
     isCategoryListVisible ? '' : 'hidden'
+  );
+  const sortButtonDynamicClasses = classNames(
+    'categoryButton',
+    isSortListVisible ? '' : 'hidden'
   );
 
   const showOrHideCategoryList = () => {
     if (isCategoryListVisible) setIsCategoryListVisible(false);
     else setIsCategoryListVisible(true);
   };
+  const showOrHideSortList = () => {
+    if (isSortListVisible) setIsSortListVisible(false);
+    else setIsSortListVisible(true);
+  };
 
   const changeCategory = (category) => {
     setInputCategory(category);
     setIsCategoryListVisible(false);
+  };
+  const changeSort = (sort) => {
+    setInputSort(sort);
+    setIsSortListVisible(false);
   };
   const onSubmitPaginationInput = (event) => {
     event.preventDefault(); // brak odswiezania strony przy submicie
@@ -211,6 +222,7 @@ export default function Recipes() {
   useEffect(() => {
     setInputPage(paramPage);
     setInputCategory(paramCategory);
+    setInputSort(paramSort);
   }, [searchParams]);
 
   TopBarProgress.config({
@@ -236,9 +248,15 @@ export default function Recipes() {
   } else {
     paginationInputTotalPages = 0;
   }
+  const sortFullname = (sort) => {
+    if (sort === 'az' || sort === null) return 'od A do Z';
+    if (sort === 'za') return 'od Z do A';
+    if (sort === 'no') return 'od najnowszych';
+    if (sort === 'on') return 'od najstarszych';
+    return '';
+  };
 
   const pathname = usePathname();
-
   return (
     <>
       {(isFetching || isLoading) && <TopBarProgress />}
@@ -250,7 +268,10 @@ export default function Recipes() {
             <>
               <Link
                 className="RCcategoryLink"
-                onClick={clearCategory}
+                onClick={() => {
+                  clearCategory();
+                  clearSort();
+                }}
                 href="/przepisy"
               >
                 przepisy
@@ -258,6 +279,9 @@ export default function Recipes() {
               <span className="RCcategorySeparator">{'>'}</span>
               <Link
                 className="RCcategoryLink active"
+                onClick={() => {
+                  clearSort();
+                }}
                 href={`/przepisy?kategoria=${inputCategory}`}
               >
                 {inputCategory}
@@ -271,67 +295,202 @@ export default function Recipes() {
                   ? 'RCcategoryLink active'
                   : 'RCcategoryLink'
               }
-              onClick={clearCategory}
+              onClick={() => {
+                clearCategory();
+                clearSort();
+              }}
               href="/przepisy"
             >
               przepisy
             </Link>
           )}
         </p>
-
-        <div className="categoryContainer">
-          <button
-            type="button"
-            className="categoryVisibilityButton"
-            onClick={showOrHideCategoryList}
-          >
-            {isCategoryListVisible ? 'ukryj kategorie' : 'pokaż kategorie'}
-          </button>
-
-          {inputCategory !== '' && inputCategory !== null ? (
+        <div className="filtersContainer">
+          <div className="categoryContainer">
             <button
               type="button"
-              className="categoryClear"
-              onClick={() => {
-                validateAndNavigate2('');
-              }}
+              className="categoryVisibilityButton"
+              onClick={showOrHideCategoryList}
             >
-              <svg viewBox="0 0 16.81 16.81" xmlns="http://www.w3.org/2000/svg">
-                <path d="m16.81 15.32-6.92-6.92 6.92-6.91-1.49-1.49-6.92 6.91-6.91-6.91-1.49 1.49 6.91 6.91-6.91 6.92 1.49 1.49 6.91-6.92 6.92 6.92z" />
+              {inputCategory ? (
+                <div className="categoryButton list active">
+                  <div
+                    className={`categoryIcon ${categoryHeaderColorPicker(
+                      inputCategory
+                    )}`}
+                  >
+                    {categorySvgPicker(inputCategory)}
+                  </div>
+                  <span>{inputCategory}</span>
+                </div>
+              ) : (
+                <span className="categoryListTitle">wybierz kategorię</span>
+              )}
+              {/* {isCategoryListVisible ? 'ukryj kategorie' : 'pokaż kategorie'} */}
+              <svg
+                className={
+                  isCategoryListVisible ? 'listArrow closed' : 'listArrow open'
+                }
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 9.9 16.81"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
               </svg>
             </button>
-          ) : null}
 
-          {categoryArray.sort().map((category) => (
+            {inputCategory !== '' && inputCategory !== null ? (
+              <button
+                type="button"
+                className="categoryClear"
+                onClick={() => {
+                  validateAndNavigate2('', inputSort);
+                }}
+              >
+                <svg
+                  viewBox="0 0 16.81 16.81"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="m16.81 15.32-6.92-6.92 6.92-6.91-1.49-1.49-6.92 6.91-6.91-6.91-1.49 1.49 6.91 6.91-6.91 6.92 1.49 1.49 6.91-6.92 6.92 6.92z" />
+                </svg>
+              </button>
+            ) : null}
+
+            {categoryArray.sort().map((category) => (
+              <button
+                type="button"
+                key={category}
+                className={`${
+                  inputCategory === category
+                    ? `categoryButton hidden`
+                    : categoryButtonDynamicClasses
+                }`}
+                onClick={() => {
+                  changeCategory(category);
+                  validateAndNavigate2(category, inputSort);
+                }}
+              >
+                <div
+                  className={`categoryIcon ${categoryHeaderColorPicker(
+                    category
+                  )}`}
+                >
+                  {categorySvgPicker(category)}
+                </div>
+                <span>{category}</span>
+              </button>
+            ))}
+          </div>
+          <div className="sortContainer">
             <button
               type="button"
-              key={category}
-              className={`${
-                inputCategory === category
-                  ? `categoryButton active`
-                  : categoryButtonDynamicClasses
-              }`}
+              className="categoryVisibilityButton"
+              onClick={showOrHideSortList}
+            >
+              <span className="categoryListTitle">
+                {'sortowanie: '}
+                <span style={{ fontWeight: 'normal' }}>
+                  {sortFullname(inputSort)}
+                </span>
+              </span>
+              <svg
+                className={
+                  isSortListVisible ? 'listArrow closed' : 'listArrow open'
+                }
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 9.9 16.81"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className={sortButtonDynamicClasses}
               onClick={() => {
-                changeCategory(category);
-                validateAndNavigate2(category);
+                changeSort(null);
+                validateAndNavigate2(inputCategory, null);
               }}
             >
-              <div
-                className={`categoryIcon ${categoryHeaderColorPicker(
-                  category
-                )}`}
-              >
-                {categorySvgPicker(category)}
-              </div>
-              <span>{category}</span>
+              <span className="sortButtonTitle">A-Z</span>
             </button>
-          ))}
-        </div>
-        <div className="cardContainer">
-          {/* //!zrobic ladnie blad */}
-          {/* //!! czy to w ogole jest potrzebne?????? */}
 
-          {isLoading ? (
+            <button
+              type="button"
+              className={sortButtonDynamicClasses}
+              onClick={() => {
+                changeSort('za');
+                validateAndNavigate2(inputCategory, 'za');
+              }}
+            >
+              <span className="sortButtonTitle">Z-A</span>
+            </button>
+            <button
+              type="button"
+              className={sortButtonDynamicClasses}
+              onClick={() => {
+                changeSort('no');
+                validateAndNavigate2(inputCategory, 'no');
+              }}
+            >
+              <span className="sortButtonTitle">najnowsze</span>
+            </button>
+            <button
+              type="button"
+              className={sortButtonDynamicClasses}
+              onClick={() => {
+                changeSort('on');
+                validateAndNavigate2(inputCategory, 'on');
+              }}
+            >
+              <span className="sortButtonTitle">najstarsze</span>
+            </button>
+            {inputSort !== '' && inputSort !== null ? (
+              <button
+                type="button"
+                className="categoryClear"
+                onClick={() => {
+                  validateAndNavigate2(inputCategory, null);
+                }}
+              >
+                <svg
+                  viewBox="0 0 16.81 16.81"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="m16.81 15.32-6.92-6.92 6.92-6.91-1.49-1.49-6.92 6.91-6.91-6.91-1.49 1.49 6.91 6.91-6.91 6.92 1.49 1.49 6.91-6.92 6.92 6.92z" />
+                </svg>
+              </button>
+            ) : null}
+          </div>
+          {paramSearch && (
+            <div className="searchContainer">
+              <div className="categoryVisibilityButton">
+                <span className="categoryListTitle">
+                  {'wyniki wyszukiwania dla: '}
+                  <span style={{ fontWeight: 'normal' }}>{paramSearch}</span>
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+        {error !== undefined && (
+          <div className="notFoundContainer">
+            <h1>błąd podczas wczytywania danych</h1>
+            <h2>spróbuj ponownie za moment</h2>
+            <h2>(WIP)blad do poprawy</h2>
+          </div>
+        )}
+        {data?.success === false ? (
+          <div className="notFoundContainer">
+            <h1>brak przepisów spełniających wymagania</h1>
+            <h2>zmień właściwości wyszukiwania</h2>
+            <h2>(WIP)blad do poprawy</h2>
+          </div>
+        ) : null}
+        <div className="cardContainer">
+          {isLoading && error === undefined ? (
             <>
               <RecipeCardSmallSkeleton />
               <RecipeCardSmallSkeleton />

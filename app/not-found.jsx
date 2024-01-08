@@ -21,10 +21,15 @@ export default function NotFound() {
       <h1 className="notFoundTitle">
         nie znaleziono wybranej przez ciebie strony
       </h1>
-      {/* <p>Could not find requested resource</p> */}
-      <Link className="notFoundButton" href="/">
-        wróć na stronę główną
-      </Link>
+      <div className="notFoundButtons">
+        <Link className="notFoundButton" href="/">
+          wróć na stronę główną
+        </Link>
+        {/* <span>lub</span> */}
+        <Link className="notFoundButton primary" href="/">
+          przejdź do losowego przepisu
+        </Link>
+      </div>
     </div>
   );
 }

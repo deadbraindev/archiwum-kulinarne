@@ -6,27 +6,26 @@ import { notFound } from 'next/navigation';
 // import ImageDataURI from 'image-data-uri';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
-import getRecipes from '../lib/getRecipes';
-import SwiperContainer from './SwiperContainer';
+// import getRecipes from '../lib/getRecipes';
+// import SwiperContainer from './SwiperContainer';
+import RecipesGrid from './RecipesGrid';
 
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
-  const data = await getRecipes([
-    'https://archiwumkulinarne.deadbrain.dev/api/recipes', // ulr
-    '1', // page
-    '', // search
-    recipeData.category, // category
-    'no', // sort
-    '8', // pagesize
-  ]);
+  // const data = await getRecipes([
+  //   'https://archiwumkulinarne.deadbrain.dev/api/recipes', // ulr
+  //   '1', // page
+  //   '', // search
+  //   recipeData.category, // category
+  //   'no', // sort
+  //   '8', // pagesize
+  // ]);
 
-  const lastAdded = data?.results
-    ? data.results?.tiles.map((tile) => tile.value)
-    : 'skeleton';
+  // const lastAdded = data?.results
+  //   ? data.results?.tiles.map((tile) => tile.value)
+  //   : 'skeleton';
 
   if (recipeData.success) {
-    // console.log(recipeData.images.items[0].thumbnail);
-
     return (
       <>
         <div className="RC">
@@ -83,7 +82,7 @@ export default async function RecipeCard({ slug }) {
         <div className="RCimageContainer">
           {recipeData.images?.size > 0 ? (
             recipeData.images?.items.map((image) => (
-              <Link href={image.src} target="blank">
+              <Link href={image.src} target="blank" key={image.src}>
                 <div className="RCimage">
                   <Image
                     src={image.src}
@@ -92,7 +91,7 @@ export default async function RecipeCard({ slug }) {
                     // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     sizes="(max-width: 768px) 70vw, (max-width: 900px) 50vw, 30vw"
                     // sizes="(max-width: 768px) 90vw, 400px"
-                    quality={75}
+                    quality={60}
                     // loading="eager"
                     // placeholder="blur"
                     // blurDataURL={test}
@@ -110,22 +109,14 @@ export default async function RecipeCard({ slug }) {
             </div>
           )}
         </div>
-
-        <SwiperContainer
-          cards={lastAdded}
-          title="ostatnio dodane w tej kategorii"
+        <RecipesGrid
+          size={8}
           category={recipeData.category}
+          sort="no"
+          title="inne z tej kategorii"
         />
       </>
     );
   }
-  if (
-    !recipeData.success &&
-    recipeData.error.message ===
-      'Recipe query error: slug: Recipe does not exist'
-  ) {
-    notFound(); // 404 not found handling
-  } else {
-    throw new Error(`Failed to fetch recipes, try again...`);
-  }
+  notFound(); // jezeli recipedata nie wczyta sie poprawnie wyswietl blad
 }
