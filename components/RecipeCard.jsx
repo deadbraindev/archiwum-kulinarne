@@ -115,6 +115,9 @@ export default async function RecipeCard({ slug }) {
           sort="no"
           title="inne z tej kategorii"
         />
+        <span className="RCdevInfo">
+          ostatnie zmiany {recipeData.timestamps.updatedAt}
+        </span>
       </>
     );
   }

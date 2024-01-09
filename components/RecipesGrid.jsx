@@ -15,8 +15,16 @@ export default function RecipesGrid(props) {
     getRecipes
   );
 
+  const recipeNameToHumanName = (name, slug) => {
+    const lastChar = slug.charAt(slug.length - 1);
+    if (/\d/.test(lastChar)) {
+      return `${name} #${lastChar}`;
+    }
+    return name;
+  };
+
   return (
-    <section className="recipesContainer home">
+    <section className="recipesContainer gridRecipes">
       <div className="recipesContainerHeader">
         <Link
           href={`/przepisy?sortowanie=${sort}${
@@ -65,11 +73,19 @@ export default function RecipesGrid(props) {
         ) : (
           data?.results?.tiles.map((recipe) => (
             <RecipeCardSmall
-              name={recipe.value.name}
+              name={recipeNameToHumanName(
+                recipe.value.name,
+                recipe.value.slug.slugCurrent
+              )}
               slug={recipe.value.slug.slugCurrent}
               key={recipe.value.slug.slugCurrent}
               category={recipe.value?.category}
               favorite={isFavorite(recipe.value.slug.slugCurrent)}
+              star={
+                (recipe.value.stages[0].ingredients.length +
+                  recipe.value.slug.slugCurrent.length) %
+                4
+              }
             />
           ))
         )}

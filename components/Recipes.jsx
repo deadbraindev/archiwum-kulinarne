@@ -45,6 +45,7 @@ export default function Recipes() {
     [`/api/recipes`, paramPage, paramSearch, paramCategory, paramSort, 24],
     getRecipes
   );
+  console.log(data);
 
   const [inputPage, setInputPage] = useState(paramPage);
   const [inputCategory, setInputCategory] = useState(paramCategory);
@@ -232,6 +233,13 @@ export default function Recipes() {
     barThickness: 8,
     shadowBlur: 0,
   });
+  const recipeNameToHumanName = (name, slug) => {
+    const lastChar = slug.charAt(slug.length - 1);
+    if (/\d/.test(lastChar)) {
+      return `${name} #${lastChar}`;
+    }
+    return name;
+  };
 
   let paginationInputTotalPages = 0;
   if (isLoading) {
@@ -524,13 +532,29 @@ export default function Recipes() {
             </>
           ) : (
             data?.results?.tiles.map((recipe) => (
-              <RecipeCardSmall
-                name={recipe.value.name}
-                slug={recipe.value.slug.slugCurrent}
-                key={recipe.value.slug.slugCurrent}
-                category={recipe.value?.category}
-                favorite={isFavorite(recipe.value.slug.slugCurrent)}
-              />
+              <>
+                {/* <p>
+                  {(recipe.value.stages[0].ingredients.length +
+                    recipe.value.slug.slugCurrent.length) %
+                    9}
+                </p> */}
+                <RecipeCardSmall
+                  // name={recipe.value.name}
+                  name={recipeNameToHumanName(
+                    recipe.value.name,
+                    recipe.value.slug.slugCurrent
+                  )}
+                  slug={recipe.value.slug.slugCurrent}
+                  key={recipe.value.slug.slugCurrent}
+                  category={recipe.value?.category}
+                  favorite={isFavorite(recipe.value.slug.slugCurrent)}
+                  star={
+                    (recipe.value.stages[0].ingredients.length +
+                      recipe.value.slug.slugCurrent.length) %
+                    4
+                  }
+                />
+              </>
             ))
           )}
         </div>
