@@ -45,7 +45,6 @@ export default function Recipes() {
     [`/api/recipes`, paramPage, paramSearch, paramCategory, paramSort, 24],
     getRecipes
   );
-  console.log(data);
 
   const [inputPage, setInputPage] = useState(paramPage);
   const [inputCategory, setInputCategory] = useState(paramCategory);
