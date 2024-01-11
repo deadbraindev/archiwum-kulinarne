@@ -15,14 +15,16 @@ import { FavoriteContextProvider } from '../context/FavoriteContext';
 
 export const viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: light)', color: '#F9F9F9' },
+    { media: '(prefers-color-scheme: dark)', color: '#F9F9F9' },
   ],
 };
 
 export const metadata = {
-  // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
-  metadataBase: new URL('https://archiwumkulinarne.vercel.app'),
+  metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
+  alternates: {
+    canonical: ``,
+  },
   title: {
     default: 'strona główna | archiwum kulinarne',
     template: '%s | archiwum kulinarne',
@@ -31,13 +33,12 @@ export const metadata = {
 
   // OG
   openGraph: {
-    // title: 'archiwum kulinarne',
     title: 'strona główna',
-    siteName: 'archiwum kulinarne SITE NAME?',
+    siteName: 'archiwum kulinarne',
     url: '/',
     images: [
       {
-        url: 'https://archiwumkulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
+        url: 'https://archiwumkulinarne.deadbrain.dev/images/opengraph-img-1200-630.jpg',
         width: 1200,
         height: 630,
       },
@@ -53,10 +54,6 @@ export const metadata = {
     shortcut: '/icons/apple-icon-180.png',
     apple: '/icons/apple-icon-180.png',
   },
-  // themeColor: [
-  //   { media: '(prefers-color-scheme: light)', color: '#fff' },
-  //   { media: '(prefers-color-scheme: dark)', color: '#fff' },
-  // ],
   appleWebApp: {
     title: 'archiwum kulinarne',
     startupImage: [
@@ -193,7 +190,25 @@ export const metadata = {
     ],
   },
   category: 'food',
+  creator: 'deadbrain.dev',
+  authors: [{ name: 'deadbrain.dev' }],
+  publisher: 'deadbrain.dev',
+  keywords: [
+    'food',
+    'recipes',
+    'family recipes',
+    'culinary heritage',
+    'home cooking',
+    'traditional flavors',
+    'cooking with love',
+    'generational recipes',
+    'homemade cuisine',
+    'kitchen memories',
+    'heritage cooking',
+    'traditional dishes',
+  ],
   manifest: '/manifest.json',
+  // generator: 'Next.js',
 };
 const notosansmono = Noto_Sans_Mono({
   subsets: ['latin'],
