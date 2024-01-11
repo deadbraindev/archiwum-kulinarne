@@ -219,6 +219,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
           href="https://unpkg.com/flickity@2/dist/flickity.min.css"
         /> */}
+        <meta
+          name="google-site-verification"
+          content="7mdHHlF-tsekFeuaqBWffIcvR3E8pf-VRP8qwqATJ0c"
+        />
       </head>
       <FavoriteContextProvider>
         <body>
