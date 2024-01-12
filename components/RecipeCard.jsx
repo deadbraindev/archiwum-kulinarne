@@ -51,7 +51,7 @@ export default async function RecipeCard({ slug }) {
               recipeData.category
             )}`}
           >
-            <h1 className="RCname">{recipeData.name}</h1>
+            <h3 className="RCname">{recipeData.name}</h3>
           </div>
 
           {recipeData.stages?.items.map((stage, i) => (
@@ -86,7 +86,7 @@ export default async function RecipeCard({ slug }) {
                 <div className="RCimage">
                   <Image
                     src={image.src}
-                    alt={image.alt}
+                    alt="zeskanowany dokument, odręcznie pisany przepis kulinarny"
                     fill
                     // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     sizes="(max-width: 768px) 70vw, (max-width: 900px) 50vw, 30vw"
