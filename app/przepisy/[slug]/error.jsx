@@ -1,27 +1,18 @@
 'use client';
 
 import Link from 'next/link';
-import TopBarProgress from 'react-topbar-progress-indicator';
-
 import { useState } from 'react';
-
-TopBarProgress.config({
-  barColors: {
-    0: '#ffce06',
-  },
-  barThickness: 8,
-  shadowBlur: 0,
-});
+import RecipeCardSkeleton from '../../../components/RecipeCardSkeleton';
 
 export default function Error({ reset }) {
   const [isFetching, setIsFetching] = useState(true);
   setTimeout(() => {
     setIsFetching(false);
-  }, 3000);
+  }, 4000);
 
   return (
     <>
-      {isFetching && <TopBarProgress />}
+      {isFetching && <RecipeCardSkeleton />}
       <div className="RC">
         <p className="RCcategory RCcategoryPadding">
           <span className="RCcategorySeparator">{'>'}</span>

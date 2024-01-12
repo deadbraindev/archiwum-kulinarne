@@ -1,27 +1,50 @@
 'use client';
 
 import Link from 'next/link';
-import TopBarProgress from 'react-topbar-progress-indicator';
-
 import { useState } from 'react';
-
-TopBarProgress.config({
-  barColors: {
-    0: '#ffce06',
-  },
-  barThickness: 8,
-  shadowBlur: 0,
-});
+import RecipeCardSmallSkeleton from '../../components/RecipeCardSmallSkeleton';
 
 export default function Error({ reset }) {
   const [isFetching, setIsFetching] = useState(true);
   setTimeout(() => {
     setIsFetching(false);
-  }, 3000);
+  }, 5000);
 
   return (
     <>
-      {isFetching && <TopBarProgress />}
+      {isFetching && (
+        <div className="cardContainer">
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+          <RecipeCardSmallSkeleton />
+        </div>
+      )}
       <div className="RC">
         <p className="RCcategory RCcategoryPadding">
           <span className="RCcategorySeparator">{'>'}</span>
