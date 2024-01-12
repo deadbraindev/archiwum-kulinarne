@@ -815,13 +815,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 
 /*! NAVBAR  */
-.swiper {
-  /* border-left: 1px dashed var(--color-border);
-  border-right: 1px dashed var(--color-border); */
-  /* padding: 0 10px !important; */
-  /* padding-right: 30px !important;
-  padding-left: 30px !important; */
-}
 .navLoading {
   visibility: hidden;
   display: none;
@@ -1776,11 +1769,6 @@ input[type='number']::-webkit-outer-spin-button {
   /* usuniecie cienia z input w ios (startszych?) */
   background-image: linear-gradient(transparent, transparent);
 }
-.paginationSearchInput:hover {
-  /* font-weight: bold; */
-  /* color: var(--color-font-primary); */
-  /* background-color: var(--color-background-secodary); */
-}
 .paginationInputSeparator {
   padding: 0 10px;
 }
@@ -1951,6 +1939,7 @@ input[type='number']::-webkit-outer-spin-button {
   padding: 0;
   margin: 4px 24px;
   font-size: 0.9em;
+  text-wrap: pretty;
 }
 .RCingredientsList li {
   border-bottom: 1px dashed var(--color-border);
@@ -2595,18 +2584,6 @@ input[type='number']::-webkit-outer-spin-button {
   .searchButton {
     margin: 0;
   }
-  .categoryButton {
-    /* margin: 2px; */
-    /* border: 1px solid var(--color-border); */
-  }
-  .categoryVisibilityButton {
-    /* margin: 5px 2px; */
-  }
-  /* .categoryClear {
-    top: 69px;
-    height: 58px;
-    right: calc(50% + 5px);
-  } */
   .swiperContainer {
     padding: 0 35px 20px;
   }
