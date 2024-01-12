@@ -3,8 +3,8 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
-      //   disallow: '/',
+      disallow: '/nieznaleziono',
     },
-    sitemap: '',
+    sitemap: 'https://archiwumkulinarne.deadbrain.dev/sitemap.xml',
   };
 }

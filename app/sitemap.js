@@ -45,10 +45,12 @@ export default async function sitemap() {
   return [
     {
       url: 'https://archiwumkulinarne.deadbrain.dev',
+      lastModified: new Date(),
       priority: 1,
     },
     {
       url: 'https://archiwumkulinarne.deadbrain.dev/przepisy',
+      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
@@ -60,21 +62,25 @@ export default async function sitemap() {
     })),
     {
       url: 'https://archiwumkulinarne.deadbrain.dev/wpa',
+      lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.8,
     },
     {
       url: 'https://archiwumkulinarne.deadbrain.dev/kontakt',
+      lastModified: new Date(),
       //   changeFrequency: 'yearly',
       priority: 0.7,
     },
     {
       url: 'https://archiwumkulinarne.deadbrain.dev/losowy',
+      lastModified: new Date(),
       //   changeFrequency: 'yearly',
       priority: 0.7,
     },
     {
       url: 'https://archiwumkulinarne.deadbrain.dev/ulubione',
+      lastModified: new Date(),
       // changeFrequency: 'yearly',
       priority: 0.7,
     },
