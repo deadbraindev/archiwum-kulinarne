@@ -26,7 +26,7 @@ export default function NotFound() {
           wróć na stronę główną
         </Link>
         {/* <span>lub</span> */}
-        <Link className="notFoundButton primary" href="/">
+        <Link className="notFoundButton primary" href="/losowy">
           przejdź do losowego przepisu
         </Link>
       </div>
