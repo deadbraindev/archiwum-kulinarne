@@ -1,13 +1,8 @@
 /* eslint-disable camelcase */
-// import Link from 'next/link';
-// import Head from 'next/head';
-// import { Analytics } from '@vercel/analytics/react';
 
 import { Noto_Sans_Mono } from 'next/font/google';
-import NextTopLoader from 'nextjs-toploader';
-// import ReactQueryWrapper from '../components/ReactQueryWrapper';
 import { Suspense } from 'react';
-
+import NextTopLoader from 'nextjs-toploader';
 import Navbar from '../components/Navbar';
 import './styles/globals.css';
 import Footer from '../components/Footer';
@@ -23,7 +18,7 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
   alternates: {
-    canonical: ``,
+    canonical: `/`,
   },
   title: {
     default: 'strona główna | archiwum kulinarne',
@@ -208,7 +203,6 @@ export const metadata = {
     'traditional dishes',
   ],
   manifest: '/manifest.json',
-  // generator: 'Next.js',
 };
 const notosansmono = Noto_Sans_Mono({
   subsets: ['latin'],
@@ -224,16 +218,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl-PL" className={notosansmono.className}>
       <head>
-        {/* <script
-          defer
-          src="https://unpkg.com/@tinybirdco/flock.js"
-          data-host="https://api.tinybird.co"
-          data-token="p.eyJ1IjogIjRjY2ExZjljLTUzNDMtNDdjNi1hZmJjLTMzNDM4MDBhMDQ3YiIsICJpZCI6ICJhMGI0M2FiYy1mZmFlLTQ5OWMtODIxMi1iZTQzOTdkZGY0ZTUifQ.PhICNSFU8HzrBi5c_WUguXnt723ocTlz6_i0e1V5MmM"
-        /> */}
-        {/* <link
-          rel="stylesheet"
-          href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-        /> */}
         <meta
           name="google-site-verification"
           content="7mdHHlF-tsekFeuaqBWffIcvR3E8pf-VRP8qwqATJ0c"
@@ -241,7 +225,6 @@ export default function RootLayout({ children }) {
       </head>
       <FavoriteContextProvider>
         <body>
-          {/* <div className="content"> */}
           <Suspense fallback={<SearchBarFallback />}>
             <Navbar />
           </Suspense>
@@ -249,14 +232,19 @@ export default function RootLayout({ children }) {
             <NextTopLoader
               color="#ffce06"
               height={8}
-              speed={800}
+              speed={1600}
               showSpinner={false}
+              zIndex={1600}
+              // crawl
+              // crawlSpeed={2000}
+              shadow={false}
+              easing="ease-in"
+              initialPosition={0.1}
+              showAtBottom={false}
             />
             {children}
           </main>
           <Footer />
-          {/* </div> */}
-          {/* <Analytics /> */}
         </body>
       </FavoriteContextProvider>
     </html>
