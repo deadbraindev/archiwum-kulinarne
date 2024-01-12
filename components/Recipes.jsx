@@ -7,7 +7,6 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useState, useRef, useEffect } from 'react';
-import TopBarProgress from 'react-topbar-progress-indicator';
 import classNames from 'classnames';
 import useSWR from 'swr';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
@@ -27,8 +26,6 @@ import {
 } from './RecipeUtilities';
 
 export default function Recipes() {
-  // const fetcher = (url) => fetch(url).then((res) => res.json());
-
   const searchParams = useSearchParams();
   const paramPage = pageValidator(searchParams.get('strona'))
     ? parseInt(searchParams.get('strona'), 10)
@@ -225,13 +222,13 @@ export default function Recipes() {
     setInputSort(paramSort);
   }, [searchParams]);
 
-  TopBarProgress.config({
-    barColors: {
-      0: '#ffce06',
-    },
-    barThickness: 8,
-    shadowBlur: 0,
-  });
+  useEffect(() => {
+    if (error !== undefined) {
+      setIsSortListVisible(false);
+      setIsCategoryListVisible(false);
+    }
+  }, [error]);
+
   const recipeNameToHumanName = (name, slug) => {
     const lastChar = slug.charAt(slug.length - 1);
     if (/\d/.test(lastChar)) {
@@ -265,43 +262,13 @@ export default function Recipes() {
 
   const pathname = usePathname();
   return (
-    <>
-      {(isFetching || isLoading) && <TopBarProgress />}
-
-      <section className="recipesContainer">
-        <p className="RCcategory">
-          <span className="RCcategorySeparator">{'>'}</span>
-          {inputCategory ? (
-            <>
-              <Link
-                className="RCcategoryLink"
-                onClick={() => {
-                  clearCategory();
-                  clearSort();
-                }}
-                href="/przepisy"
-              >
-                przepisy
-              </Link>
-              <span className="RCcategorySeparator">{'>'}</span>
-              <Link
-                className="RCcategoryLink active"
-                onClick={() => {
-                  clearSort();
-                }}
-                href={`/przepisy?kategoria=${inputCategory}`}
-              >
-                {inputCategory}
-              </Link>
-            </>
-          ) : (
+    <section className="recipesContainer">
+      <p className="RCcategory">
+        <span className="RCcategorySeparator">{'>'}</span>
+        {inputCategory ? (
+          <>
             <Link
-              // className="RCcategoryLink"
-              className={
-                pathname === '/przepisy'
-                  ? 'RCcategoryLink active'
-                  : 'RCcategoryLink'
-              }
+              className="RCcategoryLink"
               onClick={() => {
                 clearCategory();
                 clearSort();
@@ -310,324 +277,356 @@ export default function Recipes() {
             >
               przepisy
             </Link>
-          )}
-        </p>
-        <div className="filtersContainer">
-          <div className="categoryContainer">
-            <button
-              type="button"
-              className="categoryVisibilityButton"
-              onClick={showOrHideCategoryList}
+            <span className="RCcategorySeparator">{'>'}</span>
+            <Link
+              className="RCcategoryLink active"
+              onClick={() => {
+                clearSort();
+              }}
+              href={`/przepisy?kategoria=${inputCategory}`}
             >
-              {inputCategory ? (
-                <div className="categoryButton list active">
-                  <div
-                    className={`categoryIcon ${categoryHeaderColorPicker(
-                      inputCategory
-                    )}`}
-                  >
-                    {categorySvgPicker(inputCategory)}
-                  </div>
-                  <span>{inputCategory}</span>
-                </div>
-              ) : (
-                <span className="categoryListTitle">wybierz kategorię</span>
-              )}
-              {/* {isCategoryListVisible ? 'ukryj kategorie' : 'pokaż kategorie'} */}
-              <svg
-                className={
-                  isCategoryListVisible ? 'listArrow closed' : 'listArrow open'
-                }
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 9.9 16.81"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
-              </svg>
-            </button>
-
-            {inputCategory !== '' && inputCategory !== null ? (
-              <button
-                type="button"
-                className="categoryClear"
-                onClick={() => {
-                  validateAndNavigate2('', inputSort);
-                }}
-              >
-                <svg
-                  viewBox="0 0 16.81 16.81"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="m16.81 15.32-6.92-6.92 6.92-6.91-1.49-1.49-6.92 6.91-6.91-6.91-1.49 1.49 6.91 6.91-6.91 6.92 1.49 1.49 6.91-6.92 6.92 6.92z" />
-                </svg>
-              </button>
-            ) : null}
-
-            {categoryArray.sort().map((category) => (
-              <button
-                type="button"
-                key={category}
-                className={`${
-                  inputCategory === category
-                    ? `categoryButton hidden`
-                    : categoryButtonDynamicClasses
-                }`}
-                onClick={() => {
-                  changeCategory(category);
-                  validateAndNavigate2(category, inputSort);
-                }}
-              >
+              {inputCategory}
+            </Link>
+          </>
+        ) : (
+          <Link
+            className={
+              pathname === '/przepisy'
+                ? 'RCcategoryLink active'
+                : 'RCcategoryLink'
+            }
+            onClick={() => {
+              clearCategory();
+              clearSort();
+            }}
+            href="/przepisy"
+          >
+            przepisy
+          </Link>
+        )}
+      </p>
+      <div className="filtersContainer">
+        <div className="categoryContainer">
+          <button
+            type="button"
+            className="categoryVisibilityButton"
+            onClick={showOrHideCategoryList}
+          >
+            {inputCategory ? (
+              <div className="categoryButton list active">
                 <div
                   className={`categoryIcon ${categoryHeaderColorPicker(
-                    category
+                    inputCategory
                   )}`}
                 >
-                  {categorySvgPicker(category)}
+                  {categorySvgPicker(inputCategory)}
                 </div>
-                <span>{category}</span>
-              </button>
-            ))}
-          </div>
-          <div className="sortContainer">
+                <span>{inputCategory}</span>
+              </div>
+            ) : (
+              <span className="categoryListTitle">wybierz kategorię</span>
+            )}
+            {/* {isCategoryListVisible ? 'ukryj kategorie' : 'pokaż kategorie'} */}
+            <svg
+              className={
+                isCategoryListVisible ? 'listArrow closed' : 'listArrow open'
+              }
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 9.9 16.81"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
+            </svg>
+          </button>
+
+          {inputCategory !== '' && inputCategory !== null ? (
             <button
               type="button"
-              className="categoryVisibilityButton"
-              onClick={showOrHideSortList}
+              className="categoryClear"
+              onClick={() => {
+                validateAndNavigate2('', inputSort);
+              }}
             >
-              <span className="categoryListTitle">
-                {'sortowanie: '}
-                <span style={{ fontWeight: 'normal' }}>
-                  {sortFullname(inputSort)}
-                </span>
-              </span>
-              <svg
-                className={
-                  isSortListVisible ? 'listArrow closed' : 'listArrow open'
-                }
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 9.9 16.81"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
+              <svg viewBox="0 0 16.81 16.81" xmlns="http://www.w3.org/2000/svg">
+                <path d="m16.81 15.32-6.92-6.92 6.92-6.91-1.49-1.49-6.92 6.91-6.91-6.91-1.49 1.49 6.91 6.91-6.91 6.92 1.49 1.49 6.91-6.92 6.92 6.92z" />
               </svg>
             </button>
+          ) : null}
+
+          {categoryArray.sort().map((category) => (
             <button
               type="button"
-              className={sortButtonDynamicClasses}
+              key={category}
+              className={`${
+                inputCategory === category
+                  ? `categoryButton hidden`
+                  : categoryButtonDynamicClasses
+              }`}
               onClick={() => {
-                changeSort(null);
+                changeCategory(category);
+                validateAndNavigate2(category, inputSort);
+              }}
+            >
+              <div
+                className={`categoryIcon ${categoryHeaderColorPicker(
+                  category
+                )}`}
+              >
+                {categorySvgPicker(category)}
+              </div>
+              <span>{category}</span>
+            </button>
+          ))}
+        </div>
+        <div className="sortContainer">
+          <button
+            type="button"
+            className="categoryVisibilityButton"
+            onClick={showOrHideSortList}
+          >
+            <span className="categoryListTitle">
+              {'sortowanie: '}
+              <span style={{ fontWeight: 'normal' }}>
+                {sortFullname(inputSort)}
+              </span>
+            </span>
+            <svg
+              className={
+                isSortListVisible ? 'listArrow closed' : 'listArrow open'
+              }
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 9.9 16.81"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className={sortButtonDynamicClasses}
+            onClick={() => {
+              changeSort(null);
+              validateAndNavigate2(inputCategory, null);
+            }}
+          >
+            <span className="sortButtonTitle">A-Z</span>
+          </button>
+
+          <button
+            type="button"
+            className={sortButtonDynamicClasses}
+            onClick={() => {
+              changeSort('za');
+              validateAndNavigate2(inputCategory, 'za');
+            }}
+          >
+            <span className="sortButtonTitle">Z-A</span>
+          </button>
+          <button
+            type="button"
+            className={sortButtonDynamicClasses}
+            onClick={() => {
+              changeSort('no');
+              validateAndNavigate2(inputCategory, 'no');
+            }}
+          >
+            <span className="sortButtonTitle">najnowsze</span>
+          </button>
+          <button
+            type="button"
+            className={sortButtonDynamicClasses}
+            onClick={() => {
+              changeSort('on');
+              validateAndNavigate2(inputCategory, 'on');
+            }}
+          >
+            <span className="sortButtonTitle">najstarsze</span>
+          </button>
+          {inputSort !== '' && inputSort !== null ? (
+            <button
+              type="button"
+              className="categoryClear"
+              onClick={() => {
                 validateAndNavigate2(inputCategory, null);
               }}
             >
-              <span className="sortButtonTitle">A-Z</span>
+              <svg viewBox="0 0 16.81 16.81" xmlns="http://www.w3.org/2000/svg">
+                <path d="m16.81 15.32-6.92-6.92 6.92-6.91-1.49-1.49-6.92 6.91-6.91-6.91-1.49 1.49 6.91 6.91-6.91 6.92 1.49 1.49 6.91-6.92 6.92 6.92z" />
+              </svg>
             </button>
-
-            <button
-              type="button"
-              className={sortButtonDynamicClasses}
-              onClick={() => {
-                changeSort('za');
-                validateAndNavigate2(inputCategory, 'za');
-              }}
-            >
-              <span className="sortButtonTitle">Z-A</span>
-            </button>
-            <button
-              type="button"
-              className={sortButtonDynamicClasses}
-              onClick={() => {
-                changeSort('no');
-                validateAndNavigate2(inputCategory, 'no');
-              }}
-            >
-              <span className="sortButtonTitle">najnowsze</span>
-            </button>
-            <button
-              type="button"
-              className={sortButtonDynamicClasses}
-              onClick={() => {
-                changeSort('on');
-                validateAndNavigate2(inputCategory, 'on');
-              }}
-            >
-              <span className="sortButtonTitle">najstarsze</span>
-            </button>
-            {inputSort !== '' && inputSort !== null ? (
-              <button
-                type="button"
-                className="categoryClear"
-                onClick={() => {
-                  validateAndNavigate2(inputCategory, null);
-                }}
-              >
-                <svg
-                  viewBox="0 0 16.81 16.81"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="m16.81 15.32-6.92-6.92 6.92-6.91-1.49-1.49-6.92 6.91-6.91-6.91-1.49 1.49 6.91 6.91-6.91 6.92 1.49 1.49 6.91-6.92 6.92 6.92z" />
-                </svg>
-              </button>
-            ) : null}
-          </div>
-          {paramSearch && (
-            <div className="searchContainer">
-              <div className="categoryVisibilityButton">
-                <span className="categoryListTitle">
-                  {'wyniki wyszukiwania dla: '}
-                  <span style={{ fontWeight: 'normal' }}>{paramSearch}</span>
-                </span>
-              </div>
-            </div>
-          )}
+          ) : null}
         </div>
-        {error !== undefined && (
-          <div className="notFoundContainer">
-            <h1>błąd podczas wczytywania danych</h1>
-            <h2>spróbuj ponownie za moment</h2>
-            <h2>(WIP)blad do poprawy</h2>
+        {paramSearch && (
+          <div className="searchContainer">
+            <div className="categoryVisibilityButton search">
+              <span className="categoryListTitle">
+                {'wyniki wyszukiwania dla: '}
+                <span style={{ fontWeight: 'normal' }}>{paramSearch}</span>
+              </span>
+            </div>
           </div>
         )}
-        {data?.success === false ? (
-          <div className="notFoundContainer">
-            <h1>brak przepisów spełniających wymagania</h1>
-            <h2>zmień właściwości wyszukiwania</h2>
-            <h2>(WIP)blad do poprawy</h2>
+
+        {paramSearch || paramCategory || paramSort ? (
+          <div className="filterResetContainer">
+            <Link className="filterReset" href="/przepisy">
+              resetuj filtry
+            </Link>
           </div>
-        ) : null}
-        <div className="cardContainer">
-          {isLoading && error === undefined ? (
-            <>
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
+        ) : (
+          //
+          <div className="filterResetContainer" />
+        )}
+      </div>
 
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-              <RecipeCardSmallSkeleton />
-            </>
-          ) : (
-            data?.results?.tiles.map((recipe) => (
-              <>
-                {/* <p>
-                  {(recipe.value.stages[0].ingredients.length +
-                    recipe.value.slug.slugCurrent.length) %
-                    9}
-                </p> */}
-                <RecipeCardSmall
-                  // name={recipe.value.name}
-                  name={recipeNameToHumanName(
-                    recipe.value.name,
-                    recipe.value.slug.slugCurrent
-                  )}
-                  slug={recipe.value.slug.slugCurrent}
-                  key={recipe.value.slug.slugCurrent}
-                  category={recipe.value?.category}
-                  favorite={isFavorite(recipe.value.slug.slugCurrent)}
-                  star={
-                    (recipe.value.stages[0].ingredients.length +
-                      recipe.value.slug.slugCurrent.length) %
-                    4
-                  }
-                />
-              </>
-            ))
-          )}
-        </div>
-
-        <div className="pagination">
-          <div className="paginationPrev">
-            <button
-              className="paginationButton"
-              type="button"
-              onClick={goPrevious}
-              disabled={isFetching || !data?.showPreviousUrlLink}
-            >
-              <span className="visuallyHidden">Poprzednia strona</span>
-              <svg
-                className="paginationIcon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 9.9 16.81"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
-              </svg>
-            </button>
-          </div>
-
-          <div className="paginationInput">
-            <form onSubmit={onSubmitPaginationInput}>
-              <input
-                className="paginationSearchInput"
-                type="number"
-                autoComplete="off"
-                disabled={!!(isLoading || isFetching)}
-                value={inputPage}
-                onChange={(event) => setInputPage(event.target.value)}
-                ref={inputRefFocus}
-              />
-              <span className="visuallyHidden" htmlFor="paginationSearchInput">
-                Przejdź na stronę:
-              </span>
-              {/* )} */}
-            </form>
-            <span className="visuallyHidden hint" aria-hidden="true">
-              Naciśnij klawisz Enter, aby przejść do wybranej strony
-            </span>
-            <span className="visuallyHidden" aria-hidden="true">
-              {`Strona ${inputPage}`}
-            </span>
-            <span className="paginationInputSeparator">z</span>
-            <span className="paginationInputTotalPages">
-              {paginationInputTotalPages}
-            </span>
-          </div>
-
-          <div className="paginationNext">
-            <button
-              className="paginationButton"
-              type="button"
-              onClick={goNext}
-              disabled={isFetching || !data?.showNextUrlLink}
-            >
-              <span className="visuallyHidden">Następna strona</span>
-              <svg
-                className="paginationIcon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 9.9 16.81"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
-              </svg>
-            </button>
+      {error !== undefined && (
+        <div className="notFoundContainer">
+          <h1 className="notFoundTitle">błąd podczas wczytywania przepisów</h1>
+          <div className="notFoundButtons">
+            <Link className="notFoundButton" href="/">
+              wróć na stronę główną
+            </Link>
+            {/* <span>lub</span> */}
+            <Link className="notFoundButton primary" href="/losowy">
+              przejdź do losowego przepisu
+            </Link>
           </div>
         </div>
-      </section>
-    </>
+      )}
+      {data?.success === false ? (
+        <div className="notFoundContainer">
+          <h1 className="notFoundTitle">
+            brak przepisów spełniających filtry wyszukiwania
+          </h1>
+        </div>
+      ) : null}
+      <div className="cardContainer">
+        {isLoading && error === undefined && (
+          <>
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+            <RecipeCardSmallSkeleton />
+          </>
+        )}
+        {!isLoading &&
+          error === undefined &&
+          data?.results?.tiles.map((recipe) => (
+            <RecipeCardSmall
+              // name={recipe.value.name}
+              name={recipeNameToHumanName(
+                recipe.value.name,
+                recipe.value.slug.slugCurrent
+              )}
+              slug={recipe.value.slug.slugCurrent}
+              key={recipe.value.slug.slugCurrent}
+              category={recipe.value?.category}
+              favorite={isFavorite(recipe.value.slug.slugCurrent)}
+              star={
+                (recipe.value.stages[0].ingredients.length +
+                  recipe.value.slug.slugCurrent.length) %
+                4
+              }
+            />
+          ))}
+      </div>
+
+      <div className="pagination">
+        <div className="paginationPrev">
+          <button
+            className="paginationButton"
+            type="button"
+            onClick={goPrevious}
+            disabled={isFetching || !data?.showPreviousUrlLink}
+          >
+            <span className="visuallyHidden">Poprzednia strona</span>
+            <svg
+              className="paginationIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 9.9 16.81"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M9.9,15.32,3,8.4,9.9,1.49,8.41,0,0,8.4l8.41,8.41Z" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="paginationInput">
+          <form onSubmit={onSubmitPaginationInput}>
+            <input
+              className="paginationSearchInput"
+              type="number"
+              autoComplete="off"
+              disabled={!!(isLoading || isFetching)}
+              value={inputPage}
+              onChange={(event) => setInputPage(event.target.value)}
+              ref={inputRefFocus}
+            />
+            <span className="visuallyHidden" htmlFor="paginationSearchInput">
+              Przejdź na stronę:
+            </span>
+            {/* )} */}
+          </form>
+          <span className="visuallyHidden hint" aria-hidden="true">
+            Naciśnij klawisz Enter, aby przejść do wybranej strony
+          </span>
+          <span className="visuallyHidden" aria-hidden="true">
+            {`Strona ${inputPage}`}
+          </span>
+          <span className="paginationInputSeparator">z</span>
+          <span className="paginationInputTotalPages">
+            {paginationInputTotalPages}
+          </span>
+        </div>
+
+        <div className="paginationNext">
+          <button
+            className="paginationButton"
+            type="button"
+            onClick={goNext}
+            disabled={isFetching || !data?.showNextUrlLink}
+          >
+            <span className="visuallyHidden">Następna strona</span>
+            <svg
+              className="paginationIcon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 9.9 16.81"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
   );
 }
