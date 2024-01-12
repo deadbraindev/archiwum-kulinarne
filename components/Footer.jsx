@@ -1,37 +1,6 @@
-'use client';
-
 import Link from 'next/link';
-// import Skeleton from 'react-loading-skeleton';
-// import useLocalStorage from 'use-local-storage';
-// import { useAuthContext } from '../Hooks/useAuthContext.js';
-// import { useState, useEffect } from 'react';
 
 function Footer() {
-  // const { isLoggedIn, isFetching } = useAuthContext();
-
-  //* THEME CHANGER
-  // const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  // const [theme, setTheme] = useState(`theme ${defaultDark} ? 'dark' : 'light'`);
-
-  // useEffect(() => {
-  //   const prefersDark = window.matchMedia(
-  //     '(prefers-color-scheme: dark)'
-  //   ).matches;
-
-  //   if (prefersDark) {
-  //     setTheme('dark');
-  //   }
-  // }, [defaultDark]);
-  // const switchTheme = () => {
-  //   const newTheme = theme === 'light' ? 'dark' : 'light';
-  //   setTheme(newTheme);
-  // };
-  // document.querySelector('body').setAttribute('data-theme', `${theme}`);
-  // const preferColorSchema = window.matchMedia('(prefers-color-scheme: dark)');
-  // console.log(preferColorSchema);
-  //* THEME CHANGER END
-
   return (
     <footer className="footer">
       <div className="footerLinks">
@@ -43,7 +12,7 @@ function Footer() {
           </li>
           <li>
             <Link href="/wpa" className="footerLink">
-              aplikacja mobilna
+              aplikacja
             </Link>
           </li>
 
@@ -77,7 +46,7 @@ function Footer() {
             archiwum kulinarne
           </a>
         </span>
-        <span>made in poland mmxxi-mmxxiii</span>
+        <span>made in poland mmxxi-mmxxiv</span>
         <span>
           by{' '}
           <a
