@@ -207,6 +207,7 @@ export default function Recipes() {
   const changeCategory = (category) => {
     setInputCategory(category);
     setIsCategoryListVisible(false);
+    setIsSortListVisible(false);
   };
   const changeSort = (sort) => {
     setInputSort(sort);
@@ -272,6 +273,8 @@ export default function Recipes() {
               onClick={() => {
                 clearCategory();
                 clearSort();
+                setIsCategoryListVisible(false);
+                setIsSortListVisible(false);
               }}
               href="/przepisy"
             >
@@ -282,6 +285,8 @@ export default function Recipes() {
               className="RCcategoryLink active"
               onClick={() => {
                 clearSort();
+                setIsCategoryListVisible(false);
+                setIsSortListVisible(false);
               }}
               href={`/przepisy?kategoria=${inputCategory}`}
             >
@@ -298,6 +303,8 @@ export default function Recipes() {
             onClick={() => {
               clearCategory();
               clearSort();
+              setIsCategoryListVisible(false);
+              setIsSortListVisible(false);
             }}
             href="/przepisy"
           >
@@ -326,7 +333,6 @@ export default function Recipes() {
             ) : (
               <span className="categoryListTitle">wybierz kategorię</span>
             )}
-            {/* {isCategoryListVisible ? 'ukryj kategorie' : 'pokaż kategorie'} */}
             <svg
               className={
                 isCategoryListVisible ? 'listArrow closed' : 'listArrow open'
@@ -345,6 +351,7 @@ export default function Recipes() {
               type="button"
               className="categoryClear"
               onClick={() => {
+                setIsCategoryListVisible(false);
                 validateAndNavigate2('', inputSort);
               }}
             >
@@ -403,52 +410,64 @@ export default function Recipes() {
               <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
             </svg>
           </button>
-          <button
-            type="button"
-            className={sortButtonDynamicClasses}
-            onClick={() => {
-              changeSort(null);
-              validateAndNavigate2(inputCategory, null);
-            }}
-          >
-            <span className="sortButtonTitle">A-Z</span>
-          </button>
+          {inputSort !== null && (
+            <button
+              type="button"
+              className={sortButtonDynamicClasses}
+              onClick={() => {
+                changeSort(null);
+                validateAndNavigate2(inputCategory, null);
+              }}
+            >
+              <span className="sortButtonTitle">od A do Z</span>
+            </button>
+          )}
 
-          <button
-            type="button"
-            className={sortButtonDynamicClasses}
-            onClick={() => {
-              changeSort('za');
-              validateAndNavigate2(inputCategory, 'za');
-            }}
-          >
-            <span className="sortButtonTitle">Z-A</span>
-          </button>
-          <button
-            type="button"
-            className={sortButtonDynamicClasses}
-            onClick={() => {
-              changeSort('no');
-              validateAndNavigate2(inputCategory, 'no');
-            }}
-          >
-            <span className="sortButtonTitle">najnowsze</span>
-          </button>
-          <button
-            type="button"
-            className={sortButtonDynamicClasses}
-            onClick={() => {
-              changeSort('on');
-              validateAndNavigate2(inputCategory, 'on');
-            }}
-          >
-            <span className="sortButtonTitle">najstarsze</span>
-          </button>
+          {inputSort !== 'za' && (
+            <button
+              type="button"
+              className={sortButtonDynamicClasses}
+              onClick={() => {
+                changeSort('za');
+                validateAndNavigate2(inputCategory, 'za');
+              }}
+            >
+              <span className="sortButtonTitle">od Z do A</span>
+            </button>
+          )}
+
+          {inputSort !== 'no' && (
+            <button
+              type="button"
+              className={sortButtonDynamicClasses}
+              onClick={() => {
+                changeSort('no');
+                validateAndNavigate2(inputCategory, 'no');
+              }}
+            >
+              <span className="sortButtonTitle">najnowsze</span>
+            </button>
+          )}
+
+          {inputSort !== 'on' && (
+            <button
+              type="button"
+              className={sortButtonDynamicClasses}
+              onClick={() => {
+                changeSort('on');
+                validateAndNavigate2(inputCategory, 'on');
+              }}
+            >
+              <span className="sortButtonTitle">najstarsze</span>
+            </button>
+          )}
+
           {inputSort !== '' && inputSort !== null ? (
             <button
               type="button"
               className="categoryClear"
               onClick={() => {
+                changeSort(null);
                 validateAndNavigate2(inputCategory, null);
               }}
             >
