@@ -30,7 +30,11 @@ export default function Recipes() {
   const paramPage = pageValidator(searchParams.get('strona'))
     ? parseInt(searchParams.get('strona'), 10)
     : 1;
-  const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
+
+  const [paramSearch, setParamSearch] = useState(searchParams.get('szukaj'));
+  // console.log('🚀 ~ Recipes ~ paramSearch:', paramSearch);
+
+  // const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
   const paramCategory = categoryValidator(searchParams.get('kategoria'))
     ? searchParams.get('kategoria')
     : null;
@@ -133,15 +137,18 @@ export default function Recipes() {
     }
   };
 
-  const validateAndNavigate2 = (category, sort) => {
+  const validateAndNavigate2 = (category, sort, isSearchClear) => {
+    if (isSearchClear) setParamSearch(null);
     if (
       paramSearch !== null &&
       paramSearch !== undefined &&
-      paramSearch !== ''
+      paramSearch !== '' &&
+      !isSearchClear
     ) {
       if (categoryValidator(category)) {
         setInputCategory(category);
         setInputSort(sort);
+        console.log('🚀 ~ Recipes ~ paramSearchddd:', paramSearch);
 
         router.push(
           `przepisy?kategoria=${category}&szukaj=${paramSearch}${
@@ -221,6 +228,7 @@ export default function Recipes() {
     setInputPage(paramPage);
     setInputCategory(paramCategory);
     setInputSort(paramSort);
+    setParamSearch(searchParams.get('szukaj'));
   }, [searchParams]);
 
   useEffect(() => {
@@ -482,8 +490,28 @@ export default function Recipes() {
             <div className="categoryVisibilityButton search">
               <span className="categoryListTitle">
                 {'wyniki wyszukiwania dla: '}
-                <span style={{ fontWeight: 'normal' }}>{paramSearch}</span>
+                <span style={{ fontWeight: 'normal', fontStyle: 'italic' }}>
+                  {paramSearch}
+                </span>
               </span>
+              {paramSearch !== '' && paramSearch !== null ? (
+                <button
+                  type="button"
+                  className="categoryClear"
+                  onClick={() => {
+                    // changeSort(null);
+                    setParamSearch(null);
+                    validateAndNavigate2(inputCategory, inputSort, true);
+                  }}
+                >
+                  <svg
+                    viewBox="0 0 16.81 16.81"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="m16.81 15.32-6.92-6.92 6.92-6.91-1.49-1.49-6.92 6.91-6.91-6.91-1.49 1.49 6.91 6.91-6.91 6.92 1.49 1.49 6.91-6.92 6.92 6.92z" />
+                  </svg>
+                </button>
+              ) : null}
             </div>
           </div>
         )}
