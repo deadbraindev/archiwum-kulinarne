@@ -927,10 +927,12 @@ input[type='number']::-webkit-outer-spin-button {
   padding: calc(0.2em + 10px) 8px 0.4em;
   letter-spacing: -1.5px;
   transition: background-color 100ms ease-in-out;
+  
 }
 .searchInput[type='text'] {
   color: var(--color-font-secondary);
   font-style: italic;
+  padding-right: 120px;
 }
 .searchInput::placeholder {
   color: var(--color-font-secondary);
@@ -964,7 +966,7 @@ input[type='number']::-webkit-outer-spin-button {
   /* padding-left: 5px; */
   /* padding-right: auto; */
   /* padding-right: 7px; */
-  background-color: transparent;
+  background-color: #ffffffa4;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -992,7 +994,7 @@ input[type='number']::-webkit-outer-spin-button {
   height: 50px;
   border: none;
   cursor: pointer;
-  background-color: transparent;
+  background-color: #ffffffa4;
   padding: 0;
   padding-top: 5px;
   color: var(--color-font-primary);
@@ -1193,6 +1195,7 @@ input[type='number']::-webkit-outer-spin-button {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  margin-right: 80px;
   /* display: inherit; */
 }
 .listArrow {
@@ -1213,7 +1216,7 @@ input[type='number']::-webkit-outer-spin-button {
   top: 1px;
   z-index: 20;
   border: 1px solid transparent;
-  background-color: transparent;
+  background-color: var(--color-background-primary);
   cursor: pointer;
   transition: background-color 100ms ease-in-out;
 }
@@ -2490,6 +2493,12 @@ input[type='number']::-webkit-outer-spin-button {
   .searchInputClear:focus svg {
     fill: var(--color-background-primary);
   }
+  .searchInput[type='text'] {
+    padding-right: 120px;
+  }
+  .searchInput {
+    max-width: 200px;
+  }
   .navMini {
     display: none;
   }
@@ -2685,6 +2694,9 @@ input[type='number']::-webkit-outer-spin-button {
   }
   .heroText {
     font-size: 1.2rem;
+  }
+  .searchInput {
+    max-width: 300px;
   }
   .swiperContainer {
     padding: 0 0 20px;
