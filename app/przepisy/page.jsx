@@ -27,11 +27,11 @@ export const metadata = {
   // end OG
 
   // ICONS
-  icons: {
-    icon: '/icons/favicon.ico',
-    shortcut: '/icons/apple-icon-180.png',
-    apple: '/icons/apple-icon-180.png',
-  },
+  // icons: {
+  //   icon: '/icons/favicon.ico',
+  //   shortcut: '/icons/apple-icon-180.png',
+  //   apple: '/icons/apple-icon-180.png',
+  // },
 };
 
 export default function Page() {
