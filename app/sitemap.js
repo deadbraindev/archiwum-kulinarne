@@ -51,10 +51,69 @@ export default async function sitemap() {
     {
       url: 'https://archiwumkulinarne.deadbrain.dev/przepisy',
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      // changeFrequency: 'weekly',
       priority: 0.9,
     },
-
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=ciasta',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=slodkie',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=salatki',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=soki',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=obiadowe',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=przetwory',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=ryby',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=drinki',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=lody',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://archiwumkulinarne.deadbrain.dev/przepisy?kategoria=fastfood',
+      lastModified: new Date(),
+      // changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     ...(await generateRecipesSitemapObjects()).map((recipe) => ({
       url: `https://archiwumkulinarne.deadbrain.dev/przepisy/${recipe.slug}`,
       lastModified: recipe.updatedAt,
