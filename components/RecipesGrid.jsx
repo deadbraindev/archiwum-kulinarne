@@ -64,11 +64,6 @@ export default function RecipesGrid(props) {
             <RecipeCardSmallSkeleton />
             <RecipeCardSmallSkeleton />
             <RecipeCardSmallSkeleton />
-
-            <RecipeCardSmallSkeleton />
-            <RecipeCardSmallSkeleton />
-            <RecipeCardSmallSkeleton />
-            <RecipeCardSmallSkeleton />
           </>
         ) : (
           data?.results?.tiles.map((recipe) => (

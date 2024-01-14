@@ -512,6 +512,15 @@ export default function Recipes() {
                   </svg>
                 </button>
               ) : null}
+              <svg
+                className="listArrow open"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 9.9 16.81"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M0,1.49,6.92,8.41,0,15.32l1.49,1.49L9.9,8.41,1.49,0Z" />
+              </svg>
             </div>
           </div>
         )}

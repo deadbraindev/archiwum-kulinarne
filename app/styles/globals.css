@@ -763,11 +763,9 @@ input[type='number']::-webkit-outer-spin-button {
   border-color: var(--color-border);
   font-weight: bold;
   color: var(--color-font-primary);
-  /* border-radius: 5px 5px 0 0; */
 }
 
 .react-tabs__tab--disabled {
-  color: GrayText;
   cursor: default;
 }
 
@@ -793,7 +791,7 @@ input[type='number']::-webkit-outer-spin-button {
   display: block;
 }
 
-.article {
+/* .article {
   min-height: 350px;
   max-width: 500px;
   margin: 0 8px;
@@ -805,15 +803,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 .articleTitle {
   font-size: 1.5rem;
-  /* text-align: center; */
 }
 .articleBody {
   font-size: 1em;
   padding: 8px 8px;
-  /* text-align: center; */
-}
-
-
+} */
 /*! NAVBAR  */
 .navLoading {
   visibility: hidden;
@@ -831,7 +825,6 @@ input[type='number']::-webkit-outer-spin-button {
   z-index: 100;
   transition: background-color 120ms ease-in-out;
   min-height: 50px;
-  /* backdrop-filter: blur(4px); */
   background-color: #ffffff;
 }
 .navBar:hover {
