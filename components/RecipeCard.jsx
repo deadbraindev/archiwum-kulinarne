@@ -1,29 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import Image from 'next/image';
-
 import { notFound } from 'next/navigation';
-// import ImageDataURI from 'image-data-uri';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
-// import getRecipes from '../lib/getRecipes';
-// import SwiperContainer from './SwiperContainer';
 import RecipesGrid from './RecipesGrid';
 
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
-  // const data = await getRecipes([
-  //   'https://archiwumkulinarne.deadbrain.dev/api/recipes', // ulr
-  //   '1', // page
-  //   '', // search
-  //   recipeData.category, // category
-  //   'no', // sort
-  //   '8', // pagesize
-  // ]);
-
-  // const lastAdded = data?.results
-  //   ? data.results?.tiles.map((tile) => tile.value)
-  //   : 'skeleton';
 
   if (recipeData.success) {
     return (
@@ -51,18 +35,18 @@ export default async function RecipeCard({ slug }) {
               recipeData.category
             )}`}
           >
-            <h3 className="RCname">{recipeData.name}</h3>
+            <h1 className="RCname">{recipeData.name}</h1>
           </div>
 
           {recipeData.stages?.items.map((stage, i) => (
-            <div className="RCstage" key={stage.index}>
+            <section className="RCstage" key={stage.index}>
               {stage.title && (
-                <h3 className="RCstageTitle">
+                <h2 className="RCstageTitle">
                   {i + 1}. {stage.title}
-                </h3>
+                </h2>
               )}
               <div className="RCing">
-                <h4 className="RCstageIngredients">Składniki:</h4>
+                <h3 className="RCstageIngredients">Składniki:</h3>
                 <ul className="RCingredientsList">
                   {stage.ingredients.map((ingredient) => (
                     <li key={ingredient}>{ingredient}</li>
@@ -71,11 +55,11 @@ export default async function RecipeCard({ slug }) {
               </div>
               <div className="RCprep">
                 {stage.preparing && (
-                  <h4 className="RCstagePreparing">Przygotowanie:</h4>
+                  <h3 className="RCstagePreparing">Przygotowanie:</h3>
                 )}
                 <p className="RCpreparing">{stage.preparing}</p>
               </div>
-            </div>
+            </section>
           ))}
         </div>
 
@@ -88,18 +72,12 @@ export default async function RecipeCard({ slug }) {
                     src={image.src}
                     alt="zeskanowany dokument, odręcznie pisany przepis kulinarny"
                     fill
-                    // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     sizes="(max-width: 768px) 70vw, (max-width: 900px) 50vw, 30vw"
-                    // sizes="(max-width: 768px) 90vw, 400px"
                     quality={60}
-                    // loading="eager"
-                    // placeholder="blur"
-                    // blurDataURL={test}
                     // unoptimized
                     priority
                     className="RCimageSrc"
                   />
-                  {/* <img className="RCimageSrc" src={image.src} alt={image.alt} /> */}
                 </div>
               </Link>
             ))

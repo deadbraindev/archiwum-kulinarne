@@ -5,14 +5,14 @@ export default function RecipeCardSmallSkeleton() {
   return (
     <div className="RCS">
       <div className="RCSimg skeleton" />
-      <h1 className="RCSname">
+      <h2 className="RCSname">
         <Skeleton
           count={1}
           width="40%"
           height="1.2rem"
           enableAnimation={false}
         />
-      </h1>
+      </h2>
 
       <div className="RCSinfo">
         <div className="RCSfavorite">

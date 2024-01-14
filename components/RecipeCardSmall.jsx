@@ -46,7 +46,7 @@ export default function RecipeCardSmall(props) {
           <div className={`RCSimg ${categoryHeaderColorPicker(category)}`}>
             {categorySvgPicker(category)}
           </div>
-          <h1 className="RCSname">{name}</h1>
+          <h2 className="RCSname">{name}</h2>
         </>
       ) : (
         <Link href={`/przepisy/${slug}`} className="RCSlink">
@@ -55,7 +55,7 @@ export default function RecipeCardSmall(props) {
           <div className={`RCSimg ${categoryHeaderColorPicker(category)}`}>
             <div className="svgBackground">{categorySvgPicker(category)}</div>
           </div>
-          <h1 className="RCSname">{name}</h1>
+          <h2 className="RCSname">{name}</h2>
         </Link>
       )}
 
