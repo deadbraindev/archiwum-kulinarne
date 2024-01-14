@@ -148,8 +148,6 @@ export default function Recipes() {
       if (categoryValidator(category)) {
         setInputCategory(category);
         setInputSort(sort);
-        console.log('🚀 ~ Recipes ~ paramSearchddd:', paramSearch);
-
         router.push(
           `przepisy?kategoria=${category}&szukaj=${paramSearch}${
             sortValidator(sort) ? `&sortowanie=${sort}` : ''
