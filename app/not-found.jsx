@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'nieznaleziono | archiwum kulinarne',
   openGraph: {
-    title: 'nieznaleziono',
+    title: 'nieznaleziono | archiwum kulinarne',
     url: '/nieznaleziono',
     images: [
       {
@@ -25,7 +25,6 @@ export default function NotFound() {
         <Link className="notFoundButton" href="/">
           wróć na stronę główną
         </Link>
-        {/* <span>lub</span> */}
         <Link className="notFoundButton primary" href="/losowy">
           przejdź do losowego przepisu
         </Link>

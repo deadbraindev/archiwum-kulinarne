@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'losowy przepis | archiwum kulinarne',
   openGraph: {
-    title: 'losowy przepis',
+    title: 'losowy przepis | archiwum kulinarne',
     url: '/losowy',
     images: [
       {

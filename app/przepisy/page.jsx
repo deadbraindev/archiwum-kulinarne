@@ -11,8 +11,8 @@ export const metadata = {
 
   // OG
   openGraph: {
-    title: 'spis przepisów',
-    siteName: 'archiwum kulinarne SITE NAME?',
+    title: 'spis przepisów | archiwum kulinarne',
+    siteName: 'archiwum kulinarne',
     url: '/przepisy',
     images: [
       {

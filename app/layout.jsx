@@ -28,7 +28,7 @@ export const metadata = {
 
   // OG
   openGraph: {
-    title: 'strona główna',
+    title: 'strona główna | archiwum kulinarne',
     siteName: 'archiwum kulinarne',
     url: '/',
     images: [
@@ -45,7 +45,8 @@ export const metadata = {
 
   // ICONS
   icons: {
-    icon: '/icons/favicon.ico',
+    // icon: '/icons/favicon.ico',
+    icon: '/icons/favicon.jpg',
     shortcut: '/icons/apple-icon-180.png',
     apple: '/icons/apple-icon-180.png',
   },
@@ -185,9 +186,9 @@ export const metadata = {
     ],
   },
   category: 'food',
-  creator: 'deadbrain.dev',
-  authors: [{ name: 'deadbrain.dev' }],
-  publisher: 'deadbrain.dev',
+  // creator: 'deadbrain.dev',
+  // authors: [{ name: 'deadbrain.dev' }],
+  // publisher: 'deadbrain.dev',
   keywords: [
     'food',
     'recipes',

@@ -3,7 +3,7 @@
 export const metadata = {
   title: 'kontakt | archiwum kulinarne',
   openGraph: {
-    title: 'kontakt',
+    title: 'kontakt | archiwum kulinarne',
     url: '/kontakt',
     images: [
       {

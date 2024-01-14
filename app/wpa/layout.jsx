@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'aplikacja | archiwum kulinarne',
   openGraph: {
-    title: 'wpa',
+    title: 'wpa | archiwum kulinarne',
     url: '/wpa',
     images: [
       {

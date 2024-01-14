@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'ulubione | archiwum kulinarne',
   openGraph: {
-    title: 'ulubione',
+    title: 'ulubione | archiwum kulinarne',
     url: '/ulubione',
     images: [
       {
