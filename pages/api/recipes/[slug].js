@@ -42,6 +42,8 @@ export default async function handler(req, res) {
           recipe = await Recipe.findOne({ slug }).select('-__v'); // znalezienie przepisu po slug
         }
         if (recipe) {
+          // console.log('🚀 ~ handler ~ recipe:', recipe.description);
+
           const prettyImagesArray =
             recipe.images !== null
               ? recipe.images.map((image, i) => ({
@@ -78,8 +80,9 @@ export default async function handler(req, res) {
               size: prettyImagesArray.length,
               items: prettyImagesArray,
             },
-            tags: recipe.tags || [],
-            description: recipe.description || '',
+            tags: recipe.tags !== undefined ? recipe.tags : [],
+            description:
+              recipe.description !== undefined ? recipe.description : '',
             timestamps: {
               createdAt: recipe.createdAt,
               updatedAt: recipe.updatedAt,
