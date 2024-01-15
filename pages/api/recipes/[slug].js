@@ -80,9 +80,8 @@ export default async function handler(req, res) {
               size: prettyImagesArray.length,
               items: prettyImagesArray,
             },
-            tags: recipe.tags !== undefined ? recipe.tags : [],
-            description:
-              recipe.description !== undefined ? recipe.description : '',
+            tags: recipe.tags,
+            description: recipe.description,
             timestamps: {
               createdAt: recipe.createdAt,
               updatedAt: recipe.updatedAt,
