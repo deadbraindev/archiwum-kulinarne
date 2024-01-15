@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 
           recipe = await Recipe.findOne().skip(dailyIndex);
         } else {
-          recipe = await Recipe.findOne({ slug }).select('-__v'); // znalezienie przepisu po slug
+          recipe = await Recipe.findOne({ slug }); // znalezienie przepisu po slug
         }
         if (recipe) {
           // console.log('🚀 ~ handler ~ recipe:', recipe.description);
