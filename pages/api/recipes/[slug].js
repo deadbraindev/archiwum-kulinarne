@@ -78,6 +78,8 @@ export default async function handler(req, res) {
               size: prettyImagesArray.length,
               items: prettyImagesArray,
             },
+            tags: recipe.tags || [],
+            description: recipe.description || '',
             timestamps: {
               createdAt: recipe.createdAt,
               updatedAt: recipe.updatedAt,
