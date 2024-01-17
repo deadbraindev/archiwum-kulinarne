@@ -8,7 +8,9 @@ const recipeSchema = new Schema({
     required: [true, 'Recipe must have a name'],
     validate: {
       validator(value) {
-        return value.toLowerCase() !== 'random'; // Sprawdza, czy tytuł nie jest "random"
+        return (
+          value.toLowerCase() !== 'random' && value.toLowerCase() !== 'daily'
+        ); // Sprawdza, czy tytuł nie jest "random"
       },
       // message: 'Tytuł przepisu nie może być "random".',
     },
@@ -38,6 +40,13 @@ const recipeSchema = new Schema({
       },
     },
   ],
+  description: { type: String },
+  tags: [
+    {
+      type: String,
+    },
+  ],
+
   // TODO dodac custom error message
   category: {
     type: String,

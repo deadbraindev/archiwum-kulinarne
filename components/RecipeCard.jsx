@@ -1,35 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import Image from 'next/image';
-
 import { notFound } from 'next/navigation';
 import { categoryHeaderColorPicker } from './RecipeUtilities';
 import getRecipe from '../lib/getRecipe';
-// import getRecipes from '../lib/getRecipes';
-import SwiperContainer from './SwiperContainer';
-
-async function getLastAdded(category) {
-  const res = await fetch(
-    `https://archiwum-kulinarne.vercel.app/api/recipes/?category=${category}&sort=no&pagesize=8`,
-    {
-      next: {
-        revalidate: 3600,
-      },
-    }
-  );
-  if (!res.ok) {
-    throw new Error(
-      `Failed to fetch recipes (/api/recipes/?category=${category}&sort=no&pagesize=8), try again...`
-    );
-  }
-  return res.json();
-}
+import RecipesGrid from './RecipesGrid';
 
 export default async function RecipeCard({ slug }) {
   const recipeData = await getRecipe(slug);
-  const data = await getLastAdded(recipeData.category);
-  const lastAdded = data?.results
-    ? data.results?.tiles.map((tile) => tile.value)
-    : 'skeleton';
 
   if (recipeData.success) {
     return (
@@ -48,7 +26,7 @@ export default async function RecipeCard({ slug }) {
               {recipeData.category}
             </Link>
             <span className="RCcategorySeparator">{'>'}</span>
-            <Link className="RCcategoryLink" href={`/przepisy/${slug}`}>
+            <Link className="RCcategoryLink active" href={`/przepisy/${slug}`}>
               {slug}
             </Link>
           </p>
@@ -61,14 +39,14 @@ export default async function RecipeCard({ slug }) {
           </div>
 
           {recipeData.stages?.items.map((stage, i) => (
-            <div className="RCstage" key={stage.index}>
+            <section className="RCstage" key={stage.index}>
               {stage.title && (
-                <h3 className="RCstageTitle">
+                <h2 className="RCstageTitle">
                   {i + 1}. {stage.title}
-                </h3>
+                </h2>
               )}
               <div className="RCing">
-                <h4 className="RCstageIngredients">Składniki:</h4>
+                <h3 className="RCstageIngredients">Składniki:</h3>
                 <ul className="RCingredientsList">
                   {stage.ingredients.map((ingredient) => (
                     <li key={ingredient}>{ingredient}</li>
@@ -77,27 +55,27 @@ export default async function RecipeCard({ slug }) {
               </div>
               <div className="RCprep">
                 {stage.preparing && (
-                  <h4 className="RCstagePreparing">Przygotowanie:</h4>
+                  <h3 className="RCstagePreparing">Przygotowanie:</h3>
                 )}
                 <p className="RCpreparing">{stage.preparing}</p>
               </div>
-            </div>
+            </section>
           ))}
         </div>
 
         <div className="RCimageContainer">
           {recipeData.images?.size > 0 ? (
             recipeData.images?.items.map((image) => (
-              <Link href={image.src} target="blank">
+              <Link href={image.src} target="blank" key={image.src}>
                 <div className="RCimage">
                   <Image
                     src={image.src}
-                    alt={image.alt}
+                    alt="zeskanowany dokument, odręcznie pisany przepis kulinarny"
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    quality={25}
-                    // crop={{ ratio: '1/1', position: 'center' }}
-                    loading="lazy"
+                    sizes="(max-width: 768px) 70vw, (max-width: 900px) 50vw, 30vw"
+                    quality={60}
+                    // unoptimized
+                    priority
                     className="RCimageSrc"
                   />
                 </div>
@@ -109,21 +87,17 @@ export default async function RecipeCard({ slug }) {
             </div>
           )}
         </div>
-        <SwiperContainer
-          cards={lastAdded}
-          title="ostatnio dodane w tej kategorii"
+        <RecipesGrid
+          size={8}
           category={recipeData.category}
+          sort="no"
+          title="inne z tej kategorii"
         />
+        <span className="RCdevInfo">
+          ostatnie zmiany {recipeData.timestamps.updatedAt}
+        </span>
       </>
     );
   }
-  if (
-    !recipeData.success &&
-    recipeData.error.message ===
-      'Recipe query error: slug: Recipe does not exist'
-  ) {
-    notFound(); // 404 not found handling
-  } else {
-    throw new Error(`Failed to fetch recipes, try again...`);
-  }
+  notFound(); // jezeli recipedata nie wczyta sie poprawnie wyswietl blad
 }

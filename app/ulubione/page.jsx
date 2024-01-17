@@ -13,15 +13,17 @@ export default function Page() {
   return (
     <div className="cardContainer">
       {localFavorite !== null ? (
-        localFavorite.map((recipe) => (
-          <RecipeCardSmall
-            name={recipe.name}
-            slug={recipe.slug}
-            key={recipe.slug}
-            category={recipe.category}
-            favorite={isFavorite(recipe.slug)}
-          />
-        ))
+        localFavorite
+          .toReversed()
+          .map((recipe) => (
+            <RecipeCardSmall
+              name={recipe.name}
+              slug={recipe.slug}
+              key={recipe.slug}
+              category={recipe.category}
+              favorite={isFavorite(recipe.slug)}
+            />
+          ))
       ) : (
         <>
           <RecipeCardSmallSkeleton />

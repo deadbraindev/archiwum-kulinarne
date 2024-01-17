@@ -8,12 +8,12 @@ export default function RecipeCardSkeleton() {
     <div className="RC">
       <p className="RCcategory RCcategoryPadding">
         <span className="RCcategorySeparator">{'>'}</span>
-        <Link className="RCcategoryLink" href="przepisy">
+        <Link className="RCcategoryLink" href="/przepisy">
           przepisy
         </Link>
         <span className="RCcategorySeparator">{'>'}</span>
         <span className="RCcategoryLink">
-          <Skeleton count={1} width="5em" enableAnimation={false} />
+          <Skeleton count={1} width="12em" enableAnimation={false} />
         </span>
       </p>
 

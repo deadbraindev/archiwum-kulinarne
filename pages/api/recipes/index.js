@@ -6,11 +6,8 @@ import Recipe from '../../../models/Recipe';
 
 export default async function handler(req, res) {
   const URL = 'https://archiwumkulinarne.deadbrain.dev';
-  // const URL = 'http://localhost:3000';
 
   const { method } = req;
-  // console.log(method);
-
   await dbConnect();
 
   switch (method) {
@@ -21,7 +18,8 @@ export default async function handler(req, res) {
           origin: [
             'https://archiwumkulinarne.deadbrain.dev',
             'http://localhost:3000',
-            'https://archiwum-kulinarne.vercel.app',
+            'https://archiwumkulinarne.vercel.app',
+            'https://archiwumkulinarne.netlify.app',
           ],
           optionsSuccessStatus: 200,
         });
@@ -149,7 +147,7 @@ export default async function handler(req, res) {
             const perPage =
               !Number.isNaN(paramPageSize) &&
               paramPageSize >= 1 &&
-              paramPageSize <= 32
+              paramPageSize <= 100
                 ? paramPageSize
                 : 24;
             const allPages = Math.ceil(countAllRecipes / perPage - 1);
@@ -237,9 +235,11 @@ export default async function handler(req, res) {
                 showNextUrlLink: page !== allPages,
                 showPreviousUrlLink: !!page,
                 next:
-                  page === allPages ? null : `${URL}/recipes?page=${page + 2}`,
+                  page === allPages
+                    ? null
+                    : `${URL}/api/recipes?page=${page + 2}`,
                 previous: page
-                  ? `${URL}/recipes?page=${Math.max(page, 1)}`
+                  ? `${URL}/api/recipes?page=${Math.max(page, 1)}`
                   : null,
                 results: {
                   size: prettyRecipes.length,
@@ -271,61 +271,61 @@ export default async function handler(req, res) {
       }
       break;
     case 'POST':
-      // if (
-      //   req.body.name === null ||
-      //   req.body.name === undefined ||
-      //   req.body.name === ''
-      // )
-      //   return res.status(400).json({
-      //     success: false,
-      //     error: {
-      //       errors: {
-      //         name: {
-      //           name: 'ValidatorError',
-      //           message: 'Recipe must have a name',
-      //           properties: {
-      //             message: 'Recipe must have a name',
-      //             type: 'required',
-      //             path: 'name',
-      //           },
-      //           kind: 'required',
-      //           path: 'name',
-      //         },
-      //       },
-      //       _message: 'Recipe validation failed',
-      //       name: 'ValidationError',
-      //       message: 'Recipe validation failed: name: Recipe must have a name',
-      //     },
-      //   });
+      if (
+        req.body.name === null ||
+        req.body.name === undefined ||
+        req.body.name === ''
+      )
+        return res.status(400).json({
+          success: false,
+          error: {
+            errors: {
+              name: {
+                name: 'ValidatorError',
+                message: 'Recipe must have a name',
+                properties: {
+                  message: 'Recipe must have a name',
+                  type: 'required',
+                  path: 'name',
+                },
+                kind: 'required',
+                path: 'name',
+              },
+            },
+            _message: 'Recipe validation failed',
+            name: 'ValidationError',
+            message: 'Recipe validation failed: name: Recipe must have a name',
+          },
+        });
 
-      // try {
-      //   // name
-      //   // stages
-      //   /// title
-      //   /// ingredients
-      //   /// preparing
-      //   //
-      //   // TODO zrobic przekazywanie zalogowanego uzytkownika i zapisywanie go do danego przepisu pod createdBy
-      //   // TODO normalizeUrl() https://www.npmjs.com/package/normalize-url
-      //   // TODO hasImage???
+      try {
+        // name
+        // stages
+        /// title
+        /// ingredients
+        /// preparing
+        //
+        // TODO zrobic przekazywanie zalogowanego uzytkownika i zapisywanie go do danego przepisu pod createdBy
+        // TODO normalizeUrl() https://www.npmjs.com/package/normalize-url
+        // TODO hasImage???
 
-      //   const recipe = new Recipe({
-      //     name: req.body.name,
-      //     stages: req.body.stages?.map((stage) => ({
-      //       title: stage.title,
-      //       ingredients: stage.ingredients,
-      //       preparing: stage.preparing,
-      //     })),
-      //     images: req.body.images,
-      //     category: req.body.category,
-      //   });
+        const recipe = new Recipe({
+          name: req.body.name,
+          stages: req.body.stages?.map((stage) => ({
+            title: stage.title,
+            ingredients: stage.ingredients,
+            preparing: stage.preparing,
+          })),
+          images: req.body.images,
+          category: req.body.category,
+        });
 
-      //   await recipe.save().then(() => {
-      //     res.status(200).json({ success: true, recipe });
-      //   });
-      // } catch (error) {
-      //   res.status(400).json({ success: false, error });
-      // }
+        await recipe.save().then(() => {
+          res.status(200).json({ success: true, recipe });
+        });
+      } catch (error) {
+        res.status(400).json({ success: false, error });
+      }
       break;
     default:
       res.status(400).json({

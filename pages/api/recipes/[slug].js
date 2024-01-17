@@ -1,10 +1,9 @@
 import NextCors from 'nextjs-cors';
+import seedrandom from 'seedrandom';
 import dbConnect from '../../../lib/dbConnect';
 import Recipe from '../../../models/Recipe';
 
 export default async function handler(req, res) {
-  //   const URL = 'https://archiwumkulinarne.deadbrain.dev';
-
   const {
     query: { slug },
     method,
@@ -20,7 +19,8 @@ export default async function handler(req, res) {
           origin: [
             'https://archiwumkulinarne.deadbrain.dev',
             'http://localhost:3000',
-            'https://archiwum-kulinarne.vercel.app',
+            'https://archiwumkulinarne.vercel.app',
+            'https://archiwumkulinarne.netlify.app',
           ],
           optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
         });
@@ -29,10 +29,21 @@ export default async function handler(req, res) {
           const count = await Recipe.countDocuments(); // Pobierz liczbę przepisów w kolekcji
           const randomIndex = Math.floor(Math.random() * count); // Wylosuj indeks
           recipe = await Recipe.findOne().skip(randomIndex);
+        } else if (slug === 'daily') {
+          const currentDate = new Date();
+          const dailySeed = currentDate.getDate();
+          seedrandom(dailySeed.toString(), { global: true });
+
+          const count = await Recipe.countDocuments();
+          const dailyIndex = Math.floor(Math.random() * (count + 1));
+
+          recipe = await Recipe.findOne().skip(dailyIndex);
         } else {
-          recipe = await Recipe.findOne({ slug }).select('-__v'); // znalezienie przepisu po slug
+          recipe = await Recipe.findOne({ slug }); // znalezienie przepisu po slug
         }
         if (recipe) {
+          // console.log('🚀 ~ handler ~ recipe:', recipe.description);
+
           const prettyImagesArray =
             recipe.images !== null
               ? recipe.images.map((image, i) => ({
@@ -69,6 +80,8 @@ export default async function handler(req, res) {
               size: prettyImagesArray.length,
               items: prettyImagesArray,
             },
+            tags: recipe.tags,
+            description: recipe.description,
             timestamps: {
               createdAt: recipe.createdAt,
               updatedAt: recipe.updatedAt,

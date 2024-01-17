@@ -1,20 +1,25 @@
 /* eslint-disable camelcase */
-// import Link from 'next/link';
-// import Head from 'next/head';
-// import { Analytics } from '@vercel/analytics/react';
 
 import { Noto_Sans_Mono } from 'next/font/google';
-
-import ReactQueryWrapper from '../components/ReactQueryWrapper';
+import { Suspense } from 'react';
+import NextTopLoader from 'nextjs-toploader';
 import Navbar from '../components/Navbar';
-// import styles from './styles/Homepage.module.css';
 import './styles/globals.css';
 import Footer from '../components/Footer';
 import { FavoriteContextProvider } from '../context/FavoriteContext';
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F9F9F9' },
+    { media: '(prefers-color-scheme: dark)', color: '#F9F9F9' },
+  ],
+};
+
 export const metadata = {
-  // metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
-  metadataBase: new URL('https://archiwum-kulinarne.vercel.app'),
+  metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
+  alternates: {
+    canonical: `/`,
+  },
   title: {
     default: 'strona główna | archiwum kulinarne',
     template: '%s | archiwum kulinarne',
@@ -23,13 +28,12 @@ export const metadata = {
 
   // OG
   openGraph: {
-    // title: 'archiwum kulinarne',
-    title: 'strona główna',
-    siteName: 'archiwum kulinarne SITE NAME?',
+    title: 'strona główna | archiwum kulinarne',
+    siteName: 'archiwum kulinarne',
     url: '/',
     images: [
       {
-        url: 'https://archiwum-kulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
+        url: 'https://archiwumkulinarne.deadbrain.dev/images/opengraph-img-1200-630.jpg',
         width: 1200,
         height: 630,
       },
@@ -41,14 +45,11 @@ export const metadata = {
 
   // ICONS
   icons: {
-    icon: '/icons/favicon.ico',
+    // icon: '/icons/favicon.ico',
+    icon: '/icons/favicon.jpg',
     shortcut: '/icons/apple-icon-180.png',
     apple: '/icons/apple-icon-180.png',
   },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fff' },
-    { media: '(prefers-color-scheme: dark)', color: '#fff' },
-  ],
   appleWebApp: {
     title: 'archiwum kulinarne',
     startupImage: [
@@ -185,6 +186,23 @@ export const metadata = {
     ],
   },
   category: 'food',
+  // creator: 'deadbrain.dev',
+  // authors: [{ name: 'deadbrain.dev' }],
+  // publisher: 'deadbrain.dev',
+  keywords: [
+    'food',
+    'recipes',
+    'family recipes',
+    'culinary heritage',
+    'home cooking',
+    'traditional flavors',
+    'cooking with love',
+    'generational recipes',
+    'homemade cuisine',
+    'kitchen memories',
+    'heritage cooking',
+    'traditional dishes',
+  ],
   manifest: '/manifest.json',
 };
 const notosansmono = Noto_Sans_Mono({
@@ -193,31 +211,41 @@ const notosansmono = Noto_Sans_Mono({
   display: 'swap',
 });
 
+function SearchBarFallback() {
+  // TODO zrobic placeholder navbaru
+  return <header className="navBar" />;
+}
 export default function RootLayout({ children }) {
   return (
     <html lang="pl-PL" className={notosansmono.className}>
       <head>
-        {/* <script
-          defer
-          src="https://unpkg.com/@tinybirdco/flock.js"
-          data-host="https://api.tinybird.co"
-          data-token="p.eyJ1IjogIjRjY2ExZjljLTUzNDMtNDdjNi1hZmJjLTMzNDM4MDBhMDQ3YiIsICJpZCI6ICJhMGI0M2FiYy1mZmFlLTQ5OWMtODIxMi1iZTQzOTdkZGY0ZTUifQ.PhICNSFU8HzrBi5c_WUguXnt723ocTlz6_i0e1V5MmM"
-        /> */}
-        {/* <link
-          rel="stylesheet"
-          href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-        /> */}
+        <meta
+          name="google-site-verification"
+          content="7mdHHlF-tsekFeuaqBWffIcvR3E8pf-VRP8qwqATJ0c"
+        />
       </head>
       <FavoriteContextProvider>
         <body>
-          {/* <div className="content"> */}
-          <Navbar />
+          <Suspense fallback={<SearchBarFallback />}>
+            <Navbar />
+          </Suspense>
           <main className="container">
-            <ReactQueryWrapper>{children}</ReactQueryWrapper>
+            <NextTopLoader
+              color="#ffce06"
+              height={8}
+              speed={1600}
+              showSpinner={false}
+              zIndex={1600}
+              // crawl
+              // crawlSpeed={2000}
+              shadow={false}
+              easing="ease-in"
+              initialPosition={0.1}
+              showAtBottom={false}
+            />
+            {children}
           </main>
           <Footer />
-          {/* </div> */}
-          {/* <Analytics /> */}
         </body>
       </FavoriteContextProvider>
     </html>

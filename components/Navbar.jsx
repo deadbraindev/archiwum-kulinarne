@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -5,12 +7,13 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { ToastContainer, Slide } from 'react-toastify';
-import useMobileDetect from '../lib/useMobileDetect';
+// import useMobileDetect from '../lib/useMobileDetect';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   paramSearchValidator,
   paramCategoryValidator,
 } from './RecipeUtilities';
+import { sortValidator } from '../lib/validators/sortValidator';
 
 function useWindowWidth() {
   const [windowWidth, setWindowWidth] = useState(undefined);
@@ -25,7 +28,7 @@ function useWindowWidth() {
   return windowWidth;
 }
 function Navbar() {
-  const currentDevice = useMobileDetect();
+  // const currentDevice = useMobileDetect();
   const searchParams = useSearchParams();
 
   const paramSearch = searchParams.get('szukaj'); // zaciaganie paramatre search z linka
@@ -33,22 +36,43 @@ function Navbar() {
     ? searchParams.get('kategoria')
     : null;
 
+  const paramSort = sortValidator(searchParams.get('sortowanie'))
+    ? searchParams.get('sortowanie')
+    : null;
+
   const [inputSearch, setInputSearch] = useState('');
+  // const [inputSort, setInputSort] = useState(paramSort);
 
   const inputRefFocus = useRef(null); // referencja zeby odwolac sie do inputu i zabrac mu focus
   const router = useRouter();
 
   const searchButton = (input) => {
     if (!paramSearchValidator(input)) {
-      router.push('');
+      router.push(
+        `/przepisy?${
+          sortValidator(paramSort) ? `&sortowanie=${paramSort}` : ''
+        }${
+          paramCategoryValidator(paramCategory)
+            ? `&kategoria=${paramCategory}`
+            : ''
+        }`
+      );
       setInputSearch('');
     } else if (
       paramSearchValidator(input) &&
       paramCategoryValidator(paramCategory)
     ) {
-      router.push(`/przepisy?kategoria=${paramCategory}&szukaj=${input}`);
+      router.push(
+        `/przepisy?kategoria=${paramCategory}&szukaj=${input}${
+          sortValidator(paramSort) ? `&sortowanie=${paramSort}` : ''
+        }`
+      );
     } else {
-      router.push(`/przepisy?szukaj=${input}`);
+      router.push(
+        `/przepisy?szukaj=${input}${
+          sortValidator(paramSort) ? `&sortowanie=${paramSort}` : ''
+        }`
+      );
     }
   };
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
@@ -84,17 +108,13 @@ function Navbar() {
   const navHamburgerDynamicClasses = classNames(
     'navHamburger',
     windowWidth === undefined ? 'hamLoading visible' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
-    (windowWidth !== undefined && windowWidth < 900) || currentDevice.isMobile()
-      ? 'visible'
-      : 'hidden',
+    windowWidth !== undefined && windowWidth < 900 ? 'visible' : 'hidden',
     { active: isHamburgerClicked }
   );
   const navListDynamicClasses = classNames(
     'navList',
     windowWidth === undefined ? 'navLoading' : '', // warunek bo przy odsiwezaniu jest moment ze windowWidth jest undefined i brzydko znika navbar
-    (currentDevice.isMobile() || windowWidth < 900) && !isHamburgerClicked
-      ? 'hidden'
-      : 'visible'
+    windowWidth < 900 && !isHamburgerClicked ? 'hidden' : 'visible'
   );
 
   useEffect(() => {

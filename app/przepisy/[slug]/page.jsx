@@ -7,7 +7,7 @@ import RecipeCard from '../../../components/RecipeCard';
 
 async function getMetadata(slug) {
   const res = await fetch(
-    `https://archiwum-kulinarne.vercel.app/api/recipes/${slug}`
+    `https://archiwumkulinarne.deadbrain.dev/api/recipes/${slug}`
   );
   return res.json();
 }
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }, parent) {
   const { slug } = params;
   const recipeData = await getMetadata(slug);
   const recipe = await recipeData;
-  const previousStartupImages = (await parent).appleWebApp?.startupImage || [];
+  // const previousStartupImages = (await parent).appleWebApp?.startupImage || [];
   const previousOGImages = (await parent).openGraph?.images || [];
 
   // console.log(previousStartupImages);
@@ -24,6 +24,10 @@ export async function generateMetadata({ params }, parent) {
     const ogDesc = recipeData.stages?.items.map((stage) => stage.preparing);
 
     return {
+      metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
+      alternates: {
+        canonical: `/przepisy/${recipe.slug?.slugCurrent}`,
+      },
       // HTML
       title: recipe.name?.toLowerCase(),
       description: `kategoria: ${recipeData.category} | ${ogDesc
@@ -33,9 +37,11 @@ export async function generateMetadata({ params }, parent) {
 
       // OG
       openGraph: {
-        title: recipe.name?.toLowerCase(),
-        // title: `${recipe.name?.toLowerCase()} - przepis z archiwum kulinarnego`,
-        description: 'og tags description lorem ipsum',
+        // title: recipe.name?.toLowerCase(),
+        title: `${recipe.name?.toLowerCase()} - archiwum kulinarne`,
+        description: `kategoria: ${recipeData.category} | ${ogDesc
+          .join(' ')
+          .substring(0, 150)}`,
         url: `/przepisy/${recipe.slug?.slugCurrent}`,
         images: previousOGImages,
       },
@@ -63,15 +69,27 @@ export async function generateMetadata({ params }, parent) {
     // end OG
 
     // APPLE
-    appleWebApp: {
-      title: 'błędna nazwa przepisu | archiwum kulinarne',
-      startupImage: previousStartupImages,
-    },
+    // appleWebApp: {
+    //   title: 'błędna nazwa przepisu | archiwum kulinarne',
+    //   startupImage: previousStartupImages,
+    // },
     // end APPLE
   };
 }
 
-export default async function Page({ params }) {
+export async function generateStaticParams() {
+  const recipes = await fetch(
+    'https://archiwumkulinarne.deadbrain.dev/api/recipes?pagesize=100'
+  ).then((res) => res.json());
+
+  return recipes.results.tiles.map((recipe) => ({
+    slug: recipe.value.slug.slugCurrent,
+  }));
+}
+export const dynamicParams = false;
+export const dynamic = 'error';
+
+export default function Page({ params }) {
   const { slug } = params;
 
   return <RecipeCard slug={slug} />;
