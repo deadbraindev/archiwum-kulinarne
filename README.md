@@ -4,7 +4,6 @@
 
 archiwum kulinarne to projekt digitalizacji rodzinnych przepisów kulinarnych, bo baza danych w chmurze jest trwalsza niż papier
 
-
 ## demo
 
 latest (nextJS): https://archiwumkulinarne.deadbrain.dev/
