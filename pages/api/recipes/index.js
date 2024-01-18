@@ -327,6 +327,62 @@ export default async function handler(req, res) {
         res.status(400).json({ success: false, error });
       }
       break;
+    // case 'PUT':
+    //   try {
+    //     await NextCors(req, res, {
+    //       methods: ['PUT'],
+    //       origin: ['http://localhost:3000'],
+    //       optionsSuccessStatus: 200,
+    //     });
+    //     const { slug } = req.body;
+
+    //     if (!slug) {
+    //       return res.status(400).json({
+    //         success: false,
+    //         error: {
+    //           _message: 'Recipe slug is missing',
+    //           name: 'ValidationError',
+    //           message: 'Recipe validation failed: Slug is missing',
+    //         },
+    //       });
+    //     }
+
+    //     const updatedRecipe = {
+    //       name: req.body.name,
+    //       stages: req.body.stages?.map((stage) => ({
+    //         title: stage.title,
+    //         ingredients: stage.ingredients,
+    //         preparing: stage.preparing,
+    //         GPTpreparing: stage.GPTpreparing,
+    //       })),
+    //       images: req.body.images,
+    //       category: req.body.category,
+    //       tags: req.body.tags,
+    //       description: req.body.description,
+    //     };
+
+    //     const existingRecipe = await Recipe.findOne({ slug });
+
+    //     if (!existingRecipe) {
+    //       return res.status(404).json({
+    //         success: false,
+    //         error: {
+    //           _message: 'Recipe not found',
+    //           name: 'QueryError',
+    //           message: 'Recipe query error: Recipe not found',
+    //         },
+    //       });
+    //     }
+
+    //     // Update the existing recipe with the new data
+    //     existingRecipe.set(updatedRecipe);
+    //     const savedRecipe = await existingRecipe.save();
+
+    //     res.status(200).json({ success: true, recipe: savedRecipe });
+    //   } catch (error) {
+    //     res.status(400).json({ success: false, error });
+    //   }
+    //   break;
     default:
       res.status(400).json({
         success: false,

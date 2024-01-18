@@ -1,58 +1,18 @@
-// 'use client';
+'use client';
 
-// import { useEffect, useState } from 'react';
-// import TopBarProgress from 'react-topbar-progress-indicator';
 import Link from 'next/link';
-// import { useFavoriteContext } from '../context/useFavoriteContext';
-// import SwiperContainer from '../components/SwiperContainer';
+import useSWR from 'swr';
 import RecipesGrid from '../components/RecipesGrid';
-// import WPATabs from '../components/WPATabs';
+import RecipeCardSmallHorizontal from '../components/RecipeCardHorizontalSmall';
+import RecipeCardSmallHorizontalSkeleton from '../components/RecipeCardHorizontalSmallSkeleton';
+import getRecipe from '../lib/getRecipe';
 
 export default function Page() {
-  // TopBarProgress.config({
-  //   barColors: {
-  //     0: '#ffce06',
-  //   },
-  //   barThickness: 8,
-  //   shadowBlur: 0,
-  // });
+  const { data, isLoading } = useSWR([`/api/recipes`, 'daily'], getRecipe);
 
-  // const { isFetching, state } = useFavoriteContext();
-
-  // const [favoriteCards, setFavoriteCards] = useState([]);
-
-  // const [data, setData] = useState('skeleton');
-  // console.log('🚀 ~ Page ~ data:', data);
-  // const [isLoading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   setLoading(true);
-
-  //   fetch('/api/recipes?sort=no&pagesize=12')
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       // setLoading(false);
-  //       return res.status;
-  //     })
-  //     .then((res) => {
-  //       setData(res);
-  //       setLoading(false);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   setFavoriteCards(state);
-  // }, [state]);
-
-  // const recentlyAdded = data?.results
-  //   ? data.results?.tiles.map((tile) => tile.value)
-  //   : [];
   return (
     <>
-      {/* {isLoading && <TopBarProgress />} */}
-
+      {/* <div className="heroBackground" /> */}
       <div className="hero">
         <h1 className="heroTitle">
           zdigitalizowane rodzinne przepisy kulinarne
@@ -62,67 +22,77 @@ export default function Page() {
           historie i pasja stają się nieśmiertelne
         </span>
         <div className="heroButtons">
-          <div className="heroButton secondary">
-            {/* <span className="tooltip-text">wkrótce dostępne!</span> */}
-            dodaj przepis
-          </div>
+          <div className="heroButton secondary">dodaj przepis</div>
           <Link className="heroButton primary" href="/przepisy">
             zobacz przepisy
           </Link>
         </div>
       </div>
 
-      {/* <section className="features">
-        <h2>co nowego</h2>
-      </section> */}
-      {/* <div className="sectionSeparator">•••</div> */}
-
+      <section className="recipesContainer recipesContainerHorizontal">
+        <span className="recipesContainerTitle"> przepis dnia:</span>
+        <div className="cardContainer">
+          {isLoading ? (
+            <>
+              <RecipeCardSmallHorizontalSkeleton />
+              <RecipeCardSmallHorizontalSkeleton />
+            </>
+          ) : (
+            <>
+              <RecipeCardSmallHorizontal
+                name={data.name}
+                slug={data.slug.slugCurrent}
+                key={data.slug.slugCurrent}
+                category={data.category}
+                star={
+                  (data.stages.items[0].ingredients.length +
+                    data.slug.slugCurrent.length) %
+                  4
+                }
+              />
+              <RecipeCardSmallHorizontalSkeleton />
+            </>
+          )}
+          {/* <div className="tagContainer">
+            <Link href="/przepisy?kategoria=ciasta" className="tag cake">
+              ciasta
+            </Link>
+            <Link href="/przepisy?kategoria=drinki" className="tag drink">
+              drinki
+            </Link>
+            <Link href="/przepisy?kategoria=fastfood" className="tag fastfood">
+              fastfood
+            </Link>
+            <Link href="/przepisy?kategoria=lody" className="tag icecream">
+              lody
+            </Link>
+            <Link href="/przepisy?kategoria=obiadowe" className="tag lunch">
+              obiadowe
+            </Link>
+            <Link
+              href="/przepisy?kategoria=przetwory"
+              className="tag preserves"
+            >
+              przetwory
+            </Link>
+            <Link href="/przepisy?kategoria=ryby" className="tag fish">
+              ryby
+            </Link>
+            <Link href="/przepisy?kategoria=salatki" className="tag salad">
+              salatki
+            </Link>
+            <Link href="/przepisy?kategoria=slodkie" className="tag snack">
+              slodkie
+            </Link>
+            <Link href="/przepisy?kategoria=soki" className="tag juice">
+              soki
+            </Link>
+          </div> */}
+        </div>
+      </section>
+      <div className="sectionSpacer" />
       <RecipesGrid size="8" sort="no" title="ostatnio dodane" />
-
-      {/* {isLoading ? (
-        <SwiperContainer cards="skeleton" title="ostatnio dodane" />
-      ) : (
-        <SwiperContainer
-          cards={recentlyAdded}
-          title="najnowsze przepisy"
-          loop={false}
-          category="salatki"
-        />
-      )}
-      {isFetching ? (
-        <SwiperContainer cards="skeleton" title="twoje ulubione" />
-      ) : (
-        <SwiperContainer
-          cards={favoriteCards}
-          title="twoje ulubione"
-          loop={false}
-          category="slodkie"
-        />
-      )} */}
-      {/* <div className="sectionSeparator">•••</div>
-      <section className="article">
-        <h2 className="articleTitle">twórz swoje własne zbiory przepisów</h2>
-        <div className="articleBody">
-          zbuduj spersonalizowaną kolekcję smaków dzięki funkcji tworzenia
-          własnych zbiorów przepisów. Udostępniaj swoje przepiśniki z innymi,
-          wspólnie rozwijając naszą społeczność, albo zachowuj swoje kulinarne
-          tajniki, trzymając swoje zbiory jako prywatne
-        </div>
-      </section>
-
-      <div className="sectionSeparator">•••</div>
-
-      <section className="article">
-        <h2 className="articleTitle">zachowuj ciekawe przepisy na później</h2>
-        <div className="articleBody">
-          Dodaj swoje ulubione przepisy do sekcji ulubionych jednym kliknięciem
-          serduszka i nie martw się, że je zgubisz. Prosto, wygodnie i zawsze
-          pod ręką!
-        </div>
-      </section>
-      <div className="sectionSeparator">•••</div> */}
-
-      {/* {data === 404 ? <span>błąd 404</span> : null} */}
+      <div className="sectionSpacer" />
     </>
   );
 }

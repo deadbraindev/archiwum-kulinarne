@@ -1,5 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 export default function ReviewStars(props) {
-  const { star } = props;
+  const { star, slug } = props;
 
   const starf = (activeStars) => {
     const totalStars = 3;
@@ -8,6 +9,7 @@ export default function ReviewStars(props) {
     return [...new Array(totalStars)].map((arr, index) =>
       index < actualStars ? (
         <svg
+          key={slug + index.toString()}
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
@@ -19,6 +21,7 @@ export default function ReviewStars(props) {
         </svg>
       ) : (
         <svg
+          key={slug + index.toString()}
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"

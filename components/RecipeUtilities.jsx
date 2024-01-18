@@ -321,3 +321,11 @@ export const categorySvgPicker = (category) => {
       );
   }
 };
+
+export const recipeNameToHumanName = (name, slug) => {
+  const lastChar = slug.charAt(slug.length - 1);
+  if (/\d/.test(lastChar)) {
+    return `${name} #${lastChar}`;
+  }
+  return name;
+};

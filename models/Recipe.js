@@ -28,6 +28,9 @@ const recipeSchema = new Schema({
       preparing: {
         type: String,
       },
+      GPTpreparing: {
+        type: String,
+      },
     },
   ],
   images: [
