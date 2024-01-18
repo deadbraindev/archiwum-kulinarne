@@ -1,8 +1,3 @@
-// import TopBarProgress from 'react-topbar-progress-indicator';
-// import { Suspense } from 'react';
-// import RecipeCardSkeleton from '../../../components/RecipeCardSkeleton';
-// import getRecipe from '../../../lib/getRecipe';
-// import Loading from './loading';
 import RecipeCard from '../../../components/RecipeCard';
 
 async function getMetadata(slug) {
@@ -15,65 +10,65 @@ async function getMetadata(slug) {
 export async function generateMetadata({ params }, parent) {
   const { slug } = params;
   const recipeData = await getMetadata(slug);
-  const recipe = await recipeData;
-  // const previousStartupImages = (await parent).appleWebApp?.startupImage || [];
-  const previousOGImages = (await parent).openGraph?.images || [];
+  // const recipe = await recipeData;
+  const previousImages = (await parent).openGraph?.images || [];
 
-  // console.log(previousStartupImages);
-  if (recipe.success) {
+  if (recipeData.success) {
     const ogDesc = recipeData.stages?.items.map((stage) => stage.preparing);
 
     return {
       metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
       alternates: {
-        canonical: `/przepisy/${recipe.slug?.slugCurrent}`,
+        canonical: `/przepisy/${recipeData.slug?.slugCurrent}`,
       },
-      // HTML
-      title: recipe.name?.toLowerCase(),
-      description: `kategoria: ${recipeData.category} | ${ogDesc
-        .join(' ')
-        .substring(0, 150)}`,
-      // end HTML
-
-      // OG
-      openGraph: {
-        // title: recipe.name?.toLowerCase(),
-        title: `${recipe.name?.toLowerCase()} - archiwum kulinarne`,
-        description: `kategoria: ${recipeData.category} | ${ogDesc
+      title: recipeData.name?.toLowerCase(),
+      description:
+        recipeData.description ||
+        `kategoria: ${recipeData.category} | ${ogDesc
           .join(' ')
           .substring(0, 150)}`,
-        url: `/przepisy/${recipe.slug?.slugCurrent}`,
-        images: previousOGImages,
+      keywords: recipeData.tags || [
+        'jedzenie',
+        'przepisy',
+        'rodzinne przepisy',
+        'dziedzictwo kulinarne',
+        'gotowanie w domu',
+        'tradycyjne smaki',
+        'gotowanie z miłością',
+        'przepisy pokoleniowe',
+        'domowa kuchnia',
+        'kulinarne wspomnienia',
+        'gotowanie dziedzictwa',
+        'tradycyjne dania',
+      ],
+      openGraph: {
+        title: `${recipeData.name?.toLowerCase()} - archiwum kulinarne`,
+        description:
+          recipeData.description ||
+          `kategoria: ${recipeData.category} | przepis kulinarny`,
+        url: `/przepisy/${recipeData.slug?.slugCurrent}`,
+        // images: [`ok-${recipeData.category}.jpg`, ...previousImages],
+        images: [
+          {
+            url: `https://archiwumkulinarne.deadbrain.dev/images/og-${recipeData.category}.jpg`,
+            width: 1200,
+            height: 630,
+          },
+        ],
       },
-      // end OG
-
-      // APPLE
-      // appleWebApp: {
-      //   title: `${recipe.name?.toLowerCase()} | archiwum kulinarne`,
-      //   startupImage: previousStartupImages,
-      // },
-      // end APPLE
     };
   }
   return {
-    // HTML
+    metadataBase: new URL('https://archiwumkulinarne.deadbrain.dev'),
+    alternates: {
+      canonical: `/przepisy}`,
+    },
     title: 'błędna nazwa przepisu',
-    // end HTML
-
-    // OG
     openGraph: {
       title: 'błędna nazwa przepisu | archiwum kulinarne',
       url: '/przepisy',
-      images: previousOGImages,
+      images: previousImages,
     },
-    // end OG
-
-    // APPLE
-    // appleWebApp: {
-    //   title: 'błędna nazwa przepisu | archiwum kulinarne',
-    //   startupImage: previousStartupImages,
-    // },
-    // end APPLE
   };
 }
 

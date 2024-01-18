@@ -37,7 +37,6 @@ export default function Error({ reset }) {
           >
             spróbuj ponownie
           </button>
-          {/* <span>lub</span> */}
           <Link className="notFoundButton primary" href="/">
             wróć na stronę główną
           </Link>
