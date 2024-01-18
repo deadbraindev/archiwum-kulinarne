@@ -5,7 +5,8 @@ import Link from 'next/link';
 import RecipeCardSmallSkeleton from './RecipeCardSmallSkeleton';
 import RecipeCardSmall from './RecipeCardSmall';
 import getRecipes from '../lib/getRecipes';
-import { isFavorite } from './RecipeUtilities';
+import { recipeNameToHumanName } from './RecipeUtilities';
+// import { isFavorite } from './RecipeUtilities';
 
 export default function RecipesGrid(props) {
   const { size, category, sort, title } = props;
@@ -14,14 +15,6 @@ export default function RecipesGrid(props) {
     [`/api/recipes`, '1', '', category, sort, size],
     getRecipes
   );
-
-  const recipeNameToHumanName = (name, slug) => {
-    const lastChar = slug.charAt(slug.length - 1);
-    if (/\d/.test(lastChar)) {
-      return `${name} #${lastChar}`;
-    }
-    return name;
-  };
 
   return (
     <section className="recipesContainer gridRecipes">
@@ -75,7 +68,6 @@ export default function RecipesGrid(props) {
               slug={recipe.value.slug.slugCurrent}
               key={recipe.value.slug.slugCurrent}
               category={recipe.value?.category}
-              favorite={isFavorite(recipe.value.slug.slugCurrent)}
               star={
                 (recipe.value.stages[0].ingredients.length +
                   recipe.value.slug.slugCurrent.length) %

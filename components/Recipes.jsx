@@ -18,8 +18,8 @@ import {
 } from '../lib/validators/categoryValidator';
 import { pageValidator } from '../lib/validators/pageValidator';
 import { sortValidator } from '../lib/validators/sortValidator';
-
 import {
+  recipeNameToHumanName,
   isFavorite,
   categoryHeaderColorPicker,
   categorySvgPicker,
@@ -235,14 +235,6 @@ export default function Recipes() {
       setIsCategoryListVisible(false);
     }
   }, [error]);
-
-  const recipeNameToHumanName = (name, slug) => {
-    const lastChar = slug.charAt(slug.length - 1);
-    if (/\d/.test(lastChar)) {
-      return `${name} #${lastChar}`;
-    }
-    return name;
-  };
 
   let paginationInputTotalPages = 0;
   if (isLoading) {

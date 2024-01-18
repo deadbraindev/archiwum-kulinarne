@@ -229,7 +229,7 @@ function Navbar() {
                   onChange={(event) => setInputSearch(event.target.value)}
                   ref={inputRefFocus}
                 />
-                {inputSearch ? (
+                {paramSearch ? (
                   <button
                     type="button"
                     className="searchInputClear"
@@ -257,13 +257,6 @@ function Navbar() {
                 </button>
               </form>
             </li>
-
-            {/* {user && (
-            <>
-              <span className='navLink' style={{position: "absolute", margin: "0" }}>{user.email}</span>
-              <button className='searchButton' onClick={logoutButton} style={{position: "absolute", margin: "0" }}>logout</button>
-            </>
-          )} */}
           </ul>
         </nav>
       </header>
