@@ -49,12 +49,12 @@ export default async function RecipeCard({ slug }) {
             </h1>
           </div>
           <strong>tagi: </strong>
-          {recipeData.tags &&
+          {/* {recipeData.tags &&
             recipeData.tags.map((tag) => <span>{tag}, </span>)}
           <br />
           <strong>google description: </strong>
+          {recipeData.description && <span>{recipeData.description}</span>} */}
 
-          {recipeData.description && <span>{recipeData.description}</span>}
           {recipeData.stages?.items.map((stage, i) => (
             <section className="RCstage" key={stage.index}>
               {stage.title && (
