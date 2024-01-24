@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { Analytics } from '@vercel/analytics/react';
 
 import { Noto_Sans_Mono } from 'next/font/google';
 import { Suspense } from 'react';
@@ -246,6 +247,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
           <Footer />
+          <Analytics />
         </body>
       </FavoriteContextProvider>
     </html>
