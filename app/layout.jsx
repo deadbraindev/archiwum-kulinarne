@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { Noto_Sans_Mono } from 'next/font/google';
 import { Suspense } from 'react';
@@ -248,6 +249,7 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
           <Analytics />
+          <SpeedInsights />
         </body>
       </FavoriteContextProvider>
     </html>
