@@ -2263,43 +2263,21 @@ gap:16px
 }
 /*! end NOTFOUND */
 /*! CONTACT */
-.dot {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  position: absolute;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-
-  /* needs to be very contrasty color. E.g. light gray on white won't work */
-  background: var(--color-main-yellow);
-  /* opacity: 0.8; */
-  z-index: 1;
-  /* -webkit-filter: blur(150px); */
-  filter: blur(40px);
-}
-.contactTitle,
-.contactForm,
-.contactInput,
-.contactInputBig,
-.contactLabel,
-.contactSubmit {
-  z-index: 3;
-}
 .contactContainer {
-  position: relative; /* Konieczne, aby umożliwić pozycjonowanie potomka */
-  min-height: 700px;
+  min-height: max(50dvh, 600px);
   padding: 0 0.8rem;
   color: var(--color-font-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 64px;
+  /* justify-content: center; */
 }
 
 .contactTitle {
-  border-bottom: 1px solid var(--color-border);
+  /* border-bottom: 1px solid var(--color-border); */
   font-size: 1.5rem;
-  margin: 2rem 0px 0.2rem;
+  /* margin: 2rem 0px 0.2rem; */
   font-weight: bold;
   /* padding-bottom: 2px; */
 }
@@ -2329,26 +2307,28 @@ gap:16px
   padding: 0 0.8rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 600px;
 }
 .contactSubmit {
-  border: 1px solid var(--color-font-primary);
-  background-color: var(--color-font-primary);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-border);
   color: var(--color-background-primary);
   font-size: 1.1rem;
+  font-weight: bold;
+
   height: 58px;
   margin: calc(12px + 0.8rem) 0;
-  /* margin-top: calc(12px + 0.8rem); */
-
   transition: all 150ms ease-in-out;
 }
 .contactSubmit:hover {
-  cursor: pointer;
-  background-color: var(--color-background-primary);
-  color: var(--color-font-primary);
+  cursor:not-allowed;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
   font-weight: bold;
 }
 .contactSubmit:active {
-  background-color: red;
+  background-color: var(--color-font-secondary);
 }
 .contactInfo {
   padding: 20px 10px 5px;
@@ -2511,16 +2491,6 @@ gap:16px
 /*? ============================================================================================================================== */
 /*? tablet landscape */
 @media screen and (min-width: 900px) {
-  .dot {
-    width: 400px;
-    height: 400px;
-  }
-  .contactContainer {
-    /* margin-top: 50px; */
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
   .navLoading {
     position: relative;
     visibility: visible;
@@ -2811,9 +2781,6 @@ gap:16px
   }
    .RCSH {
     grid-column: span 2;
-  }
-  .contactContainer {
-    margin-top: 50px;
   }
   .RCimageContainer {
     gap: 20px;

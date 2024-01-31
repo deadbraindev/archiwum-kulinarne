@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import Link from 'next/link';
 
 export const metadata = {
   title: 'kontakt | archiwum kulinarne',
@@ -7,7 +8,7 @@ export const metadata = {
     url: '/kontakt',
     images: [
       {
-        url: 'https://archiwumkulinarne.vercel.app/images/opengraph-img-1200-630.jpg',
+        url: 'https://archiwumkulinarne.deadbrain.dev/images/opengraph-img-1200-630.jpg',
         width: 1200,
         height: 630,
       },
@@ -17,64 +18,50 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <>
-      {/* <p className="RCcategory">
+    <div className="recipesContainer">
+      <p className="RCcategory">
         <span className="RCcategorySeparator">{'>'}</span>
         <Link className="RCcategoryLink active" href="/kontakt">
           kontakt
         </Link>
-      </p> */}
-
+      </p>
       <section className="contactContainer">
-        {/* <p className="contactInfo">
-        podziel się swoją opinią, zgłoś błąd albo wykaż chęć dodania swoich
-        przepisów na stronę
-      </p> */}
-        <div className="dot" />
-        <h2 className="contactTitle">odbiorca</h2>
-        <form className="contactForm">
-          <label className="contactLabel" htmlFor="">
-            imię
-          </label>
-          <input
-            className="contactInput"
-            type="text"
-            defaultValue="ddbnr"
-            disabled
-          />
-          <label className="contactLabel" htmlFor="">
-            email
-          </label>
-          <input
-            className="contactInput"
-            type="text"
-            defaultValue="deadbrain@deadbrain.dev"
-            disabled
-          />
-        </form>
-
-        <h2 className="contactTitle">nadawca</h2>
         <form className="contactForm">
           <label className="contactLabel" htmlFor="name">
             imię
           </label>
-          <input className="contactInput" type="text" id="name" />
+          <input
+            className="contactInput"
+            type="text"
+            id="name"
+            autoComplete="off"
+          />
 
           <label className="contactLabel" htmlFor="email">
             email
           </label>
-          <input className="contactInput" type="text" id="email" />
+          <input
+            className="contactInput"
+            type="text"
+            id="email"
+            autoComplete="off"
+          />
 
-          <label className="contactLabel" htmlFor="">
+          <label className="contactLabel" htmlFor="contactText">
             wiadomość
           </label>
-          <textarea className="contactInputBig" type="text" />
+          <textarea
+            className="contactInputBig"
+            type="text"
+            id="contactText"
+            autoComplete="off"
+          />
 
-          <button className="contactSubmit" type="submit">
+          <button className="contactSubmit" type="submit" disabled>
             wyślij
           </button>
         </form>
       </section>
-    </>
+    </div>
   );
 }
