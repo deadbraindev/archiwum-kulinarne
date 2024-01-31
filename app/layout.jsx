@@ -4,7 +4,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { Noto_Sans_Mono } from 'next/font/google';
 import { Suspense } from 'react';
-import NextTopLoader from 'nextjs-toploader';
 import Navbar from '../components/Navbar';
 import './styles/globals.css';
 import Footer from '../components/Footer';
@@ -231,22 +230,7 @@ export default function RootLayout({ children }) {
           <Suspense fallback={<SearchBarFallback />}>
             <Navbar />
           </Suspense>
-          <main className="container">
-            <NextTopLoader
-              color="#ffce06"
-              height={8}
-              speed={1600}
-              showSpinner={false}
-              zIndex={1600}
-              // crawl
-              // crawlSpeed={2000}
-              shadow={false}
-              easing="ease-in"
-              initialPosition={0.1}
-              showAtBottom={false}
-            />
-            {children}
-          </main>
+          <main className="container">{children}</main>
           <Footer />
           <Analytics />
           <SpeedInsights />
