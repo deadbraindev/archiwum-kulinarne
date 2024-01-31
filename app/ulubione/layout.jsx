@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <div className="recipesContainer">
+    <div className="recipesContainer favoritesContainer">
       <p className="RCcategory">
         <span className="RCcategorySeparator">{'>'}</span>
         <Link className="RCcategoryLink" href="/przepisy">
@@ -28,11 +28,6 @@ export default function RootLayout({ children }) {
           ulubione
         </Link>
       </p>
-
-      {/* <div className="recipesContainerHeader">
-        <h1 className="recipesContainerTitle">twoje polubione przepisy</h1>
-      </div> */}
-      {/* <h1 className="swiperName">ulubione przepisy:</h1> */}
       {children}
     </div>
   );
