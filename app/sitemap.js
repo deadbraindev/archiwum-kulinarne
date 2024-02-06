@@ -132,12 +132,6 @@ export default async function sitemap() {
       priority: 0.7,
     },
     {
-      url: 'https://archiwumkulinarne.deadbrain.dev/losowy',
-      lastModified: new Date(),
-      //   changeFrequency: 'yearly',
-      priority: 0.7,
-    },
-    {
       url: 'https://archiwumkulinarne.deadbrain.dev/ulubione',
       lastModified: new Date(),
       // changeFrequency: 'yearly',

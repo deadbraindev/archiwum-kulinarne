@@ -1,8 +1,9 @@
 /* eslint-disable camelcase */
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { Noto_Sans_Mono } from 'next/font/google';
 import { Suspense } from 'react';
-import NextTopLoader from 'nextjs-toploader';
 import Navbar from '../components/Navbar';
 import './styles/globals.css';
 import Footer from '../components/Footer';
@@ -188,20 +189,20 @@ export const metadata = {
   category: 'food',
   // creator: 'deadbrain.dev',
   // authors: [{ name: 'deadbrain.dev' }],
-  // publisher: 'deadbrain.dev',
+  publisher: 'deadbrain.dev',
   keywords: [
-    'food',
-    'recipes',
-    'family recipes',
-    'culinary heritage',
-    'home cooking',
-    'traditional flavors',
-    'cooking with love',
-    'generational recipes',
-    'homemade cuisine',
-    'kitchen memories',
-    'heritage cooking',
-    'traditional dishes',
+    'jedzenie',
+    'przepisy',
+    'rodzinne przepisy',
+    'dziedzictwo kulinarne',
+    'gotowanie w domu',
+    'tradycyjne smaki',
+    'gotowanie z miłością',
+    'przepisy pokoleniowe',
+    'domowa kuchnia',
+    'kulinarne wspomnienia',
+    'gotowanie dziedzictwa',
+    'tradycyjne dania',
   ],
   manifest: '/manifest.json',
 };
@@ -229,23 +230,10 @@ export default function RootLayout({ children }) {
           <Suspense fallback={<SearchBarFallback />}>
             <Navbar />
           </Suspense>
-          <main className="container">
-            <NextTopLoader
-              color="#ffce06"
-              height={8}
-              speed={1600}
-              showSpinner={false}
-              zIndex={1600}
-              // crawl
-              // crawlSpeed={2000}
-              shadow={false}
-              easing="ease-in"
-              initialPosition={0.1}
-              showAtBottom={false}
-            />
-            {children}
-          </main>
+          <main className="container">{children}</main>
           <Footer />
+          <Analytics />
+          <SpeedInsights />
         </body>
       </FavoriteContextProvider>
     </html>

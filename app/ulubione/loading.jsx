@@ -15,10 +15,6 @@ export default function Loading() {
       <RecipeCardSmallSkeleton />
       <RecipeCardSmallSkeleton />
       <RecipeCardSmallSkeleton />
-      <RecipeCardSmallSkeleton />
-      <RecipeCardSmallSkeleton />
-      <RecipeCardSmallSkeleton />
-      <RecipeCardSmallSkeleton />
     </div>
   );
 }

@@ -6,13 +6,16 @@ import RecipeCardSmallSkeleton from '../../components/RecipeCardSmallSkeleton';
 import { isFavorite } from '../../components/RecipeUtilities';
 
 export default function Page() {
-  const [localFavorite, setLocalFavorite] = useState(null);
+  const [localFavorite, setLocalFavorite] = useState([]);
+
   useEffect(() => {
     setLocalFavorite(JSON.parse(localStorage.getItem('favorites')));
   }, []);
   return (
     <div className="cardContainer">
-      {localFavorite !== null ? (
+      {localFavorite !== null &&
+      Array.isArray(localFavorite) &&
+      localFavorite.length > 0 ? (
         localFavorite
           .toReversed()
           .map((recipe) => (
@@ -26,10 +29,6 @@ export default function Page() {
           ))
       ) : (
         <>
-          <RecipeCardSmallSkeleton />
-          <RecipeCardSmallSkeleton />
-          <RecipeCardSmallSkeleton />
-          <RecipeCardSmallSkeleton />
           <RecipeCardSmallSkeleton />
           <RecipeCardSmallSkeleton />
           <RecipeCardSmallSkeleton />
