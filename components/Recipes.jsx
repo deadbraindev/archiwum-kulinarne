@@ -227,7 +227,7 @@ export default function Recipes() {
     setInputCategory(paramCategory);
     setInputSort(paramSort);
     setParamSearch(searchParams.get('szukaj'));
-  }, [searchParams]);
+  }, [searchParams, paramSort, paramCategory, paramPage]);
 
   useEffect(() => {
     if (error !== undefined) {

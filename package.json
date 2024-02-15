@@ -9,34 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@lifarl/react-scroll-snap-slider": "^2.0.5",
     "@vercel/analytics": "^1.1.2",
     "@vercel/speed-insights": "^1.0.7",
     "classnames": "^2.3.2",
     "eslint": "^8.41.0",
     "eslint-config-next": "^13.4.4",
     "limax": "^4.1.0",
-    "mongodb": "^5.5.0",
     "mongoose": "^7.2.2",
     "mongoose-slug-plugin": "^2.1.0",
     "next": "latest",
-    "next-connect": "^1.0.0",
     "nextjs-cors": "^2.1.2",
     "react": "^18.2.0",
-    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-loading-skeleton": "^3.3.1",
     "react-tabs": "^6.0.2",
     "react-toastify": "^9.1.3",
     "remove-accents": "^0.5.0",
     "seedrandom": "^3.0.5",
-    "styled-components": "^6.1.0",
     "swiper": "latest",
     "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/react": "18.2.7",
-    "@typescript-eslint/eslint-plugin": "^5.59.8",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
@@ -48,6 +42,6 @@
     "typescript": "5.1.3"
   },
   "repository": "git@github.com:deadbraindev/archiwum-kulinarne-nextjs.git",
-  "author": "ddbrn <ppq0qqp@gmail.com>",
+  "author": "deadbraindev <ppq0qqp@gmail.com>",
   "license": "MIT"
 }

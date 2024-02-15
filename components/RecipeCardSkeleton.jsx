@@ -111,10 +111,7 @@ export default function RecipeCardSkeleton() {
           <div className="RCimageSrc" />
         </div>
       </div>
-      <SwiperContainer
-        cards="skeleton"
-        title="ostatnio dodane w tej kategorii"
-      />
+      <SwiperContainer cards="skeleton" title="inne z tej kategorii" />
     </div>
   );
 }
