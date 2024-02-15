@@ -23,7 +23,7 @@ export default function RecipeCardSmallHorizontal(props) {
 
   useEffect(() => {
     setIsFavorite(checkFavorite(slug));
-  }, [state]);
+  }, [state, slug]);
 
   const handleFavoriteButton = () => {
     if (isFavorite) {

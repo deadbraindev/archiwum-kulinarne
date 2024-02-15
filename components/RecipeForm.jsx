@@ -352,7 +352,7 @@ export default function RecipeForm(props) {
           type="button"
           onClick={() => {
             console.log(convertRecipeData());
-            // handleSave();
+            handleSave();
           }}
         >
           Save
