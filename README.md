@@ -1,4 +1,4 @@
-![Logo](https://archiwumkulinarne.deadbrain.dev/images/opengraph-img-1200-630.jpg)
+[![Logo](https://archiwumkulinarne.deadbrain.dev/images/opengraph-img-1200-630.jpg)](https://archiwumkulinarne.deadbrain.dev/)
 
 # [archiwum kulinarne](https://archiwumkulinarne.deadbrain.dev/)
 
