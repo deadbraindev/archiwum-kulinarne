@@ -18,7 +18,16 @@
 - https://archiwumkulinarne.deadbrain.dev/api/recipes/gofry-1
 
 > [!TIP]
-> available query: page, category, search, size, sort
+> available query:
+> - **page** - number
+> - **category** - enum ('ciasta', 'drinki', 'fastdood', 'lody', 'obiadowe', 'przetwory', 'ryby', 'salatki', 'slodkie', 'soki' )
+> - **search** - string
+> - **size** - number (1-100, default 24)
+> - **sort** - enum
+>   - _null_: A → Z (default)
+>   - 'za': Z → A
+>   - 'no': NEW → OLD
+>   - 'on': OLD → NEW
 
 ### API response:
 ```json
