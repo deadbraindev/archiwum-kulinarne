@@ -10,26 +10,42 @@
 - [x] analityka, SEO, meta-tagi
 - [x] 'ulubione' zapisywane w localstorage
 
-## API examples
-- https://archiwumkulinarne.deadbrain.dev/api/recipes
-- https://archiwumkulinarne.deadbrain.dev/api/recipes?page=2
-- https://archiwumkulinarne.deadbrain.dev/api/recipes/random
-- https://archiwumkulinarne.deadbrain.dev/api/recipes/daily
-- https://archiwumkulinarne.deadbrain.dev/api/recipes/gofry-1
+## Frontend
+- [x] list recipes [`/przepisy`](https://archiwumkulinarne.deadbrain.dev/przepisy)
+- [x] query params [`/przepisy?kategoria=ciasta&strona=2&sortowanie=no&szukaj=a`](https://archiwumkulinarne.deadbrain.dev/przepisy?szukaj=a&sortowanie=no&kategoria=ciasta&strona=2)
+- [x] custom 404 page [`/nieznaleziono`](https://archiwumkulinarne.deadbrain.dev/nieznaleziono)
+- [ ] make contact form [`/kontakt`](https://archiwumkulinarne.deadbrain.dev/kontakt)
 
-> [!TIP]
-> available query:
-> - **page** - number
-> - **category** - enum ('ciasta', 'drinki', 'fastdood', 'lody', 'obiadowe', 'przetwory', 'ryby', 'salatki', 'slodkie', 'soki' )
-> - **search** - string
-> - **size** - number (1-100, default 24)
-> - **sort** - enum
->   - _null_: A → Z (default)
->   - 'za': Z → A
->   - 'no': NEW → OLD
->   - 'on': OLD → NEW
+## API
+- [x] list recipes [`/api/recipes`](https://archiwumkulinarne.deadbrain.dev/api/recipes)
+- [x] get recipe `/api/recipes/:slug`
+- [x] get random recipe [`/api/recipes/random`](https://archiwumkulinarne.deadbrain.dev/api/recipes/random)
+- [x] get daily recipe [`/api/recipes/daily`](https://archiwumkulinarne.deadbrain.dev/api/recipes/daily)
+- [ ] list categories [`/api/categories`]
+- [ ] list all api info [`/api`](https://archiwumkulinarne.deadbrain.dev/api)
 
-### API response:
+## Query params
+- **page** - number
+  - e.g. [`/api/recipes?page=2`](https://archiwumkulinarne.deadbrain.dev/api/recipes?page=2)
+- **category** - enum ('ciasta', 'drinki', 'fastdood', 'lody', 'obiadowe', 'przetwory', 'ryby', 'salatki', 'slodkie', 'soki' )
+  - e.g. [`/api/recipes?category=ciasta`](https://archiwumkulinarne.deadbrain.dev/api/recipes?category=ciasta)
+- **search** - string
+  - e.g. [`/api/recipes?search=gofry`](https://archiwumkulinarne.deadbrain.dev/api/recipes?search=gofry)
+- **size** - number (1-100, default 24)
+  - e.g. [`/api/recipes?size=10`](https://archiwumkulinarne.deadbrain.dev/api/recipes?size=10)
+- **sort** - enum
+  - _null_: A → Z (default)
+  - 'za': Z → A
+  - 'no': NEW → OLD
+  - 'on': OLD → NEW
+  - e.g. [`/api/recipes?sort=za`](https://archiwumkulinarne.deadbrain.dev/api/recipes?sort=za)
+
+
+## API example response:
+
+<details>
+    <summary>`/api/recipes/gofry-1`</summary>
+
 ```json
 {
 "success": true,
@@ -70,9 +86,16 @@
 }
 ```
 
+</details>
+
+
+
 
 ## Demo
 
 latest (nextJS): https://archiwumkulinarne.deadbrain.dev/
 
 old version (react): https://archiwumkulinarne.netlify.app/
+
+
+
