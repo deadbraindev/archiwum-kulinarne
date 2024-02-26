@@ -39,7 +39,7 @@ export default function Page() {
             </>
           ) : (
             <>
-              <RecipeCardSmallHorizontal
+              {/* <RecipeCardSmallHorizontal
                 name={data.name}
                 slug={data.slug.slugCurrent}
                 key={data.slug.slugCurrent}
@@ -49,7 +49,7 @@ export default function Page() {
                     data.slug.slugCurrent.length) %
                   4
                 }
-              />
+              /> */}
               <RecipeCardSmallHorizontalSkeleton />
             </>
           )}
