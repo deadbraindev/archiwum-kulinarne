@@ -1689,6 +1689,11 @@ gap:16px
   padding: 0 0.5em;
   font-size: 0.7em;
 }
+.RCSrating {
+  fill: var(--color-border);
+  color: var(--color-border);
+
+}
 /*! end /recipes RCS */
 
 /*! /recipes RCSH */

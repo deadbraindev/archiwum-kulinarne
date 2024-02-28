@@ -35,7 +35,7 @@ export default async function handler(req, res) {
           seedrandom(dailySeed.toString(), { global: true });
 
           const count = await Recipe.countDocuments();
-          const dailyIndex = Math.floor(Math.random() * (count + 1));
+          const dailyIndex = Math.floor(Math.random() * count);
 
           recipe = await Recipe.findOne().skip(dailyIndex);
         } else {
